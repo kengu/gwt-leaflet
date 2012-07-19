@@ -16,11 +16,17 @@ Features
 
 <i>Comming soon</i>
 
+Example
+=======
+
+Goto [gwtl-example.appspot.com](http://gwtl-example.appspot.com/) to see a running example of the 
+[GWT example project](https://github.com/kengu/gwt-leaflet/tree/master/src/gwtl-example).
+
 
 Development
 ===========
 
-This Git project is broken down into several Eclipse projects, as is developed using 
+This Git project is broken down into several Eclipse projects, and is developed using 
 
 + [Eclipse Inidigo SR2 (3.7.2)](http://www.eclipse.org/downloads/packages/release/indigo/sr2) 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
