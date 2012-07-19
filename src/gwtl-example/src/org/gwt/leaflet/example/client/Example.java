@@ -37,14 +37,16 @@ public class Example implements EntryPoint {
 	public void onModuleLoad() {
 		
 		VerticalPanel verticalPanel = new VerticalPanel();
-		verticalPanel.setSpacing(20);
+		verticalPanel.setSpacing(10);
 		
 		MapWidget mapWidget = new MapWidget("map");
 		verticalPanel.add(mapWidget);
-		mapWidget.setSize("600px", "400px");
+		mapWidget.setSize("100%", "100%");
 		
 		RootPanel rootPanel = RootPanel.get();
-		rootPanel.add(verticalPanel, 10, 10);
+		rootPanel.setSize("100%", "100%");
+		rootPanel.add(verticalPanel, 0, 0);
+		verticalPanel.setSize("100%", "100%");
 		
 		// Create Leaflet map instance
 		Map map = FACTORY.newMap("map", Constants.MAP_OPTIONS);
