@@ -17,7 +17,7 @@ fully integrate the Leaflet API as the project progress.
 Features
 ========
 
-<i>comming soon</i>
+<i>Comming soon</i>
 
 
 Development
