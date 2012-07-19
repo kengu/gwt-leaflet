@@ -11,9 +11,6 @@ of a GWT application. The [Leaflet API](http://leaflet.cloudmade.com/reference.h
 and is integrated with GWT as Java classes using [JSNI](https://developers.google.com/web-toolkit/doc/latest/DevGuideCodingBasicsJSNI)
 and [Type Overlays](https://developers.google.com/web-toolkit/doc/latest/DevGuideCodingBasicsOverlay). 
 
-Only those parts of the Leaflet API in use by gwt-leaflet is implemented so far, but it is a long-term goal to 
-fully integrate the Leaflet API as the project progress.
-
 Features
 ========
 
