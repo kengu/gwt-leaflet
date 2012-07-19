@@ -23,19 +23,19 @@ Features
 Development
 ===========
 
-This project is developed using 
+This Git project is broken down into several Eclipse projects, as is developed using 
 
 + [Eclipse Inidigo SR2 (3.7.2)](http://www.eclipse.org/downloads/packages/release/indigo/sr2) 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
-+ [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro).
++ [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro)
 + [EGit](http://www.eclipse.org/egit/)
 
 You should download and install these before you continue (follow the links above). 
 
-When you are all done, just
+**When you are all done, just**
 
-1. download __[this](https://raw.github.com/kengu/gwt-leaflet/master/gwt-leaflet.psf)__ 
-[Eclipse Project Set](http://wiki.eclipse.org/PSF) file
-2. and import gwt-leaflet Eclipse projects by: File -> Import -> Team -> Team Project Set -> [follow the instructions]
+1. **download** __[this](https://raw.github.com/kengu/gwt-leaflet/master/gwt-leaflet.psf)__ 
+project set file (you can read read more about it [here](http://wiki.eclipse.org/PSF)).
+2. and **import all** Eclipse projects by: File -> Import -> Team -> Team Project Set -> [follow the instructions]
 
 which should automatically clone gwt-leaflet down on you machine and into your Eclipse workspace.
