@@ -53,7 +53,7 @@ public class MapWidget extends Composite {
 		this.name = name;
 		
 		// Show it in a 'div' element
-		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%\">MapWidget: " + name + "</div>"));
+		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%;\">MapWidget: " + name + "</div>"));
 		
 	}
 	

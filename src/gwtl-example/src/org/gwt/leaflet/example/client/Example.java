@@ -26,6 +26,10 @@ import org.gwt.leaflet.api.types.LatLng;
 import org.gwt.leaflet.client.Constants;
 import org.gwt.leaflet.client.MapWidget;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.HasVerticalAlignment;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -36,17 +40,15 @@ public class Example implements EntryPoint {
 	
 	public void onModuleLoad() {
 		
-		VerticalPanel verticalPanel = new VerticalPanel();
-		verticalPanel.setSpacing(10);
+		RootPanel rootPanel = RootPanel.get();
+		rootPanel.setStyleName("gwt-Body");
+//		rootPanel.setSize("100%", "100%");
 		
 		MapWidget mapWidget = new MapWidget("map");
-		verticalPanel.add(mapWidget);
-		mapWidget.setSize("100%", "100%");
-		
-		RootPanel rootPanel = RootPanel.get();
-		rootPanel.setSize("100%", "100%");
-		rootPanel.add(verticalPanel, 0, 0);
-		verticalPanel.setSize("100%", "100%");
+		rootPanel.add(mapWidget);
+		mapWidget.setHeight("");
+//		mapWidget.setSize("100%", "100%");
+		mapWidget.setStyleName("gwt-Map");
 		
 		// Create Leaflet map instance
 		Map map = FACTORY.newMap("map", Constants.MAP_OPTIONS);
