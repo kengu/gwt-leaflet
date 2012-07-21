@@ -22,10 +22,6 @@
 package org.gwt.leaflet.client;
 
 import org.gwt.leaflet.api.Map;
-import org.gwt.leaflet.api.MapException;
-import org.gwt.leaflet.api.MapFactory;
-
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
@@ -33,7 +29,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  * @author kennethg
  *
  */
-public class MapWidget extends Composite {
+public class MapPane extends Composite {
 	
 	private final String name;
 	
@@ -44,16 +40,16 @@ public class MapWidget extends Composite {
 	 * 
 	 * @wbp.parser.constructor
 	 */
-	public MapWidget() {
+	public MapPane() {
 		this("map");
 	}
 	
-	public MapWidget(String name) {
+	public MapPane(String name) {
 		
 		this.name = name;
 		
 		// Show it in a 'div' element
-		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%;\">MapWidget: " + name + "</div>"));
+		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%;\">MapPane: " + name + "</div>"));
 		
 	}
 	

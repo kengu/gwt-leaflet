@@ -9,7 +9,19 @@ package org.gwt.leaflet.api;
  *
  */
 public interface TileLayer extends Layer {
-	
-	public static final String MAX_ZOOM = "minZoom";
 
+	@SuppressWarnings("serial")
+	public final static Options DEFAULT = new Options(true){
+		@Override void fill() {
+			// TODO: Add required options (one at this point)
+		}
+	};
+	
+	/**
+	 * Modify options in one operation.
+	 * @param options {@link Options} instance.
+	 * @return {@link Layers}
+	 */
+	Layers setOptions(Options options);
+	
 }

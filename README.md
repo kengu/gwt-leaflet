@@ -14,7 +14,20 @@ and [Type Overlays](https://developers.google.com/web-toolkit/doc/latest/DevGuid
 Features
 ========
 
-<i>Comming soon</i>
+Following Leaflet features are implemented (Java interface names, Leaflet API in brackets):
+
++ Map [[L.Map](http://leaflet.cloudmade.com/reference.html#map-class)]
++ LatLng [L.LatLng]((http://leaflet.cloudmade.com/reference.html#latlng)
++ Layer [ILayer](http://leaflet.cloudmade.com/reference.html#ilayer)
++ TileLayer [L.TileLayer](http://leaflet.cloudmade.com/reference.html#tilelayer)
++ WmsLayer [L.TileLayer](http://leaflet.cloudmade.com/reference.html#tilelayer-wms)
++ Control [L.TileLayer](http://leaflet.cloudmade.com/reference.html#icontrol)
++ Layers [L.Control.Layers](http://leaflet.cloudmade.com/reference.html#control-layers)
++ Attribution [L.Control.Attribution](http://leaflet.cloudmade.com/reference.html#control-attribution)
+
+In addition, the following Widgets are implemented
+
++ MapPane - Primary GWT Widget
 
 Example
 =======

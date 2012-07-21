@@ -12,6 +12,13 @@ import org.gwt.leaflet.api.types.LatLng;
  */
 public interface Map {
 	
+	@SuppressWarnings("serial")
+	public final static Options DEFAULT = new Options(true){
+		@Override void fill() {
+			// TODO: Add required options (one at this point)
+		}
+	};
+	
 	/**
 	 * Get {@link Map} name
 	 * @return String
@@ -53,6 +60,17 @@ public interface Map {
 	/**
 	 * <b>Adds the given layer to the map</b>. 
 	 * <p> 
+	 * The layer is inserted above all others.
+	 * <p> 
+	 * @param layer - {@link Layer} to add 
+	 * @param bottom - id <code>true</code>, the layer is inserted under all others
+	 * @return {@link Map}
+	 */
+	Map addLayer(Layer layer);
+	
+	/**
+	 * <b>Adds the given layer to the map</b>. 
+	 * <p> 
 	 * If Bottom is set to <code>true</code>, the layer is inserted under 
 	 * all others (useful when switching base tile layers).
 	 * <p> 
@@ -62,5 +80,11 @@ public interface Map {
 	 */
 	Map addLayer(Layer layer, boolean bottom);
 	
+	/**
+	 * <b>Adds the given control to the map</b>. 
+	 * @param control - {@link Control} to add 
+	 * @return {@link Map}
+	 */
+	Map addControl(Control control);
 	
 }

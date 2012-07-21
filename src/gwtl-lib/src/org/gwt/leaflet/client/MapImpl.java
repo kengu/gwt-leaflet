@@ -1,6 +1,7 @@
 package org.gwt.leaflet.client;
 
 
+import org.gwt.leaflet.api.Control;
 import org.gwt.leaflet.api.Layer;
 import org.gwt.leaflet.api.Map;
 import org.gwt.leaflet.api.types.LatLng;
@@ -17,7 +18,7 @@ public class MapImpl extends JavaScriptObject implements Map {
 	@Override
 	public final native String getName() /*-{		
 		// Forward
-		return this.name;
+		return this.gwt.name;
 	}-*/;
 
 	@Override
@@ -45,9 +46,19 @@ public class MapImpl extends JavaScriptObject implements Map {
 	}-*/;
 
 	@Override
+	public final Map addLayer(Layer layer) {
+		return addLayer(layer, false);
+	}
+
+	@Override
 	public final native Map addLayer(Layer layer, boolean bottom) /*-{	
 		// Forward
 		this.addLayer(layer,bottom); return this;
 	}-*/;
 	
+	@Override
+	public final native Map addControl(Control control) /*-{	
+		// Forward
+		this.addControl(control); return this;
+	}-*/;
 }

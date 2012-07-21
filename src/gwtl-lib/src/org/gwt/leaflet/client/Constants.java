@@ -21,8 +21,6 @@
  *********************************************************************/
 package org.gwt.leaflet.client;
 
-import org.gwt.leaflet.api.Options;
-
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -39,13 +37,10 @@ public class Constants extends JavaScriptObject {
 	
 	public static final double MAX_MARGIN;
 	
-	public static final Options MAP_OPTIONS;
-	
 	static {
 		DEG_TO_RAD = getDegToRad();
 		RAD_TO_DEG = getRadToDeg();
 		MAX_MARGIN = getMaxMargin();
-		MAP_OPTIONS = createMapOptions();
 	}
 
 	/**
@@ -64,10 +59,5 @@ public class Constants extends JavaScriptObject {
 	public static native double getMaxMargin() /*-{
 	    return $wnd.L.LatLng.MAX_MARGIN;
 	}-*/;
-	
-	public static final Options createMapOptions() {
-		Options options = new Options();
-		return options;
-	}
 	
 }
