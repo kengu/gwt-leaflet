@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client;
+package org.gwt.leaflet.client.impl;
 
 import java.util.HashSet;
 import java.util.Map.Entry;
@@ -140,16 +140,16 @@ public class MapFactoryImpl implements MapFactory {
 		// Initialize the map on the "name" div with a given center and zoom
 		var map = new $wnd.L.Map(_name, options);
 
-		// Add lat/lon popup
-		map.on('click', onMapClick);
-		var popup = new $wnd.L.Popup();
-		function onMapClick(e) {
-			var latlngStr = '(' + e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3) + ')';
-
-			popup.setLatLng(e.latlng);
-			popup.setContent("You clicked the map at " + latlngStr);
-			map.openPopup(popup);
-		}
+//		// Add lat/lon popup
+//		map.on('click', onMapClick);
+//		var popup = new $wnd.L.Popup();
+//		function onMapClick(e) {
+//			var latlngStr = '(' + e.latlng.lat.toFixed(3) + ', ' + e.latlng.lng.toFixed(3) + ')';
+//
+//			popup.setLatLng(e.latlng);
+//			popup.setContent("You clicked the map at " + latlngStr);
+//			map.openPopup(popup);
+//		}
 		
 		// Set gwt attributes
 		map.gwt = [];

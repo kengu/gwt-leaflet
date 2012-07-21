@@ -8,9 +8,10 @@
 	
 	<source path="api"></source>
 	<source path="client"></source>
+	<source path="client/impl"></source>
 	
 	<!-- Leaflet API implementation using dependency injection -->
-	<replace-with class="org.gwt.leaflet.client.MapFactoryImpl">
+	<replace-with class="org.gwt.leaflet.client.impl.MapFactoryImpl">
 		<when-type-is class="org.gwt.leaflet.api.MapFactory"/>
 	</replace-with>
 	

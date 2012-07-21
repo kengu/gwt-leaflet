@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client;
+package org.gwt.leaflet.client.impl;
 
 import org.gwt.leaflet.api.Layer;
 import org.gwt.leaflet.api.Layers;
