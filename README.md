@@ -44,7 +44,7 @@ This Git project is broken down into several Eclipse projects, and is developed 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
 + [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro)
 + [EGit](http://www.eclipse.org/egit/)
-+ [Git Local Team Project Set Plugin](https://github.com/kengu/gwt-leaflet/wiki/EGit-and-Team-Project-Sets)
++ [Git Local Team Project Set Plugin](https://github.com/kengu/gwt-leaflet/wiki/EGit-and-Team-Project-Sets) - only with Eclipse 3.7
 
 You should download and install these before you continue (follow the links above). 
 
