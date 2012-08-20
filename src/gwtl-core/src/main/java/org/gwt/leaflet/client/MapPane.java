@@ -21,7 +21,6 @@
  *********************************************************************/
 package org.gwt.leaflet.client;
 
-import org.gwt.leaflet.api.Map;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
@@ -30,10 +29,6 @@ import com.google.gwt.user.client.ui.HTMLPanel;
  *
  */
 public class MapPane extends Composite {
-	
-	private final String name;
-	
-	private Map map;
 	
 	/**
 	 * Default constructor
@@ -46,10 +41,8 @@ public class MapPane extends Composite {
 	
 	public MapPane(String name) {
 		
-		this.name = name;
-		
 		// Show it in a 'div' element
-		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%;\">MapPane: " + name + "</div>"));
+		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%; position: relative;\">MapPane: " + name + "</div>"));
 		
 	}
 	

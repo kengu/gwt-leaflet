@@ -18,7 +18,6 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import org.gwt.leaflet.api.Attribution;
 import org.gwt.leaflet.api.Layers;
 import org.gwt.leaflet.api.Map;
 import org.gwt.leaflet.api.MapFactory;
