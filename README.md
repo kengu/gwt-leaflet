@@ -56,9 +56,9 @@ You should download and install these before you continue (follow the links abov
 **When you are all done, just** (linux)
 
 1. fork this repo on github
-2. clone the fork locally - ```~/src/git> git clone https://github.com/<username>/gwt-leaflet.git```
-3. change directory to -  ```~/src/git> cd gwt-leaflet/src``` 
-4. run the command - ```~/src/git/gwt-leaflet/src> mvn package```
+2. clone the fork locally - ```git clone https://github.com/<username>/gwt-leaflet.git```
+3. change directory to -  ```cd gwt-leaflet/src``` 
+4. and run the command - ```mvn package```
 
 which should automatically download some stuff for you and prepare the projects for import into Eclipse.
 
