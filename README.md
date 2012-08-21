@@ -1,7 +1,7 @@
 gwt-leaflet
 ===========
 
-A __lightweight__ mapping alternative to popular mapping APIs like Google Maps API and OpenLayers for GWT. 
+A __lightweight__ mapping alternative to popular mapping APIs like Google Maps and OpenLayers.
 
 The library uses [Leaflet](http://leaflet.cloudmade.com/), an open-source javascript library for 
 mobile-friendly interactive maps by [CloudMade](http://cloudmade.com/), to implement a collection of mapping 
