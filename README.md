@@ -64,7 +64,7 @@ which should automatically download some stuff for you and prepare the projects 
 
 5. Switch to Eclipse and select File -> Import...
 6. Select Maven -> Existing Maven Projects
-7. Select Browse ... -> ~/src/git/gwt-leaflet
+7. Select Browse ... -> gwt-leaflet/src
 8. Finish
 
 which should import all projects into current workspace.
