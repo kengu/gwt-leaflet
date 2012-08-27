@@ -5,7 +5,7 @@ jdk:
 before_script:
   - cd src/
 
-script: mvn package -Dpackage
+script: mvn package -Drelease
 
 notifications:
   email:
