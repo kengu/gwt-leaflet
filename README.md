@@ -1,7 +1,7 @@
 gwt-leaflet
 ===========
 
-A __lightweight__ mapping alternative to popular mapping APIs like Google Maps API and OpenLayers for GWT. 
+A __lightweight__ mapping alternative to popular mapping APIs like Google Maps and OpenLayers.
 
 The library uses [Leaflet](http://leaflet.cloudmade.com/), an open-source javascript library for 
 mobile-friendly interactive maps by [CloudMade](http://cloudmade.com/), to implement a collection of mapping 
@@ -38,20 +38,33 @@ Goto [gwtl-example.appspot.com](http://gwtl-example.appspot.com/example.html) to
 Development
 ===========
 
-This Git project is broken down into several Eclipse projects, and is developed using 
+This Git project is broken down into a Maven 
+[multi-gwt-module project setup](http://mojo.codehaus.org/gwt-maven-plugin/user-guide/multiproject.html), 
+(see [working with maven](http://code.google.com/p/google-web-toolkit/wiki/WorkingWithMaven))
+and is developed using 
 
++ [Maven (3.0.4)](http://maven.apache.org/download.html)
++ [Maven GWT Plugin](http://mojo.codehaus.org/gwt-maven-plugin) - automatically downloaded by maven
 + [Eclipse Inidigo SR2 (3.7.2)](http://www.eclipse.org/downloads/packages/release/indigo/sr2) 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
 + [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro)
 + [EGit](http://www.eclipse.org/egit/)
-+ [Git Local Team Project Set Plugin](https://github.com/kengu/gwt-leaflet/wiki/EGit-and-Team-Project-Sets) - only with Eclipse 3.7
++ [m2eclipse-wtp](http://download.jboss.org/jbosstools/updates/m2eclipse-wtp)
 
 You should download and install these before you continue (follow the links above). 
 
-**When you are all done, just**
+**When you are all done, just** (linux)
 
-1. **download** __[this](https://raw.github.com/kengu/gwt-leaflet/master/gwt-leaflet.psf)__ 
-project set file (you can read read more about it [here](http://wiki.eclipse.org/PSF)).
-2. and **import all** Eclipse projects by: File -> Import -> Team -> Team Project Set -> [follow the instructions]
+1. fork this repo on github
+2. clone the fork locally - ```git clone https://github.com/<username>/gwt-leaflet.git```
+3. change directory to -  ```cd gwt-leaflet/src``` 
+4. and run the command - ```mvn package```
 
-which should automatically clone gwt-leaflet down on you machine and into your Eclipse workspace.
+which should automatically download some stuff for you and prepare the projects for import into Eclipse.
+
+5. Switch to Eclipse and select File -> Import...
+6. Select Maven -> Existing Maven Projects
+7. Select Browse ... -> gwt-leaflet/src
+8. Finish
+
+which should import all projects into current workspace.
