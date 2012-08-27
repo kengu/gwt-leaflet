@@ -1,5 +1,7 @@
-gwt-leaflet
+gwt-leaflet 
 ===========
+
+[![Build Status](https://secure.travis-ci.org/kengu/gwt-leaflet.png)](http://travis-ci.org/kengu/gwt-leaflet)
 
 A __lightweight__ mapping alternative to popular mapping APIs like Google Maps and OpenLayers.
 
