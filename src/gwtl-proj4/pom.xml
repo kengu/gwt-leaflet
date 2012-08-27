@@ -13,7 +13,6 @@
 	<artifactId>gwtl-proj4</artifactId>
 	<name>gwtl-proj4</name>
 	<packaging>jar</packaging>
-	<url>http://www.discotools.org</url>
 	
 	<dependencies>
 		<dependency>

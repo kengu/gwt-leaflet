@@ -19,7 +19,7 @@
  * along with gwt-leaflet. If not, see http://www.gnu.org/licenses.
  * 
  *********************************************************************/
-package org.gwt.leaflet.client.widget;
+package org.gwt.leaflet.widget.client;
 
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
@@ -45,18 +45,5 @@ public class MapWidget extends Composite {
 		initWidget(new HTMLPanel("<div id=\""+name+"\" style=\"width:100%; height: 100%; position: relative;\">MapPane: " + name + "</div>"));
 		
 	}
-	
-//	public Map getMap() {
-//		return map;
-//	}
-//	
-//	public void setMap(Map map) {
-//		if(!name.equals(map.getName()))
-//			throw new MapException("Map name mismatch. " +
-//					"Expected " + name + ", found " + map.getName());
-//		this.map = map;
-//	}
-	
-	
 
 }

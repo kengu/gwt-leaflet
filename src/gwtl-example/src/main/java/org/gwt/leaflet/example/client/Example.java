@@ -30,7 +30,7 @@ import org.gwt.leaflet.client.layer.tile.TileLayer;
 import org.gwt.leaflet.client.layer.tile.WmsLayer;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.type.LatLng;
-import org.gwt.leaflet.client.widget.MapWidget;
+import org.gwt.leaflet.widget.client.MapWidget;
 import org.gwt.leaflet.proj4.client.Proj4;
 
 /**
