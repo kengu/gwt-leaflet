@@ -15,43 +15,50 @@
 package org.gwt.leaflet.example.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import org.gwt.leaflet.api.Layers;
-import org.gwt.leaflet.api.Map;
-import org.gwt.leaflet.api.MapFactory;
-import org.gwt.leaflet.api.Options;
-import org.gwt.leaflet.api.TileLayer;
-import org.gwt.leaflet.api.WmsLayer;
-import org.gwt.leaflet.api.types.Crs;
-import org.gwt.leaflet.api.types.LatLng;
-import org.gwt.leaflet.client.MapPane;
+import org.gwt.leaflet.client.Leaflet;
+import org.gwt.leaflet.client.Options;
+import org.gwt.leaflet.client.control.Control;
+import org.gwt.leaflet.client.control.Layers;
+import org.gwt.leaflet.client.control.Scale;
+import org.gwt.leaflet.client.control.Zoom;
+import org.gwt.leaflet.client.crs.CRS;
+import org.gwt.leaflet.client.crs.ICRS;
+import org.gwt.leaflet.client.impl.Debug;
+import org.gwt.leaflet.client.layer.tile.TileLayer;
+import org.gwt.leaflet.client.layer.tile.WmsLayer;
+import org.gwt.leaflet.client.map.Map;
+import org.gwt.leaflet.client.type.LatLng;
+import org.gwt.leaflet.client.widget.MapWidget;
+import org.gwt.leaflet.proj4.client.Proj4;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Example implements EntryPoint {
 	
-	private static MapFactory FACTORY = GWT.create(MapFactory.class);	
+	private static Leaflet L = Leaflet.L;
+	private static Proj4 PROJ4 = Proj4.INSTANCE;
 	
 	public void onModuleLoad() {
 	
 		// Fit MapWidget to device screen
 		RootPanel rootPanel = RootPanel.get();
 		rootPanel.setStyleName("gwt-Body");
-		MapPane mapWidget = new MapPane("map");
+		MapWidget mapWidget = new MapWidget("map");
 		rootPanel.add(mapWidget);
 		mapWidget.setHeight("");
 		mapWidget.setStyleName("gwt-Map");
 
 		// Create mutable WmsLayer options
 		Options options = Map.DEFAULT.clone(false);
-		Crs crs = FACTORY.newCrs(Crs.EPSG_3857);
+		ICRS crs = L.crs().create(CRS.EPSG3857);
 		options.put("crs", crs);
+		options.put("zoomControl", false);
 		
 		// Create Map instance
-		Map map = FACTORY.newMap("map", options);
+		Map map = L.map().create("map", options);
 		
 		// Create TileLayer url template
 		String url = "http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png";
@@ -61,7 +68,7 @@ public class Example implements EntryPoint {
 		options.put("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 		
 		// Create TileLayer instance
-		TileLayer tile = FACTORY.newTileLayer(url, options);
+		TileLayer tile = L.layer().tile(url, options);
 
 		// Create WmsLayer url
 		url = "http://wms.latlon.org";
@@ -70,24 +77,58 @@ public class Example implements EntryPoint {
 		options = WmsLayer.DEFAULT.clone(false);	
 		options.put(WmsLayer.LAYERS, "osm");
 		options.put("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
+		
+		// Required version: origin/master
+		crs = L.crs().create(CRS.EPSG4326);
+//		crs = PROJ4.crs("EPSG:4326",L.transformation(1 / 360, 0.5, -1 / 360, 0.5));
+//		Debug.log(crs);
+		options.put("crs", crs);
 	
-		// Create Leaflet TileLayer instance
-		WmsLayer wms = FACTORY.newWmsLayer(url, options);
+		// Create Leaflet WMSLayer instance
+		WmsLayer wms = L.layer().wms(url, options);
 		
-		// Create Layers control
-		options = Layers.DEFAULT.clone(false);	
-		options.put("Tile", tile);
-		options.put("WMS", wms);		
-		Layers layers = FACTORY.newLayers(options,Layers.DEFAULT);
+//		// Create WmsLayer url
+//		url = "http://openwms.statkart.no/skwms1/wms.topo2";
+//		
+//		// Create mutable WmsLayer options
+//		crs = L.crs().create(CRS.EPSG4326);
+//		options = WmsLayer.DEFAULT.clone(false);
+//		options.put(WmsLayer.LAYERS, "topo2_WMS");
+//		options.put("crs", crs);
+//		options.put("attribution", "Kartgrunnlag: " +
+//				"<a href=\"http://www.statkart.no/\">Kartverket</a>, " +
+//				"<a href=\"http://www.statkart.no/nor/Land/Fagomrader/Geovekst/\">Geovekst</a> og " +
+//				"<a href=\"http://www.statkart.no/?module=Articles;action=Article.publicShow;ID=14194/\">kommuner</a>");
+//	
+//		// Create Leaflet WMSLayer instance
+//		WmsLayer statkart = L.map().newWmsLayer(url, options);		
 		
-		// Add layers to map
-		map.addControl(layers);
+		// Create layer switcher control
+		Options bases = Options.EMPTY.clone(false);
+		bases.put("WMS", wms);	
+		bases.put("Tile", tile);
+//		bases.put("cloudmade.com (tile)", cloudmate);
+//		bases.put("latlon.org (wms)", latlon);	
+//		bases.put("statkart.no (wms-c)", statkart);
 
+		// Add layers control to map
+		L.control().layers(bases,Options.EMPTY,Layers.DEFAULT).addTo(map);
+		
 		// Create map center position		
-		LatLng center = FACTORY.newLatLng(59.915, 10.754);
+		LatLng center = L.type().latlng(59.915, 10.754);
 		
 		// Add layers to map and center at given position
-		map.setView(center, 13, true).addLayer(wms).addLayer(tile);
+		map.setView(center, 13, false).addLayer(tile);
+		
+		// Add scale to bottom right corner of map 
+		options = Scale.DEFAULT.clone(false);
+		options.put(Scale.POSITION, Control.Position.TOP_LEFT);
+		L.control().scale(options).addTo(map);
+
+		// Add scale to bottom left corner of map 
+		options = Zoom.DEFAULT.clone(false);
+		options.put(Zoom.POSITION, Control.Position.BOTTOM_LEFT);
+		L.control().zoom(options).addTo(map);
 		
 	}
 }

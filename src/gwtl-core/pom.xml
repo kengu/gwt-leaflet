@@ -14,13 +14,9 @@
 	<artifactId>gwtl-core</artifactId>
 	<packaging>jar</packaging>
 	<name>gwtl-core</name>
+	<url>http://www.discotools.org</url>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
@@ -63,19 +59,17 @@
 					<execution>
 						<goals>
 							<goal>resources</goal>
-							<goal>generateAsync</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
 					<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
-					<compileReport>true</compileReport>
-					<module>org.gwt.leaflet.Leaflet</module>
-					<logLevel>INFO</logLevel>
-					<style>PRETTY</style>
-					<draftCompile>true</draftCompile>
-					<optimizationLevel>1</optimizationLevel>
-					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
+					<compileReport>${compile.report}</compileReport>
+					<!-- Other compilation settings -->
+					<style>${compile.style}</style>
+					<logLevel>${compile.level}</logLevel>
+					<draftCompile>${compile.draft}</draftCompile>
+					<optimizationLevel>${compile.optimization.level}</optimizationLevel>
 				</configuration>
 			</plugin>
 

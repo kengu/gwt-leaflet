@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to="gwtl_core">
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.json.JSON" />
+<!-- 	<script src="0.4.4/leaflet-src.js" /> -->
+<!-- 	<stylesheet src="0.4.4/leaflet.css" /> -->
+	<script src="origin/master/leaflet-src.js" />
+	<stylesheet src="origin/master/leaflet.css" />
+
+	<source path="client"></source>
+
+	<!-- Leaflet API implementation (dependency injection) -->
+	<replace-with class="org.gwt.leaflet.client.impl.LeafletImpl">
+		<when-type-is  class="org.gwt.leaflet.client.Leaflet" />
+	</replace-with>
+	<replace-with class="org.gwt.leaflet.client.map.impl.MapFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.client.map.MapFactory" />
+	</replace-with>
+	<replace-with class="org.gwt.leaflet.client.crs.impl.CRSFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.client.crs.CRSFactory" />
+	</replace-with>
+	<replace-with class="org.gwt.leaflet.client.type.impl.TypeFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.client.type.TypeFactory" />
+	</replace-with>
+	<replace-with class="org.gwt.leaflet.client.layer.impl.LayerFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.client.layer.LayerFactory" />
+	</replace-with>
+	<replace-with class="org.gwt.leaflet.client.control.impl.ControlFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.client.control.ControlFactory" />
+	</replace-with>
+
+</module>

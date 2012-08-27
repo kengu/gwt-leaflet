@@ -1,26 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
-	<!-- POM file generated with GWT webAppCreator -->
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-
+	
 	<parent>
 		<groupId>org.gwt.leaflet</groupId>
 		<artifactId>gwtl</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>gwtl-example</artifactId>
-	<packaging>war</packaging>
-	<name>gwtl-example</name>
-
+	<artifactId>gwtl-proj4</artifactId>
+	<name>gwtl-proj4</name>
+	<packaging>jar</packaging>
+	<url>http://www.discotools.org</url>
+	
 	<dependencies>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
@@ -54,39 +49,27 @@
 			<artifactId>gwtl-core</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
-		<dependency>
-			<groupId>org.gwt.leaflet</groupId>
-			<artifactId>gwtl-proj4</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
 		
 	</dependencies>
 
 	<build>
-
 		<!-- Generate compiled stuff in the folder used for developing mode -->
 		<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
 
 		<plugins>
+
+			<!-- GWT Maven Plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<executions>
-					<!-- GWT version detected from dependencyManagement -->
 					<execution>
 						<goals>
-							<goal>compile</goal>
-							<goal>generateAsync</goal>
+							<goal>resources</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<!-- Modules -->
-					<module>org.gwt.leaflet.example.Example</module>
-					<!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
-					<runTarget>example.html</runTarget>
-					<!-- Hosted mode settings -->
-					<hostedWebapp>${project.build.directory}/${project.build.finalName}</hostedWebapp>
 					<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
 					<compileReport>${compile.report}</compileReport>
 					<!-- Other compilation settings -->
@@ -117,15 +100,7 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-war-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <warSourceDirectory>war</warSourceDirectory> -->
-			<!-- <webXml>src/main/webapp/WEB-INF/web.xml</webXml> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			
 		</plugins>
 	</build>
 </project>

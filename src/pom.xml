@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -6,7 +7,13 @@
 	<artifactId>gwtl</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>gwt-leaflet</name>
+	<name>gwtl</name>
+
+	<modules>
+		<module>gwtl-core</module>
+		<module>gwtl-example</module>
+		<module>gwtl-proj4</module>
+	</modules>
 
 	<properties>
 		<!-- Convenience property to set the GWT version -->
@@ -18,7 +25,40 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
-
+	
+	<!-- Profiles -->
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<activation>
+				<property><name>debug</name></property>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Compilation settings  -->
+				<compile.level>INFO</compile.level>
+				<compile.style>PRETTY</compile.style>
+				<compile.report>true</compile.report>
+				<compile.draft>true</compile.draft>
+				<compile.optimization.level>1</compile.optimization.level>			
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<property><name>release</name></property>
+			</activation>
+			<properties>
+				<!-- Compilation settings  -->
+				<compile.level>INFO</compile.level>
+				<compile.style>OBF</compile.style>
+				<compile.report>true</compile.report>
+				<compile.draft>false</compile.draft>
+				<compile.optimization.level>9</compile.optimization.level>			
+			</properties>
+		</profile>
+	</profiles>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -54,11 +94,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<modules>
-		<module>gwtl-core</module>
-		<module>gwtl-example</module>
-	</modules>
 
 	<build>
 		<pluginManagement>
@@ -111,7 +146,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore></ignore>
+										<ignore />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>

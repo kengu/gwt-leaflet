@@ -1,0 +1,18 @@
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<module rename-to="gwtl_core">
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name="org.gwt.leaflet.Leaflet"/>
+	
+	<script src="proj4js/1.1.0/proj4js.js" />
+	<script src="proj4leaflet/origin/master/proj4leaflet.js" />
+
+	<source path="client"></source>
+	
+	<!-- Leaflet API implementation (dependency injection) -->
+	<replace-with class="org.gwt.leaflet.proj4.client.impl.Proj4Impl">
+		<when-type-is  class="org.gwt.leaflet.proj4.client.Proj4" />
+	</replace-with>
+	
+	
+</module>
