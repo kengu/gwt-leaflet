@@ -3,6 +3,9 @@ jdk:
   - openjdk7
   - openjdk6
 
+before_script:
+  - cd src/
+
 script: mvn package -Dpackage
 
 notifications:
