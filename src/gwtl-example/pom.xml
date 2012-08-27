@@ -18,18 +18,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-servlet</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-dev</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -61,7 +51,7 @@
 		</dependency>
 		
 	</dependencies>
-
+	
 	<build>
 
 		<!-- Generate compiled stuff in the folder used for developing mode -->
@@ -71,12 +61,13 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<executions>
-					<!-- GWT version detected from dependencyManagement -->
+				<!-- GWT version detected from dependencyManagement -->
+		        <executions>
+					<!-- JS is only needed in the package phase, this speeds up testing -->
 					<execution>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>compile</goal>
-							<goal>generateAsync</goal>
 						</goals>
 					</execution>
 				</executions>
@@ -96,7 +87,7 @@
 					<optimizationLevel>${compile.optimization.level}</optimizationLevel>
 				</configuration>
 			</plugin>
-
+			
 			<!-- Copy static web files before executing gwt:run -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
@@ -118,14 +109,67 @@
 				</executions>
 			</plugin>
 
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-war-plugin</artifactId> -->
-			<!-- <configuration> -->
-			<!-- <warSourceDirectory>war</warSourceDirectory> -->
-			<!-- <webXml>src/main/webapp/WEB-INF/web.xml</webXml> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
 		</plugins>
 	</build>
+	
+	<!-- Profiles -->
+	<profiles>
+	
+		<!-- Google AppEngine profile -->
+		<profile>
+			<id>gae</id>
+			<activation>
+				<property><name>gae</name></property>
+			</activation>
+			
+			<!-- Append to project build -->
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>gwt-maven-plugin</artifactId>
+						<!-- GWT version detected from dependencyManagement -->
+						<configuration>
+							<!-- Google AppEngine -->
+							<appEngineHome>${gae.home}</appEngineHome>
+							<appEngineVersion>${gae.version}</appEngineVersion>
+		    				<server>com.google.appengine.tools.development.gwt.AppEngineLauncher</server>					
+						</configuration>
+					</plugin>
+										
+					<!-- Google App Engine plugin -->
+					<plugin>
+						<groupId>net.kindleit</groupId>
+						<artifactId>maven-gae-plugin</artifactId>
+						<configuration>
+		                    <serverId>appengine.google.com</serverId>
+		                    <sdkDir>${gae.home}</sdkDir>
+							<!-- <appDir>src/main/webapp</appDir> -->
+		                </configuration>
+						<executions>
+							<execution>
+								<id />
+								<phase>validate</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<!-- Mark the project for Google AppEngine -->
+					<plugin>
+						<artifactId>maven-eclipse-plugin</artifactId>
+						<configuration>
+							<additionalProjectnatures>
+								<projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature>
+							</additionalProjectnatures>
+						</configuration>
+					</plugin>
+					
+				</plugins>
+			</build>					
+		</profile>				
+	</profiles>
+	
 </project>

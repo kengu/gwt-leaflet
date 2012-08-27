@@ -17,9 +17,12 @@
 	</modules>
 
 	<properties>
-		<!-- Convenience property to set the GWT version -->
+		<!-- GWT properties -->
 		<gwtVersion>2.4.0</gwtVersion>
-		<!-- GWT needs at least java 1.6 -->
+		<!-- GAE properties -->
+		<gae.version>1.6.6</gae.version>
+ 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>		
+ 		<!-- GWT needs at least java 1.6 -->
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<!-- Don't let your Mac use a crazy non-standard encoding -->
@@ -56,12 +59,13 @@
 				<compile.report>true</compile.report>
 				<compile.draft>false</compile.draft>
 				<compile.optimization.level>9</compile.optimization.level>			
-			</properties>
+			</properties>			
 		</profile>
 	</profiles>
 	
 	<dependencyManagement>
 		<dependencies>
+		    <!-- Google Window Toolkit (GWT) -->
 			<dependency>
 				<groupId>com.google.gwt</groupId>
 				<artifactId>gwt-servlet</artifactId>
@@ -77,11 +81,32 @@
 				<artifactId>gwt-dev</artifactId>
 				<version>${gwtVersion}</version>
 			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.1</version>
-			</dependency>
+			
+		    <!-- Google App Engine (GAE) -->
+		    <dependency>
+		      <groupId>com.google.appengine</groupId>
+		      <artifactId>appengine-api-1.0-sdk</artifactId>
+		      <version>${gae.version}</version>
+		    </dependency>
+		    <dependency>
+		      <groupId>com.google.appengine</groupId>
+		      <artifactId>appengine-testing</artifactId>
+		      <version>${gae.version}</version>
+		      <scope>test</scope>
+		    </dependency>
+		    <dependency>
+		      <groupId>com.google.appengine</groupId>
+		      <artifactId>appengine-api-stubs</artifactId>
+		      <version>${gae.version}</version>
+		      <scope>test</scope>
+		    </dependency>
+		    <dependency>
+		      <groupId>com.google.appengine</groupId>
+		      <artifactId>appengine-api-labs</artifactId>
+		      <version>${gae.version}</version>
+		    </dependency>
+		    
+		    <!-- Validation -->
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
@@ -93,6 +118,14 @@
 				<version>1.0.0.GA</version>
 				<classifier>sources</classifier>
 			</dependency>
+		    			
+		    <!-- Testing -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
@@ -104,6 +137,19 @@
 					<artifactId>gwt-maven-plugin</artifactId>
 					<version>2.4.0</version>
 				</plugin>
+				<plugin>
+					<groupId>net.kindleit</groupId>
+					<artifactId>maven-gae-plugin</artifactId>
+					<version>0.9.4</version>
+					<dependencies>
+						<dependency>
+							<groupId>net.kindleit</groupId>
+							<artifactId>gae-runtime</artifactId>
+							<version>${gae.version}</version>
+							<type>pom</type>
+						</dependency>
+					</dependencies>
+				</plugin>		
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>
 					<version>2.2</version>
@@ -120,7 +166,11 @@
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.4.2</version>
 				</plugin>
-
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.8</version>
+				</plugin>
+				
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -130,17 +180,12 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
+								<!-- gwt-maven-plugin -->
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											gwt-maven-plugin
-										</artifactId>
-										<versionRange>
-											[2.4.0,)
-										</versionRange>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>gwt-maven-plugin</artifactId>
+										<versionRange>[2.4.0,)</versionRange>
 										<goals>
 											<goal>resources</goal>
 											<goal>generateAsync</goal>
@@ -148,6 +193,20 @@
 									</pluginExecutionFilter>
 									<action>
 										<ignore />
+									</action>
+								</pluginExecution>
+								<!-- maven-gae-plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>net.kindleit</groupId>
+										<artifactId>maven-gae-plugin</artifactId>
+										<versionRange>[0.7.3,)</versionRange>
+										<goals>
+											<goal>unpack</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute />
 									</action>
 								</pluginExecution>
 							</pluginExecutions>
@@ -166,10 +225,9 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<!-- Mark the project for Google Plugin for Eclipse (GPE) -->
+			<!-- Mark all projects for Google Plugin for Eclipse (GPE) -->
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.8</version>
 				<configuration>
 					<downloadSources>true</downloadSources>
 					<downloadJavadocs>false</downloadJavadocs>
@@ -181,10 +239,9 @@
 					</additionalBuildcommands>
 					<additionalProjectnatures>
 						<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-						<!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
 					</additionalProjectnatures>
 				</configuration>
-			</plugin>
+			</plugin>	
 		</plugins>
 
 	</build>
