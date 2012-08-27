@@ -1,7 +1,6 @@
 language: java
 jdk:
   - openjdk7
-  - openjdk6
 
 before_script:
   - cd src/
