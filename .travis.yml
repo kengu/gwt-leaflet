@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - openjdk7
+  - openjdk6
+
+script: mvn package -Dpackage
+
+notifications:
+  email:
+    recipients:
+      - kenneth.gulbrandsoy@gmail.com
+
