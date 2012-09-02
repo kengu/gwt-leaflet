@@ -25,13 +25,11 @@ import org.gwt.leaflet.client.control.Scale;
 import org.gwt.leaflet.client.control.Zoom;
 import org.gwt.leaflet.client.crs.CRS;
 import org.gwt.leaflet.client.crs.ICRS;
-import org.gwt.leaflet.client.impl.Debug;
 import org.gwt.leaflet.client.layer.tile.TileLayer;
 import org.gwt.leaflet.client.layer.tile.WmsLayer;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.type.LatLng;
 import org.gwt.leaflet.widget.client.MapWidget;
-import org.gwt.leaflet.proj4.client.Proj4;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -39,7 +37,6 @@ import org.gwt.leaflet.proj4.client.Proj4;
 public class Example implements EntryPoint {
 	
 	private static Leaflet L = Leaflet.L;
-	private static Proj4 PROJ4 = Proj4.INSTANCE;
 	
 	public void onModuleLoad() {
 	
@@ -80,8 +77,6 @@ public class Example implements EntryPoint {
 		
 		// Required version: origin/master
 		crs = L.crs().create(CRS.EPSG4326);
-//		crs = PROJ4.crs("EPSG:4326",L.transformation(1 / 360, 0.5, -1 / 360, 0.5));
-//		Debug.log(crs);
 		options.put("crs", crs);
 	
 		// Create Leaflet WMSLayer instance
@@ -107,9 +102,6 @@ public class Example implements EntryPoint {
 		Options bases = Options.EMPTY.clone(false);
 		bases.put("WMS", wms);	
 		bases.put("Tile", tile);
-//		bases.put("cloudmade.com (tile)", cloudmate);
-//		bases.put("latlon.org (wms)", latlon);	
-//		bases.put("statkart.no (wms-c)", statkart);
 
 		// Add layers control to map
 		L.control().layers(bases,Options.EMPTY,Layers.DEFAULT).addTo(map);
@@ -132,19 +124,3 @@ public class Example implements EntryPoint {
 		
 	}
 }
-
-//url = "http://ims.cr.usgs.gov:80/servlet19/com.esri.wms.Esrimap/USGS_EDC_Elev_NED_3";
-//url = "http://openwms.statkart.no/skwms1/wms.europa";
-//url = "http://129.206.228.72/cached/hillshade";
-//url = "http://osm.wheregroup.com/cgi-bin/osm_basic.xml";
-//url = "http://openwms.statkart.no/skwms1/wms.topo2";
-//url = "http://opencache.statkart.no/gatekeeper/gk/gk.open";
-//options.put(WmsLayer.LAYERS, "HR-NED.IMAGE");
-//options.put("reaspect", "false");
-//options.put("transparent", "true");
-//options.put(WmsLayer.LAYERS, "Europa_WMS");
-//options.put(WmsLayer.LAYERS, "osm_auto:all");
-//options.put(WmsLayer.LAYERS, "europe_wms:hs_srtm_europa");
-//options.put(WmsLayer.LAYERS, "OSM_Basic");
-//options.put(WmsLayer.LAYERS, "topo2_WMS");
-//options.put(WmsLayer.LAYERS, "topo2");

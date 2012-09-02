@@ -4,8 +4,8 @@
 	<inherits name="com.google.gwt.json.JSON" />
 	<inherits name="org.gwt.leaflet.Leaflet"/>
 	
-	<script src="proj4js/1.1.0/proj4js.js" />
-	<script src="proj4leaflet/origin/master/proj4leaflet.js" />
+	<script src="libs/proj4js/1.1.0/proj4js.js" />
+	<script src="libs/proj4leaflet/origin/master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022/proj4leaflet.js" />
 
 	<source path="client"></source>
 	
@@ -13,6 +13,5 @@
 	<replace-with class="org.gwt.leaflet.proj4.client.impl.Proj4Impl">
 		<when-type-is  class="org.gwt.leaflet.proj4.client.Proj4" />
 	</replace-with>
-	
 	
 </module>

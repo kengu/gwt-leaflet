@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.gwt.leaflet</groupId>
@@ -12,13 +11,14 @@
 	<modules>
 		<module>gwtl-core</module>
 		<module>gwtl-proj4</module>
+		<module>gwtl-search</module>
 		<module>gwtl-widget</module>
 		<module>gwtl-example</module>
 	</modules>
 
 	<properties>
 		<!-- GWT properties -->
-		<gwtVersion>2.4.0</gwtVersion>
+		<gwt.version>2.4.0</gwt.version>
 		<!-- GAE properties -->
 		<gae.version>1.6.6</gae.version>
  		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>		
@@ -69,17 +69,17 @@
 			<dependency>
 				<groupId>com.google.gwt</groupId>
 				<artifactId>gwt-servlet</artifactId>
-				<version>${gwtVersion}</version>
+				<version>${gwt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
 				<artifactId>gwt-user</artifactId>
-				<version>${gwtVersion}</version>
+				<version>${gwt.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.gwt</groupId>
 				<artifactId>gwt-dev</artifactId>
-				<version>${gwtVersion}</version>
+				<version>${gwt.version}</version>
 			</dependency>
 			
 		    <!-- Google App Engine (GAE) -->
@@ -192,7 +192,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<ignore />
+										<ignore/>
 									</action>
 								</pluginExecution>
 								<!-- maven-gae-plugin -->
@@ -206,7 +206,7 @@
 										</goals>
 									</pluginExecutionFilter>
 									<action>
-										<execute />
+										<execute/>
 									</action>
 								</pluginExecution>
 							</pluginExecutions>

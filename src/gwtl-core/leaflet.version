@@ -1,8 +1,10 @@
-Previous version - 0.4.4 
-Downloaded from  - https://github.com/CloudMade/Leaflet/zipball/v0.4.4
----------------------------------------------------------------------
-Current version  - origin/master
-Downloaded from  - https://github.com/kengu/Leaflet.git
+# ------------------------------------------------------
+# From: https://github.com/kengu/Leaflet.git/dist/
+# ------------------------------------------------------
+#
+# * Added crs=L.CRS to L.TileLayer.WMS options
+#
+Version=origin/master/14a8be5050f24b1d11d8f2e38259880e11c31fdf
 
-	* Added support for different CRS in each L.TileLayer.WMS
+	
 	

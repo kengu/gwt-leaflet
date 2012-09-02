@@ -15,6 +15,28 @@
 	<packaging>jar</packaging>
 	<name>gwtl-core</name>
 	<url>http://www.discotools.org</url>
+	
+	<!-- gwtl-core properties -->
+	<properties>
+		<!-- www.leaflet.org script version: "relative/path/to/"leaflet.js -->
+		<version.leaflet>origin/master/</version.leaflet>
+	</properties>
+	
+	<!-- Profiles -->
+	<profiles>
+		<profile>
+			<id>debug</id>
+			<properties>
+				<version.leaflet.js>${version.leaflet}/leaflet-src.js</version.leaflet.js>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<version.leaflet.js>${version.leaflet}/leaflet.js</version.leaflet.js>
+			</properties>
+		</profile>
+	</profiles>
 
 	<dependencies>
 		<dependency>
