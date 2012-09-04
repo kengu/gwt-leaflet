@@ -26,7 +26,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- org.gwt.leaflet dependencies -->
+		<!-- GWT Leaflet dependencies -->
 		<dependency>
 			<groupId>org.gwt.leaflet</groupId>
 			<artifactId>gwtl-core</artifactId>
