@@ -6,9 +6,6 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.json.JSON" />
 	
-	<!-- GWT Leaflet dependencies -->
-	<inherits name="org.gwt.leaflet.require.Require" />
-	
 	<!-- Ensure Leaflet script and styles are pre-loaded -->
 	<script     src="libs/leaflet/origin/master/14a8be5050f24b1d11d8f2e38259880e11c31fdf/leaflet.js" />
 	<stylesheet src="libs/leaflet/origin/master/14a8be5050f24b1d11d8f2e38259880e11c31fdf/leaflet.css" />

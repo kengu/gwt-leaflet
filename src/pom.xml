@@ -125,6 +125,14 @@
 				<classifier>sources</classifier>
 			</dependency>
 
+			<!-- Production tools -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>0.11.4</version>
+				<scope>provided</scope>
+			</dependency>
+
 			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
