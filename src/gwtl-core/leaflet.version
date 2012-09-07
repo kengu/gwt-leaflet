@@ -1,10 +1,10 @@
 # ------------------------------------------------------
-# From: https://github.com/kengu/Leaflet/zipball/v0.4.4
+# From: https://github.com/kengu/Leaflet.git/dist/
 # ------------------------------------------------------
 #
 # * Added crs=L.CRS to L.TileLayer.WMS options
 #
-Version=upstream/v0.4.4
+Version=origin/master/14a8be5050f24b1d11d8f2e38259880e11c31fdf
 
 	
 	
