@@ -15,13 +15,13 @@
 	<packaging>jar</packaging>
 	<name>gwtl-core</name>
 	<url>http://www.discotools.org</url>
-	
+
 	<!-- gwtl-core properties -->
 	<properties>
 		<!-- www.leaflet.org script version: "relative/path/to/"leaflet.js -->
 		<version.leaflet>origin/master/</version.leaflet>
 	</properties>
-	
+
 	<!-- Profiles -->
 	<profiles>
 		<profile>
@@ -40,16 +40,14 @@
 
 	<dependencies>
 
+		<!-- Google Web Toolkit -->
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+
+		<!-- Validation -->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -60,6 +58,13 @@
 			<artifactId>validation-api</artifactId>
 			<classifier>sources</classifier>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		
 	</dependencies>
@@ -112,7 +117,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 </project>
