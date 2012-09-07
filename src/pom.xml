@@ -13,7 +13,6 @@
 	<modules>
 		<module>gwtl-core</module>
 		<module>gwtl-proj4</module>
-		<module>gwtl-search</module>
 		<module>gwtl-widget</module>
 		<module>gwtl-example</module>
 	</modules>
