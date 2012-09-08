@@ -1,6 +1,6 @@
 package org.gwt.leaflet.search.client;
 
-import org.gwt.leaflet.client.control.Control;
+import org.gwt.leaflet.api.controls.Control;
 
 import com.google.gwt.core.client.GWT;
 

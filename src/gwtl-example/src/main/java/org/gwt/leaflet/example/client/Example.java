@@ -17,18 +17,18 @@ package org.gwt.leaflet.example.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 
-import org.gwt.leaflet.client.Leaflet;
-import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.control.Control;
-import org.gwt.leaflet.client.control.Layers;
-import org.gwt.leaflet.client.control.Scale;
-import org.gwt.leaflet.client.control.Zoom;
-import org.gwt.leaflet.client.crs.CRS;
-import org.gwt.leaflet.client.crs.ICRS;
-import org.gwt.leaflet.client.layer.tile.TileLayer;
-import org.gwt.leaflet.client.layer.tile.WmsLayer;
-import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.type.LatLng;
+import org.gwt.leaflet.api.controls.Control;
+import org.gwt.leaflet.api.controls.Layers;
+import org.gwt.leaflet.api.controls.Scale;
+import org.gwt.leaflet.api.controls.Zoom;
+import org.gwt.leaflet.api.crs.ICRS;
+import org.gwt.leaflet.api.layers.raster.TileLayer;
+import org.gwt.leaflet.api.layers.raster.WmsLayer;
+import org.gwt.leaflet.api.map.Map;
+import org.gwt.leaflet.api.types.LatLng;
+import org.gwt.leaflet.api.Leaflet;
+import org.gwt.leaflet.api.Options;
+import org.gwt.leaflet.impl.crs.CRS;
 import org.gwt.leaflet.widget.client.MapWidget;
 
 /**

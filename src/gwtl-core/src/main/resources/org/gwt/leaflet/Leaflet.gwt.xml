@@ -12,26 +12,27 @@
 	<stylesheet src="libs/leaflet/origin/master/14a8be5050f24b1d11d8f2e38259880e11c31fdf/leaflet.ie.css" />
 
 	<!-- GWT Leaflet source paths -->
-	<source path="client"></source>
+	<source path="api"></source>
+	<source path="impl"></source>
 	
 	<!-- Leaflet API implementation (dependency injection) -->
-	<replace-with class="org.gwt.leaflet.client.impl.LeafletImpl">
-		<when-type-is  class="org.gwt.leaflet.client.Leaflet" />
+	<replace-with     class="org.gwt.leaflet.impl.LeafletImpl">
+		<when-type-is  class="org.gwt.leaflet.api.Leaflet" />
 	</replace-with>
-	<replace-with class="org.gwt.leaflet.client.map.impl.MapFactoryImpl">
-		<when-type-is  class="org.gwt.leaflet.client.map.MapFactory" />
+	<replace-with     class="org.gwt.leaflet.impl.map.MapFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.api.map.MapFactory" />
 	</replace-with>
-	<replace-with class="org.gwt.leaflet.client.crs.impl.CRSFactoryImpl">
-		<when-type-is  class="org.gwt.leaflet.client.crs.CRSFactory" />
+	<replace-with     class="org.gwt.leaflet.impl.crs.CRSFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.api.crs.CRSFactory" />
 	</replace-with>
-	<replace-with class="org.gwt.leaflet.client.type.impl.TypeFactoryImpl">
-		<when-type-is  class="org.gwt.leaflet.client.type.TypeFactory" />
+	<replace-with     class="org.gwt.leaflet.impl.types.TypeFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.api.types.TypeFactory" />
 	</replace-with>
-	<replace-with class="org.gwt.leaflet.client.layer.impl.LayerFactoryImpl">
-		<when-type-is  class="org.gwt.leaflet.client.layer.LayerFactory" />
+	<replace-with     class="org.gwt.leaflet.impl.layers.LayerFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.api.layers.LayerFactory" />
 	</replace-with>
-	<replace-with class="org.gwt.leaflet.client.control.impl.ControlFactoryImpl">
-		<when-type-is  class="org.gwt.leaflet.client.control.ControlFactory" />
+	<replace-with     class="org.gwt.leaflet.impl.controls.ControlFactoryImpl">
+		<when-type-is  class="org.gwt.leaflet.api.controls.ControlFactory" />
 	</replace-with>
 
 </module>

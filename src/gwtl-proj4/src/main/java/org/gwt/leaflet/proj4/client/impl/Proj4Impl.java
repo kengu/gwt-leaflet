@@ -1,9 +1,9 @@
 package org.gwt.leaflet.proj4.client.impl;
 
-import org.gwt.leaflet.client.crs.CRS;
-import org.gwt.leaflet.client.math.ScaleFunction;
-import org.gwt.leaflet.client.math.Transformation;
+import org.gwt.leaflet.api.utility.Transformation;
+import org.gwt.leaflet.impl.crs.CRS;
 import org.gwt.leaflet.proj4.client.Proj4;
+import org.gwt.leaflet.proj4.client.ScaleFunction;
 
 public final class Proj4Impl implements Proj4 {
 
