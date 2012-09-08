@@ -16,9 +16,13 @@ and [Type Overlays](https://developers.google.com/web-toolkit/doc/latest/DevGuid
 Features
 ========
 
+**Leaflet version**: 0.4.4
+
 Following Leaflet features are implemented (Java API):
 
 ###<a href="src/gwtl-core">Core Module</a>###
+
+
 
 + [L.Map](http://leaflet.cloudmade.com/reference.html#map-class) - Leaflet Map class (partial)
 + [ILayer](http://leaflet.cloudmade.com/reference.html#ilayer) - Common layer interface
