@@ -16,13 +16,19 @@ and [Type Overlays](https://developers.google.com/web-toolkit/doc/latest/DevGuid
 Features
 ========
 
-**Leaflet version**: 0.4.4
+**Warning**: This project is in flux. API, module structure and names can change at any time!
 
-Following Leaflet features are implemented (Java API):
+###<a href="https://github.com/kengu/gwt-leaflet/issues/milestones">Milestones</a>###
+
++ v0.1 (Medio Sep 2012) - Core parts of Leaflet API exposed
++ v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
++ v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
 
 ###<a href="src/gwtl-core">Core Module</a>###
 
+**Dependency**: Leaflet 0.4.4
 
+Following parts of Leaflet API are implemented:
 
 + [L.Map](http://leaflet.cloudmade.com/reference.html#map-class) - Leaflet Map class (partial)
 + [ILayer](http://leaflet.cloudmade.com/reference.html#ilayer) - Common layer interface
@@ -48,6 +54,9 @@ Following Leaflet features are implemented (Java API):
 + MapWidget - GWT Widget displaying a Map instance (available from WindowBuilder Editor palette)
             
 ###<a href="src/gwtl-proj4">Proj4 Module (GWT)</a>###
+
+**Dependency**: Proj4Leaflet [master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022](https://github.com/kengu/Proj4Leaflet/commit/74a5a8b170ff58e635cba139cfaa25cd4cd5d022) (git)
+                                    
 
 + Proj4 - Custom (local) CRS factory plugin to Leaflet ([Proj4Leaflet](https://github.com/kartena/Proj4Leaflet))
 
