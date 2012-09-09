@@ -16,8 +16,8 @@ package org.gwt.leaflet.example.client;
 
 import org.gwt.leaflet.api.LOptions;
 import org.gwt.leaflet.api.Leaflet;
+import org.gwt.leaflet.api.MapOptions;
 import org.gwt.leaflet.api.Options;
-import org.gwt.leaflet.api.controls.Layers;
 import org.gwt.leaflet.api.crs.ICRS;
 import org.gwt.leaflet.api.layers.raster.LTileLayer;
 import org.gwt.leaflet.api.layers.raster.LWmsLayer;
@@ -25,7 +25,6 @@ import org.gwt.leaflet.api.layers.ui.Marker;
 import org.gwt.leaflet.api.map.LMap;
 import org.gwt.leaflet.api.map.Map;
 import org.gwt.leaflet.api.types.LLatLng;
-import org.gwt.leaflet.api.types.LatLng;
 import org.gwt.leaflet.impl.crs.CRS;
 
 import com.google.gwt.core.client.EntryPoint;
@@ -57,7 +56,7 @@ public class Example implements EntryPoint {
 		// Create Map instance
 		//Map map = L.map().create("map", options);
 		
-		LOptions loptions = new LOptions();
+		MapOptions loptions = new MapOptions();
 		loptions.setCenter(new LLatLng(0, 0));
 		loptions.setZoom(13);
 		LMap lmap =new LMap("map", loptions);
@@ -93,10 +92,9 @@ public class Example implements EntryPoint {
 		bases.put("Tile", tile);
 
 		// Add layers control to map
-		L.control().layers(bases,Options.EMPTY,Layers.DEFAULT).addTo(map);
+		//L.control().layers(bases,Options.EMPTY,Layers.DEFAULT).addTo(map);
 		
 		// Create map center position		
-		LatLng center = L.type().latlng(59.915, 10.754);
 		LLatLng latlng = new LLatLng(59.915, 10.754);
 		Marker marker = new Marker(latlng);
 		marker.addTo("map");

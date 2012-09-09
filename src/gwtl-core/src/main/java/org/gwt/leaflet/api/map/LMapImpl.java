@@ -23,9 +23,9 @@ class LMapImpl {
 	var map = $wnd.L.map(_name, options);	
 		
 	// Set gwt attributes
-	//map.gwt = [];
-	//map.gwt.name = _name;
-	alert("fin");
+	map.gwt = [];
+	map.gwt.name = _name;
+
 	// Associate map instance with given name
 	$wnd.gwtl.maps[_name] = map;
 	
