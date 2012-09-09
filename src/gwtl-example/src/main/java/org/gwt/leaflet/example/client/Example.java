@@ -14,22 +14,22 @@
  *******************************************************************************/
 package org.gwt.leaflet.example.client;
 
-import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.RootPanel;
-
-import org.gwt.leaflet.api.controls.Control;
-import org.gwt.leaflet.api.controls.Layers;
-import org.gwt.leaflet.api.controls.Scale;
-import org.gwt.leaflet.api.controls.Zoom;
-import org.gwt.leaflet.api.crs.ICRS;
-import org.gwt.leaflet.api.layers.raster.TileLayer;
-import org.gwt.leaflet.api.layers.raster.WmsLayer;
-import org.gwt.leaflet.api.map.Map;
-import org.gwt.leaflet.api.types.LatLng;
+import org.gwt.leaflet.api.LOptions;
 import org.gwt.leaflet.api.Leaflet;
 import org.gwt.leaflet.api.Options;
+import org.gwt.leaflet.api.controls.Layers;
+import org.gwt.leaflet.api.crs.ICRS;
+import org.gwt.leaflet.api.layers.raster.LTileLayer;
+import org.gwt.leaflet.api.layers.raster.LWmsLayer;
+import org.gwt.leaflet.api.layers.ui.Marker;
+import org.gwt.leaflet.api.map.LMap;
+import org.gwt.leaflet.api.map.Map;
+import org.gwt.leaflet.api.types.LLatLng;
+import org.gwt.leaflet.api.types.LatLng;
 import org.gwt.leaflet.impl.crs.CRS;
-import org.gwt.leaflet.widget.client.MapWidget;
+
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -55,48 +55,37 @@ public class Example implements EntryPoint {
 		options.put("zoomControl", false);
 		
 		// Create Map instance
-		Map map = L.map().create("map", options);
+		//Map map = L.map().create("map", options);
+		
+		LOptions loptions = new LOptions();
+		loptions.setCenter(new LLatLng(0, 0));
+		loptions.setZoom(13);
+		LMap lmap =new LMap("map", loptions);
 		
 		// Create TileLayer url template
 		String url = "http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png";
 
 		// Create mutable TileLayer options
-		options = TileLayer.DEFAULT.clone(false);	
-		options.put("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
+		LOptions tileOptions = new LOptions();	
+		tileOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 		
 		// Create TileLayer instance
-		TileLayer tile = L.layer().tile(url, options);
-
+		LTileLayer tile = new LTileLayer(url, tileOptions);
+ 
 		// Create WmsLayer url
 		url = "http://wms.latlon.org";
 		
 		// Create mutable WmsLayer options
-		options = WmsLayer.DEFAULT.clone(false);	
-		options.put(WmsLayer.LAYERS, "osm");
-		options.put("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
-		
+		LOptions wmsOptions = new LOptions();	
+		wmsOptions.setProperty("layers", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
+		wmsOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 		// Required version: origin/master
-		crs = L.crs().create(CRS.EPSG4326);
-		options.put("crs", crs);
+		//crs = L.crs().create(CRS.EPSG4326);
+		//wmsOptions.setProperty("crs", crs);
 	
 		// Create Leaflet WMSLayer instance
-		WmsLayer wms = L.layer().wms(url, options);
+		LWmsLayer wms = new LWmsLayer(url, wmsOptions);
 		
-//		// Create WmsLayer url
-//		url = "http://openwms.statkart.no/skwms1/wms.topo2";
-//		
-//		// Create mutable WmsLayer options
-//		crs = L.crs().create(CRS.EPSG4326);
-//		options = WmsLayer.DEFAULT.clone(false);
-//		options.put(WmsLayer.LAYERS, "topo2_WMS");
-//		options.put("crs", crs);
-//		options.put("attribution", "Kartgrunnlag: " +
-//				"<a href=\"http://www.statkart.no/\">Kartverket</a>, " +
-//				"<a href=\"http://www.statkart.no/nor/Land/Fagomrader/Geovekst/\">Geovekst</a> og " +
-//				"<a href=\"http://www.statkart.no/?module=Articles;action=Article.publicShow;ID=14194/\">kommuner</a>");
-//	
-//		// Create Leaflet WMSLayer instance
-//		WmsLayer statkart = L.map().newWmsLayer(url, options);		
 		
 		// Create layer switcher control
 		Options bases = Options.EMPTY.clone(false);
@@ -108,19 +97,24 @@ public class Example implements EntryPoint {
 		
 		// Create map center position		
 		LatLng center = L.type().latlng(59.915, 10.754);
-		
+		LLatLng latlng = new LLatLng(59.915, 10.754);
+		Marker marker = new Marker(latlng);
+		marker.addTo("map");
 		// Add layers to map and center at given position
-		map.setView(center, 13, false).addLayer(tile);
+		lmap.setView(latlng, 13, false);
+		lmap.addLayer(tile); 
+		
 		
 		// Add scale to bottom right corner of map 
-		options = Scale.DEFAULT.clone(false);
-		options.put(Scale.POSITION, Control.Position.TOP_LEFT);
-		L.control().scale(options).addTo(map);
+//		options = Scale.DEFAULT.clone(false);
+//		options.put(Scale.POSITION, Control.Position.TOP_LEFT);
+//		L.control().scale(options).addTo(map);
 
 		// Add scale to bottom left corner of map 
-		options = Zoom.DEFAULT.clone(false);
-		options.put(Zoom.POSITION, Control.Position.BOTTOM_LEFT);
-		L.control().zoom(options).addTo(map);
+//		options = Zoom.DEFAULT.clone(false);
+//		options.put(Zoom.POSITION, Control.Position.BOTTOM_LEFT);
+//		L.control().zoom(options).addTo(map);
 		
 	}
+	
 }

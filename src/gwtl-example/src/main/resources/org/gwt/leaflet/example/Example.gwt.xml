@@ -7,7 +7,6 @@
 	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
 	<inherits name="org.gwt.leaflet.Leaflet"/>
 	<inherits name="org.gwt.leaflet.proj4.Proj4"/>
-	<inherits name="org.gwt.leaflet.widget.Widget"/>
 	
 	<entry-point class="org.gwt.leaflet.example.client.Example"/>
 	

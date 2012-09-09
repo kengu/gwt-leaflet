@@ -1,6 +1,5 @@
 package org.gwt.leaflet.impl.map;
 
-
 import org.gwt.leaflet.api.controls.IControl;
 import org.gwt.leaflet.api.layers.ILayer;
 import org.gwt.leaflet.api.map.Map;
@@ -11,39 +10,41 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class MapImpl extends JavaScriptObject implements Map {
 
 	/**
-	 * Map overlay type constructor. 
+	 * Map overlay type constructor.
 	 */
-	protected MapImpl() { }
+	protected MapImpl() {
+	}
 
 	@Override
 	public final native String getName() /*-{		
-		// Forward
-		return this.gwtl.name;
-	}-*/;
+											// Forward
+											return this.gwtl.name;
+											}-*/;
 
 	@Override
-	public final native MapImpl setView(LatLng center, double zoom, boolean reset) /*-{		
-		// Forward
-		this.setView(center,zoom,reset); return this;
-  	}-*/;
+	public final native MapImpl setView(LatLng center, double zoom,
+			boolean reset) /*-{		
+							// Forward
+							this.setView(center,zoom,reset); return this;
+							}-*/;
 
 	@Override
 	public final native MapImpl setZoom(double zoom) /*-{	
-		// Forward
-		this.setZoom(zoom); return this;
-	}-*/;
+														// Forward
+														this.setZoom(zoom); return this;
+														}-*/;
 
 	@Override
 	public final native Map zoomIn() /*-{	
-		// Forward
-		this.zoomIn(); return this;
-	}-*/;
+										// Forward
+										this.zoomIn(); return this;
+										}-*/;
 
 	@Override
 	public final native Map zoomOut() /*-{	
-		// Forward
-		this.zoomOut(); return this;
-	}-*/;
+										// Forward
+										this.zoomOut(); return this;
+										}-*/;
 
 	@Override
 	public final Map addLayer(ILayer layer) {
@@ -52,13 +53,13 @@ public class MapImpl extends JavaScriptObject implements Map {
 
 	@Override
 	public final native Map addLayer(ILayer layer, boolean bottom) /*-{	
-		// Forward
-		this.addLayer(layer,bottom); return this;
-	}-*/;
-	
+																	// Forward
+																	this.addLayer(layer,bottom); return this;
+																	}-*/;
+
 	@Override
 	public final native Map addControl(IControl control) /*-{	
-		// Forward
-		this.addControl(control); return this;
-	}-*/;
+															// Forward
+															this.addControl(control); return this;
+															}-*/;
 }
