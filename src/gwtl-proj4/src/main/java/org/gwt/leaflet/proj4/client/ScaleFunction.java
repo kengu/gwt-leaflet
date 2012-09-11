@@ -1,7 +1,7 @@
 package org.gwt.leaflet.proj4.client;
 
-import org.gwt.leaflet.api.crs.ICRS;
-import org.gwt.leaflet.impl.crs.CRS;
+import org.gwt.leaflet.client.crs.CRS;
+import org.gwt.leaflet.client.crs.ICRS;
 
 /**
  * <b>Represents an {@link ICRS#scale(double)} function implementation</b> 
