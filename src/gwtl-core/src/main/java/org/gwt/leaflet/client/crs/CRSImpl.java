@@ -44,27 +44,11 @@ public class CRSImpl  {
 			epsg  = $wnd.L.CRS.Simple;
 			epsg.code = 'Simple';
 		}
-		alert(code + " : " +epsg + "/"+ epsg.code);
+		//alert(code + " : " +epsg + "/"+ epsg.code);
 		return epsg;
 		
 	}-*/;
 	
-	private native static EPSG4326 newEPSG4326() /*-{
-		return 
-	}-*/;
-
-	private native static EPSG3395 newEPSG3395() /*-{
-		return 
-	}-*/;
-
-	private native static EPSG3857 newEPSG3857() /*-{
-		return 
-	}-*/;
-
-	private native static Simple newSimple() /*-{
-		
-	}-*/;
-
 	public static native String getCode() /*-{
 		return this.code;
 	}-*/;
