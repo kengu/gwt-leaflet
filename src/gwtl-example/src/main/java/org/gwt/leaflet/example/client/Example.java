@@ -17,11 +17,11 @@ package org.gwt.leaflet.example.client;
 import org.gwt.leaflet.client.controls.Position;
 import org.gwt.leaflet.client.controls.layers.Layers;
 import org.gwt.leaflet.client.controls.scale.Scale;
+import org.gwt.leaflet.client.controls.search.Search;
 import org.gwt.leaflet.client.controls.zoom.Zoom;
 import org.gwt.leaflet.client.crs.epsg.EPSG3395;
 import org.gwt.leaflet.client.crs.epsg.EPSG3857;
 import org.gwt.leaflet.client.crs.epsg.EPSG4326;
-import org.gwt.leaflet.client.crs.epsg.Simple;
 import org.gwt.leaflet.client.layers.others.LayerGroup;
 import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
@@ -32,8 +32,10 @@ import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.marker.Marker;
 import org.gwt.leaflet.client.options.ControlOptions;
 import org.gwt.leaflet.client.options.MapOptions;
+import org.gwt.leaflet.client.options.MarkerOptions;
 import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.options.ScaleControlOptions;
+import org.gwt.leaflet.client.options.SearchControlOptions;
 import org.gwt.leaflet.client.options.ZoomControlOptions;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
@@ -114,17 +116,26 @@ public class Example implements EntryPoint {
 		LatLng glatlng2 = new LatLng(59.922, 10.750);
 		LatLng glatlng3 = new LatLng(59.924, 10.752);
 		LatLng glatlng4 = new LatLng(59.926, 10.756);
-		Marker marker1 = new Marker(glatlng1,new Options());
-		Marker marker2 = new Marker(glatlng2,new Options());
-		Marker marker3 = new Marker(glatlng3,new Options());
-		Marker marker4 = new Marker(glatlng4,new Options());
+		
+		MarkerOptions opt1 = new MarkerOptions();
+		opt1.setTitle("marker1");
+		MarkerOptions opt2 = new MarkerOptions();
+		opt2.setTitle("marker2");
+		MarkerOptions opt3 = new MarkerOptions();
+		opt3.setTitle("marker3");
+		MarkerOptions opt4 = new MarkerOptions();
+		opt4.setTitle("marker4");
+		Marker marker1 = new Marker(glatlng1,opt1);
+		Marker marker2 = new Marker(glatlng2,opt2);
+		Marker marker3 = new Marker(glatlng3,opt3);
+		Marker marker4 = new Marker(glatlng4,opt4);
 
 		Marker[] markers = new Marker[] {marker1, marker2};
-		LayerGroup groupMarkers = new LayerGroup(markers);
+		LayerGroup groupMarkers1 = new LayerGroup(markers);
 
 		Marker[] markers2 = new Marker[] {marker3, marker4};
 		LayerGroup groupMarkers2 = new LayerGroup(markers2);
-		overlays.setProperty("Group marker 1", groupMarkers);
+		overlays.setProperty("Group marker 1", groupMarkers1);
 		overlays.setProperty("Group marker 2", groupMarkers2);
 		
 		// Add layers control to map 
@@ -166,17 +177,27 @@ public class Example implements EntryPoint {
 		rec.addTo(map);
 		//map.fitBounds(bounds);
 		
-		// Add scale 
+		// Add Scale Control 
 		ScaleControlOptions scaleOptions = new ScaleControlOptions();
 		Scale scale = new Scale(scaleOptions);
 		scale.addTo(map);
 
-		// Add zoom 
+		// Add Zoom Control 
 		ZoomControlOptions zoomOptions = new ZoomControlOptions();
 		zoomOptions.setPosition(Position.TOP_RIGHT);
 		Zoom zoom = new Zoom(zoomOptions);
 		zoom.addTo(map);
 		
+		// Add Search Control
+		SearchControlOptions searchOptions = new SearchControlOptions();
+		searchOptions.setSearchLayer(groupMarkers1); 
+		searchOptions.setZoom(15); 
+		searchOptions.setText("Search Area"); 
+		searchOptions.setTextErr("Not found"); 
+		searchOptions.setPosition(Position.TOP_RIGHT);
+		Search search = new Search(searchOptions);
+		search.addTo(map);
+
 	}
 	
 }
