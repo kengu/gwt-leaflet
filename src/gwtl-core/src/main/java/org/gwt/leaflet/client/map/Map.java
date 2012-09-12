@@ -4,8 +4,10 @@ import org.gwt.leaflet.client.controls.IControl;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
 import org.gwt.leaflet.client.layers.ILayer;
+import org.gwt.leaflet.client.layers.vector.RectangleImpl;
 import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.types.LatLng;
+import org.gwt.leaflet.client.types.LatLngBounds;
 
 /**
  * The central class of the API — it is used to create a map on a page and manipulate it.
@@ -52,5 +54,9 @@ public class Map extends JSObjectWrapper {
     	MapImpl.addControl(getJSObject(), control.getJSObject());
     }
     
+    public void fitBounds(LatLngBounds bounds) {
+    	MapImpl.fitBounds(getJSObject(), bounds.getJSObject());		
+	}
+
 
 }

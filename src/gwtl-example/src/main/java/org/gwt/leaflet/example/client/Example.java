@@ -23,6 +23,7 @@ import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.gwt.leaflet.client.layers.vector.Circle;
 import org.gwt.leaflet.client.layers.vector.Polyline;
+import org.gwt.leaflet.client.layers.vector.Rectangle;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.marker.Marker;
 import org.gwt.leaflet.client.options.ControlOptions;
@@ -31,6 +32,7 @@ import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.options.ScaleControlOptions;
 import org.gwt.leaflet.client.options.ZoomControlOptions;
 import org.gwt.leaflet.client.types.LatLng;
+import org.gwt.leaflet.client.types.LatLngBounds;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
@@ -139,8 +141,16 @@ public class Example implements EntryPoint {
 		circleOptions.setProperty("color", "red");
 		Circle circle = new Circle(latlng,200,circleOptions);
 		circle.addTo(map);
-		
 
+		// Rectangle
+		LatLng rec1 = new LatLng(59.900, 10.705);
+		LatLng rec2 = new LatLng(59.910, 10.710);
+		LatLng[] recs = new LatLng[] {rec1, rec2};
+		LatLngBounds bounds = new LatLngBounds(recs);
+		Rectangle rec = new Rectangle(bounds, new Options());
+		rec.addTo(map);
+		//map.fitBounds(bounds);
+		
 		// Add scale 
 		ScaleControlOptions scaleOptions = new ScaleControlOptions();
 		Scale scale = new Scale(scaleOptions);

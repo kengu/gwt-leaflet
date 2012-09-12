@@ -3,16 +3,20 @@ package org.gwt.leaflet.client.layers.vector;
 import org.gwt.leaflet.client.jswraps.JSObject;
 
 /**
- * A class for drawing polyline overlays on a map. 
- * Extends Path. 
+ * A class for drawing polygon overlays on a map. 
+ * Extends Polyline. 
  * Use Map#addLayer to add it to the map.
+ * Note that points you pass when creating a polygon shouldn't have 
+ * an additional last point equal to the first one,it's better to filter out 
+ * such points.
  * 
  * @author Lionel Leiva-Marcon
+ *
  */
-public class PolylineImpl {
+public class PolygonImpl {
 
 	public static native JSObject create(JSObject latlngs, JSObject options) /*-{
-	    return new $wnd.L.Polyline(latlngs, options);
+	    return new $wnd.L.Polygon(latlngs, options);
 	}-*/;
 
 	

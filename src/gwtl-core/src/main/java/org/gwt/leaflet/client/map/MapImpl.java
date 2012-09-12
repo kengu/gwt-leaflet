@@ -59,10 +59,12 @@ class MapImpl {
 	}-*/;
 	
 	public static native JSObject addControl(JSObject self,JSObject control) /*-{	
-		alert("LMapImpl avant");
 		self.addControl(control); 		
-		alert("LMapImpl après");
 		return self;
 	}-*/;
 
+	
+	public static native JSObject fitBounds(JSObject self,JSObject bounds) /*-{	
+		self.fitBounds(bounds); 		
+	}-*/;
 }
