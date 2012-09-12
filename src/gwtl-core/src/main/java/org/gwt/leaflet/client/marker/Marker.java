@@ -1,7 +1,6 @@
 package org.gwt.leaflet.client.marker;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.options.Options;

@@ -21,6 +21,8 @@
  *********************************************************************/
 package org.gwt.leaflet.client.crs;
 
+import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.Point;
  
@@ -36,8 +38,12 @@ import org.gwt.leaflet.client.types.Point;
  * 
  * @see <a href="http://leaflet.cloudmade.com/reference.html#icrs">ICRS (Leaflet API)</a>.
  */
-public interface ICRS {
+public abstract class ICRS extends JSObjectWrapper{
 	
+	protected ICRS(JSObject jsObject) {
+		super(jsObject);
+	}
+
 	/**
 	 * Get name of this <a href="http://en.wikipedia.org/wiki/Spatial_reference_system">CRS</a>.
 	 * <p>
@@ -46,7 +52,7 @@ public interface ICRS {
 	 * </p> 
 	 * @return String
 	 */
-	String getCode();
+	abstract String getCode();
 	
 	/**
 	 * Projects geographical coordinates on a given zoom into pixel coordinates.
@@ -55,7 +61,7 @@ public interface ICRS {
 	 * @param zoom - Given map zoom
 	 * @return {@link #Point}
 	 */
-	Point toPoint(LatLng coords, double zoom);
+	abstract Point toPoint(LatLng coords, double zoom);
 	
 	/**
 	 * <b>Projects geographical coordinates into coordinates in units accepted for this CRS</b> 
@@ -65,7 +71,7 @@ public interface ICRS {
 	 * @param coords - {@link LatLng} instance
 	 * @return {@link #Point}
 	 */
-	Point project(LatLng coords);
+	abstract Point project(LatLng coords);
 	
 	/**
 	 * <b>The inverse of {@link #toPoint(LatLng, double)}</b>. 
@@ -76,7 +82,7 @@ public interface ICRS {
 	 * @param zoom
 	 * @return {@link LatLng}
 	 */
-	LatLng toLatLng(Point point, double zoom);
+	abstract LatLng toLatLng(Point point, double zoom);
 	
 	/**
 	 * <b>Returns the scale used when transforming projected coordinates into pixel coordinates for a particular zoom</b>. 
@@ -86,7 +92,7 @@ public interface ICRS {
 	 * @param zoom - Given map zoom
 	 * @return double
 	 */
-	double scale(double zoom);
+	abstract double scale(double zoom);
 	
 	
 }

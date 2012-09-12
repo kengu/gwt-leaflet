@@ -18,6 +18,10 @@ import org.gwt.leaflet.client.controls.Position;
 import org.gwt.leaflet.client.controls.layers.Layers;
 import org.gwt.leaflet.client.controls.scale.Scale;
 import org.gwt.leaflet.client.controls.zoom.Zoom;
+import org.gwt.leaflet.client.crs.epsg.EPSG3395;
+import org.gwt.leaflet.client.crs.epsg.EPSG3857;
+import org.gwt.leaflet.client.crs.epsg.EPSG4326;
+import org.gwt.leaflet.client.crs.epsg.Simple;
 import org.gwt.leaflet.client.layers.others.LayerGroup;
 import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
@@ -84,8 +88,11 @@ public class Example implements EntryPoint {
 		wmsOptions.setProperty("layers", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 		wmsOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 		// Required version: origin/master
-		//crs = L.crs().create(CRS.EPSG4326);
-		//wmsOptions.setProperty("crs", crs);
+		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
+		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
+		EPSG3857 vCRS_EPSG3857 = new EPSG3857();
+		//Simple   vCRS_Simple   = new Simple(); 
+		wmsOptions.setProperty("crs", vCRS_EPSG3395);
 	
 		// Create Leaflet WMSLayer instance
 		WmsLayer wms = new WmsLayer(url, wmsOptions);
@@ -105,12 +112,20 @@ public class Example implements EntryPoint {
 		// LayerGroup
 		LatLng glatlng1 = new LatLng(59.920, 10.754);
 		LatLng glatlng2 = new LatLng(59.922, 10.750);
+		LatLng glatlng3 = new LatLng(59.924, 10.752);
+		LatLng glatlng4 = new LatLng(59.926, 10.756);
 		Marker marker1 = new Marker(glatlng1,new Options());
 		Marker marker2 = new Marker(glatlng2,new Options());
+		Marker marker3 = new Marker(glatlng3,new Options());
+		Marker marker4 = new Marker(glatlng4,new Options());
 
 		Marker[] markers = new Marker[] {marker1, marker2};
 		LayerGroup groupMarkers = new LayerGroup(markers);
-		overlays.setProperty("Group marker", groupMarkers);
+
+		Marker[] markers2 = new Marker[] {marker3, marker4};
+		LayerGroup groupMarkers2 = new LayerGroup(markers2);
+		overlays.setProperty("Group marker 1", groupMarkers);
+		overlays.setProperty("Group marker 2", groupMarkers2);
 		
 		// Add layers control to map 
 		Layers control = new Layers(bases,overlays, controlOptions);

@@ -1,7 +1,6 @@
 package org.gwt.leaflet.client.layers.vector;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.types.LatLng;
 
 /**
  * A class for drawing circle overlays on a map. 
