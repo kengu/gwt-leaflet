@@ -35,11 +35,11 @@
 		</dependency>
 
 		<!-- Standard Web Technologies -->
-		<dependency>
-			<groupId>org.fusesource.restygwt</groupId>
-			<artifactId>restygwt</artifactId>
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.fusesource.restygwt</groupId> -->
+<!-- 			<artifactId>restygwt</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 		
 		<!-- Production tools -->
 

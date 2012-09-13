@@ -78,7 +78,7 @@
 				</executions>
 				<configuration>
 					<!-- Modules -->
-					<module>org.gwt.leaflet.example.Example</module>
+					<module>org.gwt.leaflet.Example</module>
 					<!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
 					<runTarget>example.html</runTarget>
 					<!-- Hosted mode settings -->
