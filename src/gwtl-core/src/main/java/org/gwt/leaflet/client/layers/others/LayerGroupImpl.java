@@ -3,7 +3,7 @@ package org.gwt.leaflet.client.layers.others;
 import org.gwt.leaflet.client.jswraps.JSObject;
 
 /**
- * TileLayer implementation class
+ * LayerGroupImpl implementation class
  * @author Lionel Leiva-Marcon
  *
  */

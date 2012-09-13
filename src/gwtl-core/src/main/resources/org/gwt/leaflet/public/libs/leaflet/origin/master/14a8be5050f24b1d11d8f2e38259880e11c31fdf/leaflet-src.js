@@ -5175,6 +5175,7 @@ L.GeoJSON = L.FeatureGroup.extend({
 
 L.Util.extend(L.GeoJSON, {
 	geometryToLayer: function (geojson, pointToLayer) {
+
 		var geometry = geojson.type === 'Feature' ? geojson.geometry : geojson,
 		    coords = geometry.coordinates,
 		    layers = [],

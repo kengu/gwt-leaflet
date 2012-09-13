@@ -71,7 +71,7 @@ public class Control extends IControl {
 	 * 
 	 * @param map
 	 */
-	public void removeFrom(Map map) {
+	public void removeFrom(Map map) { 
 		ControlImpl.removeFrom(getJSObject(), map.getJSObject());
 	}
 

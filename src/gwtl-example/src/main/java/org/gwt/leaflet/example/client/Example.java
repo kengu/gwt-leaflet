@@ -22,6 +22,8 @@ import org.gwt.leaflet.client.controls.zoom.Zoom;
 import org.gwt.leaflet.client.crs.epsg.EPSG3395;
 import org.gwt.leaflet.client.crs.epsg.EPSG3857;
 import org.gwt.leaflet.client.crs.epsg.EPSG4326;
+import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.layers.others.GeoJSON;
 import org.gwt.leaflet.client.layers.others.LayerGroup;
 import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
@@ -31,12 +33,14 @@ import org.gwt.leaflet.client.layers.vector.Rectangle;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.marker.Marker;
 import org.gwt.leaflet.client.options.ControlOptions;
+import org.gwt.leaflet.client.options.GeoJsonOptions;
 import org.gwt.leaflet.client.options.MapOptions;
 import org.gwt.leaflet.client.options.MarkerOptions;
 import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.options.ScaleControlOptions;
 import org.gwt.leaflet.client.options.SearchControlOptions;
 import org.gwt.leaflet.client.options.ZoomControlOptions;
+import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
 
@@ -49,6 +53,8 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class Example implements EntryPoint {
 		
+	private Map map;
+
 	public void onModuleLoad() {
 	
 		// Fit MapWidget to device screen
@@ -70,7 +76,7 @@ public class Example implements EntryPoint {
 		loptions.setCenter(new LatLng(0, 0));
 		loptions.setZoom(13);
 
-	 	Map map =new Map("map", loptions);
+	 	map = new Map("map", loptions);
 		
 		// Create TileLayer url template
 		String url = "http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png";
@@ -148,7 +154,7 @@ public class Example implements EntryPoint {
 		marker.addTo(map);
 		marker.bindPopup("<b>Here is a simple popup<b>");
 		// Add layers to map and center at given position
-		map.setView(latlng, 13, false);
+		map.setView(latlng, 2, false);
 		map.addLayer(tile); 
 		
 		LatLng latlng1 = new LatLng(59.915, 10.759);
@@ -159,16 +165,19 @@ public class Example implements EntryPoint {
 		for(LatLng l : latlngs) {
 			GWT.log("string :" + l.toString());
 		}
+		GWT.log("Polyline");
 		Polyline poly = new Polyline(latlngs, new Options());
 		poly.addTo(map);
 		
 		//Circle 
+		GWT.log("Circle");
 		Options circleOptions = new Options();
 		circleOptions.setProperty("color", "red");
 		Circle circle = new Circle(latlng,200,circleOptions);
 		circle.addTo(map);
 
 		// Rectangle
+		GWT.log("Rectangle");
 		LatLng rec1 = new LatLng(59.900, 10.705);
 		LatLng rec2 = new LatLng(59.910, 10.710);
 		LatLng[] recs = new LatLng[] {rec1, rec2};
@@ -178,17 +187,20 @@ public class Example implements EntryPoint {
 		//map.fitBounds(bounds);
 		
 		// Add Scale Control 
+		GWT.log("Scale Control");
 		ScaleControlOptions scaleOptions = new ScaleControlOptions();
 		Scale scale = new Scale(scaleOptions);
 		scale.addTo(map);
 
 		// Add Zoom Control 
+		GWT.log("Zoom Control");
 		ZoomControlOptions zoomOptions = new ZoomControlOptions();
 		zoomOptions.setPosition(Position.TOP_RIGHT);
 		Zoom zoom = new Zoom(zoomOptions);
 		zoom.addTo(map);
 		
 		// Add Search Control
+		GWT.log("Search Control");
 		SearchControlOptions searchOptions = new SearchControlOptions();
 		searchOptions.setSearchLayer(groupMarkers1); 
 		searchOptions.setZoom(15); 
@@ -197,7 +209,194 @@ public class Example implements EntryPoint {
 		searchOptions.setPosition(Position.TOP_RIGHT);
 		Search search = new Search(searchOptions);
 		search.addTo(map);
+		
+		// Add GEOJson
+		GWT.log("GeoJson");
+		createJsonSamples();
+		
+		// Add Choropleth
+		GWT.log("Choropleth");
+		createChoropleth();
+	} 
+	
+	public void createJsonSamples() {
+		String freeBus       = GeoJsonSampleFactory.getInstance().createFreeBus();
+		String lightRailStop = GeoJsonSampleFactory.getInstance().createLightRailStop();
+		String bicycleRental = GeoJsonSampleFactory.getInstance().createBicycleRental();
+		String campus        = GeoJsonSampleFactory.getInstance().createCampus();
+		String coorsField    = GeoJsonSampleFactory.getInstance().createCoorsField();
+				
+		GeoJsonFeatures features1 = new GeoJsonFeatures() {
+			
+			@Override
+			public JSObject style(JSObject self) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
+				return new Marker(new LatLng(latlng), new Options()).getJSObject();
+			}
+			
+			@Override
+			public JSObject onEachFeature(JSObject feature, JSObject layer) {
+				return myOnEachFeature(feature, layer);
+			}
+			
+			@Override
+			public boolean filter(JSObject self, JSObject layer) {
+				return myFilter(self, layer);
+			}
+		};
+		
+		GeoJsonFeatures features2 = new GeoJsonFeatures() {
+			
+			@Override
+			public JSObject style(JSObject self) {
+				return null;
+				
+			}
+			
+			@Override
+			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
+				return new Marker(new LatLng(latlng), new Options()).getJSObject();
+			}
+			
+			@Override
+			public JSObject onEachFeature(JSObject feature, JSObject layer) {
+				return myOnEachFeature2(feature, layer);
+			}
+			
+			@Override
+			public boolean filter(JSObject self, JSObject layer) {
+				return myFilter(self, layer);
+			}
+		};
 
+
+		GeoJsonFeatures features3 = new GeoJsonFeatures() {
+			
+			@Override
+			public JSObject style(JSObject feature) {
+				return myStyle(feature);
+				
+			}
+			
+			@Override
+			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
+				return myPointToLayer(feature, latlng);
+			}
+			
+			@Override
+			public JSObject onEachFeature(JSObject feature, JSObject layer) {
+				return myOnEachFeature2(feature, layer);
+			}
+			
+			@Override
+			public boolean filter(JSObject self, JSObject layer) {
+				return myFilter(self, layer);
+			}
+		};
+		
+		GeoJsonOptions coorsOptions         = new GeoJsonOptions(features1);
+		GeoJsonOptions freeBusOptions       = new GeoJsonOptions(features2);
+		GeoJsonOptions bicycleRentalOptions = new GeoJsonOptions(features3);
+
+		GeoJSON geojson_lightRailStop = new GeoJSON(lightRailStop , freeBusOptions);
+		GeoJSON geojson_bicycleRental = new GeoJSON(bicycleRental , bicycleRentalOptions);
+		GeoJSON geojson_campus        = new GeoJSON(campus        , bicycleRentalOptions);
+		GeoJSON geojson_coorsField    = new GeoJSON(coorsField    , coorsOptions);
+		GeoJSON geojson_freeBus       = new GeoJSON(freeBus       , freeBusOptions);
+		
+		geojson_freeBus      .addTo(map);
+		geojson_lightRailStop.addTo(map);
+		geojson_bicycleRental.addTo(map);
+		geojson_campus       .addTo(map);
+		geojson_coorsField   .addTo(map);
 	}
 	
+	public static native JSObject myOnEachFeature(JSObject feature, JSObject layer) /*-{
+   	var popupContent = "<p> <b>myOnEachFeature</b> " +
+				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
+
+		if (feature.properties && feature.properties.popupContent) {
+			popupContent += feature.properties.popupContent;
+		}
+
+		layer.bindPopup(popupContent);
+		return layer;
+}-*/;
+	
+	public static native JSObject myOnEachFeature2(JSObject feature, JSObject layer) /*-{
+   	var popupContent = "<p> <b>myOnEachFeature2</b> " +
+				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
+
+		if (feature.properties && feature.properties.popupContent) {
+			popupContent += feature.properties.popupContent;
+		}
+
+		layer.bindPopup(popupContent);
+		return layer;
+}-*/;
+
+	public static native JSObject myPointToLayer(JSObject feature, JSObject latlng) /*-{
+			return $wnd.L.circleMarker(latlng, {
+				radius: 8,
+				fillColor: "#ff7800",
+				color: "#000",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+	}-*/;
+	
+	public static native JSObject myStyle(JSObject feature) /*-{
+		return feature.properties && feature.properties.style;
+	}-*/;
+	
+	public static native boolean myFilter(JSObject feature, JSObject layer) /*-{
+		if (feature.properties) {
+			// If the property "underConstruction" exists and is true, return false (don't render features under construction)
+			return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction : true;
+		}
+		return false;
+	}-*/;
+	
+	/***********************************************************************
+	 * Choropleth 
+	 * From : http://leaflet.cloudmade.com/examples/choropleth-example.html
+	 ***********************************************************************/
+	public void createChoropleth() {
+		String                states       = GeoJsonSampleFactory.getInstance().createUSStates();
+		GeoJsonFeatures choroplethFeatures = new GeoJsonFeatures() {
+			
+			@Override
+			public JSObject style(JSObject feature) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+			@Override
+			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
+				// TODO Auto-generated method stub
+				return myPointToLayer(feature, latlng);
+			}
+			
+			@Override
+			public JSObject onEachFeature(JSObject feature, JSObject layer) {
+				// TODO Auto-generated method stub
+				return myOnEachFeature(feature, layer);
+			}
+			
+			@Override
+			public boolean filter(JSObject feature, JSObject layer) {
+				return true;
+			}
+		};
+		GeoJsonOptions choroplethOptions = new GeoJsonOptions(choroplethFeatures);
+		GeoJSON geojson = new GeoJSON(states,choroplethOptions);
+		geojson.addTo(map);
+		
+	}
 }

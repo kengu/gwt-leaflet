@@ -35,7 +35,7 @@ import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
  */
 public class LatLng extends JSObjectWrapper {
 
-	protected LatLng(JSObject element) {
+	public LatLng(JSObject element) {
 		super(element); 
 	}
 	
