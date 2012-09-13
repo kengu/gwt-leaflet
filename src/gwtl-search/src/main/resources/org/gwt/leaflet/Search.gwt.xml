@@ -6,9 +6,6 @@
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.json.JSON" />
 
-	<!-- Web Technology dependencies -->
-<!-- 	<inherits name="org.fusesource.restygwt.RestyGWT" /> -->
-	
 	<!-- GWT Leaflet dependencies -->
 	<inherits name="org.gwt.leaflet.Core"/>
 	

@@ -34,15 +34,6 @@
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
-		<!-- Standard Web Technologies -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.fusesource.restygwt</groupId> -->
-<!-- 			<artifactId>restygwt</artifactId> -->
-<!-- 			<scope>provided</scope> -->
-<!-- 		</dependency> -->
-		
-		<!-- Production tools -->
-
 	</dependencies>
 
 	<build>
