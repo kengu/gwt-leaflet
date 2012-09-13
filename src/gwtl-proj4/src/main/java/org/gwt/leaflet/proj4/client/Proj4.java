@@ -1,7 +1,7 @@
 package org.gwt.leaflet.proj4.client;
 
-import org.gwt.leaflet.api.utility.Transformation;
-import org.gwt.leaflet.impl.crs.CRS;
+import org.gwt.leaflet.client.crs.CRS;
+import org.gwt.leaflet.client.util.Transformation;
 
 import com.google.gwt.core.client.GWT;
 

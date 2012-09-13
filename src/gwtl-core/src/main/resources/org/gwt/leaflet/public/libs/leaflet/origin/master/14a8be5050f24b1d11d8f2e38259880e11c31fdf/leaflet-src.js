@@ -5175,6 +5175,7 @@ L.GeoJSON = L.FeatureGroup.extend({
 
 L.Util.extend(L.GeoJSON, {
 	geometryToLayer: function (geojson, pointToLayer) {
+
 		var geometry = geojson.type === 'Feature' ? geojson.geometry : geojson,
 		    coords = geometry.coordinates,
 		    layers = [],
@@ -6565,8 +6566,9 @@ L.Control = L.Class.extend({
 		this._map = map;
 
 		var container = this._container = this.onAdd(map),
-		    pos = this.getPosition(),
-			corner = map._controlCorners[pos];
+
+		pos = this.getPosition(),
+		corner = map._controlCorners[pos];
 
 		L.DomUtil.addClass(container, 'leaflet-control');
 
