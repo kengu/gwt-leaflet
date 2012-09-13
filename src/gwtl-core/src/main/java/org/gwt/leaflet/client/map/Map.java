@@ -4,7 +4,6 @@ import org.gwt.leaflet.client.controls.IControl;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
 import org.gwt.leaflet.client.layers.ILayer;
-import org.gwt.leaflet.client.layers.vector.RectangleImpl;
 import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;

@@ -1,10 +1,5 @@
 package org.gwt.leaflet.client.crs;
 
-import org.gwt.leaflet.client.LeafletException;
-import org.gwt.leaflet.client.crs.epsg.EPSG3395;
-import org.gwt.leaflet.client.crs.epsg.EPSG3857;
-import org.gwt.leaflet.client.crs.epsg.EPSG4326;
-import org.gwt.leaflet.client.crs.epsg.Simple;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.Point;
