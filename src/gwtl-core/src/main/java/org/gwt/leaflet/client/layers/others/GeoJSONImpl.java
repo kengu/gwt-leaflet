@@ -49,4 +49,8 @@ public class GeoJSONImpl  {
 		self.addTo(map);
 	}-*/;
 	
+	public static native  void resetStyle(JSObject self, JSObject layer) /*-{
+		self.resetStyle(layer);
+	}-*/;
+	
 }
