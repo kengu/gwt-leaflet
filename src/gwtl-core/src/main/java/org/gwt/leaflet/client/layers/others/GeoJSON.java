@@ -25,6 +25,10 @@ public class GeoJSON extends FeatureGroup {
 		this (GeoJSONImpl.create(data, options));
 	}
 
+	public GeoJSON(String alias, String data, GeoJsonOptions options) {
+		this (GeoJSONImpl.create(data, options));
+		setAlias(alias);
+	}
 
 	/**
 	 * Adds the group of layers to the map.

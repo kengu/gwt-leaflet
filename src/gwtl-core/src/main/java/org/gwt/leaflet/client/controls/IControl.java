@@ -55,7 +55,12 @@ public abstract class IControl extends JSObjectWrapper{
 	 * @param map - {@link Map} instance
 	 * @return {@link Element}
 	 */
-	public abstract Element onAdd(Map map) ;
+	public Element onAdd(Map map){
+		// Never used directly, because onAdd javascripts are embedded in the library
+		// Consequently, this method is never called
+		// You should consider the customOnAdd and customOnRemove
+		return null;
+	}
 	
 	/**
 	 * <b>Remove control from given {@link Map} instance (optional)</b>
@@ -65,6 +70,10 @@ public abstract class IControl extends JSObjectWrapper{
 	 * ICalled on map.removeControl(control) or control.removeFrom(map). The control's DOM container is removed automatically.
 	 * @param map -
 	 */
-	public abstract void onRemove(Map map) ;
+	public void onRemove(Map map) {
+		// Never used directly, because onAdd javascripts are embedded in the library
+		// Consequently, this method is never called
+		// You should consider the customOnAdd and customOnRemove
+	}
 
 }

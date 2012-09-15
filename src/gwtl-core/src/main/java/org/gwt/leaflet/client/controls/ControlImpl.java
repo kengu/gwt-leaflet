@@ -2,8 +2,6 @@ package org.gwt.leaflet.client.controls;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
 
-import com.google.gwt.dom.client.Element;
-
 /**
  * {@link ControlImpl} implementation.
  * 
@@ -14,25 +12,20 @@ public class ControlImpl  {
 
 	public static native JSObject create(JSObject options)/*-{
 		return new $wnd.L.control(options);
-	}-*/;
+	}-*/;	
+	 
+	public static native JSObject customOnAdd(Control control, JSObject self)/*-{
+		self.onAdd=function(map){
+		  			return control.@org.gwt.leaflet.client.controls.Control::customOnAdd(Lcom/google/gwt/core/client/JavaScriptObject;)(map);
+ 		};
+	}-*/;	
 	
-	
-	public static native Element onAdd(JSObject map)/*-{
-	    alert("OnAdd");
-		// create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'my-custom-control');
+	public static native JSObject customOnRemove(Control control, JSObject self)/*-{
+		self.onRemove=function(map){
+	  			control.@org.gwt.leaflet.client.controls.Control::customOnRemove(Lcom/google/gwt/core/client/JavaScriptObject;)(map);
+		};
+	}-*/;	
 
-        // ... initialize other DOM elements, add listeners, etc.
-
-        return container;
-	}-*/;
-
-
-	public static native void onRemove(JSObject map)/*-{
-	}-*/;
-
-
-	
 	public static native String getPosition(JSObject self) /*-{
 		return self.getPosition();
     }-*/;
@@ -59,6 +52,5 @@ public class ControlImpl  {
 		
 		// Finished
 		return a;	
-	}-*/;	
-
+	}-*/;
 }

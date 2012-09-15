@@ -1,12 +1,9 @@
 package org.gwt.leaflet.client.controls.scale;
 
-import org.gwt.leaflet.client.controls.ControlImpl;
 import org.gwt.leaflet.client.jswraps.JSObject;
 
-import com.google.gwt.dom.client.Element;
-
 /**
- * {@link ControlImpl} implementation.
+ * {@link ScaleImpl} implementation.
  * 
  * @author Lionel Leiva-Marcon
  *
@@ -16,23 +13,7 @@ public class ScaleImpl  {
 	public static native JSObject create(JSObject options)/*-{
 		return new $wnd.L.control.scale(options);
 	}-*/;
-	
-	
-	public static native Element onAdd(JSObject map)/*-{
-		// create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'my-custom-control');
-
-        // ... initialize other DOM elements, add listeners, etc.
-
-        return container;
-	}-*/;
-
-
-	public static native void onRemove(JSObject map)/*-{
-	}-*/;
-
-
-	
+		
 	public static native String getPosition(JSObject self) /*-{
 		return self.getPosition();
     }-*/;

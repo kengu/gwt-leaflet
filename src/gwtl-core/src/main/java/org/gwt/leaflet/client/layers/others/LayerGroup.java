@@ -26,6 +26,11 @@ public class LayerGroup extends ILayer {
 		this (LayerGroupImpl.create(new JSObjectArray(layers).getJSObject()));
 	}
 
+	public LayerGroup(String alias, ILayer[] layers) {
+		this (LayerGroupImpl.create(new JSObjectArray(layers).getJSObject()));
+		setAlias(alias);
+	}
+	
 	/**
 	 * Adds a given layer to the group.
 	 * @param layer
