@@ -16,23 +16,7 @@ public class ZoomImpl  {
 	public static native JSObject create(JSObject options)/*-{
 		return new $wnd.L.control.zoom(options);
 	}-*/;
-	
-	
-	public static native Element onAdd(JSObject map)/*-{
-		// create the control container with a particular class name
-        var container = L.DomUtil.create('div', 'my-custom-control');
-
-        // ... initialize other DOM elements, add listeners, etc.
-
-        return container;
-	}-*/;
-
-
-	public static native void onRemove(JSObject map)/*-{
-	}-*/;
-
-
-	
+		
 	public static native String getPosition(JSObject self) /*-{
 		return self.getPosition();
     }-*/;

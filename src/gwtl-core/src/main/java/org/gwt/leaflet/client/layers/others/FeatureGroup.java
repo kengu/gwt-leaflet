@@ -26,6 +26,11 @@ public class FeatureGroup extends LayerGroup {
 	public FeatureGroup(ILayer[] layers) {
 		this (FeatureGroupImpl.create(new JSObjectArray(layers).getJSObject()));
 	}
+	
+	public FeatureGroup(String alias, ILayer[] layers) {
+		this (FeatureGroupImpl.create(new JSObjectArray(layers).getJSObject()));
+		setAlias(alias);
+	}	
 
 	/**
 	 * Adds a given layer to the group.

@@ -1,6 +1,7 @@
 package org.gwt.leaflet.client.layers.others;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.layers.vector.Path;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.options.GeoJsonOptions;
 
@@ -24,6 +25,10 @@ public class GeoJSON extends FeatureGroup {
 		this (GeoJSONImpl.create(data, options));
 	}
 
+	public GeoJSON(String alias, String data, GeoJsonOptions options) {
+		this (GeoJSONImpl.create(data, options));
+		setAlias(alias);
+	}
 
 	/**
 	 * Adds the group of layers to the map.
@@ -40,5 +45,15 @@ public class GeoJSON extends FeatureGroup {
 	public void addTo(Map map) {
 		GeoJSONImpl.addTo(getJSObject(), map.getJSObject());		
 	}
+	
+	/**
+	 * Resets the the given vector layer's style to the original GeoJSON style, 
+	 * useful for resetting style after hover events.
+	 * @param map
+	 */
+	public void resetStyle(Path layer) {
+		GeoJSONImpl.resetStyle(getJSObject(), layer.getJSObject());		
+	}
+
 
 }
