@@ -40,7 +40,6 @@ import org.gwt.leaflet.client.options.ScaleControlOptions;
 import org.gwt.leaflet.client.options.SearchControlOptions;
 import org.gwt.leaflet.client.options.ZoomControlOptions;
 import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
-import org.gwt.leaflet.client.types.Icon;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
 import org.gwt.leaflet.client.types.Point;
@@ -165,7 +164,7 @@ public class Example implements EntryPoint {
 		iconOptions.setIconSize(new Point(32, 37));
 		iconOptions.setIconAnchor(new Point(16, 37));
 		iconOptions.setPopupAnchor(new Point(0, -28));
-		Icon icon = new Icon(iconOptions);
+//		Icon icon = new Icon(iconOptions);
 
 		//TODO Solve iconurl problem
 		//loptions.setProperty("icon", icon);

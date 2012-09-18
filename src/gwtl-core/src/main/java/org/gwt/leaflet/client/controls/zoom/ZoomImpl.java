@@ -3,8 +3,6 @@ package org.gwt.leaflet.client.controls.zoom;
 import org.gwt.leaflet.client.controls.ControlImpl;
 import org.gwt.leaflet.client.jswraps.JSObject;
 
-import com.google.gwt.dom.client.Element;
-
 /**
  * {@link ControlImpl} implementation.
  * 
