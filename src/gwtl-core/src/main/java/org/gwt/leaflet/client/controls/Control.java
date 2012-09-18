@@ -4,6 +4,7 @@ import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.options.Options;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -11,11 +12,10 @@ import com.google.gwt.dom.client.Element;
  * <p>
  * Implements IControl interface. You can add controls to the map like this:
  * 
- * <pre>
- * control.addTo(map);
- * // the same as
- * map.addControl(control);
- * </pre>
+ * <ul>
+ * <li>control.addTo(map);
+ * <li>map.addControl(control);
+ * </ul>
  * 
  * </p>
  * 
@@ -31,8 +31,55 @@ public class Control extends IControl {
 		super(element);
 	}
 
+	/**
+	 * Default constructor
+	 * @param options
+	 */
 	public Control(Options options) {
+		this(options, false, false);
+	}
+	
+	/**
+	 * Advanced constructor
+	 * When custom controls hqve to be create by extending this class, methods onAdd and onRemove
+	 * must be defined.
+	 * If your custom controls are not set in the library itself (ie scale, zoom),
+	 * this is a very convenience constructor.
+	 * @param options
+	 * @param customOnAdd When true, allow to define a custom onAdd in children class
+	 * @param customOnRemove When true, allow to define a custom onRemove in children class
+	 */
+	public Control(Options options, boolean customOnAdd, boolean customOnRemove) {
 		this(ControlImpl.create(options.getJSObject()));
+		if(customOnAdd) {
+			ControlImpl.customOnAdd(this, getJSObject());
+		}
+		if(customOnRemove) {
+			ControlImpl.customOnRemove(this, getJSObject());			
+		}
+		
+	} 
+
+	// --------------------------------------------------------
+	// Custom implementations
+	// --------------------------------------------------------
+	
+	/**
+	 * Call by the ControlImpl::customOnAdd
+	 * Should be overriden to create some custom layout
+	 * @param map
+	 * @return Element (generally a div element)
+	 */
+	public Element customOnAdd(JavaScriptObject map) {
+		return null;
+	}
+	
+	/**
+	 * Call by the ControlImpl::customOnRemove
+	 * Should be overriden to clean up the control
+	 * @param map
+	 */
+	public void customOnRemove(JavaScriptObject map) {
 	}
 
 	// --------------------------------------------------------
@@ -77,15 +124,6 @@ public class Control extends IControl {
 
 	public void attribution(String text, Options options) {
 		ControlImpl.attribution(text, options.getJSObject());
-	}
-
-	@Override
-	public Element onAdd(Map map) {
-		return ControlImpl.onAdd(map.getJSObject());
-	}
-
-	@Override
-	public void onRemove(Map map) {
 	}
 
 }
