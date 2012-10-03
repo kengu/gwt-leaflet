@@ -58,25 +58,21 @@ public class CRS extends ICRS {
 
 	@Override
 	Point toPoint(LatLng coords, double zoom) {
-		// TODO Auto-generated method stub
-		return null;
+		return CRSImpl.toPoint(coords, zoom);
 	}
 
 	@Override
 	Point project(LatLng coords) {
-		// TODO Auto-generated method stub
-		return null;
+		return CRSImpl.project(coords);
 	}
 
 	@Override
 	LatLng toLatLng(Point point, double zoom) {
-		// TODO Auto-generated method stub
-		return null;
+		return CRSImpl.toLatLng(point, zoom);
 	}
 
 	@Override
 	double scale(double zoom) {
-		// TODO Auto-generated method stub
-		return 0;
+		return CRSImpl.scale(zoom);
 	}
 }
