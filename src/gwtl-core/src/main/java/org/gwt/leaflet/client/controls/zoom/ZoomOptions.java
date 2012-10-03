@@ -14,8 +14,8 @@ public class ZoomOptions extends ControlOptions  {
 		 super();
 	}
 
-	public void setPosition(String position) {
-		 setProperty("position", position);
+	public ZoomOptions setPosition(String position) {
+		 return (ZoomOptions)setProperty("position", position);
 	}
 
 }

@@ -1,8 +1,9 @@
 
 package org.gwt.leaflet.client.layers;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.Options;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 
 /**
  * Prototype interface for all layers
@@ -19,15 +20,33 @@ public class ILayer extends JSObjectWrapper{
 	}
 	
 	/**
-	 * This method allows to save in session the javascript object
-	 * linked to the java object.
-	 * Thus, it comes possible to call it directly from the jnsi functions
-	 * by mean of the following piece of code : $wnd.gwtl.alias[aliasname]
+	 * This method allows to save in session the javascript object linked to 
+	 * the java object. Thus, it comes possible to call it directly from the 
+	 * JNSI functions by means of the following piece of code
+	 * <pre>
+	 * $wnd.gwtl.alias[aliasname]
+	 * </pre>
 	 * 
-	 * @param alias name of the underlined java object
+	 * @param alias - Name of the underlined java object
+	 * 
+	 * @return {@link ILayer}
 	 */
-	public void setAlias(String alias) {
+	public ILayer setAlias(String alias) {
 		ILayerImpl.setAlias(alias, getJSObject());
+		return this;
 	};
+	
+	/**
+	 * Modify options in one operation.
+	 * 
+	 * @param options {@link Options} instance.
+	 * @return {@link ILayer}
+	 */
+	public ILayer setOptions(Options options) {
+		ILayerImpl.setOptions(getJSObject(), options.getJSObject());
+		return this;
+	}
+		
+	
 
 }

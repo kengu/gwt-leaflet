@@ -15,20 +15,20 @@ public class MapOptions extends Options  {
 		super();
 	}
 	
-	public void setCenter(LatLng latlng) {
-        setProperty("center", latlng.getJSObject());
+	public MapOptions setCenter(LatLng latlng) {
+        return (MapOptions)setProperty("center", latlng.getJSObject());
     }
 
-	public void setZoom(int zoom) {
-        setProperty("zoom", zoom);
+	public MapOptions setZoom(int zoom) {
+		return (MapOptions)setProperty("zoom", zoom);
     }
 
-	public void setMinZoom(int zoom) {
-       setProperty("minzoom", zoom);
+	public MapOptions setMinZoom(int zoom) {
+		return (MapOptions)setProperty("minzoom", zoom);
     }
 
-	public void setMaxZoom(int zoom) {
-       setProperty("maxzoom", zoom);
+	public MapOptions setMaxZoom(int zoom) {
+		return (MapOptions)setProperty("maxzoom", zoom);
     }
 
 }

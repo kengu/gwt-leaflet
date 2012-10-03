@@ -22,11 +22,12 @@
 package org.gwt.leaflet.client.controls;
 
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 import org.gwt.leaflet.client.map.Map;
 
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.DOM;
 
 /**
@@ -38,7 +39,7 @@ import com.google.gwt.user.client.DOM;
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#icontrol">IControl (Leaflet API)</a>
  */
-public abstract class IControl extends JSObjectWrapper{
+public abstract class IControl extends JSObjectWrapper {
 	
 	protected IControl(JSObject jsObject) {
 		super(jsObject);
@@ -55,11 +56,12 @@ public abstract class IControl extends JSObjectWrapper{
 	 * @param map - {@link Map} instance
 	 * @return {@link Element}
 	 */
-	public Element onAdd(Map map){
-		// Never used directly, because onAdd javascripts are embedded in the library
-		// Consequently, this method is never called
-		// You should consider the customOnAdd and customOnRemove
-		return null;
+	public final Element onAdd(Map map) {
+		return onAdd(map.getJSObject());
+	}
+
+	protected Element onAdd(JavaScriptObject map) {
+		return IControlImpl.onAdd(getJSObject(), map);
 	}
 	
 	/**
@@ -67,13 +69,19 @@ public abstract class IControl extends JSObjectWrapper{
 	 * <p>
 	 * Should contain all clean up code (removes control's event listeners etc). 
 	 * 
-	 * ICalled on map.removeControl(control) or control.removeFrom(map). The control's DOM container is removed automatically.
+	 * Called on map.removeControl(control) or control.removeFrom(map). 
+	 * The control's DOM container is removed automatically.
+	 * 
 	 * @param map -
 	 */
-	public void onRemove(Map map) {
-		// Never used directly, because onAdd javascripts are embedded in the library
-		// Consequently, this method is never called
-		// You should consider the customOnAdd and customOnRemove
+	public final IControl onRemove(Map map) {
+		return onRemove(map.getJSObject());
 	}
+	
+	protected IControl onRemove(JavaScriptObject map) {
+		IControlImpl.onRemove(getJSObject(), map);
+		return this;
+	}
+	
 
 }

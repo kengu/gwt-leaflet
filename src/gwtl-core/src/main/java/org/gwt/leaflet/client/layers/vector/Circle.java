@@ -1,7 +1,6 @@
 package org.gwt.leaflet.client.layers.vector;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.types.LatLng;
 
@@ -19,61 +18,57 @@ public class Circle extends Path {
 				options.getJSObject()));
 	}
 
-	@Override
-	public void addTo(Map map) {
-		CircleImpl.addTo(getJSObject(), map.getJSObject());
+	public LatLng getLatLng() {
+		return new LatLng(CircleImpl.getLatLng(getJSObject()));
 	}
 
-	public JSObject getLatLng() {
-		return CircleImpl.getLatLng(getJSObject());
+	public Circle setLatLng(LatLng latlng) {
+		CircleImpl.setLatLng(getJSObject(), latlng.getJSObject());
+		return this;
 	}
 
 	public double getRadius() {
 		return CircleImpl.getRadius(getJSObject());
 	}
 
-	public void setLatLng(LatLng latlng) {
-		CircleImpl.setLatLng(getJSObject(), latlng.getJSObject());
-	}
-
-	public void setRadius(double radius) {
+	public Circle setRadius(double radius) {
 		CircleImpl.setRadius(getJSObject(), radius);
+		return this;
+	}
+	
+	@Override
+	public Circle addTo(Map map) {
+		return (Circle)super.addTo(map);
 	}
 
 	@Override
-	public void bindPopup(String htmlContent, Options options) {
-		// TODO Auto-generated method stub
-		
+	public Circle bindPopup(String htmlContent, Options options) {
+		return (Circle)super.bindPopup(htmlContent, options);
 	}
 
 	@Override
-	public void openPopup(LatLng latlng) {
-		// TODO Auto-generated method stub
-		
+	public Circle openPopup(LatLng latlng) {
+		return (Circle)super.openPopup(latlng);
 	}
 
 	@Override
-	public void setStyle(Options object) {
-		// TODO Auto-generated method stub
-		
+	public Circle setStyle(Options options) {
+		return (Circle)super.setStyle(options);
 	}
 
 	@Override
-	public void bringToFront() {
-		// TODO Auto-generated method stub
-		
+	public Circle bringToFront() {
+		return (Circle)super.bringToFront();
 	}
 
 	@Override
-	public void bringToBack() {
-		// TODO Auto-generated method stub
-		
+	public Circle bringToBack() {
+		return (Circle)super.bringToBack();
 	}
 
 	@Override
-	public void redraw() {
-		// TODO Auto-generated method stub
-		
+	public Circle redraw() {
+		return (Circle)super.redraw();
 	}
 
 }

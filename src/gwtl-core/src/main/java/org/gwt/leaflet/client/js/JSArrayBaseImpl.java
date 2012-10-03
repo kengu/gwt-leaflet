@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client.jswraps;
+package org.gwt.leaflet.client.js;
 
 
 class JSArrayBaseImpl

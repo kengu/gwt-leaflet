@@ -21,9 +21,9 @@
  *********************************************************************/
 package org.gwt.leaflet.client.types;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectArray;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectArray;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 
 /**
  * Represents a rectangular geographical area on a map.

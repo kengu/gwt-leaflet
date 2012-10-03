@@ -1,13 +1,14 @@
 package org.gwt.leaflet.client.layers.raster;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.layers.ILayerImpl;
 
 /**
  * WmsLayer implementation class
  * @author Lionel Leiva-Marcon
  * 
  */
-public class WmsLayerImpl  {
+public class WmsLayerImpl extends ILayerImpl {
 
 	public static native JSObject create(String url, JSObject options)/*-{				
 		return new $wnd.L.tileLayer.wms(url, options);
@@ -38,9 +39,4 @@ public class WmsLayerImpl  {
 		return self;
 	}-*/;	
 	
-	public static native JSObject setOptions(JSObject self, JSObject options) /*-{	
-		self.options = L.Util.extend({}, self.options, options);
-		console(self);
-		return self;
-	}-*/;	
 }

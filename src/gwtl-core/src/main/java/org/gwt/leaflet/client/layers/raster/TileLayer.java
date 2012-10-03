@@ -1,7 +1,7 @@
 package org.gwt.leaflet.client.layers.raster;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 import org.gwt.leaflet.client.layers.ILayer;
 
 /**
@@ -23,4 +23,13 @@ public class TileLayer extends ILayer {
 		this (TileLayerImpl.create(url, options.getJSObject()));
 	}
 	
+	/**
+	 * Modify options in one operation.
+	 * @param options {@link Options} instance.
+	 * @return {@link TileLayer}
+	 */
+	public TileLayer setOptions(Options options) {
+		return (TileLayer)super.setOptions(options);
+	}
+		
 }

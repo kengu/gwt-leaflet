@@ -1,8 +1,8 @@
 package org.gwt.leaflet.client.layers.vector;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectArray;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectArray;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.types.LatLng;
 
@@ -13,7 +13,7 @@ import org.gwt.leaflet.client.types.LatLng;
  * 
  * @author Lionel Leiva-Marcon
  */
-public class Polyline extends Path{
+public class Polyline extends Path {
  
 	/**
 	 * Constructor used for inheritance
@@ -33,43 +33,38 @@ public class Polyline extends Path{
 	} 
 
 	@Override
-	public void addTo(Map map) {
-		PolylineImpl.addTo(getJSObject(), map.getJSObject());		
+	public Polyline addTo(Map map) {
+		return (Polyline)super.addTo(map);
 	}
 
 	@Override
-	public void bindPopup(String htmlContent, Options options) {
-		PolylineImpl.bindPopup(getJSObject(), htmlContent, options.getJSObject());		
+	public Polyline bindPopup(String htmlContent, Options options) {
+		return (Polyline)super.bindPopup(htmlContent, options);		
 	}
 
 	@Override
-	public void openPopup(LatLng latlng) {
-		// TODO Auto-generated method stub
-		
+	public Polyline openPopup(LatLng latlng) {
+		return (Polyline)super.openPopup(latlng);		
 	}
 
 	@Override
-	public void setStyle(Options object) {
-		// TODO Auto-generated method stub
-		
+	public Polyline setStyle(Options options) {
+		return (Polyline)super.setStyle(options);	
 	}
 
 	@Override
-	public void bringToFront() {
-		// TODO Auto-generated method stub
-		
+	public Polyline bringToFront() {
+		return (Polyline)super.bringToFront();		
 	}
 
 	@Override
-	public void bringToBack() {
-		// TODO Auto-generated method stub
-		
+	public Polyline bringToBack() {
+		return (Polyline)super.bringToBack();		
 	}
 
 	@Override
-	public void redraw() {
-		// TODO Auto-generated method stub
-		
+	public Polyline redraw() {
+		return (Polyline)super.redraw();	
 	}
 	
 }

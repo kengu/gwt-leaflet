@@ -1,25 +1,17 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 /**
  * FeatureGroupImpl implementation class
  * @author Lionel Leiva-Marcon
  *
  */
-public class FeatureGroupImpl  {
+public class FeatureGroupImpl extends LayerGroupImpl {
 
 	public static native JSObject create(JSObject layers)/*-{				
 		return new $wnd.L.featureGroup(layers);
 	}-*/;	
-	
-	public static native  void addLayer(JSObject self, JSObject layer) /*-{
-		self.addLayer(layer);
-	}-*/;
-
-	public static native  void addTo(JSObject self, JSObject map) /*-{
-		self.addTo(map);
-	}-*/;
 	
 	public static native  void addPopup(JSObject self, String htmlContent, JSObject options) /*-{
 		self.addPopup(htmlContent, options);

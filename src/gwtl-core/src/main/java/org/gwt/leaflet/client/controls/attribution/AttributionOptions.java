@@ -18,8 +18,8 @@ public class AttributionOptions extends ControlOptions  {
 	 * The position of the control (one of the map corners). 
 	 * See control positions.
 	 */
-	public void setPosition(String position) {
-		 setProperty("position", position);
+	public AttributionOptions setPosition(String position) {
+		 return (AttributionOptions)setProperty("position", position);
 	}
 
 	/**
@@ -27,8 +27,8 @@ public class AttributionOptions extends ControlOptions  {
 	 * Pass false to disable.
 	 * @param prefix
 	 */
-	public void setPrefix(String prefix) {
-		 setProperty("prefix", prefix);
+	public AttributionOptions setPrefix(String prefix) {
+		return (AttributionOptions)setProperty("prefix", prefix);
 	}
 
 }

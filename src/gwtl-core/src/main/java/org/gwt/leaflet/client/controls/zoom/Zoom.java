@@ -36,8 +36,18 @@ public class Zoom extends Control {
 	 * @param map - {@link Map} instance
 	 * @return {@link Control}
 	 */
-	public void addTo(Map map) {
-		ZoomImpl.addTo(getJSObject(), map.getJSObject());
+	public Zoom addTo(Map map) {
+		return (Zoom)super.addTo(map);
+	}
+	
+	@Override
+	public Zoom setPosition(String position) {
+		return (Zoom)super.setPosition(position);
+	}
+
+	@Override
+	public Zoom removeFrom(Map map) {
+		return (Zoom)super.removeFrom(map);
 	}
 
 }

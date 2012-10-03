@@ -14,8 +14,8 @@ public class ControlOptions extends Options  {
 		 super();
 	}
 
-	public void setPosition(String position) {
-		 setProperty("position", position);
+	public ControlOptions setPosition(String position) {
+		 return (ControlOptions)setProperty("position", position);
 	}
 
 }

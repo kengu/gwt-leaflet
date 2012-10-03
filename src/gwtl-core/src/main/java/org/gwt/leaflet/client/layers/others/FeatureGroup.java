@@ -1,8 +1,8 @@
 package org.gwt.leaflet.client.layers.others;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectArray;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectArray;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
 import org.gwt.leaflet.client.types.LatLngBounds;
@@ -35,17 +35,21 @@ public class FeatureGroup extends LayerGroup {
 	/**
 	 * Adds a given layer to the group.
 	 * @param layer
+	 * @return {@link FeatureGroup}
 	 */
-	public void addLayer(ILayer layer) {
+	public FeatureGroup addLayer(ILayer layer) {
 		FeatureGroupImpl.addTo(getJSObject(), layer.getJSObject());		
+		return this;
 	}
 
 	/**
 	 * Adds the group of layers to the map.
 	 * @param map
+	 * @return {@link FeatureGroup}
 	 */
-	public void addTo(Map map) {
+	public FeatureGroup addTo(Map map) {
 		FeatureGroupImpl.addTo(getJSObject(), map.getJSObject());		
+		return this;
 	}
 
 	/**
@@ -53,15 +57,17 @@ public class FeatureGroup extends LayerGroup {
 	 * from the group that has a bindPopup method.
 	 * @param htmlContent
 	 * @param options
+	 * @return {@link FeatureGroup}
 	 */
-	public void bindPopup(String htmlContent, Options options) {
+	public FeatureGroup bindPopup(String htmlContent, Options options) {
 		FeatureGroupImpl.addPopup(getJSObject(), htmlContent, options.getJSObject());	
+		return this;
 	}
 	
 	/**
 	 * Returns the LatLngBounds of the Feature Group (created from bounds 
 	 * and coordinates of its children).
-	 * @return
+	 * @return {@link LatLngBounds}
 	 */
 	public LatLngBounds getBounds() {
 		return new LatLngBounds(FeatureGroupImpl.getBounds(getJSObject()));	
@@ -71,24 +77,40 @@ public class FeatureGroup extends LayerGroup {
 	 * Sets the given path options to each layer of 
 	 * the group that has a setStyle method.
 	 * @param options
+	 * @return {@link FeatureGroup}
 	 */
-	public void setStyle(Options options) {
+	public FeatureGroup setStyle(Options options) {
 		FeatureGroupImpl.setStyle(getJSObject(),options.getJSObject());		
+		return this;
 	}
+
 	
 	/**
 	 * Brings the layer group to the top of all other layers.
+	 * @return {@link FeatureGroup}
 	 */
-	public void bringToFront() {
+	public FeatureGroup bringToFront() {
 		FeatureGroupImpl.bringToFront(getJSObject());		
+		return this;
 	}
 
 	/**
 	 * Brings the layer group to the bottom of all other layers.
+	 * @return {@link FeatureGroup}
 	 */
-	public void bringToBack() {
+	public FeatureGroup bringToBack() {
 		FeatureGroupImpl.bringToBack(getJSObject());		
+		return this;
 	}
 
+	@Override
+	public FeatureGroup setOptions(Options options) {
+		return (FeatureGroup)super.setOptions(options);
+	}
+
+	@Override
+	public FeatureGroup setAlias(String alias) {
+		return (FeatureGroup)super.setAlias(alias);
+	}
 	
 }

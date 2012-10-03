@@ -48,11 +48,11 @@ import org.gwt.leaflet.client.map.Map;
  */
 public class Layers extends Control {
 	
-	public Layers(ILayer bases,ILayer overlays,Options options) {
+	public Layers(ILayer bases, ILayer overlays, Options options) {
 		super(LayersImpl.create(bases.getJSObject(), overlays.getJSObject(), options.getJSObject()));
 	}
 
-	public Layers(Options bases,Options overlays,Options options) {
+	public Layers(Options bases, Options overlays, Options options) {
 		super(LayersImpl.create(bases.getJSObject(), overlays.getJSObject(), options.getJSObject()));
 	}
 
@@ -62,8 +62,9 @@ public class Layers extends Control {
 	 * @param name {@link ILayer} name
 	 * @return {@link Layers}
 	 */
-	public void addBaseLayer(ILayer layer, String name) {
+	public Layers addBaseLayer(ILayer layer, String name) {
 		LayersImpl.addBaseLayer(getJSObject(), layer.getJSObject(), name);
+		return this;
 	}
 	
 	/**
@@ -72,8 +73,9 @@ public class Layers extends Control {
 	 * @param name {@link ILayer} name
 	 * @return {@link Layers}
 	 */
-	public void addOverlay(ILayer layer, String name) {
+	public Layers addOverlay(ILayer layer, String name) {
 		LayersImpl.addOverlay(getJSObject(), layer.getJSObject(), name);
+		return this;
 	}
 	
 	/**
@@ -81,8 +83,24 @@ public class Layers extends Control {
 	 * @param layer {@link ILayer} instance
 	 * @return {@link Layers}
 	 */
-	public void removeLayer(String name) {
+	public Layers removeLayer(String name) {
 		LayersImpl.removeLayer(getJSObject(), name);
+		return this;
 	}
+	
+	@Override
+	public Layers setPosition(String position) {
+		return (Layers)super.setPosition(position);
+	}
+
+	@Override
+	public Layers addTo(Map map) {
+		return (Layers)super.addTo(map);
+	}
+
+	@Override
+	public Layers removeFrom(Map map) {
+		return (Layers)super.removeFrom(map);
+	}	
 
 }

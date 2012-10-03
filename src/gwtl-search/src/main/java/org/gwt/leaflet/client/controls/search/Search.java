@@ -25,7 +25,7 @@ public class Search extends Control {
 	 * @return {@link Control}
 	 */
 	@Override
-	public void addTo(Map map) {
-		SearchImpl.addTo(getJSObject(), map.getJSObject());
+	public Search addTo(Map map) {
+		return (Search)super.addTo(map);
 	}
 }

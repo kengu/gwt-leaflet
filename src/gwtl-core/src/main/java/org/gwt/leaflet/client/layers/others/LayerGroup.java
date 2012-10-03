@@ -1,7 +1,8 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectArray;
+import org.gwt.leaflet.client.Options;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectArray;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
 
@@ -34,17 +35,31 @@ public class LayerGroup extends ILayer {
 	/**
 	 * Adds a given layer to the group.
 	 * @param layer
+	 * @return LayerGroup
+	 * 
 	 */
-	public void addLayer(ILayer layer) {
-		LayerGroupImpl.addTo(getJSObject(), layer.getJSObject());		
+	public LayerGroup addLayer(ILayer layer) {
+		LayerGroupImpl.addTo(getJSObject(), layer.getJSObject());
+		return this;
 	}
 
 	/**
 	 * Adds the group of layers to the map.
 	 * @param map
+	 * @return LayerGroup
 	 */
-	public void addTo(Map map) {
+	public LayerGroup addTo(Map map) {
 		LayerGroupImpl.addTo(getJSObject(), map.getJSObject());		
+		return this;
+	}
+	
+	/**
+	 * Modify options in one operation.
+	 * @param options {@link Options} instance.
+	 * @return {@link LayerGroup}
+	 */
+	public LayerGroup setOptions(Options options) {
+		return (LayerGroup)super.setOptions(options);
 	}
 
 }

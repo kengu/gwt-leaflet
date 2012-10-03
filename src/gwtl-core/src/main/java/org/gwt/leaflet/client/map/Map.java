@@ -2,8 +2,8 @@ package org.gwt.leaflet.client.map;
 
 import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.IControl;
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
@@ -28,34 +28,44 @@ public class Map extends JSObjectWrapper {
         this(MapImpl.create(name, options.getJSObject()));
     } 
     
-    public void setView(LatLng center, double zoom, boolean reset) {
+    public Map setView(LatLng center, double zoom, boolean reset) {
     	MapImpl.setView(getJSObject(), center.getJSObject(), zoom, reset);
+    	return this;
     }
-    public void setZoom(double zoom) {
+    
+    public Map setZoom(double zoom) {
     	MapImpl.setZoom(getJSObject(), zoom);
-
+    	return this;
     }
-    public void zoomIn(){
+
+    public Map zoomIn(){
     	MapImpl.zoomIn(getJSObject());
-    	
+    	return this;    	
     }
-    public void zoomOut() {
+    
+    public Map zoomOut() {
     	MapImpl.zoomOut(getJSObject());
+    	return this;
     }
-    public void addLayer(ILayer layer, boolean bottom) {
+    
+    public Map addLayer(ILayer layer, boolean bottom) {
     	MapImpl.addLayer(getJSObject(), layer.getJSObject(), bottom);
+    	return this;
     }
-    public void addLayer(ILayer layer) {
+    
+    public Map addLayer(ILayer layer) {
     	MapImpl.addLayer(getJSObject(), layer.getJSObject());
+    	return this;
     }
     
-    public void addControl(IControl control) {
+    public Map addControl(IControl control) {
     	MapImpl.addControl(getJSObject(), control.getJSObject());
+    	return this;
     }
     
-    public void fitBounds(LatLngBounds bounds) {
+    public Map fitBounds(LatLngBounds bounds) {
     	MapImpl.fitBounds(getJSObject(), bounds.getJSObject());		
+    	return this;
 	}
-
 
 }

@@ -22,7 +22,8 @@
 package org.gwt.leaflet.client.controls.layers;
 
 import org.gwt.leaflet.client.controls.Control;
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.controls.ControlImpl;
+import org.gwt.leaflet.client.js.JSObject;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
 
@@ -46,7 +47,7 @@ import org.gwt.leaflet.client.map.Map;
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#control-layers">L.Control.Layers (Leaflet API)</a>
  */
-public class LayersImpl {
+public class LayersImpl extends ControlImpl {
 	
 	public static native JSObject create(JSObject bases, JSObject overlays, JSObject options)/*-{
 		return new $wnd.L.control.layers(bases, overlays, options);	

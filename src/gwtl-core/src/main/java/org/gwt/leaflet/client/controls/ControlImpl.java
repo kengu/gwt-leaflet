@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.controls;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 /**
  * {@link ControlImpl} implementation.
@@ -8,24 +8,12 @@ import org.gwt.leaflet.client.jswraps.JSObject;
  * @author Lionel Leiva-Marcon
  *
  */
-public class ControlImpl  {
+public class ControlImpl extends IControlImpl {
 
 	public static native JSObject create(JSObject options)/*-{
 		return new $wnd.L.control(options);
 	}-*/;	
 	 
-	public static native JSObject customOnAdd(Control control, JSObject self)/*-{
-		self.onAdd=function(map){
-		  			return control.@org.gwt.leaflet.client.controls.Control::customOnAdd(Lcom/google/gwt/core/client/JavaScriptObject;)(map);
- 		};
-	}-*/;	
-	
-	public static native JSObject customOnRemove(Control control, JSObject self)/*-{
-		self.onRemove=function(map){
-	  			control.@org.gwt.leaflet.client.controls.Control::customOnRemove(Lcom/google/gwt/core/client/JavaScriptObject;)(map);
-		};
-	}-*/;	
-
 	public static native String getPosition(JSObject self) /*-{
 		return self.getPosition();
     }-*/;
@@ -43,14 +31,4 @@ public class ControlImpl  {
 		self.removeFrom(map);
 	}-*/;
 
-	public static native JSObject  attribution(String text, JSObject options) /*-{
-		// Create Attribution
-		var a = $wnd.L.control.attribution(options);
-		
-		// Set prefix and text
-		a.addAttribution(text);
-		
-		// Finished
-		return a;	
-	}-*/;
 }

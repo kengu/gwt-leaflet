@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.util;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 public class TransformationImpl  {
 	

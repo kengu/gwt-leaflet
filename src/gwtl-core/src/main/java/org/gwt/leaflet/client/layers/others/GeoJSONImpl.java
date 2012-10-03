@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 
 /**
@@ -8,10 +8,11 @@ import org.gwt.leaflet.client.jswraps.JSObject;
  * @author Lionel Leiva-Marcon
  *
  */
-public class GeoJSONImpl  {
+public class GeoJSONImpl extends FeatureGroupImpl {
 
 	/**
-	 * Create the GeoJSON
+	 * Create the GeoJSON.
+	 * <p>
 	 * Options methods are called by means of jnsi ( [instance-expr.]@class-name::methodName(args) )
 	 * 
 	 * @param data
@@ -23,19 +24,19 @@ public class GeoJSONImpl  {
 		return new $wnd.L.geoJson(json,
 		{
 			pointToLayer : function(feature,latlng) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::pointToLayer(Lorg/gwt/leaflet/client/jswraps/JSObject;Lorg/gwt/leaflet/client/jswraps/JSObject;)(feature, latlng);
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::pointToLayer(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, latlng);
 			},
 			
 			onEachFeature : function(feature,layer) {
-	      		return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::onEachFeature(Lorg/gwt/leaflet/client/jswraps/JSObject;Lorg/gwt/leaflet/client/jswraps/JSObject;)(feature, layer);
+	      		return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::onEachFeature(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, layer);
 			},
 			
 			style : function(feature) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::style(Lorg/gwt/leaflet/client/jswraps/JSObject;)(feature);									
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::style(Lorg/gwt/leaflet/client/js/JSObject;)(feature);									
 			},
 			
 			filter: function(feature,layer) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::filter(Lorg/gwt/leaflet/client/jswraps/JSObject;Lorg/gwt/leaflet/client/jswraps/JSObject;)(feature, layer);
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::filter(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, layer);
 			}
 		});
 		

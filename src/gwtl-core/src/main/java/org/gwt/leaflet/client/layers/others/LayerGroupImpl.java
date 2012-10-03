@@ -1,13 +1,15 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.layers.ILayerImpl;
 
 /**
- * LayerGroupImpl implementation class
+ * {@link LayerGroup} implementation class
+ * 
  * @author Lionel Leiva-Marcon
  *
  */
-public class LayerGroupImpl  {
+public class LayerGroupImpl extends ILayerImpl {
 
 	public static native JSObject create(JSObject layers)/*-{				
 		return new $wnd.L.layerGroup(layers);

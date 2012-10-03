@@ -2,10 +2,7 @@ package org.gwt.leaflet.client.controls.scale;
 
 import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
-import org.gwt.leaflet.client.controls.IControl;
 import org.gwt.leaflet.client.map.Map;
-
-import com.google.gwt.dom.client.Element;
 
 /**
  * <b>Scale control interface</b>
@@ -28,12 +25,12 @@ import com.google.gwt.dom.client.Element;
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#control-scale">L.Control.Scale (Leaflet API)</a>
  */
-public class Scale extends IControl {
+public class Scale extends Control {
 
 	public Scale(Options options) {
 		super(ScaleImpl.create(options.getJSObject()));
-	}
-	
+	}	
+
 	/**
 	 * <b>Adds the control to the map</b>.
 	 * <p>
@@ -42,20 +39,18 @@ public class Scale extends IControl {
 	 * @param map - {@link Map} instance
 	 * @return {@link Control}
 	 */
-	public void addTo(Map map) {
-		ScaleImpl.addTo(getJSObject(), map.getJSObject());
-	}
-
-	@Override
-	public Element onAdd(Map map) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void onRemove(Map map) {
-		// TODO Auto-generated method stub
-		
+	public Scale addTo(Map map) {
+		return (Scale)super.addTo(map);
 	}
 	
+	@Override
+	public Scale setPosition(String position) {
+		return (Scale)super.setPosition(position);
+	}
+
+	@Override
+	public Scale removeFrom(Map map) {
+		return (Scale)super.removeFrom(map);
+	}
+
 }

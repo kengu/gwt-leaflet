@@ -2,7 +2,6 @@ package org.gwt.leaflet.client.controls.attribution;
 
 import org.gwt.leaflet.client.controls.Control;
 import org.gwt.leaflet.client.controls.Position;
-import org.gwt.leaflet.client.jswraps.JSObject;
 
 /**
  * <bAdds attribution to maps</b>.
@@ -40,10 +39,13 @@ public class Attribution extends Control {
 	 */
 	public static final String PREFIX = "prefix";
 
-	protected Attribution(JSObject element) {
-		super(element);
+	public Attribution(AttributionOptions options) {
+		this("",options);
 	}
-
+	
+	public Attribution(String text, AttributionOptions options) {
+		super(AttributionImpl.create(text, options.getJSObject()));
+	}
 		
 	/**
 	 * Sets the string before the attributions ("Powered by Leaflet" by default).

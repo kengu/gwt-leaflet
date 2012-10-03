@@ -1,11 +1,8 @@
 package org.gwt.leaflet.client.controls;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 import org.gwt.leaflet.client.map.Map;
-
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
 
 /**
  * <b>Base class for all Leaflet controls</b>
@@ -41,46 +38,24 @@ public class Control extends IControl {
 	
 	/**
 	 * Advanced constructor
-	 * When custom controls hqve to be create by extending this class, methods onAdd and onRemove
+	 * When custom controls have to be create by extending this class, methods onAdd and onRemove
 	 * must be defined.
 	 * If your custom controls are not set in the library itself (ie scale, zoom),
 	 * this is a very convenience constructor.
 	 * @param options
-	 * @param customOnAdd When true, allow to define a custom onAdd in children class
-	 * @param customOnRemove When true, allow to define a custom onRemove in children class
+	 * @param onAdd When true, register 'onAdd' method in subclass
+	 * @param onRemove When true, register 'onRemove' method in subclass
 	 */
-	public Control(Options options, boolean customOnAdd, boolean customOnRemove) {
+	public Control(Options options, boolean onAdd, boolean onRemove) {
 		this(ControlImpl.create(options.getJSObject()));
-		if(customOnAdd) {
-			ControlImpl.customOnAdd(this, getJSObject());
+		if(onAdd) {
+			ControlImpl.onAdd(this, getJSObject());
 		}
-		if(customOnRemove) {
-			ControlImpl.customOnRemove(this, getJSObject());			
+		if(onRemove) {
+			ControlImpl.onRemove(this, getJSObject());			
 		}
 		
 	} 
-
-	// --------------------------------------------------------
-	// Custom implementations
-	// --------------------------------------------------------
-	
-	/**
-	 * Call by the ControlImpl::customOnAdd
-	 * Should be overriden to create some custom layout
-	 * @param map
-	 * @return Element (generally a div element)
-	 */
-	public Element customOnAdd(JavaScriptObject map) {
-		return null;
-	}
-	
-	/**
-	 * Call by the ControlImpl::customOnRemove
-	 * Should be overriden to clean up the control
-	 * @param map
-	 */
-	public void customOnRemove(JavaScriptObject map) {
-	}
 
 	// --------------------------------------------------------
 	// Control base implementation
@@ -93,24 +68,26 @@ public class Control extends IControl {
 	 */
 	public String getPosition() {
 		return ControlImpl.getPosition(getJSObject());
-	};
+	}
 
 	/**
 	 * Sets the position of the control. See control positions.
 	 * 
 	 * @param position
 	 */
-	public void setPosition(String position) {
+	public Control setPosition(String position) {
 		ControlImpl.setPosition(getJSObject(), position);
-	};
+		return this;
+	}
 
 	/**
 	 * Adds the control to the map.
 	 * 
 	 * @param map
 	 */
-	public void addTo(Map map) {
+	public Control addTo(Map map) {
 		ControlImpl.addTo(getJSObject(), map.getJSObject());
+		return this;
 	}
 
 	/**
@@ -118,12 +95,9 @@ public class Control extends IControl {
 	 * 
 	 * @param map
 	 */
-	public void removeFrom(Map map) { 
+	public Control removeFrom(Map map) { 
 		ControlImpl.removeFrom(getJSObject(), map.getJSObject());
-	}
-
-	public void attribution(String text, Options options) {
-		ControlImpl.attribution(text, options.getJSObject());
+		return this;
 	}
 
 }

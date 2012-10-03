@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.types;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 /**
  * {@link Icon} implementation.

@@ -1,15 +1,14 @@
 
 package org.gwt.leaflet.client.layers;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 /**
- * Prototype interface for all layers
+ * Implementation of {@link ILayer}
  * 
- * @author kennethg
  * @author Lionel Leiva-Marcon
  *
- * @see <a href="http://leaflet.cloudmade.com/reference.html#ilayer">ILayer (Leaflet API)</a>
+ * @see ILayer
  */
 public class ILayerImpl {
 
@@ -20,4 +19,11 @@ public class ILayerImpl {
 		}
 		$wnd.gwtl.alias[name] = self;
 	}-*/;
+	
+	public static native JSObject setOptions(JSObject self, JSObject options) /*-{	
+		self.options = L.Util.extend({}, self.options, options);
+		console(self);
+		return self;
+	}-*/;
+	
 }

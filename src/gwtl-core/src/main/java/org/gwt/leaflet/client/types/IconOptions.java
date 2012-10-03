@@ -18,16 +18,16 @@ public class IconOptions extends Options  {
 	 * 	(required) The URL to the icon image (absolute or relative to your script path).
 	 * @param url
 	 */
-	public void setIconUrl(String url) {
-		 setProperty("iconUrl", url);
+	public IconOptions setIconUrl(String url) {
+		 return (IconOptions)setProperty("iconUrl", url);
 	}
 	
 	/**
 	 * Size of the icon image in pixels.
 	 * @param iconSize
 	 */
-	public void setIconSize(Point iconSize) {
-		 setProperty("iconSize", iconSize);
+	public IconOptions setIconSize(Point iconSize) {
+		return (IconOptions)setProperty("iconSize", iconSize);
 	}
 	
 	
@@ -39,8 +39,8 @@ public class IconOptions extends Options  {
 	 * margins.
 	 * @param iconSize
 	 */
-	public void setIconAnchor(Point iconAnchor) {
-		setProperty("iconAnchor", iconAnchor);
+	public IconOptions setIconAnchor(Point iconAnchor) {
+		return (IconOptions)setProperty("iconAnchor", iconAnchor);
 	}
 
 	/**
@@ -48,16 +48,16 @@ public class IconOptions extends Options  {
 	 *  created.
 	 * @param shadowUrl
 	 */
-	public void setShadowUrl(String shadowUrl) {
-		setProperty("shadowUrl", shadowUrl);
+	public IconOptions setShadowUrl(String shadowUrl) {
+		return (IconOptions)setProperty("shadowUrl", shadowUrl);
 	}
 
 	/**
 	 * Size of the shadow image in pixels.
 	 * @param shadowUrl
 	 */
-	public void setShadowUrl(Point shadowSize) {
-		setProperty("shadowSize", shadowSize);
+	public IconOptions setShadowUrl(Point shadowSize) {
+		return (IconOptions)setProperty("shadowSize", shadowSize);
 	}
 
 	 	 
@@ -66,8 +66,8 @@ public class IconOptions extends Options  {
 	 * (the same as iconAnchor if not specified).
 	 * @param shadowUrl
 	 */
-	public void setShadowAnchor(Point shadowAnchor) {
-		setProperty("shadowAnchor", shadowAnchor);
+	public IconOptions setShadowAnchor(Point shadowAnchor) {
+		return (IconOptions)setProperty("shadowAnchor", shadowAnchor);
 	}
 
 	/**
@@ -75,9 +75,8 @@ public class IconOptions extends Options  {
  	 * the icon anchor.
 	 * @param shadowUrl
 	 */
-	public void setPopupAnchor(Point popupAnchor) {
-		setProperty("popupAnchor", popupAnchor);
-
+	public IconOptions setPopupAnchor(Point popupAnchor) {
+		return (IconOptions)setProperty("popupAnchor", popupAnchor);
 	}
 	
 }

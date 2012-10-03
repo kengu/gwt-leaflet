@@ -1,6 +1,8 @@
 package org.gwt.leaflet.client.layers.vector;
 
 import org.gwt.leaflet.client.Options;
+import org.gwt.leaflet.client.map.Map;
+import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
 
 /**
@@ -11,7 +13,7 @@ import org.gwt.leaflet.client.types.LatLngBounds;
  * @author Lionel Leiva-Marcon
  *
  */
-public class Rectangle extends Polygon{
+public class Rectangle extends Polygon {
   
 	/**
 	 * Default constructor
@@ -23,18 +25,49 @@ public class Rectangle extends Polygon{
 	public Rectangle(LatLngBounds bounds, Options options) {
  		super(RectangleImpl.create(bounds.getJSObject(), options.getJSObject()));
 	} 
-//
-//	@Override
-//	public void addTo(Map map) {
-//		RectangleImpl.addTo(getJSObject(), map.getJSObject());		
-//	}
 
 	/**
 	 * Redraws the rectangle with the passed bounds.
 	 * @param bounds
 	 */
-	public void setBounds(LatLngBounds bounds) {
-		RectangleImpl.setBounds(getJSObject(), bounds.getJSObject());		
+	public Rectangle setBounds(LatLngBounds bounds) {
+		RectangleImpl.setBounds(getJSObject(), bounds.getJSObject());
+		return this;
 	}
+	
+	@Override
+	public Rectangle addTo(Map map) {
+		return (Rectangle)super.addTo(map);
+	}
+
+	@Override
+	public Rectangle bindPopup(String htmlContent, Options options) {
+		return (Rectangle)super.bindPopup(htmlContent, options);
+	}
+
+	@Override
+	public Rectangle openPopup(LatLng latlng) {
+		return (Rectangle)super.openPopup(latlng);
+	}
+
+	@Override
+	public Rectangle setStyle(Options options) {
+		return (Rectangle)super.setStyle(options);
+	}
+
+	@Override
+	public Rectangle bringToFront() {
+		return (Rectangle)super.bringToFront();
+	}
+
+	@Override
+	public Rectangle bringToBack() {
+		return (Rectangle)super.bringToBack();
+	}
+
+	@Override
+	public Rectangle redraw() {
+		return (Rectangle)super.redraw();
+	}		
 
 }

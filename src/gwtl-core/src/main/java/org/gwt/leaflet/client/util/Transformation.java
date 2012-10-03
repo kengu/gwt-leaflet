@@ -2,8 +2,8 @@ package org.gwt.leaflet.client.util;
 
 import java.util.Map;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 import org.gwt.leaflet.client.types.Point;
 
 /**
@@ -20,7 +20,7 @@ import org.gwt.leaflet.client.types.Point;
  * @see <a href="http://leaflet.cloudmade.com/reference.html#transformation">L.Transformation (Leaflet API)</a>
  *
  */
-public class Transformation extends JSObjectWrapper{
+public class Transformation extends JSObjectWrapper {
 	
 	
 	protected Transformation(JSObject jsObject) {

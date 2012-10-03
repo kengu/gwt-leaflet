@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.marker;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
+import org.gwt.leaflet.client.js.JSObject;
 
 /**
  * {@link Marker} implementation.
@@ -18,8 +18,44 @@ public class MarkerImpl  {
 		return self.addTo(map);
 	}-*/;
 
-	public static native JSObject bindPopup(JSObject self, String content)/*-{
-		return self.bindPopup(content).openPopup();
+	public static native JSObject getLatLng(JSObject self)/*-{
+		return self.getLatLng();
+	}-*/;
+	
+	public static native void setLatLng(JSObject self, JSObject latlng)/*-{
+		self.setLatLng(latlng);
+	}-*/;
+	
+	public static native void setIcon(JSObject self, JSObject icon)/*-{
+		self.setIcon(icon);
+	}-*/;
+	
+	public static native void setZIndexOffset(JSObject self, int offset)/*-{
+		self.setZIndexOffset(offset);
+	}-*/;
+	
+	public static native void setOpacity(JSObject self, double opacity)/*-{
+		return self.setOpacity(opacity);
+	}-*/;
+	
+	public static native void update(JSObject self)/*-{
+		self.update();
+	}-*/;
+
+	public static native void bindPopup(JSObject self, String content, JSObject options)/*-{
+		self.bindPopup(content,options);
+	}-*/;
+	
+	public static native void unbindPopup(JSObject self)/*-{
+		self.unbindPopup();
+	}-*/;
+	
+	public static native void openPopup(JSObject self)/*-{
+		self.openPopup();
+	}-*/;
+	
+	public static native void closePopup(JSObject self)/*-{
+		self.closePopup();
 	}-*/;
 }
 

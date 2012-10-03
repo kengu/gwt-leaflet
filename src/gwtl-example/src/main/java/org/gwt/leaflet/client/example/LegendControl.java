@@ -4,7 +4,7 @@ import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.Element;
 
 public class LegendControl extends Control {
 
@@ -13,14 +13,10 @@ public class LegendControl extends Control {
 	}
 
 	@Override
-	public Element customOnAdd(JavaScriptObject map) { 
+	protected Element onAdd(JavaScriptObject map) { 
 		return createOnAddLayout(getJSObject(), map);
 	}
 	
-	@Override
-	public void customOnRemove(JavaScriptObject map) { 
-	}
-
 	public static native Element createOnAddLayout(JavaScriptObject self, JavaScriptObject map) /*-{	
 		
 		function getCustomColor(d) {

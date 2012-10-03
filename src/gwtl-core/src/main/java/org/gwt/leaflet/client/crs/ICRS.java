@@ -21,8 +21,8 @@
  *********************************************************************/
 package org.gwt.leaflet.client.crs;
 
-import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
+import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.js.JSObjectWrapper;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.Point;
  
