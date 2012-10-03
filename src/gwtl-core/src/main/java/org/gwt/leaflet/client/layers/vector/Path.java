@@ -1,9 +1,9 @@
 package org.gwt.leaflet.client.layers.vector;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.types.LatLng;
 
 /**

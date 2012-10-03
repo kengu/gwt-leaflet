@@ -1,4 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.controls;
+
+import org.gwt.leaflet.client.Options;
 
 
 /**

@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.util;
 
-import org.gwt.leaflet.client.options.Options;
+import org.gwt.leaflet.client.Options;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONValue;

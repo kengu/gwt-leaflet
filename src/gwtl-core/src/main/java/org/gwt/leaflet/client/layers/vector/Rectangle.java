@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.layers.vector;
 
-import org.gwt.leaflet.client.options.Options;
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.types.LatLngBounds;
 
 /**

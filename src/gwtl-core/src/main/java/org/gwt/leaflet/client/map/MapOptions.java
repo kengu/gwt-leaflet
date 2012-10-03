@@ -1,5 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.map;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.types.LatLng;
 
 /**

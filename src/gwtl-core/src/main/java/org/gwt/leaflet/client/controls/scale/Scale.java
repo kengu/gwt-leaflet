@@ -1,9 +1,9 @@
 package org.gwt.leaflet.client.controls.scale;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
 import org.gwt.leaflet.client.controls.IControl;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.Options;
 
 import com.google.gwt.dom.client.Element;
 

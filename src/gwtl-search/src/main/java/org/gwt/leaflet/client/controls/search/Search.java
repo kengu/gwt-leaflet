@@ -1,8 +1,8 @@
 package org.gwt.leaflet.client.controls.search;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.Options;
 
 /**
  * <b>Search control interface</b>

@@ -1,5 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.layers.others;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
 
@@ -9,11 +10,11 @@ import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
  * @author Lionel Leiva-Marcon
  * 
  */
-public class GeoJsonOptions extends Options {
+public class GeoJSONOptions extends Options {
 
 	protected GeoJsonFeatures _features;
 	
-	public GeoJsonOptions(GeoJsonFeatures features) {
+	public GeoJSONOptions(GeoJsonFeatures features) {
 		super();
 		_features = features;
 	}

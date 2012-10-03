@@ -1,10 +1,10 @@
 package org.gwt.leaflet.client.layers.others;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectArray;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.Options;
 import org.gwt.leaflet.client.types.LatLngBounds;
 
 /**

@@ -21,10 +21,10 @@
  *********************************************************************/
 package org.gwt.leaflet.client.controls.layers;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.Options;
 
 /**
  * <b>Layer switcher control interface</b>

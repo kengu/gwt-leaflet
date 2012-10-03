@@ -1,8 +1,8 @@
 package org.gwt.leaflet.client.types;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectWrapper;
-import org.gwt.leaflet.client.options.Options;
 
 /**
  * Represents an icon to provide when creating a marker.

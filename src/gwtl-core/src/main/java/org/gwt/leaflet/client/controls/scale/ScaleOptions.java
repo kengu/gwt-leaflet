@@ -1,4 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.controls.scale;
+
+import org.gwt.leaflet.client.controls.ControlOptions;
 
 
 /**
@@ -6,9 +8,9 @@ package org.gwt.leaflet.client.options;
  * @author Lionel Leiva-Marcon
  *
  */
-public class ScaleControlOptions extends ControlOptions  {
+public class ScaleOptions extends ControlOptions  {
 
-	public ScaleControlOptions() {
+	public ScaleOptions() {
 		 super();
 	}
 

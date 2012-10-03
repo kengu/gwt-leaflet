@@ -1,7 +1,6 @@
 package org.gwt.leaflet.client.layers.others;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
-import org.gwt.leaflet.client.options.GeoJsonOptions;
 
 
 /**
@@ -19,7 +18,7 @@ public class GeoJSONImpl  {
 	 * @param options
 	 * @return
 	 */
-	public static native JSObject create(String data, GeoJsonOptions options)/*-{	
+	public static native JSObject create(String data, GeoJSONOptions options)/*-{	
 	    var json = JSON.parse(data);
 		return new $wnd.L.geoJson(json,
 			{

@@ -3,7 +3,6 @@ package org.gwt.leaflet.client.layers.others;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.layers.vector.Path;
 import org.gwt.leaflet.client.map.Map;
-import org.gwt.leaflet.client.options.GeoJsonOptions;
 
 /**
  * Represents a GeoJSON layer. Allows you to parse GeoJSON data and 
@@ -21,11 +20,11 @@ public class GeoJSON extends FeatureGroup {
 		super(element);
 	} 
 
-	public GeoJSON(String data, GeoJsonOptions options) {
+	public GeoJSON(String data, GeoJSONOptions options) {
 		this (GeoJSONImpl.create(data, options));
 	}
 
-	public GeoJSON(String alias, String data, GeoJsonOptions options) {
+	public GeoJSON(String alias, String data, GeoJSONOptions options) {
 		this (GeoJSONImpl.create(data, options));
 		setAlias(alias);
 	}

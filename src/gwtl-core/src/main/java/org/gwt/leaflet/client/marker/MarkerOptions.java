@@ -1,4 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.marker;
+
+import org.gwt.leaflet.client.Options;
 
 
 /**

@@ -1,7 +1,7 @@
 package org.gwt.leaflet.client.example;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.controls.Control;
-import org.gwt.leaflet.client.options.Options;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;

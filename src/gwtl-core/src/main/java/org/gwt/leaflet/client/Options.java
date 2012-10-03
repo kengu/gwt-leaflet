@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client;
 
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.jswraps.JSObjectWrapper;

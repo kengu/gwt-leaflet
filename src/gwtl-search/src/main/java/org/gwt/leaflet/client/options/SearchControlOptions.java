@@ -1,5 +1,6 @@
 package org.gwt.leaflet.client.options;
 
+import org.gwt.leaflet.client.controls.ControlOptions;
 import org.gwt.leaflet.client.layers.ILayer;
 
 

@@ -1,8 +1,8 @@
 package org.gwt.leaflet.client.layers.raster;
 
+import org.gwt.leaflet.client.Options;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.layers.ILayer;
-import org.gwt.leaflet.client.options.Options;
 
 
 /**

@@ -1,6 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.types;
 
-import org.gwt.leaflet.client.types.Point;
+import org.gwt.leaflet.client.Options;
 
 
 /**

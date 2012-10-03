@@ -1,4 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.controls.attribution;
+
+import org.gwt.leaflet.client.controls.ControlOptions;
 
 
 /**
@@ -6,9 +8,9 @@ package org.gwt.leaflet.client.options;
  * @author Lionel Leiva-Marcon
  *
  */
-public class AttributionControlOptions extends ControlOptions  {
+public class AttributionOptions extends ControlOptions  {
 
-	public AttributionControlOptions() {
+	public AttributionOptions() {
 		 super();
 	}
 

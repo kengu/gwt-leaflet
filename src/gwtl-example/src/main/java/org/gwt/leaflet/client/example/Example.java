@@ -14,14 +14,19 @@
  *******************************************************************************/
 package org.gwt.leaflet.client.example;
 
+import org.gwt.leaflet.client.Options;
+import org.gwt.leaflet.client.controls.ControlOptions;
 import org.gwt.leaflet.client.controls.Position;
 import org.gwt.leaflet.client.controls.layers.Layers;
 import org.gwt.leaflet.client.controls.scale.Scale;
+import org.gwt.leaflet.client.controls.scale.ScaleOptions;
 import org.gwt.leaflet.client.controls.search.Search;
 import org.gwt.leaflet.client.controls.zoom.Zoom;
+import org.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.gwt.leaflet.client.crs.epsg.EPSG3395;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.layers.others.GeoJSON;
+import org.gwt.leaflet.client.layers.others.GeoJSONOptions;
 import org.gwt.leaflet.client.layers.others.LayerGroup;
 import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
@@ -29,17 +34,12 @@ import org.gwt.leaflet.client.layers.vector.Circle;
 import org.gwt.leaflet.client.layers.vector.Polyline;
 import org.gwt.leaflet.client.layers.vector.Rectangle;
 import org.gwt.leaflet.client.map.Map;
+import org.gwt.leaflet.client.map.MapOptions;
 import org.gwt.leaflet.client.marker.Marker;
-import org.gwt.leaflet.client.options.ControlOptions;
-import org.gwt.leaflet.client.options.GeoJsonOptions;
-import org.gwt.leaflet.client.options.IconOptions;
-import org.gwt.leaflet.client.options.MapOptions;
-import org.gwt.leaflet.client.options.MarkerOptions;
-import org.gwt.leaflet.client.options.Options;
-import org.gwt.leaflet.client.options.ScaleControlOptions;
+import org.gwt.leaflet.client.marker.MarkerOptions;
 import org.gwt.leaflet.client.options.SearchControlOptions;
-import org.gwt.leaflet.client.options.ZoomControlOptions;
 import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
+import org.gwt.leaflet.client.types.IconOptions;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
 import org.gwt.leaflet.client.types.Point;
@@ -56,7 +56,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 public class Example implements EntryPoint {
 		
 	Map map;
-	GeoJsonOptions choroplethOptions;
+	GeoJSONOptions choroplethOptions;
 	GeoJSON choroplethJson;
 	private InfoControl infoControl;
 	private LegendControl legendControl;
@@ -208,13 +208,13 @@ public class Example implements EntryPoint {
 		
 		// Add Scale Control 
 		GWT.log("Scale Control");
-		ScaleControlOptions scaleOptions = new ScaleControlOptions();
+		ScaleOptions scaleOptions = new ScaleOptions();
 		Scale scale = new Scale(scaleOptions);
 		scale.addTo(map);
 
 		// Add Zoom Control 
 		GWT.log("Zoom Control");
-		ZoomControlOptions zoomOptions = new ZoomControlOptions();
+		ZoomOptions zoomOptions = new ZoomOptions();
 		zoomOptions.setPosition(Position.TOP_RIGHT);
 		Zoom zoom = new Zoom(zoomOptions);
 		zoom.addTo(map);
@@ -320,9 +320,9 @@ public class Example implements EntryPoint {
 			}
 		};
 		
-		GeoJsonOptions coorsOptions         = new GeoJsonOptions(features1);
-		GeoJsonOptions freeBusOptions       = new GeoJsonOptions(features2);
-		GeoJsonOptions bicycleRentalOptions = new GeoJsonOptions(features3);
+		GeoJSONOptions coorsOptions         = new GeoJSONOptions(features1);
+		GeoJSONOptions freeBusOptions       = new GeoJSONOptions(features2);
+		GeoJSONOptions bicycleRentalOptions = new GeoJSONOptions(features3);
 
 		GeoJSON geojson_lightRailStop = new GeoJSON(lightRailStop , freeBusOptions);
 		GeoJSON geojson_bicycleRental = new GeoJSON(bicycleRental , bicycleRentalOptions);
@@ -424,7 +424,7 @@ public class Example implements EntryPoint {
 				return true;
 			}
 		};
-		choroplethOptions = new GeoJsonOptions(choroplethFeatures);
+		choroplethOptions = new GeoJSONOptions(choroplethFeatures);
 		choroplethJson = new GeoJSON(states,choroplethOptions);
 		choroplethJson.addTo(map);
 		choroplethJson.setAlias("choroplethJson");

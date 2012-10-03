@@ -1,4 +1,6 @@
-package org.gwt.leaflet.client.options;
+package org.gwt.leaflet.client.controls.zoom;
+
+import org.gwt.leaflet.client.controls.ControlOptions;
 
 
 /**
@@ -6,9 +8,9 @@ package org.gwt.leaflet.client.options;
  * @author Lionel Leiva-Marcon
  *
  */
-public class ZoomControlOptions extends ControlOptions  {
+public class ZoomOptions extends ControlOptions  {
 
-	public ZoomControlOptions() {
+	public ZoomOptions() {
 		 super();
 	}
 
