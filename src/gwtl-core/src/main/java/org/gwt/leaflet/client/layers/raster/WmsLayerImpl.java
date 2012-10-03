@@ -10,7 +10,7 @@ import org.gwt.leaflet.client.jswraps.JSObject;
 public class WmsLayerImpl  {
 
 	public static native JSObject create(String url, JSObject options)/*-{				
-		return new $wnd.L.tileLayer(url, options);
+		return new $wnd.L.tileLayer.wms(url, options);
 	}-*/;	
 	
 	public static native JSObject setLayers(JSObject self, String layers) /*-{	
@@ -39,14 +39,8 @@ public class WmsLayerImpl  {
 	}-*/;	
 	
 	public static native JSObject setOptions(JSObject self, JSObject options) /*-{	
-		// Set options
-		if(options.layers != undefined) self.layers = options.layers;
-		if(options.styles != undefined) self.styles = options.styles;
-		if(options.format != undefined) self.format = options.format;
-		if(options.transparent != undefined) self.layers = options.transparent;
-		if(options.version != undefined) self.layers = options.version;
-		
-		// Finished
+		self.options = L.Util.extend({}, self.options, options);
+		console(self);
 		return self;
 	}-*/;	
 }

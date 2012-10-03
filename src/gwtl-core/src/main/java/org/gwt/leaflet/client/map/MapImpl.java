@@ -9,28 +9,29 @@ import org.gwt.leaflet.client.jswraps.JSObject;
 class MapImpl {
  
 	public static native JSObject create(String name, JSObject options) /*-{
-	// Initialize maps array?
-	if($wnd.gwtl==undefined) {
-	$wnd.gwtl = [];
-	$wnd.gwtl.maps = [];
-	}
-
-	// 'name' is also by third-party javascript, rename to prevent mangling.
-	var _name = name;
-
-	// Initialize the map on the "name" div with a given center and zoom
-	var map = $wnd.L.map(_name, options);	
-		
-	// Set gwt attributes
-	map.gwt = [];
-	map.gwt.name = _name;
-
-	// Associate map instance with given name
-	$wnd.gwtl.maps[_name] = map;
 	
-	// Finished
-	return map; 
-}-*/;
+		// Initialize maps array?
+		if($wnd.gwtl==undefined) {
+			$wnd.gwtl = [];
+			$wnd.gwtl.maps = [];
+		}
+	
+		// 'name' is also by third-party javascript, rename to prevent mangling.
+		var _name = name;
+	
+		// Initialize the map on the "name" div with a given center and zoom
+		var map = $wnd.L.map(_name, options);	
+			
+		// Set gwt attributes
+		map.gwt = [];
+		map.gwt.name = _name;
+	
+		// Associate map instance with given name
+		$wnd.gwtl.maps[_name] = map;
+		
+		// Finished
+		return map; 
+	}-*/;
 	
 
 	public static native JSObject setView(JSObject self,JSObject center, double zoom, boolean reset) /*-{		

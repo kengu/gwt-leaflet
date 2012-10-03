@@ -48,7 +48,7 @@ public class CRS extends ICRS {
 	 * CRS overlay type constructor.
 	 */
 	protected CRS(String code){
-		super(CRSImpl.create(code));			
+		super(CRSImpl.create(code));
 	}
 	
 	@Override

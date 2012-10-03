@@ -24,6 +24,7 @@ import org.gwt.leaflet.client.controls.search.Search;
 import org.gwt.leaflet.client.controls.zoom.Zoom;
 import org.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.gwt.leaflet.client.crs.epsg.EPSG3395;
+import org.gwt.leaflet.client.crs.epsg.EPSG3857;
 import org.gwt.leaflet.client.jswraps.JSObject;
 import org.gwt.leaflet.client.layers.others.GeoJSON;
 import org.gwt.leaflet.client.layers.others.GeoJSONOptions;
@@ -63,6 +64,11 @@ public class Example implements EntryPoint {
 
 	public void onModuleLoad() {
 	
+		// Required version: origin/master
+//		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
+//		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
+		EPSG3857 vCRS_EPSG3857 = new EPSG3857();
+		
 		// Fit MapWidget to device screen
 		RootPanel rootPanel = RootPanel.get();
 		rootPanel.setStyleName("gwt-Body");
@@ -75,6 +81,7 @@ public class Example implements EntryPoint {
 		MapOptions loptions = new MapOptions();
 		loptions.setCenter(new LatLng(0, 0));
 		loptions.setZoom(13);
+		loptions.setProperty("crs", vCRS_EPSG3857);
 
 	 	map = new Map("map", loptions);
 	 	
@@ -93,16 +100,11 @@ public class Example implements EntryPoint {
 		
 		// Create mutable WmsLayer options
 		Options wmsOptions = new Options();	
-		wmsOptions.setProperty("layers", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
+		wmsOptions.setProperty(WmsLayer.LAYERS, "osm");
 		wmsOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 
-		// Required version: origin/master
-		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
-//		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
-//		EPSG3857 vCRS_EPSG3857 = new EPSG3857();
-		
 		//Simple   vCRS_Simple   = new Simple(); 
-		wmsOptions.setProperty("crs", vCRS_EPSG3395);
+		wmsOptions.setProperty("crs", vCRS_EPSG3857);
 	
 		// Create Leaflet WMSLayer instance
 		WmsLayer wms = new WmsLayer(url, wmsOptions);
