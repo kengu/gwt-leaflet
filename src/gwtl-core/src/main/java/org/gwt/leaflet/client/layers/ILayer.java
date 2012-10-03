@@ -2,8 +2,8 @@
 package org.gwt.leaflet.client.layers;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.js.JSObject;
-import org.gwt.leaflet.client.js.JSObjectWrapper;
+import org.gwt.leaflet.client.jsobject.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObjectWrapper;
 
 /**
  * Prototype interface for all layers

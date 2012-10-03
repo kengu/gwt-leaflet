@@ -24,7 +24,7 @@ import org.gwt.leaflet.client.controls.search.Search;
 import org.gwt.leaflet.client.controls.zoom.Zoom;
 import org.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.gwt.leaflet.client.crs.epsg.EPSG3857;
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 import org.gwt.leaflet.client.layers.others.GeoJSON;
 import org.gwt.leaflet.client.layers.others.GeoJSONOptions;
 import org.gwt.leaflet.client.layers.others.LayerGroup;

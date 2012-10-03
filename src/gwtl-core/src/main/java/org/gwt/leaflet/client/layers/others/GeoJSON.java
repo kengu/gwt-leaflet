@@ -1,7 +1,7 @@
 package org.gwt.leaflet.client.layers.others;
 
 import org.gwt.leaflet.client.Options;
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.layers.vector.Path;
 import org.gwt.leaflet.client.map.Map;

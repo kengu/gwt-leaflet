@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.controls.attribution;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * <p>Leaflet layer switcher control implementation</p>

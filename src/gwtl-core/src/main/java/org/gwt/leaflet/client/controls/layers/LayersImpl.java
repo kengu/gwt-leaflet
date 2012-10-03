@@ -23,7 +23,7 @@ package org.gwt.leaflet.client.controls.layers;
 
 import org.gwt.leaflet.client.controls.Control;
 import org.gwt.leaflet.client.controls.ControlImpl;
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 import org.gwt.leaflet.client.layers.ILayer;
 import org.gwt.leaflet.client.map.Map;
 

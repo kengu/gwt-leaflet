@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.options.features;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * GeoJsonFeatures

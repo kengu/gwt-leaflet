@@ -1,7 +1,7 @@
 package org.gwt.leaflet.client.types;
 
-import org.gwt.leaflet.client.js.JSObject;
-import org.gwt.leaflet.client.js.JSObjectWrapper;
+import org.gwt.leaflet.client.jsobject.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObjectWrapper;
 
 /**
  * Represents a point with x and y coordinates in pixels.

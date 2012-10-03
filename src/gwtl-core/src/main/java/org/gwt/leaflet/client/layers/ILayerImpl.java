@@ -1,7 +1,7 @@
 
 package org.gwt.leaflet.client.layers;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * Implementation of {@link ILayer}

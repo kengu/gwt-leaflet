@@ -1,7 +1,7 @@
 package org.gwt.leaflet.client.controls.search;
 
 import org.gwt.leaflet.client.controls.ControlImpl;
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * {@link ControlImpl} implementation.

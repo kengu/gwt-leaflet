@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 
 /**
@@ -24,19 +24,19 @@ public class GeoJSONImpl extends FeatureGroupImpl {
 		return new $wnd.L.geoJson(json,
 		{
 			pointToLayer : function(feature,latlng) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::pointToLayer(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, latlng);
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::pointToLayer(Lorg/gwt/leaflet/client/jsobject/JSObject;Lorg/gwt/leaflet/client/jsobject/JSObject;)(feature, latlng);
 			},
 			
 			onEachFeature : function(feature,layer) {
-	      		return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::onEachFeature(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, layer);
+	      		return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::onEachFeature(Lorg/gwt/leaflet/client/jsobject/JSObject;Lorg/gwt/leaflet/client/jsobject/JSObject;)(feature, layer);
 			},
 			
 			style : function(feature) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::style(Lorg/gwt/leaflet/client/js/JSObject;)(feature);									
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::style(Lorg/gwt/leaflet/client/jsobject/JSObject;)(feature);									
 			},
 			
 			filter: function(feature,layer) {
-				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::filter(Lorg/gwt/leaflet/client/js/JSObject;Lorg/gwt/leaflet/client/js/JSObject;)(feature, layer);
+				return options.@org.gwt.leaflet.client.layers.others.GeoJSONOptions::filter(Lorg/gwt/leaflet/client/jsobject/JSObject;Lorg/gwt/leaflet/client/jsobject/JSObject;)(feature, layer);
 			}
 		});
 		

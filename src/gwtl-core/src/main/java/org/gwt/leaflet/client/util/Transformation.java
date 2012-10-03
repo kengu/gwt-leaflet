@@ -2,8 +2,8 @@ package org.gwt.leaflet.client.util;
 
 import java.util.Map;
 
-import org.gwt.leaflet.client.js.JSObject;
-import org.gwt.leaflet.client.js.JSObjectWrapper;
+import org.gwt.leaflet.client.jsobject.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObjectWrapper;
 import org.gwt.leaflet.client.types.Point;
 
 /**

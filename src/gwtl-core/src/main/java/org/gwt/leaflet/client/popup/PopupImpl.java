@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.popup;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * {@link Popup} implementation.

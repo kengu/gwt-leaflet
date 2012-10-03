@@ -1,6 +1,6 @@
 package org.gwt.leaflet.client.layers.others;
 
-import org.gwt.leaflet.client.js.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * FeatureGroupImpl implementation class

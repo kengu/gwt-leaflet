@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client.js;
+package org.gwt.leaflet.client.jsobject;
 
 
 import com.google.gwt.user.client.Element;

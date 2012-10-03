@@ -22,8 +22,8 @@
 package org.gwt.leaflet.client.controls;
 
 
-import org.gwt.leaflet.client.js.JSObject;
-import org.gwt.leaflet.client.js.JSObjectWrapper;
+import org.gwt.leaflet.client.jsobject.JSObject;
+import org.gwt.leaflet.client.jsobject.JSObjectWrapper;
 import org.gwt.leaflet.client.map.Map;
 
 import com.google.gwt.core.client.JavaScriptObject;
