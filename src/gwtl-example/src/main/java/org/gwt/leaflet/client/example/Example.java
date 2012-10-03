@@ -71,12 +71,6 @@ public class Example implements EntryPoint {
 		mapWidget.setHeight("");
 		mapWidget.setStyleName("gwt-Map");
 
-		// Create mutable WmsLayer options
-//		Options options = Map.DEFAULT.clone(false);
-	//	ICRS crs = L.crs().create(CRS.EPSG3857);
-	//	options.put("crs", crs);
-	//	options.put("zoomControl", false);
-		
 		// Create Map instance
 		MapOptions loptions = new MapOptions();
 		loptions.setCenter(new LatLng(0, 0));
