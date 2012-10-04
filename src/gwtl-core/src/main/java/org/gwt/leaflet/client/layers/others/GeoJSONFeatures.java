@@ -1,4 +1,4 @@
-package org.gwt.leaflet.client.options.features;
+package org.gwt.leaflet.client.layers.others;
 
 import org.gwt.leaflet.client.jsobject.JSObject;
 
@@ -15,9 +15,9 @@ import org.gwt.leaflet.client.jsobject.JSObject;
  * @author Lionel Leiva-Marcon
  * 
  */
-public abstract class GeoJsonFeatures{
+public abstract class GeoJSONFeatures {
 
-	public GeoJsonFeatures() {
+	public GeoJSONFeatures() {
 		super();
 	}
 	/**

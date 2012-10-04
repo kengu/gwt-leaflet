@@ -27,6 +27,7 @@ import org.gwt.leaflet.client.crs.epsg.EPSG3857;
 import org.gwt.leaflet.client.jsobject.JSObject;
 import org.gwt.leaflet.client.layers.others.GeoJSON;
 import org.gwt.leaflet.client.layers.others.GeoJSONOptions;
+import org.gwt.leaflet.client.layers.others.GeoJSONFeatures;
 import org.gwt.leaflet.client.layers.others.LayerGroup;
 import org.gwt.leaflet.client.layers.raster.TileLayer;
 import org.gwt.leaflet.client.layers.raster.WmsLayer;
@@ -38,7 +39,6 @@ import org.gwt.leaflet.client.map.MapOptions;
 import org.gwt.leaflet.client.marker.Marker;
 import org.gwt.leaflet.client.marker.MarkerOptions;
 import org.gwt.leaflet.client.options.SearchControlOptions;
-import org.gwt.leaflet.client.options.features.GeoJsonFeatures;
 import org.gwt.leaflet.client.types.IconOptions;
 import org.gwt.leaflet.client.types.LatLng;
 import org.gwt.leaflet.client.types.LatLngBounds;
@@ -242,7 +242,7 @@ public class Example implements EntryPoint {
 		String campus        = GeoJsonSampleFactory.getInstance().createCampus();
 		String coorsField    = GeoJsonSampleFactory.getInstance().createCoorsField();
 				
-		GeoJsonFeatures features1 = new GeoJsonFeatures() {
+		GeoJSONFeatures features1 = new GeoJSONFeatures() {
 			
 			@Override
 			public JSObject style(JSObject self) {
@@ -266,7 +266,7 @@ public class Example implements EntryPoint {
 			}
 		};
 		
-		GeoJsonFeatures features2 = new GeoJsonFeatures() {
+		GeoJSONFeatures features2 = new GeoJSONFeatures() {
 			
 			@Override
 			public JSObject style(JSObject self) {
@@ -291,7 +291,7 @@ public class Example implements EntryPoint {
 		};
 
 
-		GeoJsonFeatures features3 = new GeoJsonFeatures() {
+		GeoJSONFeatures features3 = new GeoJSONFeatures() {
 			
 			@Override
 			public JSObject style(JSObject feature) {
@@ -397,7 +397,7 @@ public class Example implements EntryPoint {
 		infoControl.addTo(map);
 				
 		String states = GeoJsonSampleFactory.getInstance().createUSStates();
-		GeoJsonFeatures choroplethFeatures = new GeoJsonFeatures() {
+		GeoJSONFeatures choroplethFeatures = new GeoJSONFeatures() {
 			 
 			@Override
 			public JSObject style(JSObject feature) {
