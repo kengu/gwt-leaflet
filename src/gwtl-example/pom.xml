@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.gwt.leaflet</groupId>
+		<groupId>org.discotools.gwt.leaflet</groupId>
 		<artifactId>gwtl</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
@@ -38,19 +38,19 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- org.gwt.leaflet dependencies -->
+		<!-- org.discotools.gwt.leaflet dependencies -->
 		<dependency>
-			<groupId>org.gwt.leaflet</groupId>
+			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-proj4</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gwt.leaflet</groupId>
+			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-search</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>org.gwt.leaflet</groupId>
+			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-widget</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
@@ -78,7 +78,7 @@
 				</executions>
 				<configuration>
 					<!-- Modules -->
-					<module>org.gwt.leaflet.Example</module>
+					<module>org.discotools.gwt.leaflet.Example</module>
 					<!-- URL that should be automatically opened in the GWT shell (gwt:run). -->
 					<runTarget>example.html</runTarget>
 					<!-- Hosted mode settings -->

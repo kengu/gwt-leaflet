@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>org.gwt.leaflet</groupId>
+		<groupId>org.discotools.gwt.leaflet</groupId>
 		<artifactId>gwtl</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
@@ -28,7 +28,7 @@
 		
 		<!-- GWT Leaflet dependencies -->
 		<dependency>
-			<groupId>org.gwt.leaflet</groupId>
+			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-core</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>

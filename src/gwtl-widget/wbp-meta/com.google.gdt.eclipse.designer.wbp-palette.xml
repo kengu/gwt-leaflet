@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <palette>
-	<category id="org.gwt.leaflet" name="Leaflet" description="GWT Leaflet Widgets" open="true">
-		<component class="org.gwt.leaflet.widget.client.MapWidget" name="MapWidget" description="Add Leaflet Map Widget to Composite" />
+	<category id="org.discotools.gwt.leaflet" name="Leaflet" description="GWT Leaflet Widgets" open="true">
+		<component class="org.discotools.gwt.leaflet.widget.client.MapWidget" name="MapWidget" description="Add Leaflet Map Widget to Composite" />
 	</category>
 </palette>
