@@ -18,9 +18,19 @@ public class LayerGroupImpl extends ILayerImpl {
 	public static native  void addLayer(JSObject self, JSObject layer) /*-{
 		self.addLayer(layer);
 	}-*/;
+	
+	public static native  void removeLayer(JSObject self, JSObject layer) /*-{
+		self.removeLayer(layer);
+	}-*/;
+	
+	public static native  void clearLayers(JSObject self) /*-{
+		self.clearLayers();
+	}-*/;
+	
 
 	public static native  void addTo(JSObject self, JSObject map) /*-{
 		self.addTo(map);
 	}-*/;
+	
 
 }
