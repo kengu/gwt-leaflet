@@ -44,6 +44,27 @@ public class LayerGroup extends ILayer {
 	}
 
 	/**
+	 * Removes a given layer from the group.
+	 * @param layer to remove
+	 * @return LayerGroup
+	 * 
+	 */
+	public LayerGroup removeLayer(ILayer layer) {
+		LayerGroupImpl.removeLayer(getJSObject(), layer.getJSObject());
+		return this;
+	}
+
+	/**
+	 * Removes all the layers from the group.
+	 * @return LayerGroup
+	 * 
+	 */
+	public LayerGroup clearLayers() {
+		LayerGroupImpl.clearLayers(getJSObject());
+		return this;
+	}
+
+	/**
 	 * Adds the group of layers to the map.
 	 * @param map
 	 * @return LayerGroup
