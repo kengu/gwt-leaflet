@@ -149,7 +149,6 @@
 						<configuration>
 		                    <serverId>appengine.google.com</serverId>
 		                    <sdkDir>${gae.home}</sdkDir>
-							<!-- <appDir>src/main/webapp</appDir> -->
 		                </configuration>
 						<executions>
 							<execution>
