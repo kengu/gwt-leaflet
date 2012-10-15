@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?p2f version='1.0.0'?>
+<p2f version='1.0.0'>
+  <ius size='18'>
+    <iu id='org.eclipse.egit.feature.group' name='Eclipse EGit' version='2.1.0.201209190230-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates-2.1'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.jgit.feature.group' name='Eclipse JGit' version='2.1.0.201209190230-r'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/egit/updates-2.1'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.appengine.eclipse.sdkbundle.feature.feature.group' name='Google App Engine Java SDK 1.7.2.1' version='1.7.2.1'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gdt.eclipse.suite.e37.feature.feature.group' name='Google Plugin for Eclipse 3.7' version='3.1.0.v201208080120-rel-r37'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gwt.eclipse.sdkbundle.e37.feature.feature.group' name='Google Web Toolkit SDK 2.4.0' version='2.4.0.v201208080120-rel-r37'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gdt.eclipse.designer.feature.feature.group' name='GWT Designer' version='2.6.0.r37x201206111253'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gdt.eclipse.designer.hosted.feature.feature.group' name='GWT Designer Core' version='2.6.0.r37x201206111222'>
+      <repositories size='2'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gdt.eclipse.designer.editor.feature.feature.group' name='GWT Designer Editor' version='2.6.0.r37x201206111227'>
+      <repositories size='2'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='com.google.gdt.eclipse.designer.gpe.feature.feature.group' name='GWT Designer GPE' version='2.6.0.r37x201206111341'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.m2e.feature.feature.group' name='m2e - Maven Integration for Eclipse' version='1.2.0.20120903-1050'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/m2e-wtp/releases/'/>
+      </repositories>
+    </iu>
+    <iu id='org.sonatype.m2e.mavenarchiver.feature.feature.group' name='m2e connector for mavenarchiver pom properties' version='0.15.0.201207090125-signed-201209140800'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/m2e-wtp/releases/'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.m2e.wtp.feature.feature.group' name='m2e-wtp - Maven Integration for WTP (Incubation)' version='0.16.0.20120914-0945'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/m2e-wtp/releases/'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.core.feature.feature.group' name='WindowBuilder Core' version='1.5.0.r37x201206111201'>
+      <repositories size='2'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.doc.user.feature.feature.group' name='WindowBuilder Core Documentation' version='1.5.0.r37x201206111211'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.core.ui.feature.feature.group' name='WindowBuilder Core UI' version='1.5.0.r37x201206111213'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.css.feature.feature.group' name='WindowBuilder CSS Support' version='1.5.0.r37x201206111208'>
+      <repositories size='2'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.layout.group.feature.feature.group' name='WindowBuilder GroupLayout Support' version='1.5.0.r37x201206111249'>
+      <repositories size='1'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.wb.core.xml.feature.feature.group' name='WindowBuilder XML Core (requires Eclipse WTP/WST)' version='1.5.0.r37x201206111216'>
+      <repositories size='2'>
+        <repository location='http://dl.google.com/eclipse/inst/d2wbpro/latest/3.7'/>
+        <repository location='http://dl.google.com/eclipse/plugin/3.7'/>
+      </repositories>
+    </iu>
+  </ius>
+</p2f>
