@@ -69,34 +69,41 @@ Goto [gwtl-example.appspot.com](http://gwtl-example.appspot.com/example.html) to
 Development
 ===========
 
-This Git project is broken down into a Maven 
+This Git project structured as a Maven 
 [multi-gwt-module project setup](http://mojo.codehaus.org/gwt-maven-plugin/user-guide/multiproject.html), 
 (see [working with maven](http://code.google.com/p/google-web-toolkit/wiki/WorkingWithMaven))
 and is developed using 
 
 + [Maven (3.0.4)](http://maven.apache.org/download.html)
 + [Maven GWT Plugin](http://mojo.codehaus.org/gwt-maven-plugin) - automatically downloaded by maven
-+ [Eclipse Inidigo SR2 (3.7.2)](http://www.eclipse.org/downloads/packages/release/indigo/sr2) 
++ [Eclipse IDE for Java Developers (3.7.2)](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/indigosr2) 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
 + [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro)
 + [EGit](http://www.eclipse.org/egit/)
 + [Maven Integration for Eclipse 1.2](http://marketplace.eclipse.org/content/maven-integration-eclipse)
 + [Maven Integration for Eclipse WTP (Incubation) 0.16.0](http://marketplace.eclipse.org/node/441371)
 
-You should download and install these before you continue (follow the links above). 
+Ensure that these are all installed and ready before you continue. To install from scratch, just
+
+1. [Download and install Eclipse](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/indigosr2)
+2. <a href="ide/required-plugins-eclipse-3.7.2.p2f">Download P2 software file import file</a> and start Eclipse
+3. Open File -> Import -> "Install Software Items from File" wizard
+4. Enter path to p2f file downloaded in step 2
+5. Check "Contact all update sites during install to find required software"
+6. Press enter and follow the instructions.
 
 **When you are all done, just** (linux)
 
-1. fork this repo on github
-2. clone the fork locally - ```git clone https://github.com/<username>/gwt-leaflet.git```
-3. change directory to -  ```cd gwt-leaflet/src``` 
-4. and run the command - ```mvn package```
+7. fork this repo on github
+8. clone the fork locally - ```git clone https://github.com/<username>/gwt-leaflet.git```
+9. change directory to -  ```cd gwt-leaflet/src``` 
+10. and run the command - ```mvn package```
 
 which should automatically download some stuff for you and prepare the projects for import into Eclipse.
 
-5. Switch to Eclipse and select File -> Import...
-6. Select Maven -> Existing Maven Projects
-7. Select Browse ... -> gwt-leaflet/src
-8. Finish
+11. Switch to Eclipse and select File -> Import...
+12. Select Maven -> Existing Maven Projects
+13. Select Browse ... -> gwt-leaflet/src
+14. Finish
 
 which should import all projects into current workspace.
