@@ -80,7 +80,8 @@ and is developed using
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
 + [Window Builder Pro](https://developers.google.com/java-dev-tools/download-wbpro)
 + [EGit](http://www.eclipse.org/egit/)
-+ [m2eclipse-wtp](http://download.jboss.org/jbosstools/updates/m2eclipse-wtp)
++ [Maven Integration for Eclipse 1.2](http://marketplace.eclipse.org/content/maven-integration-eclipse)
++ [Maven Integration for Eclipse WTP (Incubation) 0.16.0](http://marketplace.eclipse.org/node/441371)
 
 You should download and install these before you continue (follow the links above). 
 
