@@ -1,6 +1,7 @@
 package org.discotools.gwt.leaflet.client.marker;
 
 import org.discotools.gwt.leaflet.client.Options;
+import org.discotools.gwt.leaflet.client.events.handler.EventProvider;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.layers.ILayer;
 import org.discotools.gwt.leaflet.client.map.Map;
@@ -18,7 +19,7 @@ import org.discotools.gwt.leaflet.client.types.LatLng;
  * @see <a href="http://leaflet.cloudmade.com/reference.html#marker">L.Marker (Leaflet API)</a>
  *
  */
-public class Marker extends ILayer {
+public class Marker extends ILayer implements EventProvider {
 
 	protected Marker(JSObject element) {
 		super(element);

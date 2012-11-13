@@ -1,5 +1,6 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
+import org.discotools.gwt.leaflet.client.events.handler.EventProvider;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.layers.ILayer;
 import org.discotools.gwt.leaflet.client.map.Map;
@@ -16,7 +17,7 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  * @author Lionel Leiva-Marcon
  *
  */
-public abstract class Path extends ILayer {
+public abstract class Path extends ILayer implements EventProvider {
 
 	protected Path(JSObject jsObject) {
 		super(jsObject);

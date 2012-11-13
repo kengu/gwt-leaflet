@@ -25,6 +25,11 @@ import org.discotools.gwt.leaflet.client.controls.search.SearchOptions;
 import org.discotools.gwt.leaflet.client.controls.zoom.Zoom;
 import org.discotools.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.discotools.gwt.leaflet.client.crs.epsg.EPSG3857;
+import org.discotools.gwt.leaflet.client.events.MouseEvent;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandlerManager;
+import org.discotools.gwt.leaflet.client.events.handler.EventRegisteredFunction;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSON;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONFeatures;
@@ -34,6 +39,7 @@ import org.discotools.gwt.leaflet.client.layers.raster.TileLayer;
 import org.discotools.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.discotools.gwt.leaflet.client.layers.vector.Circle;
 import org.discotools.gwt.leaflet.client.layers.vector.PathOptions;
+import org.discotools.gwt.leaflet.client.layers.vector.Polygon;
 import org.discotools.gwt.leaflet.client.layers.vector.Polyline;
 import org.discotools.gwt.leaflet.client.layers.vector.PolylineOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Rectangle;
@@ -202,6 +208,33 @@ public class Example implements EntryPoint {
 		Rectangle rec = new Rectangle(bounds, new PathOptions());
 		rec.addTo(map);
 		//map.fitBounds(bounds);
+
+	       // Rectangle
+        GWT.log("Polygon editing");
+        final LatLng rec3 = new LatLng(59.910, 10.715);
+        final LatLng rec4 = new LatLng(59.915, 10.715);
+        final LatLng[] recs2 = new LatLng[] { rec1, rec2, rec3, rec4 };
+        final PolylineOptions pathOptions = new PolylineOptions();
+        pathOptions.setEditable(true);
+        pathOptions.setColor("yellow");
+        final Polygon pol = new Polygon(recs2, pathOptions);
+        pol.addTo(map);
+
+        //whne click on map change editing
+        final EventRegisteredFunction clickeRegistered = EventHandlerManager.addEventHandler(map, Events.click, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                GWT.log("Clicked on map:" + event.getLatLng());
+                map.fitBounds(pol.getBounds());
+                if (pol.editing().enabled()) {
+                    pol.editing().disable();
+                } else {
+                    pol.editing().enable();
+                }
+                EventHandlerManager.clearEventHandler(map, Events.click);
+            }
+        });
 		
 		// Add Scale Control 
 		GWT.log("Scale Control");
@@ -291,6 +324,7 @@ public class Example implements EntryPoint {
 				return myFilter(self, layer);
 			}
 		};
+
 
 
 		GeoJSONFeatures features3 = new GeoJSONFeatures() {

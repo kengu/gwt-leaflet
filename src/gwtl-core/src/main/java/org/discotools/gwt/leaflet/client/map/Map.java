@@ -1,7 +1,7 @@
 package org.discotools.gwt.leaflet.client.map;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.IControl;
+import org.discotools.gwt.leaflet.client.events.handler.EventProvider;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
 import org.discotools.gwt.leaflet.client.layers.ILayer;
@@ -20,13 +20,13 @@ import org.discotools.gwt.leaflet.client.types.Point;
  * 
  * @version 0.1 : Add of JSObjectWrapper Inheritance (inspired from GWT-OpenLayer) 
  */
-public class Map extends JSObjectWrapper {
+public class Map extends JSObjectWrapper implements EventProvider {
 
     protected Map(JSObject e) {
         super(e);
     }
 
-    public Map(String name, Options options) {
+    public Map(String name, MapOptions options) {
         this(MapImpl.create(name, options.getJSObject()));
     } 
     
