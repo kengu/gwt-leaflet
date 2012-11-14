@@ -9,6 +9,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
  * 
  * @author kengu
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  */
 public class PointImpl {
@@ -45,12 +46,12 @@ public class PointImpl {
 		return self.substract(other);
 	}-*/;
 
-	public static native JSObject multiply(JSObject self,JSObject other) /*-{
+	public static native JSObject multiply(JSObject self,double other) /*-{
 		return self.multiply(other);
 	}-*/;
 
-	public static native JSObject divide(JSObject self,JSObject other, boolean round) /*-{
-		return self.divide(other);
+	public static native JSObject divide(JSObject self,double other, boolean round) /*-{
+		return self.divide(other,round);
 	}-*/;
 
 	public static native JSObject round(JSObject self) /*-{

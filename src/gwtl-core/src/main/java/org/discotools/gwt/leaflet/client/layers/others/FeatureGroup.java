@@ -70,7 +70,7 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link LatLngBounds}
 	 */
 	public LatLngBounds getBounds() {
-		return new LatLngBounds(FeatureGroupImpl.getBounds(getJSObject()));	
+		return FeatureGroupImpl.getBounds(getJSObject());	
 	}
 	
 	/**

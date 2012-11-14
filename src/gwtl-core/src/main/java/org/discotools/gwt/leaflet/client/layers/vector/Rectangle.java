@@ -1,7 +1,7 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.map.Map;
+import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
 
@@ -11,6 +11,7 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  * Use Map#addLayer to add it to the map.
  * 
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  */
 public class Rectangle extends Polygon {
@@ -22,7 +23,7 @@ public class Rectangle extends Polygon {
 	 * @param latlngs
 	 * @param options
 	 */
-	public Rectangle(LatLngBounds bounds, Options options) {
+	public Rectangle(LatLngBounds bounds, PathOptions options) {
  		super(RectangleImpl.create(bounds.getJSObject(), options.getJSObject()));
 	} 
 
@@ -41,7 +42,7 @@ public class Rectangle extends Polygon {
 	}
 
 	@Override
-	public Rectangle bindPopup(String htmlContent, Options options) {
+	public Rectangle bindPopup(String htmlContent, PopupOptions options) {
 		return (Rectangle)super.bindPopup(htmlContent, options);
 	}
 
@@ -51,7 +52,7 @@ public class Rectangle extends Polygon {
 	}
 
 	@Override
-	public Rectangle setStyle(Options options) {
+	public Rectangle setStyle(PathOptions options) {
 		return (Rectangle)super.setStyle(options);
 	}
 

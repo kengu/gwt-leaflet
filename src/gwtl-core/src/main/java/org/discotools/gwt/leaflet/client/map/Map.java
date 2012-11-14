@@ -1,12 +1,14 @@
 package org.discotools.gwt.leaflet.client.map;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.IControl;
+import org.discotools.gwt.leaflet.client.events.handler.EventProvider;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
 import org.discotools.gwt.leaflet.client.layers.ILayer;
+import org.discotools.gwt.leaflet.client.popup.Popup;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
+import org.discotools.gwt.leaflet.client.types.Point;
 
 /**
  * The central class of the API — it is used to create a map on a page and manipulate it.
@@ -18,13 +20,13 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  * 
  * @version 0.1 : Add of JSObjectWrapper Inheritance (inspired from GWT-OpenLayer) 
  */
-public class Map extends JSObjectWrapper {
+public class Map extends JSObjectWrapper implements EventProvider {
 
     protected Map(JSObject e) {
         super(e);
     }
 
-    public Map(String name, Options options) {
+    public Map(String name, MapOptions options) {
         this(MapImpl.create(name, options.getJSObject()));
     } 
     
@@ -68,4 +70,80 @@ public class Map extends JSObjectWrapper {
     	return this;
 	}
 
+    public Map removeLayer(ILayer layer) {
+        MapImpl.removeLayer(getJSObject(), layer.getJSObject());
+        return this;
+    } 
+    
+    /**
+     * Returns the map layer point that corresponds to the given geographical coordinates (useful for placing overlays on the map).
+     * @param latLng
+     * @return
+     */
+    public Point latLngToLayerPoint(LatLng latLng){
+        return MapImpl.latLngToLayerPoint(getJSObject(),latLng.getJSObject());
+    }
+
+    /**
+     * Returns the geographical coordinates of a given map layer point.
+     * @param point
+     * @return
+     */
+    public LatLng layerPointToLatLng(Point point){
+        return new LatLng(MapImpl.layerPointToLatLng(getJSObject(),point));
+    }
+
+    /**
+     * 
+     * @return Returns the LatLngBounds of the current map view.
+     */
+    public LatLngBounds getBounds() {
+        return new LatLngBounds(MapImpl.getBounds(getJSObject()));
+    }
+
+    /**
+     * Pans the map to a given center. Makes an animated pan if new center is not more than one screen away from the current one.
+     * @param latLng
+     */
+    public Map panTo(LatLng latLng) {
+        MapImpl.panTo(getJSObject(),latLng.getJSObject());
+        return this;
+    }
+
+    /**
+     * Opens the specified popup while closing the previously opened (to make sure only one is opened at one time for usability).
+     * @param popup
+     * @return this
+     */
+    public Map openPopup(Popup popup) {
+        MapImpl.openPopup(getJSObject(),popup.getJSObject());
+        return this;
+    }
+    
+    /**
+     * Closes the popup opened with {@link #openPopup(Popup)}
+     * @return this
+     */
+    public Map closePopup() {
+        MapImpl.closePopup(getJSObject());
+        return this;
+    }
+
+    /**
+     * 
+     * @return Returns the current zoom of the map view.
+     */
+    public int getZoom() {
+        return MapImpl.getZoom(getJSObject());
+    }
+
+    /**
+     * Checks if the map container size changed and updates the map if so — call it after you've changed the map size dynamically. If animate is true, map animates the update
+     * @param animate
+     * @return
+     */
+    public Map invalidateSize(boolean animate){
+        MapImpl.invalidateSize(getJSObject(),animate);
+        return this;
+    }
 }

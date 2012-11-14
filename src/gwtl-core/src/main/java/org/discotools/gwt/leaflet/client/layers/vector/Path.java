@@ -1,9 +1,10 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
-import org.discotools.gwt.leaflet.client.Options;
+import org.discotools.gwt.leaflet.client.events.handler.EventProvider;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
-import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
+import org.discotools.gwt.leaflet.client.layers.ILayer;
 import org.discotools.gwt.leaflet.client.map.Map;
+import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
 
@@ -16,7 +17,7 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  * @author Lionel Leiva-Marcon
  *
  */
-public abstract class Path extends JSObjectWrapper{
+public abstract class Path extends ILayer implements EventProvider {
 
 	protected Path(JSObject jsObject) {
 		super(jsObject);
@@ -33,7 +34,7 @@ public abstract class Path extends JSObjectWrapper{
 	/**
 	 * Binds a popup with a particular HTML content to a click on this path.
 	 */
-	public  Path bindPopup(String htmlContent, Options options){
+	public  Path bindPopup(String htmlContent, PopupOptions options){
 		PathImpl.bindPopup(getJSObject(), htmlContent, options.getJSObject());
 		return this;
 	}
@@ -49,7 +50,7 @@ public abstract class Path extends JSObjectWrapper{
 	/**
 	 * Changes the appearance of a Path based on the options in the Path options object.
 	 */
-	public Path setStyle(Options options){
+	public Path setStyle(PathOptions options){
 		PathImpl.setStyle(getJSObject(), options.getJSObject());
 		return this;
 	} 		 	

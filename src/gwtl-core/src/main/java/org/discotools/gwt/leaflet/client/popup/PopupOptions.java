@@ -4,7 +4,7 @@ import org.discotools.gwt.leaflet.client.Options;
 
 
 /**
- * MarkerOptions class
+ * PopupOptions class
  * @author Lionel Leiva-Marcon
  *
  */
@@ -14,8 +14,20 @@ public class PopupOptions extends Options  {
 		 super();
 	}
 
-	public void setTitle(String title) {
-		 setProperty("title", title);
+	/**
+	 * 
+	 * @param maxWidth Max width of the popup. Default 350.
+	 */
+	public void setMaxWidth(int maxWidth) {
+		 setProperty("maxWidth", maxWidth);
 	}
 
+    /**
+     * 
+     * @param minWidth Min width of the popup.Default 50.
+     */
+    public void setMinWidth(int minWidth) {
+         setProperty("minWidth", minWidth);
+    }
+	
 }

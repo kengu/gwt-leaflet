@@ -58,17 +58,17 @@ public class CRS extends ICRS {
 
 	@Override
 	Point toPoint(LatLng coords, double zoom) {
-		return CRSImpl.toPoint(coords, zoom);
+		return CRSImpl.toPoint(coords.getJSObject(), zoom);
 	}
 
 	@Override
 	Point project(LatLng coords) {
-		return CRSImpl.project(coords);
+		return CRSImpl.project(coords.getJSObject());
 	}
 
 	@Override
 	LatLng toLatLng(Point point, double zoom) {
-		return CRSImpl.toLatLng(point, zoom);
+		return new LatLng(CRSImpl.toLatLng(point, zoom));
 	}
 
 	@Override

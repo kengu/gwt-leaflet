@@ -1,7 +1,6 @@
 package org.discotools.gwt.leaflet.client.crs;
 
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
-import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.Point;
 
 /**
@@ -49,15 +48,15 @@ public class CRSImpl  {
 	}-*/;
 	 
 	
-	public static native Point toPoint(LatLng coords, double zoom) /*-{
+	public static native Point toPoint(JSObject coords, double zoom) /*-{
 		return this.toPoint(coords,zoom);
 	}-*/;
 	
-	public static native Point project(LatLng coords) /*-{
+	public static native Point project(JSObject coords) /*-{
 		return this.project(coords,zoom);
 	}-*/;
 	
-	public static native LatLng toLatLng(Point point, double zoom) /*-{
+	public static native JSObject toLatLng(Point point, double zoom) /*-{
 		return this.toLatLng(point,zoom);
 	}-*/;
 	

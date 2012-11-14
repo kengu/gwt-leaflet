@@ -1,6 +1,5 @@
 package org.discotools.gwt.leaflet.client.types;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
 
@@ -16,7 +15,8 @@ public class Icon extends JSObjectWrapper{
 	public Icon(JSObject element) {
 		super(element); 
 	}
-	public Icon(Options options) {
+	
+	public Icon(IconOptions options) {
 		this(IconImpl.create(options.getJSObject()));
 	}
 

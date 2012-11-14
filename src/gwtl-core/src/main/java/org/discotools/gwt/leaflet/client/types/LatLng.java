@@ -29,6 +29,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
  *  
  * @author kennethg
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#latlng">L.LatLng (Leaflet API)</a>
  *
@@ -39,9 +40,13 @@ public class LatLng extends JSObjectWrapper {
 		super(element); 
 	}
 	
-	public LatLng(double lon, double lat) {
-		this (LatLngImpl.create(lon, lat));
+	public LatLng(double lat, double lon) {
+		this (LatLngImpl.create(lat, lon));
 	}
+
+    public LatLng(double lat, double lon,boolean noWrap) {
+        this (LatLngImpl.create(lat, lon, noWrap));
+    }
 	
 	public double lng() {
 		return LatLngImpl.lng(getJSObject());
@@ -51,7 +56,30 @@ public class LatLng extends JSObjectWrapper {
 		return LatLngImpl.lat(getJSObject());
 	}
 	
+    /**
+     * Returns the distance (in meters) to the given LatLng calculated using the Haversine formula. See description on <a href="http://en.wikipedia.org/wiki/Haversine_formula">wikipedia</a>
+     * @param otherLatlng
+     * @return
+     */
+    public double distanceTo(LatLng otherLatlng) {
+        return LatLngImpl.distanceTo(getJSObject(),otherLatlng.getJSObject());
+    }
+    
 	public String toString() {
 		return "["+LatLngImpl.lat(getJSObject())+","+LatLngImpl.lng(getJSObject())+"]";
 	}
+
+    @Override
+    public boolean equals(Object obj) {        
+        return getJSObject().equals(getJSObject());
+    }
+	
+    /**
+     * 
+     * @param obj 
+     * @return Returns true if the given LatLng point is at the same position (within a small margin of error).
+     */
+    public boolean equals(LatLng obj) {
+        return LatLngImpl.equals(getJSObject(),obj.getJSObject());
+    }
 }

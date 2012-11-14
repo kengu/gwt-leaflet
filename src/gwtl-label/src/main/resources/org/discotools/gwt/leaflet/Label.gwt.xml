@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<module>
+	
+	<!-- GWT dependencies -->
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.json.JSON" />
+
+	<!-- GWT Leaflet dependencies -->
+	<inherits name="org.discotools.gwt.leaflet.Core"/>
+	
+	<!-- Ensure Leaflet search script and styles are pre-loaded -->
+	<script     src="libs/leaflet-label/f41dabbd6af7b1c156f055d3c6ee974fb683b918/leaflet.label-src.js" />
+	<stylesheet src="libs/leaflet-label/f41dabbd6af7b1c156f055d3c6ee974fb683b918/leaflet.label.css" />
+	
+	<!-- GWT Leaflet source paths -->
+	<source path="client"></source>
+	
+</module>
