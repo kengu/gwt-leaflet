@@ -10,6 +10,9 @@ import org.discotools.gwt.leaflet.client.layers.ILayer;
  */
 public class LayerEvent extends Event {
 
+    protected LayerEvent() {
+        super();
+    }
     /**
      * @return  The layer that was added or removed.
      */

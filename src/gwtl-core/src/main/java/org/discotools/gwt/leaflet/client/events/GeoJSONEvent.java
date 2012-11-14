@@ -10,6 +10,10 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 public class GeoJSONEvent extends LayerEvent {
 
     
+    protected GeoJSONEvent() {
+        super();
+    }
+
     /**
      * @return  GeoJSON properties of the feature.
      */

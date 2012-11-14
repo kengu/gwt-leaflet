@@ -11,6 +11,10 @@ import com.google.gwt.user.client.Element;
 public class TileEvent extends Event {
 
     
+    protected TileEvent() {
+        super();
+    }
+
     /**
      * @return  The source URL of the tile.
      */

@@ -8,6 +8,10 @@ package org.discotools.gwt.leaflet.client.events;
  */
 public class ErrorEvent extends Event {
 
+    protected ErrorEvent() {
+        super();
+    }
+
     /**
      * @return  Error message.
      */

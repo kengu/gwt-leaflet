@@ -11,6 +11,11 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  */
 public class LocationEvent extends Event {
 
+
+    protected LocationEvent() {
+        super();
+    }
+
     /**
      * 
      * @return Detected geographical location of the user.
