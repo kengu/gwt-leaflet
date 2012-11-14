@@ -26,7 +26,7 @@ Features
 
 ###<a href="src/gwtl-core">Core Module</a>###
 
-**Dependency**: Leaflet 0.4.4
+**Dependency**: Leaflet 0.4.5
 
 Following parts of Leaflet API are implemented:
 
@@ -57,8 +57,20 @@ Following parts of Leaflet API are implemented:
 
 **Dependency**: Proj4Leaflet [master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022](https://github.com/kengu/Proj4Leaflet/commit/74a5a8b170ff58e635cba139cfaa25cd4cd5d022) (git)
                                     
-
 + Proj4 - Custom (local) CRS factory plugin to Leaflet ([Proj4Leaflet](https://github.com/kartena/Proj4Leaflet))
+
+###<a href="src/gwtl-search">Search Module (GWT)</a>###
+
+**Dependency**: leaflet-search [master/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d](https://github.com/stefanocudini/leaflet-search/commit/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d) (git)
+                                    
++ Leaflet Search - Simple search plugin for Leaflet ([leaflet-search](https://github.com/stefanocudini/leaflet-search))
+
+###<a href="src/gwtl-label">Label Module (GWT)</a>###
+
+**Dependency**: Leaflet.label [master/f41dabbd6af7b1c156f055d3c6ee974fb683b918d](https://github.com/igieon/Leaflet.label/commit/f41dabbd6af7b1c156f055d3c6ee974fb683b918d) (git)
+                                    
++ Leaflet Search - Simple label plugin for Leaflet ([Leaflet.label](https://github.com/igieon/Leaflet.label))
+
 
 Example
 =======
