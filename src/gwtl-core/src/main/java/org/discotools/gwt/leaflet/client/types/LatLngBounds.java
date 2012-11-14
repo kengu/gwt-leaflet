@@ -29,6 +29,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
  * Represents a rectangular geographical area on a map.
  *  
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#latlngbounds">L.Latlngbounds (Leaflet API)</a>
  *
@@ -47,6 +48,9 @@ public class LatLngBounds extends JSObjectWrapper {
 		this (LatLngBoundsImpl.create(new JSObjectArray(latlngs).getJSObject()));
 	}
 
+    public LatLngBounds() {
+        this (LatLngBoundsImpl.create());
+    }
 	
 	/**
 	 * Returns the south-west point of the bounds.
@@ -98,4 +102,51 @@ public class LatLngBounds extends JSObjectWrapper {
 		return LatLngBoundsImpl.toBBoxString(getJSObject());
 	}
 	
+	
+    @Override
+    public String toString() {
+        return toBBoxString();
+    }
+
+    /**
+     * Extends the bounds to contain the given  bounds.
+     * 
+     * @param bounds
+     * @return
+     */
+    public    LatLngBounds extend(LatLngBounds bounds){
+        LatLngBoundsImpl.extend(getJSObject(),bounds.getJSObject());
+        return this;
+    }
+    
+    /**
+     * Extends the bounds to contain the given point.
+     * @param point
+     * @return
+     */
+    public    LatLngBounds extend(LatLng point){
+        LatLngBoundsImpl.extend(getJSObject(),point.getJSObject());
+        return this;
+
+    }
+    
+    /**
+     * Returns true if the rectangle contains the given point.
+     * @param latLng
+     * @return
+     */
+    public   boolean contains(LatLng latLng){
+        return LatLngBoundsImpl.contains(getJSObject(),latLng.getJSObject());
+
+    }
+    
+    /**
+     * Returns true if the rectangle contains the given one.
+     * @param latLngBounds
+     * @return
+     */
+    public   boolean contains(LatLngBounds latLngBounds){
+        return LatLngBoundsImpl.contains(getJSObject(),latLngBounds.getJSObject());
+
+    }    
 }

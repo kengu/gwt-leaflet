@@ -6,6 +6,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
  * Represents a rectangular geographical area on a map.
  *  
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#latlngbounds">L.Latlngbounds (Leaflet API)</a>
  *
@@ -43,5 +44,19 @@ class LatLngBoundsImpl {
     public static native String toBBoxString(JSObject self)/*-{
  		return self.toBBoxString(); 
 	}-*/;
+
+    public static native JSObject create() /*-{
+        return new $wnd.L.LatLngBounds();
+    }-*/;
+
+    public static native void extend(JSObject self, JSObject bound) /*-{
+        self.extend(bound);
+    }-*/;
+
+
+    public static native boolean contains(JSObject self, JSObject latlng)/*-{
+        return self.contains(latlng);
+    }-*/;
+
 
 }
