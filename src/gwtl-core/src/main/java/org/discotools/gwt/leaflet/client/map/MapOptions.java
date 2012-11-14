@@ -16,7 +16,7 @@ public class MapOptions extends Options  {
 	}
 	
 	public MapOptions setCenter(LatLng latlng) {
-        return (MapOptions)setProperty("center", latlng.getJSObject());
+        return (MapOptions)setProperty("center", latlng);
     }
 
 	public MapOptions setZoom(int zoom) {

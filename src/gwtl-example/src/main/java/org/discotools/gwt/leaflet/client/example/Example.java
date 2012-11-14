@@ -25,6 +25,11 @@ import org.discotools.gwt.leaflet.client.controls.search.SearchOptions;
 import org.discotools.gwt.leaflet.client.controls.zoom.Zoom;
 import org.discotools.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.discotools.gwt.leaflet.client.crs.epsg.EPSG3857;
+import org.discotools.gwt.leaflet.client.events.MouseEvent;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandlerManager;
+import org.discotools.gwt.leaflet.client.events.handler.EventRegisteredFunction;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSON;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONFeatures;
@@ -33,12 +38,17 @@ import org.discotools.gwt.leaflet.client.layers.others.LayerGroup;
 import org.discotools.gwt.leaflet.client.layers.raster.TileLayer;
 import org.discotools.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.discotools.gwt.leaflet.client.layers.vector.Circle;
+import org.discotools.gwt.leaflet.client.layers.vector.PathOptions;
+import org.discotools.gwt.leaflet.client.layers.vector.Polygon;
 import org.discotools.gwt.leaflet.client.layers.vector.Polyline;
+import org.discotools.gwt.leaflet.client.layers.vector.PolylineOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Rectangle;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.map.MapOptions;
 import org.discotools.gwt.leaflet.client.marker.Marker;
 import org.discotools.gwt.leaflet.client.marker.MarkerOptions;
+import org.discotools.gwt.leaflet.client.marker.MarkerWithLabel;
+import org.discotools.gwt.leaflet.client.marker.label.LabelOptions;
 import org.discotools.gwt.leaflet.client.types.IconOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
@@ -163,15 +173,23 @@ public class Example implements EntryPoint {
 
 		//TODO Solve iconurl problem
 		//loptions.setProperty("icon", icon);
-		
-		LatLng latlng = new LatLng(59.915, 10.754);
-		Marker marker = new Marker(latlng,loptions);
-		marker.addTo(map);
-		marker.bindPopup("<b>Here is a simple popup<b>");
-		// Add layers to map and center at given position
-		map.setView(latlng, 2, false);
-		map.addLayer(tile); 
-		
+
+        final LatLng latlng = new LatLng(59.915, 10.754);
+        final Marker marker = new Marker(latlng, loptions);
+        marker.addTo(map);
+        marker.bindPopup("<b>Here is a simple popup<b>");
+
+        final LatLng latlngLabel = new  LatLng(59.920, 10.754);
+        final MarkerWithLabel markerWithLabel = new MarkerWithLabel(latlngLabel, loptions);
+        final LabelOptions labelOptions = new LabelOptions();
+        labelOptions.setNoHide(true);
+        //.setWithoutDefaultStyle(true);
+        
+        markerWithLabel.bindLabel("<b>Here is a simple Label<b>", labelOptions).addTo(map).showLabel();
+        // Add layers to map and center at given position
+        map.setView(latlng, 2, false);
+        map.addLayer(tile);
+        
 		LatLng latlng1 = new LatLng(59.915, 10.759);
 		LatLng latlng2 = new LatLng(59.900, 10.800);
 		LatLng latlng3 = new LatLng(59.990, 10.800);
@@ -181,7 +199,7 @@ public class Example implements EntryPoint {
 			GWT.log("string :" + l.toString());
 		}
 		GWT.log("Polyline");
-		Polyline poly = new Polyline(latlngs, new Options());
+		Polyline poly = new Polyline(latlngs, new PolylineOptions());
 		poly.addTo(map);
 		
 		//Circle 
@@ -197,9 +215,36 @@ public class Example implements EntryPoint {
 		LatLng rec2 = new LatLng(59.910, 10.710);
 		LatLng[] recs = new LatLng[] {rec1, rec2};
 		LatLngBounds bounds = new LatLngBounds(recs);
-		Rectangle rec = new Rectangle(bounds, new Options());
+		Rectangle rec = new Rectangle(bounds, new PathOptions());
 		rec.addTo(map);
 		//map.fitBounds(bounds);
+
+	       // Rectangle
+        GWT.log("Polygon editing");
+        final LatLng rec3 = new LatLng(59.910, 10.715);
+        final LatLng rec4 = new LatLng(59.915, 10.715);
+        final LatLng[] recs2 = new LatLng[] { rec1, rec2, rec3, rec4 };
+        final PolylineOptions pathOptions = new PolylineOptions();
+        pathOptions.setEditable(true);
+        pathOptions.setColor("yellow");
+        final Polygon pol = new Polygon(recs2, pathOptions);
+        pol.addTo(map);
+
+        //whne click on map change editing
+        final EventRegisteredFunction clickeRegistered = EventHandlerManager.addEventHandler(map, Events.click, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                GWT.log("Clicked on map:" + event.getLatLng());
+                map.fitBounds(pol.getBounds());
+                if (pol.editing().enabled()) {
+                    pol.editing().disable();
+                } else {
+                    pol.editing().enable();
+                }
+                EventHandlerManager.clearEventHandler(map, Events.click);
+            }
+        });
 		
 		// Add Scale Control 
 		GWT.log("Scale Control");
@@ -290,7 +335,6 @@ public class Example implements EntryPoint {
 			}
 		};
 
-
 		GeoJSONFeatures features3 = new GeoJSONFeatures() {
 			
 			@Override
@@ -342,11 +386,11 @@ public class Example implements EntryPoint {
 
 		layer.bindPopup(popupContent);
 		return layer;
-}-*/;
-	
-	public static native JSObject myOnEachFeature2(JSObject feature, JSObject layer) /*-{
-   	var popupContent = "<p> <b>myOnEachFeature2</b> " +
-				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
+    }-*/;
+
+    public static native JSObject myOnEachFeature2(JSObject feature, JSObject layer) /*-{
+		var popupContent = "<p> <b>myOnEachFeature2</b> "
+				+ feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
 
 		if (feature.properties && feature.properties.popupContent) {
 			popupContent += feature.properties.popupContent;
@@ -354,157 +398,154 @@ public class Example implements EntryPoint {
 
 		layer.bindPopup(popupContent);
 		return layer;
-}-*/;
+    }-*/;
 
-	public static native JSObject myPointToLayer(JSObject feature, JSObject latlng) /*-{
-			return $wnd.L.circleMarker(latlng, {
-				radius: 8,
-				fillColor: "#ff7800",
-				color: "#000",
-				weight: 1,
-				opacity: 1,
-				fillOpacity: 0.8
-			});
-	}-*/;
-	
-	public static native JSObject myStyle(JSObject feature) /*-{
+    public static native JSObject myPointToLayer(JSObject feature, JSObject latlng) /*-{
+		return $wnd.L.circleMarker(latlng, {
+			radius : 8,
+			fillColor : "#ff7800",
+			color : "#000",
+			weight : 1,
+			opacity : 1,
+			fillOpacity : 0.8
+		});
+    }-*/;
+
+    public static native JSObject myStyle(JSObject feature) /*-{
 		return feature.properties && feature.properties.style;
-	}-*/;
-	
-	public static native boolean myFilter(JSObject feature, JSObject layer) /*-{
+    }-*/;
+
+    public static native boolean myFilter(JSObject feature, JSObject layer) /*-{
 		if (feature.properties) {
 			// If the property "underConstruction" exists and is true, return false (don't render features under construction)
-			return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction : true;
+			return feature.properties.underConstruction !== undefined ? !feature.properties.underConstruction
+					: true;
 		}
 		return false;
-	}-*/;
-	
-	/***********************************************************************
-	 * Choropleth 
-	 * From : http://leaflet.cloudmade.com/examples/choropleth-example.html
-	 ***********************************************************************/
-	public void createChoropleth() {
-		//Custom Legend 
-		Options legendOptions = new Options();
-		legendOptions.setProperty("position", Position.BOTTOM_RIGHT);
-		legendControl = new LegendControl(legendOptions);
-		legendControl.addTo(map);
-						
-		//Info Legend 
-		Options infoOptions = new Options();
-		infoOptions.setProperty("position", Position.TOP_RIGHT);
-		infoControl = new InfoControl(infoOptions);
-		infoControl.addTo(map);
-				
-		String states = GeoJsonSampleFactory.getInstance().createUSStates();
-		GeoJSONFeatures choroplethFeatures = new GeoJSONFeatures() {
-			 
-			@Override
-			public JSObject style(JSObject feature) {
-				return myStyleUS(feature);
-			}
-			
-			@Override
-			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
-				return myPointToLayerUS(feature, latlng);
-			}
-			
-			@Override
-			public JSObject onEachFeature(JSObject feature, JSObject layer) {
-				return myOnEachFeatureUS(feature, layer);
-			}
-			
-			@Override
-			public boolean filter(JSObject feature, JSObject layer) {
-				return true;
-			}
-		};
-		choroplethOptions = new GeoJSONOptions(choroplethFeatures);
-		choroplethJson = new GeoJSON(states,choroplethOptions);
-		choroplethJson.addTo(map);
-		choroplethJson.setAlias("choroplethJson");
-		
-	}
-	
-	public static native JSObject myStyleUS(JSObject feature) /*-{
-	return {	
-		fillColor: @org.discotools.gwt.leaflet.client.example.Example::getColor(I)(feature.properties.density),	
-        weight: 2,
-        opacity: 1,
-        color: 'white',
-        dashArray: '3',
-        fillOpacity: 0.7
-    };
-	}-*/;
-	
-	public static native String getColor(int d) /*-{
-	    return d > 70 ? '#800026' :
-	           d > 60  ? '#BD0026' :
-	           d > 50  ? '#E31A1C' :
-	           d > 40  ? '#FC4E2A' :
-	           d > 30   ? '#FD8D3C' :
-	           d > 20   ? '#FEB24C' :
-	           d > 10   ? '#FED976' :
-	                      '#FFEDA0';
-	}-*/;
-	
-	public static native JSObject myOnEachFeatureUS(JSObject feature, JSObject layer) /*-{
+    }-*/;
 
-   		layer.on({
-        mouseover: function(e) {
-        		       @org.discotools.gwt.leaflet.client.example.Example::highlightFeature(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
-                   }, 
-        mouseout : function(e) {
-        	           @org.discotools.gwt.leaflet.client.example.Example::resetHighlight(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
-        		   },
-        click    : function(e) {
-        	           @org.discotools.gwt.leaflet.client.example.Example::zoomToFeature(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
-        		   }
-    			});
-	}-*/;
-	
-	public static native JSObject myPointToLayerUS(JSObject feature, JSObject latlng) /*-{
-	return $wnd.L.circleMarker(latlng, {
-		radius: 8,
-		fillColor: "#ff7800",
-		color: "#000",
-		weight: 1,
-		opacity: 1,
-		fillOpacity: 0.8
-	});
-}-*/;
-	
-	/**
-	 * Highlight method 
-	 * @param e
-	 */
-	public native static void highlightFeature(JavaScriptObject e) /*-{
-	    var layer = e.target;
-	   
-	    layer.setStyle({
-	        weight: 5,
-	        color: '#666',
-	        dashArray: '',
-	        fillOpacity: 0.7
-	    });
+    /***********************************************************************
+     * Choropleth 
+     * From : http://leaflet.cloudmade.com/examples/choropleth-example.html
+     ***********************************************************************/
+    public void createChoropleth() {
+        //Custom Legend 
+        final Options legendOptions = new Options();
+        legendOptions.setProperty("position", Position.BOTTOM_RIGHT);
+        legendControl = new LegendControl(legendOptions);
+        legendControl.addTo(map);
+
+        //Info Legend 
+        final Options infoOptions = new Options();
+        infoOptions.setProperty("position", Position.TOP_RIGHT);
+        infoControl = new InfoControl(infoOptions);
+        infoControl.addTo(map);
+
+        final String states = GeoJsonSampleFactory.getInstance().createUSStates();
+        final GeoJSONFeatures choroplethFeatures = new GeoJSONFeatures() {
+
+            @Override
+            public JSObject style(JSObject feature) {
+                return myStyleUS(feature);
+            }
+
+            @Override
+            public JSObject pointToLayer(JSObject feature, JSObject latlng) {
+                return myPointToLayerUS(feature, latlng);
+            }
+
+            @Override
+            public JSObject onEachFeature(JSObject feature, JSObject layer) {
+                return myOnEachFeatureUS(feature, layer);
+            }
+
+            @Override
+            public boolean filter(JSObject feature, JSObject layer) {
+                return true;
+            }
+        };
+        choroplethOptions = new GeoJSONOptions(choroplethFeatures);
+        choroplethJson = new GeoJSON(states, choroplethOptions);
+        choroplethJson.addTo(map);
+        choroplethJson.setAlias("choroplethJson");
+
+    }
+
+    public static native JSObject myStyleUS(JSObject feature) /*-{
+		return {
+			fillColor : @org.discotools.gwt.leaflet.client.example.Example::getColor(I)(feature.properties.density),
+			weight : 2,
+			opacity : 1,
+			color : 'white',
+			dashArray : '3',
+			fillOpacity : 0.7
+		};
+    }-*/;
+
+    public static native String getColor(int d) /*-{
+		return d > 70 ? '#800026' : d > 60 ? '#BD0026' : d > 50 ? '#E31A1C'
+				: d > 40 ? '#FC4E2A' : d > 30 ? '#FD8D3C' : d > 20 ? '#FEB24C'
+						: d > 10 ? '#FED976' : '#FFEDA0';
+    }-*/;
+
+    public static native JSObject myOnEachFeatureUS(JSObject feature, JSObject layer) /*-{
+
+		layer
+				.on({
+					mouseover : function(e) {
+						@org.discotools.gwt.leaflet.client.example.Example::highlightFeature(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
+					},
+					mouseout : function(e) {
+						@org.discotools.gwt.leaflet.client.example.Example::resetHighlight(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
+					},
+					click : function(e) {
+						@org.discotools.gwt.leaflet.client.example.Example::zoomToFeature(Lcom/google/gwt/core/client/JavaScriptObject;)(e);
+					}
+				});
+    }-*/;
+
+    public static native JSObject myPointToLayerUS(JSObject feature, JSObject latlng) /*-{
+		return $wnd.L.circleMarker(latlng, {
+			radius : 8,
+			fillColor : "#ff7800",
+			color : "#000",
+			weight : 1,
+			opacity : 1,
+			fillOpacity : 0.8
+		});
+    }-*/;
+
+    /**
+     * Highlight method 
+     * @param e
+     */
+    public native static void highlightFeature(JavaScriptObject e) /*-{
+		var layer = e.target;
+
+		layer.setStyle({
+			weight : 5,
+			color : '#666',
+			dashArray : '',
+			fillOpacity : 0.7
+		});
 		@org.discotools.gwt.leaflet.client.example.InfoControl::doUpdate(Ljava/lang/String;Ljava/lang/String;)(layer.feature.properties.name, ''+layer.feature.properties.density);
-  		
-	    if (!L.Browser.ie && !L.Browser.opera) {
-	        layer.bringToFront(); 
-	    }	    
-	    
-	}-*/;
-		
-	public native static void  resetHighlight(JavaScriptObject e) /*-{
+
+		if (!L.Browser.ie && !L.Browser.opera) {
+			layer.bringToFront();
+		}
+
+    }-*/;
+
+    public native static void resetHighlight(JavaScriptObject e) /*-{
 		var geojson = $wnd.gwtl.alias['choroplethJson'];
 		geojson.resetStyle(e.target);
 		@org.discotools.gwt.leaflet.client.example.InfoControl::doUpdate(Ljava/lang/String;Ljava/lang/String;)('-', '0');
-  		
-	}-*/;
-	
-	public native static void  zoomToFeature(JavaScriptObject e) /*-{
-	    var map = $wnd.gwtl.maps['map'];
+
+    }-*/;
+
+    public native static void zoomToFeature(JavaScriptObject e) /*-{
+		var map = $wnd.gwtl.maps['map'];
 		map.fitBounds(e.target.getBounds());
-	}-*/; 
+    }-*/;
 
 }

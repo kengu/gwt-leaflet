@@ -2,6 +2,8 @@ package org.discotools.gwt.leaflet.client.popup;
 
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  * {@link Popup} implementation.
  * 
@@ -10,8 +12,8 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
  */
 public class PopupImpl  {
 
-	public static native JSObject create(JSObject latlng, JSObject options)/*-{
-		return new $wnd.L.Marker(latlng,options);
+	public static native JSObject create(JSObject options)/*-{
+		return new $wnd.L.Popup(options);
     }-*/;
 		
 	public static native JSObject addTo(JSObject self, JSObject map)/*-{
@@ -29,6 +31,10 @@ public class PopupImpl  {
 	public static native JSObject setContent(JSObject self, String htmlContent)/*-{
 		return self.setContent(htmlContent);
 	}-*/;
+
+    public static native JSObject setContent(JSObject self, Element htmlElement)/*-{
+        return self.setContent(htmlElement);
+    }-*/;
 	
 }
 

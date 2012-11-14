@@ -15,7 +15,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
  */
 public class ILayer extends JSObjectWrapper{
 
-	protected ILayer(JSObject element) {
+	public ILayer(JSObject element) {
 		super(element);
 	}
 	

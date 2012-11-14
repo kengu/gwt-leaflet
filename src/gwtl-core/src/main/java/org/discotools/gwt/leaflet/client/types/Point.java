@@ -8,6 +8,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
  * 
  * @author kengu
  * @author Lionel Leiva-Marcon
+ * @author David Ignjic
  *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#point">L.Point (Leaflet API)</a>
  */
@@ -26,7 +27,7 @@ public class Point extends JSObjectWrapper{
 	 * The x coordinate.
 	 * @return double
 	 */
-	double x() {
+	public double x() {
 		return PointImpl.x(getJSObject());
 	}
 	
@@ -34,7 +35,7 @@ public class Point extends JSObjectWrapper{
 	 * The y coordinate.
 	 * @return double
 	 */
-	double y() {
+	public  double y() {
 		return PointImpl.y(getJSObject());
 	}
 	
@@ -43,8 +44,8 @@ public class Point extends JSObjectWrapper{
 	 * @param other - {@link Point} instance
 	 * @return {@link Point}
 	 */
-	void add(Point other) {
-		PointImpl.add(getJSObject(), other.getJSObject());
+	public Point add(Point other) {
+		return new Point(PointImpl.add(getJSObject(), other.getJSObject()));
 	}
 	
 	/**
@@ -52,17 +53,17 @@ public class Point extends JSObjectWrapper{
 	 * @param other - {@link Point} instance
 	 * @return {@link Point}
 	 */
-	void substract(Point other) {
-		PointImpl.substract(getJSObject(), other.getJSObject());
+	public Point substract(Point other) {
+		return new Point(PointImpl.substract(getJSObject(), other.getJSObject()));
 	}
 	
 	/**
 	 * Returns the result of multiplication of the current point by the given number.
-	 * @param other - {@link Point} instance
+	 * @param number - given number
 	 * @return {@link Point}
 	 */
-	void multiply(Point other) {
-		PointImpl.multiply(getJSObject(), other.getJSObject());
+	public Point multiply(double number) {
+		return new Point(PointImpl.multiply(getJSObject(), number));
 	}
 
 	/**
@@ -70,11 +71,11 @@ public class Point extends JSObjectWrapper{
 	 * <p> 
 	 * If optional round is set to true, returns a rounded result.
 	 * </p>
-	 * @param other - {@link Point} instance
+	 * @param other - given number
 	 * @return {@link Point}
 	 */
-	void divide(Point other, boolean round) {
-		PointImpl.divide(getJSObject(), other.getJSObject(), round);
+	public Point divide(double number, boolean round) {
+		return new Point(PointImpl.divide(getJSObject(), number, round));
 	}
 	
 	/**
@@ -82,7 +83,7 @@ public class Point extends JSObjectWrapper{
 	 * @param other - {@link Point} instance
 	 * @return double
 	 */
-	double distanceTo(Point other) {
+	public double distanceTo(Point other) {
 		return PointImpl.distanceTo(getJSObject(), other.getJSObject());
 
 	}

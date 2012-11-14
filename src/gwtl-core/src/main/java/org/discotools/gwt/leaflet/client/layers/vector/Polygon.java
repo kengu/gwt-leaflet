@@ -1,9 +1,9 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.jsobject.JSObjectArray;
 import org.discotools.gwt.leaflet.client.map.Map;
+import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 
 /**
@@ -33,7 +33,7 @@ public class Polygon extends Polyline {
 	 * @param latlngs
 	 * @param options
 	 */
-	public Polygon(LatLng[] latlngs, Options options) {
+	public Polygon(LatLng[] latlngs, PolylineOptions options) {
  		super(PolygonImpl.create(new JSObjectArray(latlngs).getJSObject(), options.getJSObject()));
 	} 
 
@@ -43,7 +43,7 @@ public class Polygon extends Polyline {
 	}
 
 	@Override
-	public Polygon bindPopup(String htmlContent, Options options) {
+	public Polygon bindPopup(String htmlContent, PopupOptions options) {
 		return (Polygon)super.bindPopup(htmlContent, options);
 	}
 
@@ -53,7 +53,7 @@ public class Polygon extends Polyline {
 	}
 
 	@Override
-	public Polygon setStyle(Options options) {
+	public Polygon setStyle(PathOptions options) {
 		return (Polygon)super.setStyle(options);
 	}
 

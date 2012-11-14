@@ -2,6 +2,7 @@ package org.discotools.gwt.leaflet.client.layers.vector;
 
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.map.Map;
+import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 
 /**
@@ -42,7 +43,7 @@ public class Circle extends Path {
 	}
 
 	@Override
-	public Circle bindPopup(String htmlContent, Options options) {
+	public Circle bindPopup(String htmlContent, PopupOptions options) {
 		return (Circle)super.bindPopup(htmlContent, options);
 	}
 
@@ -52,7 +53,7 @@ public class Circle extends Path {
 	}
 
 	@Override
-	public Circle setStyle(Options options) {
+	public Circle setStyle(PathOptions options) {
 		return (Circle)super.setStyle(options);
 	}
 

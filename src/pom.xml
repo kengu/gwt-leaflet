@@ -15,6 +15,7 @@
 		<module>gwtl-proj4</module>
 		<module>gwtl-widget</module>
 		<module>gwtl-search</module>
+		<module>gwtl-label</module>
 		<module>gwtl-example</module>
 	</modules>
 
