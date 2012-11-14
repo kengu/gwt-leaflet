@@ -119,3 +119,7 @@ which should automatically download some stuff for you and prepare the projects 
 14. Finish
 
 which should import all projects into current workspace.
+
+### Reference
+
+You find more information in the [developer guide](https://github.com/kengu/gwt-leaflet/wiki/The-Developer-Guide).
