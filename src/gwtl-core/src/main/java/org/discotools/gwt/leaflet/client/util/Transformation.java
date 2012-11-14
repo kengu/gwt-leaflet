@@ -59,7 +59,7 @@ public class Transformation extends JSObjectWrapper {
 	 * @return {@link Point}
 	 */
 	Point transform(Point other) {
-		return new Point(TransformationImpl.transform(getJSObject(), other.getJSObject()));
+		return TransformationImpl.transform(getJSObject(), other.getJSObject());
 	}
 	
 	/**
@@ -70,7 +70,7 @@ public class Transformation extends JSObjectWrapper {
 	 * @return {@link Point}
 	 */
 	Point transform(Point other, double scale) {
-		return new Point(TransformationImpl.transform(getJSObject(), other.getJSObject(), scale));
+		return TransformationImpl.transform(getJSObject(), other.getJSObject(), scale);
 	}
 	 
 	/**
@@ -80,7 +80,7 @@ public class Transformation extends JSObjectWrapper {
 	 * @return {@link Point}
 	 */
 	Point untransform(Point other) {
-		return new Point(TransformationImpl.untransform(getJSObject(), other.getJSObject()));
+		return TransformationImpl.untransform(getJSObject(), other.getJSObject());
 	}
 	
 	/**
@@ -91,7 +91,7 @@ public class Transformation extends JSObjectWrapper {
 	 * @return {@link Point}
 	 */
 	Point untransform(Point other, double scale) {
-		return new Point(TransformationImpl.untransform(getJSObject(), other.getJSObject(), scale));
+		return TransformationImpl.untransform(getJSObject(), other.getJSObject(), scale);
 	}
 	
 }

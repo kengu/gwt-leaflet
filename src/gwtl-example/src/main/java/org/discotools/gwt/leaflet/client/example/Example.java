@@ -33,7 +33,9 @@ import org.discotools.gwt.leaflet.client.layers.others.LayerGroup;
 import org.discotools.gwt.leaflet.client.layers.raster.TileLayer;
 import org.discotools.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.discotools.gwt.leaflet.client.layers.vector.Circle;
+import org.discotools.gwt.leaflet.client.layers.vector.PathOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Polyline;
+import org.discotools.gwt.leaflet.client.layers.vector.PolylineOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Rectangle;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.map.MapOptions;
@@ -181,7 +183,7 @@ public class Example implements EntryPoint {
 			GWT.log("string :" + l.toString());
 		}
 		GWT.log("Polyline");
-		Polyline poly = new Polyline(latlngs, new Options());
+		Polyline poly = new Polyline(latlngs, new PolylineOptions());
 		poly.addTo(map);
 		
 		//Circle 
@@ -197,7 +199,7 @@ public class Example implements EntryPoint {
 		LatLng rec2 = new LatLng(59.910, 10.710);
 		LatLng[] recs = new LatLng[] {rec1, rec2};
 		LatLngBounds bounds = new LatLngBounds(recs);
-		Rectangle rec = new Rectangle(bounds, new Options());
+		Rectangle rec = new Rectangle(bounds, new PathOptions());
 		rec.addTo(map);
 		//map.fitBounds(bounds);
 		

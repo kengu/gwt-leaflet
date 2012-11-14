@@ -1,6 +1,7 @@
 package org.discotools.gwt.leaflet.client.layers.others;
 
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
+import org.discotools.gwt.leaflet.client.types.LatLngBounds;
 
 /**
  * FeatureGroupImpl implementation class
@@ -17,7 +18,7 @@ public class FeatureGroupImpl extends LayerGroupImpl {
 		self.addPopup(htmlContent, options);
 	}-*/;
 
-	public static native  JSObject getBounds(JSObject self) /*-{
+	public static native  LatLngBounds getBounds(JSObject self) /*-{
 		return self.getBounds();
 	}-*/;
 	

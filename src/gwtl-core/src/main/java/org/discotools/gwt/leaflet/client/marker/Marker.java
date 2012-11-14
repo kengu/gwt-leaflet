@@ -28,7 +28,7 @@ public class Marker extends ILayer {
 		this (MarkerImpl.create(latlng.getJSObject(), options.getJSObject()));
 	}
  
-	public LatLng getLatLng(LatLng latlng) {
+	public LatLng getLatLng() {
 		return new LatLng(MarkerImpl.getLatLng(getJSObject()));
 	}
 	

@@ -1,10 +1,11 @@
 package org.discotools.gwt.leaflet.client.popup;
 
-import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.layers.ILayer;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.types.LatLng;
+
+import com.google.gwt.dom.client.Element;
 
 
 
@@ -21,12 +22,13 @@ import org.discotools.gwt.leaflet.client.types.LatLng;
  */
 public class Popup extends ILayer {
 
-	protected Popup(JSObject element) {
+    /* TODO refactor to JavaScript Overlay Type*/
+	public Popup(JSObject element) {
 		super(element);
 	}
 
-	public Popup(LatLng latlng, Options options) {
-		this (PopupImpl.create(latlng.getJSObject(), options.getJSObject()));
+	public Popup(PopupOptions options) {
+		this (PopupImpl.create(options.getJSObject()));
 	}
  
 	public Popup addTo(Map map) {
@@ -48,4 +50,16 @@ public class Popup extends ILayer {
 		PopupImpl.setContent(getJSObject(),htmlContent);
 		return this;
 	}
+
+    public Popup setContent(Element htmlElement) {
+        PopupImpl.setContent(getJSObject(),htmlElement);
+        return this;
+    }
+	
+	/* removed after refactoring */
+    public boolean equalsPopup(Popup obj) {
+        return obj.getJSObject().equals(getJSObject());
+    }
+
+	
 }
