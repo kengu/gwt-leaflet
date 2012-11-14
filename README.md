@@ -24,7 +24,7 @@ Features
 + v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
 + v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
 
-###<a href="src/gwtl-core">Core Module</a>###
+###<a href="tree/master/src/gwtl-core">Core Module</a>###
 
 **Dependency**: Leaflet 0.4.5
 
@@ -49,23 +49,23 @@ Following parts of Leaflet API are implemented:
 + [L.CRS.EPSG4326](http://leaflet.cloudmade.com/reference.html#icrs) - [EPSG:4326](http://spatialreference.org/ref/epsg/4326/)
 + [L.CRS.Simple](http://leaflet.cloudmade.com/reference.html#icrs) - Simple CRS (lat and lng into x and y directly)
 
-###<a href="src/gwtl-widget">Widget Module (GWT)</a>###
+###<a href="tree/master/src/gwtl-widget">Widget Module (GWT)</a>###
 
 + MapWidget - GWT Widget displaying a Map instance (available from WindowBuilder Editor palette)
             
-###<a href="src/gwtl-proj4">Proj4 Module (GWT)</a>###
+###<a href="tree/master/src/gwtl-proj4">Proj4 Module (GWT)</a>###
 
 **Dependency**: Proj4Leaflet [master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022](https://github.com/kengu/Proj4Leaflet/commit/74a5a8b170ff58e635cba139cfaa25cd4cd5d022) (git)
                                     
 + Proj4 - Custom (local) CRS factory plugin to Leaflet ([Proj4Leaflet](https://github.com/kartena/Proj4Leaflet))
 
-###<a href="src/gwtl-search">Search Module (GWT)</a>###
+###<a href="tree/master/src/gwtl-search">Search Module (GWT)</a>###
 
 **Dependency**: leaflet-search [master/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d](https://github.com/stefanocudini/leaflet-search/commit/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d) (git)
                                     
 + Leaflet Search - Simple search plugin for Leaflet ([leaflet-search](https://github.com/stefanocudini/leaflet-search))
 
-###<a href="src/gwtl-label">Label Module (GWT)</a>###
+###<a href="tree/master/src/gwtl-label">Label Module (GWT)</a>###
 
 **Dependency**: Leaflet.label [master/f41dabbd6af7b1c156f055d3c6ee974fb683b918d](https://github.com/igieon/Leaflet.label/commit/f41dabbd6af7b1c156f055d3c6ee974fb683b918d) (git)
                                     
