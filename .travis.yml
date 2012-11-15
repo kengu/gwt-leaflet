@@ -12,3 +12,12 @@ notifications:
     recipients:
       - kenneth.gulbrandsoy@gmail.com
 
+# Set secure environment variables. These are only valid for repository kengu/gwt-leaflet! If you run this in a cloned repo, it will fail.
+env:
+  global:
+    - secure: "WdFEQq/WoE0p8rC6XIsgOOhS6AYqW9f0q+zlIITVlUCS5ahW7/cmb3qi3/wu\nphYwPXLWgqbYU0bUngrEnMOfYqyptcXztLFWvHlEsDxBG++vqsVhVwCQQ+EP\nxfJeH/n9E87r4G4ImR87jUGHXROWuGWSP+ZMlCnydRbmd8Lz12E="
+    - secure: "JdhpQ+OeixJOVtDzlH0GwxFTLta+doIbPuKwIWCad+qL8elX1QMv8jt3cDDu\nLJwpth3KueqNvHORDKvE+ADp9m6nCNjzRqNyHMT3zzWquSXsq5tr58OmOa0C\nAGhwLzLnIJGpmJQVl4YxLeGAO+Zo9frSOcLPzrRL2JTyN0T4EIY="
+
+after_script:
+  - python build/add_server.py
+  - mvn clean deploy
