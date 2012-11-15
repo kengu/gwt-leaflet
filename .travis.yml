@@ -20,4 +20,4 @@ env:
 
 after_script:
   - python ../build/add_server.py
-  - mvn clean deploy --settings ../build/settings.xml --global-settings ~/.m2/settings.xml
+  - mvn clean deploy --settings settings.xml --global-settings ~/.m2/settings.xml

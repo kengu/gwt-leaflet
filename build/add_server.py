@@ -10,7 +10,7 @@ if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
 
 cwd = os.getcwd()
 print cwd
-m2 = xml.dom.minidom.parse(cwd + 'settings.xml')
+m2 = xml.dom.minidom.parse(cwd + '/settings.xml')
 settings = m2.getElementsByTagName("settings")[0]
 
 serversNodes = settings.getElementsByTagName("servers")
@@ -40,6 +40,6 @@ sonatypeServerNode.appendChild(sonatypeServerPass)
 serversNode.appendChild(sonatypeServerNode)
   
 m2Str = m2.toxml()
-f = open(cwd + 'settings.xml', 'w')
+f = open(cwd + '/settings.xml', 'w')
 f.write(m2Str)
 f.close()
