@@ -8,9 +8,9 @@ if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
   print "no secure env vars available, skipping deployment"
   sys.exit()
 
-homedir = os.path.expanduser("~")
-print homedir
-m2 = xml.dom.minidom.parse(homedir + '/.m2/settings.xml')
+pwd = os.getcwd()
+print cwd
+m2 = xml.dom.minidom.parse(pwd + 'settings.xml')
 settings = m2.getElementsByTagName("settings")[0]
 
 serversNodes = settings.getElementsByTagName("servers")
@@ -40,6 +40,6 @@ sonatypeServerNode.appendChild(sonatypeServerPass)
 serversNode.appendChild(sonatypeServerNode)
   
 m2Str = m2.toxml()
-f = open(homedir + '/.m2/settings.xml', 'w')
+f = open(pwd + 'settings.xml', 'w')
 f.write(m2Str)
 f.close()
