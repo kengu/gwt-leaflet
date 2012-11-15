@@ -10,8 +10,9 @@ if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
 
 cwd = os.getcwd()
 print cwd
-m2 = xml.dom.minidom.parse(cwd + '/settings.xml')
-settings = m2.getElementsByTagName("settings")[0]
+m2 = xml.dom.minidom.Document()
+settings = m2.createElement("settings")
+m2.appendChild(settings)
 
 serversNodes = settings.getElementsByTagName("servers")
 if not serversNodes:
