@@ -8,11 +8,11 @@ if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
   print "no secure env vars available, skipping deployment"
   sys.exit()
 
-if os.environ["TRAVIS_BRANCH"] != "master":
+if os.environ.get("TRAVIS_BRANCH") != "master":
   print "This is not the master branch, deploy aborted"
   sys.exit()
 
-if os.environ["TRAVIS_PULL_REQUEST"] == "true":
+if os.environ.get("TRAVIS_PULL_REQUEST") == "true":
   print "This is a pull request, deploy aborted"
   sys.exit()
 
