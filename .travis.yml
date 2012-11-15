@@ -20,4 +20,4 @@ env:
 
 after_script:
   - python ../build/add_server.py
-  - mvn deploy --settings settings.xml --global-settings ~/.m2/settings.xml
+  - if [ -e "settings.xml" ]; then mvn deploy --settings settings.xml --global-settings ~/.m2/settings.xml; fi
