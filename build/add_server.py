@@ -4,16 +4,19 @@ import os
 import os.path
 import xml.dom.minidom
 
-if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
-  print "no secure env vars available, skipping deployment"
+for param in os.environ.keys():  
+    print "%20s %s" % (param,os.environ[param])
+
+if os.environ.get("TRAVIS_SECURE_ENV_VARS") == "false":
+  print "No secure env vars available, skipping deployment"
   sys.exit()
 
 if os.environ.get("TRAVIS_BRANCH") != "master":
-  print "This is not the master branch, deploy aborted"
+  print "[" + os.environ.get("TRAVIS_BRANCH") + "] is not the master branch, skipping deployment"
   sys.exit()
 
 if os.environ.get("TRAVIS_PULL_REQUEST") == "true":
-  print "This is a pull request, deploy aborted"
+  print "This is a pull request, skipping deployment"
   sys.exit()
 
 cwd = os.getcwd()
