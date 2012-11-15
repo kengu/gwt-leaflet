@@ -19,5 +19,5 @@ env:
     - secure: "JdhpQ+OeixJOVtDzlH0GwxFTLta+doIbPuKwIWCad+qL8elX1QMv8jt3cDDu\nLJwpth3KueqNvHORDKvE+ADp9m6nCNjzRqNyHMT3zzWquSXsq5tr58OmOa0C\nAGhwLzLnIJGpmJQVl4YxLeGAO+Zo9frSOcLPzrRL2JTyN0T4EIY="
 
 after_script:
-  - python build/add_server.py
+  - python ./build/add_server.py
   - mvn clean deploy
