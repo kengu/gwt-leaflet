@@ -4,9 +4,9 @@ import os
 import os.path
 import xml.dom.minidom
 
-if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
-  print "no secure env vars available, skipping deployment"
-  sys.exit()
+#if os.environ["TRAVIS_SECURE_ENV_VARS"] == "false":
+#  print "no secure env vars available, skipping deployment"
+#  sys.exit()
 
 cwd = os.getcwd()
 print cwd
