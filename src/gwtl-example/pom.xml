@@ -74,7 +74,6 @@
 		        <executions>
 					<!-- JS is only needed in the package phase, this speeds up testing -->
 					<execution>
-						<phase>prepare-package</phase>
 						<goals>
 							<goal>compile</goal>
 						</goals>

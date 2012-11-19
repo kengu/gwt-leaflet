@@ -215,9 +215,18 @@
 					<executions>
 						<!-- Copy deps into projects before packaging -->
 						<execution>
+							<id>prepare-package</id>
 							<phase>prepare-package</phase>
 							<goals>
 								<goal>resources</goal>
+							</goals>
+						</execution>
+						<!-- Enable integration tests -->
+						<execution>
+							<id>integration-test</id>
+							<phase>integration-test</phase>
+							<goals>
+								<goal>test</goal>
 							</goals>
 						</execution>
 					</executions>
