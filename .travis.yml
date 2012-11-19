@@ -3,9 +3,14 @@ jdk:
   - openjdk7
 
 before_script:
+  # Create settings.xml
+  - python ../build/settings.py
   - cd src/
 
-script: mvn package -Drelease
+script: 
+
+  - if [ -e "settings.xml" ]; then mvn deploy -Drelease --settings settings.xml --global-settings ~/.m2/settings.xml; else mvn package -Drelease; fi
+
 
 notifications:
   email:
@@ -15,11 +20,7 @@ notifications:
 # Set secure environment variables. These are only valid for repository kengu/gwt-leaflet! If you run this in a cloned repo, it will fail.
 env:
   global:
-    - secure: "WdFEQq/WoE0p8rC6XIsgOOhS6AYqW9f0q+zlIITVlUCS5ahW7/cmb3qi3/wu\nphYwPXLWgqbYU0bUngrEnMOfYqyptcXztLFWvHlEsDxBG++vqsVhVwCQQ+EP\nxfJeH/n9E87r4G4ImR87jUGHXROWuGWSP+ZMlCnydRbmd8Lz12E="
-    - secure: "JdhpQ+OeixJOVtDzlH0GwxFTLta+doIbPuKwIWCad+qL8elX1QMv8jt3cDDu\nLJwpth3KueqNvHORDKvE+ADp9m6nCNjzRqNyHMT3zzWquSXsq5tr58OmOa0C\nAGhwLzLnIJGpmJQVl4YxLeGAO+Zo9frSOcLPzrRL2JTyN0T4EIY="
-
-after_script:
-    # Create settings.xml
-  - python ../build/add_server.py
-    # Only deploy if settings.xml exists
-  - if [ -e "settings.xml" ]; then mvn deploy --settings settings.xml --global-settings ~/.m2/settings.xml; fi
+    # Encrypted username
+    - secure: "AOqBZ5c1y9fTEiWXFW4lfbGu3liX2AmLeQ8pQG52GQZq9gexMfTdH6uT2C7/\n+7STnohAL4TDsjr4E48L/wCfoyQKm/DQDQKoJJjJk9ZH8BUtHS4zp8ek34py\nJJz8HKWB6+n5IPi6hP75auGy+meZVQqqqBOg9rNGMc5pYM3orys="
+    # Encrypted password
+    - secure: "Wsz2p3wbXp0Y/yZ5vjR74nLbEfFb40mzP3Qzhyni89np6XLoOwx/K8eAQdTM\nJsSvSgvUVPR/xLzaKn7aX6UIFoGK04RAb0bg9cfPYbKdmIsjaf3XJRVrXHce\newQxIU+LszShHYd4otKzpuCa16Ww/WEtXdGJ8862XoGTolCaT7A="
