@@ -9,8 +9,7 @@ before_script:
 
 script: 
 
-  #- if [ -e "settings.xml" ]; then mvn deploy -Drelease --settings settings.xml --global-settings ~/.m2/settings.xml; else mvn package -Drelease; fi
-  - mvn package -Drelease
+  - if [ -e "settings.xml" ]; then mvn deploy -Drelease --settings settings.xml --global-settings ~/.m2/settings.xml; else mvn package -Drelease; fi
 
 
 notifications:
