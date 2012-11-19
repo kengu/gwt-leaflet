@@ -71,7 +71,7 @@
 				<compile.style>PRETTY</compile.style>
 				<compile.report>true</compile.report>
 				<compile.draft>true</compile.draft>
-				<compile.optimization.level>1</compile.optimization.level>
+				<compile.optimization.level>0</compile.optimization.level>
 			</properties>
 		</profile>
 		<profile>
@@ -155,42 +155,85 @@
 				<classifier>sources</classifier>
 			</dependency>
 
-			<!-- Production tools -->
-
 			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.extcos</groupId>
+				<artifactId>extcos</artifactId>
+				<version>0.3b</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>1.7.2</version>
 			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
 
+	<!-- Dependencies activated for all projects -->
+	<dependencies>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+		</dependency>
+	</dependencies>
+
 	<build>
 
 		<!-- ==================================================== -->
-		<!-- Common plugins ===================================== -->
+		<!-- ==== Common plugins ================================ -->
 		<!-- ==================================================== -->
-		<!-- These plugins with are inherited by children as when added to <plugins>...</plugins> -->
+		<!-- These plugin definitions are only inherited by -->
+		<!-- children when added to <plugins>...</plugins> -->
 		<pluginManagement>
 			<plugins>
+
 				<!-- GWT Maven Plugin -->
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>gwt-maven-plugin</artifactId>
 					<version>2.4.0</version>
 					<executions>
-						<!-- Ensure plugin is run during resource phase -->
+						<!-- Copy deps into projects before packaging -->
 						<execution>
+							<id>prepare-package</id>
 							<goals>
 								<goal>resources</goal>
+							</goals>
+						</execution>
+						<!-- Enable integration tests -->
+						<execution>
+							<id>integration-test</id>
+							<goals>
+								<goal>test</goal>
 							</goals>
 						</execution>
 					</executions>
 					<configuration>
 						<!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
 						<compileReport>${compile.report}</compileReport>
+						<!-- Unit testing -->
+						<mode>htmlunit</mode>
+						<includes>**/GwtlTestSuite.java</includes>
 						<!-- Other compilation settings -->
 						<style>${compile.style}</style>
 						<logLevel>${compile.level}</logLevel>
@@ -202,7 +245,7 @@
 				<plugin>
 					<groupId>net.kindleit</groupId>
 					<artifactId>maven-gae-plugin</artifactId>
-					<version>0.9.4</version>
+					<version>0.9.5</version>
 					<dependencies>
 						<dependency>
 							<groupId>net.kindleit</groupId>
@@ -213,20 +256,32 @@
 					</dependencies>
 				</plugin>
 
+				<!-- Maven WAR packaging plugin -->
 				<plugin>
 					<artifactId>maven-war-plugin</artifactId>
-					<version>2.2</version>
+					<version>2.3</version>
 				</plugin>
+
+				<!-- Maven unit testing plugin -->
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.12</version>
+					<version>2.12.4</version>
+					<!-- Maven unit testing plugin -->
+					<configuration>
+						<skip>true</skip>
+						<excludes>
+							<exclude>**/*GwtlTest*.java</exclude>
+						</excludes>
+					</configuration>
 				</plugin>
+
+				<!-- Maven cleanup plugin -->
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>2.5</version>
 				</plugin>
 
-				<!-- Resource plugin -->
+				<!-- Maven resource plugin -->
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>2.6</version>
@@ -248,9 +303,11 @@
 						</execution>
 					</executions>
 				</plugin>
+
+				<!-- Maven Eclipse integration (m2e) plugin -->
 				<plugin>
 					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.8</version>
+					<version>2.9</version>
 				</plugin>
 
 				<!-- GPG plugin -->
@@ -268,7 +325,7 @@
 					</executions>
 				</plugin>
 
-				<!-- Release plugin -->
+				<!-- Maven release plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
@@ -286,7 +343,7 @@
 					</executions>
 				</plugin>
 
-				<!-- Staging plugin -->
+				<!-- Maven staging plugin -->
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
@@ -298,8 +355,8 @@
 					</configuration>
 				</plugin>
 
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
+				<!-- This plugin's configuration is used to store m2e settings only. -->
+				<!-- It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -357,17 +414,19 @@
 			</plugins>
 		</pluginManagement>
 
+		<!-- Plugins activated for all projects -->
 		<plugins>
-		
+
+			<!-- Ensure that all -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.1</version>
+				<version>2.5.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			
+
 			<!-- Mark all projects for Google Plugin for Eclipse (GPE) -->
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
