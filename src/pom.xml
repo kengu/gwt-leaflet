@@ -216,6 +216,7 @@
 						<!-- Copy deps into projects before packaging -->
 						<execution>
 							<id>prepare-package</id>
+							<phase>prepare-package</phase>
 							<goals>
 								<goal>resources</goal>
 							</goals>
