@@ -26,9 +26,9 @@
 
 	<!-- Source control management -->
 	<scm>
-		<connection>scm:git:git@github.com:kengu/gwt-leaflet.git</connection>
-		<developerConnection>scm:git:git@github.com:kengu/gwt-leaflet.git</developerConnection>
-		<url>git@github.com:kengu/gwt-leaflet.git</url>
+		<connection>scm:git:git@github.com:kengu/gwt-leaflet.git/src</connection>
+		<developerConnection>scm:git:git@github.com:kengu/gwt-leaflet.git/src</developerConnection>
+		<url>git@github.com:kengu/gwt-leaflet.git/src</url>
 	</scm>
 
 	<!-- GWT Leaflet modules -->
@@ -215,16 +215,9 @@
 					<executions>
 						<!-- Copy deps into projects before packaging -->
 						<execution>
-							<id>prepare-package</id>
+							<phase>prepare-package</phase>
 							<goals>
 								<goal>resources</goal>
-							</goals>
-						</execution>
-						<!-- Enable integration tests -->
-						<execution>
-							<id>integration-test</id>
-							<goals>
-								<goal>test</goal>
 							</goals>
 						</execution>
 					</executions>
