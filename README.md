@@ -67,7 +67,7 @@ Following parts of Leaflet API are implemented:
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-label">Label Module (GWT)</a>###
 
-**Dependency**: Leaflet.label [master/f41dabbd6af7b1c156f055d3c6ee974fb683b918d](https://github.com/igieon/Leaflet.label/commit/f41dabbd6af7b1c156f055d3c6ee974fb683b918d) (git)
+**Dependency**: Leaflet.label [master/3c13acff459c36a222e9fdefd718af95396a0a9f](https://github.com/igieon/Leaflet.label/commit/3c13acff459c36a222e9fdefd718af95396a0a9f) (git)
                                     
 + Leaflet label - Simple label plugin for Leaflet ([Leaflet.label](https://github.com/igieon/Leaflet.label))
 
