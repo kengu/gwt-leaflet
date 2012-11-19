@@ -3,9 +3,9 @@ jdk:
   - openjdk7
 
 before_script:
-  # Create settings.xml
+  # Create settings.xml in 'src' directory
+  - cd src
   - python ../build/settings.py
-  - cd src/
 
 script: 
 
