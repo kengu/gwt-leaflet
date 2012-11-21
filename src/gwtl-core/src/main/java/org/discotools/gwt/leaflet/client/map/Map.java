@@ -156,4 +156,14 @@ public class Map extends JSObjectWrapper implements EventProvider {
     public Element getContainer() {
         return MapImpl.getContainer(getJSObject());
     }
+
+    /**
+     * Pans the map to the closest view that would lie inside the given bounds (if it's not already).
+     * @param bounds
+     * @return
+     */
+    public Map panInsideBounds(LatLngBounds bounds) {
+        MapImpl.panInsideBounds(getJSObject(),bounds.getJSObject());
+        return this;
+    }
 }
