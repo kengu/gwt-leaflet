@@ -10,6 +10,8 @@ import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
 import org.discotools.gwt.leaflet.client.types.Point;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  * The central class of the API — it is used to create a map on a page and manipulate it.
  * 
@@ -144,6 +146,24 @@ public class Map extends JSObjectWrapper implements EventProvider {
      */
     public Map invalidateSize(boolean animate){
         MapImpl.invalidateSize(getJSObject(),animate);
+        return this;
+    }
+
+    /**
+     * 
+     * @return Returns the container element of the map.
+     */
+    public Element getContainer() {
+        return MapImpl.getContainer(getJSObject());
+    }
+
+    /**
+     * Pans the map to the closest view that would lie inside the given bounds (if it's not already).
+     * @param bounds
+     * @return
+     */
+    public Map panInsideBounds(LatLngBounds bounds) {
+        MapImpl.panInsideBounds(getJSObject(),bounds.getJSObject());
         return this;
     }
 }
