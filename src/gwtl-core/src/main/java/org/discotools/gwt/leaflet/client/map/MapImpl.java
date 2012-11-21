@@ -124,6 +124,12 @@ class MapImpl {
     }-*/;
 
 
+    public static native void panInsideBounds(JSObject self, JSObject bound) /*-{
+        self.panInsideBounds(bound);
+    }-*/;
+
+
+
 
 
 
