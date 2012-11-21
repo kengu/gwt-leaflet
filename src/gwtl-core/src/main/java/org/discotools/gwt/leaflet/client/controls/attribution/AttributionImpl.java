@@ -21,15 +21,19 @@ public class AttributionImpl  {
 		return a;	
 	}-*/;
 	
-	public static native void setPrefix(JSObject self, String text) /*-{	
-		return self.setPrefix(text);
+	public static native String getPrefix(JSObject self) /*-{	
+		return self.options.prefix;
 	}-*/;	
 	
+	public static native void setPrefix(JSObject self, String text) /*-{	
+		self.setPrefix(text);
+	}-*/;
+	
 	public static native void addAttribution(JSObject self, String text) /*-{	
-		return self.addAttribution(text);
+		self.addAttribution(text);
 	}-*/;	
 
 	public static native void removeAttribution(JSObject self, String text) /*-{	
-		return self.addAttribution(text);
+		self.removeAttribution(text);
 	}-*/;	
 }

@@ -13,17 +13,23 @@ class MapImpl {
  
 	public static native JSObject create(String name, JSObject options) /*-{
 	
+		// Verify map place holder element exists
+		var div = $doc.getElementById(name);		
+		if(typeof(div) === 'undefined' || div === null) {
+			throw "Element '"+name+"' does not exist";
+		}
+		
 		// Initialize maps array?
-		if($wnd.gwtl==undefined) {
+		if($wnd.gwtl === undefined) {
 			$wnd.gwtl = [];
 			$wnd.gwtl.maps = [];
 		}
 	
-		// 'name' is also by third-party javascript, rename to prevent mangling.
+		// 'name' is also used by third-party javascript, rename to prevent mangling.
 		var _name = name;
-	
+		
 		// Initialize the map on the "name" div with a given center and zoom
-		var map = $wnd.L.map(_name, options);	
+		var map = $wnd.L.map(name, options);
 			
 		// Set gwt attributes
 		map.gwt = [];
@@ -57,21 +63,25 @@ class MapImpl {
 		return addLayer(self, layer, false);
 	}
 
-	public static native JSObject addLayer(JSObject self,JSObject layer, boolean bottom) /*-{	
+	public static native JSObject addLayer(JSObject self, JSObject layer, boolean bottom) /*-{	
 		self.addLayer(layer,bottom); 
 		return self;
 	}-*/;
 	
-    public static native JSObject removeLayer(JSObject self,JSObject layer) /*-{  
+    public static native JSObject removeLayer(JSObject self, JSObject layer) /*-{  
         self.removeLayer(layer); 
         return self;
     }-*/;
     
-	public static native JSObject addControl(JSObject self,JSObject control) /*-{	
-		self.addControl(control); 		
+	public static native JSObject addControl(JSObject self, JSObject control) /*-{	
+		self.addControl(control);
 		return self;
 	}-*/;
 
+	public static native JSObject removeControl(JSObject self,JSObject control) /*-{	
+		self.removeControl(control); 		
+		return self;
+	}-*/;
 	
 	public static native JSObject fitBounds(JSObject self,JSObject bounds) /*-{	
 		self.fitBounds(bounds); 		

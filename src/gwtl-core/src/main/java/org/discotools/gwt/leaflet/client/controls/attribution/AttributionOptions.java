@@ -13,6 +13,13 @@ public class AttributionOptions extends ControlOptions  {
 	public AttributionOptions() {
 		 super();
 	}
+	
+	public AttributionOptions(String prefix, String position) {
+		 super();
+		 setPrefix(prefix);
+		 setPosition(position);
+	}
+	
 
 	/**
 	 * The position of the control (one of the map corners). 

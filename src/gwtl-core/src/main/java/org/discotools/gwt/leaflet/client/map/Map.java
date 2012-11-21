@@ -28,10 +28,25 @@ public class Map extends JSObjectWrapper implements EventProvider {
         super(e);
     }
 
+    public Map(String name) {
+        this(name, new MapOptions());
+    } 
+    
     public Map(String name, MapOptions options) {
         this(MapImpl.create(name, options.getJSObject()));
     } 
     
+    /**
+     * Sets the view of the map (geographical center and zoom).
+     * <p> 
+     * If 'reset' is set to <code>true</code>, the map is reloaded 
+     * even if it's eligible for pan or zoom animation (false by default).
+     * 
+     * @param center - {@link LatLng} instance
+     * @param zoom - Map zoom 
+     * @param reset - Force reset of map
+     * @return {@link Map}
+     */
     public Map setView(LatLng center, double zoom, boolean reset) {
     	MapImpl.setView(getJSObject(), center.getJSObject(), zoom, reset);
     	return this;
@@ -62,10 +77,26 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	return this;
     }
     
+    /**
+     * Adds the given control to the map.
+     * @param control - {@link IControl} instance
+     * @return {@link Map}
+     */
     public Map addControl(IControl control) {
     	MapImpl.addControl(getJSObject(), control.getJSObject());
     	return this;
     }
+    
+    /**
+     * Removes the given control from the map.
+     * @param control
+     * @return {@link Map}
+     */
+    public Map removeControl(IControl control) {
+    	MapImpl.removeControl(getJSObject(), control.getJSObject());
+    	return this;
+    }
+    
     
     public Map fitBounds(LatLngBounds bounds) {
     	MapImpl.fitBounds(getJSObject(), bounds.getJSObject());		

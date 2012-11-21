@@ -9,18 +9,11 @@ import org.discotools.gwt.leaflet.client.GwtlTestCase;
  */
 public class ControlGwtlTest extends GwtlTestCase {
 	
-	public void testControlOptions() {
-		logTest("testControlOptions","{ position: \"left\" }");
-		ControlOptions o = new ControlOptions();
-		o.setPosition("left");
-		Control c = new Control(o);
-		assertEquals(c.getPosition(),"left");
-	}
-
-	public void testNewControl() {
-		logTest("testNewControl","{}");
-		Control c = new Control(new ControlOptions());
-		assertNotNull(c);
+	public void testControl() {
+		logTest("testControl","\""+Position.BOTTOM_LEFT+"\" }");
+		Control c = new Control(new ControlOptions(Position.BOTTOM_LEFT));
+		c.setPosition(Position.BOTTOM_RIGHT);
+		assertEquals(Position.BOTTOM_RIGHT,c.getPosition());
 	}
 	
 }
