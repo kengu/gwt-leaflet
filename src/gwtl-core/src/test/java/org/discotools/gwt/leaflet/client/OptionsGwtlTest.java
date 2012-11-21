@@ -3,7 +3,6 @@ package org.discotools.gwt.leaflet.client;
 import org.discotools.gwt.leaflet.client.GwtlTestCase;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.jsobject.JSObjectArray;
-import org.discotools.gwt.leaflet.client.jsobject.JSObjectHelper;
 
 /**
  * {@link Control} tests

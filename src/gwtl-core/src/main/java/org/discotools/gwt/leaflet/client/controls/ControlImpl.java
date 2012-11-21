@@ -19,16 +19,16 @@ public class ControlImpl extends IControlImpl {
     }-*/;
 
 
-	public static native JSObject setPosition(JSObject self,String position) /*-{		
+	public static native void setPosition(JSObject self,String position) /*-{		
 		self.setPosition(position);
 	}-*/;
 
-	public static native JSObject addTo(JSObject self, JSObject map)/*-{
-		return self.addTo(map);
+	public static native void addTo(JSObject self, JSObject map)/*-{
+		self.addTo(map);
 	}-*/;
 
-	public static native JSObject removeFrom(JSObject self,JSObject map) /*-{		
-		self.removeFrom(map);
+	public static native void removeFrom(JSObject self, JSObject map) /*-{
+		self.removeFrom(map);		
 	}-*/;
 
 }

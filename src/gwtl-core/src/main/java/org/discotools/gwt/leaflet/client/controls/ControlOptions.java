@@ -11,8 +11,13 @@ import org.discotools.gwt.leaflet.client.Options;
 public class ControlOptions extends Options  {
 
 	public ControlOptions() {
-		 super();
+		super();
 	}
+	
+	public ControlOptions(String position) {
+		super();
+		setPosition(position);
+	}	
 
 	public ControlOptions setPosition(String position) {
 		 return (ControlOptions)setProperty("position", position);

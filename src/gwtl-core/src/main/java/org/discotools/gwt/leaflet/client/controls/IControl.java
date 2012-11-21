@@ -48,18 +48,29 @@ public abstract class IControl extends JSObjectWrapper {
 	/**
 	 * <b>Add control to given {@link Map} instance</b>.
 	 * <p>
-	 * Should contain code that creates all the necessary {@link DOM} elements for the control, 
-	 * adds listeners on relevant map events, and returns the element containing the control.
-	 * <p>
 	 * Called on {@link Map#addControl(ILControl)} or control.addTo(map).
 	 * </p>
 	 * @param map - {@link Map} instance
 	 * @return {@link Element}
+	 * @see #onAdd(JavaScriptObject)
 	 */
 	public final Element onAdd(Map map) {
 		return onAdd(map.getJSObject());
 	}
 
+	/**
+	 * JSNI Callback invoked when this is added to given map.
+	 * <p>
+	 * This callback is activated by {@link IControlImpl#onAdd(Control, JSObject)}
+	 * <p>
+	 * Should contain code that creates all the necessary {@link DOM} elements for the control, 
+	 * adds listeners on relevant map events, and returns the element containing the control.
+	 * <p>
+	 * <b>Note</b>: Default implementation forwards to JSNI implementation, 
+	 * making this a wrapper around a third-party implementation.
+	 * <p>  
+	 * @return {@link Element}
+	 */
 	protected Element onAdd(JavaScriptObject map) {
 		return IControlImpl.onAdd(getJSObject(), map);
 	}
@@ -67,10 +78,7 @@ public abstract class IControl extends JSObjectWrapper {
 	/**
 	 * <b>Remove control from given {@link Map} instance (optional)</b>
 	 * <p>
-	 * Should contain all clean up code (removes control's event listeners etc). 
-	 * 
 	 * Called on map.removeControl(control) or control.removeFrom(map). 
-	 * The control's DOM container is removed automatically.
 	 * 
 	 * @param map -
 	 */
@@ -78,6 +86,20 @@ public abstract class IControl extends JSObjectWrapper {
 		return onRemove(map.getJSObject());
 	}
 	
+	/**
+	 * JSNI callback invoked when this is removed to given map.
+	 * <p>
+	 * This callback is activated by {@link IControlImpl#onRemove(Control, JSObject)}
+	 * <p>
+	 * Should contain all clean up code (removes control's event listeners etc).
+	 * The control's DOM container is removed automatically.
+	 * <p> 
+	 * <b>Note</b>: Default implementation forwards to JSNI implementation, 
+	 * making this a wrapper around a third-party implementation.
+	 * 
+	 * @param map
+	 * @return
+	 */
 	protected IControl onRemove(JavaScriptObject map) {
 		IControlImpl.onRemove(getJSObject(), map);
 		return this;

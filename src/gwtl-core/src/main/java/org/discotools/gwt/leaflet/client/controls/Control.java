@@ -24,12 +24,17 @@ import org.discotools.gwt.leaflet.client.map.Map;
  */
 public class Control extends IControl {
 
+	/**
+	 * The position of the control (one of the map corners).
+	 */
+	public static final String POSITION = "position";
+
 	protected Control(JSObject element) {
 		super(element);
 	}
 
 	/**
-	 * Default constructor
+	 * Custom constructor
 	 * @param options
 	 */
 	public Control(Options options) {

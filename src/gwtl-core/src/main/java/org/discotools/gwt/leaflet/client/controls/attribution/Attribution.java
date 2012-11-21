@@ -44,31 +44,41 @@ public class Attribution extends Control {
 	}
 	
 	public Attribution(String text, AttributionOptions options) {
-		super(AttributionImpl.create(text, options.getJSObject()));
+		super(AttributionImpl.create(text, options.getJSObject()));		
 	}
-		
+
+	/**
+	 * Get the string before the attributions ("Powered by Leaflet" by default).
+	 */
+	public String getPrefix() {
+		return AttributionImpl.getPrefix(getJSObject());
+	}
+	
 	/**
 	 * Sets the string before the attributions ("Powered by Leaflet" by default).
 	 * @param text - {@link Attribution} prefix.
 	 */
-	void setPrefix(String text) {
+	public Attribution setPrefix(String text) {
 		AttributionImpl.setPrefix(getJSObject(), text);
+		return this;
 	}
 
 	/**
 	 * Adds an attribution text (e.g. "Vector data &copy; CloudMade").
 	 * @param text - {@link Attribution} text.
 	 */
-	void addAttribution(String text) {
+	public Attribution addAttribution(String text) {
 		AttributionImpl.addAttribution(getJSObject(), text);
+		return this;
 	}
 
 	/**
 	 * Removes an attribution text.
 	 * @param text - {@link Attribution} text.
 	 */
-	void removeAttribution(String text) {
+	public Attribution removeAttribution(String text) {
 		AttributionImpl.removeAttribution(getJSObject(), text);
+		return this;
 	}
 	
 }
