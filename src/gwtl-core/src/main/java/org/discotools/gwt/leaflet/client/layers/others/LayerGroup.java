@@ -39,7 +39,7 @@ public class LayerGroup extends ILayer {
 	 * 
 	 */
 	public LayerGroup addLayer(ILayer layer) {
-		LayerGroupImpl.addTo(getJSObject(), layer.getJSObject());
+		LayerGroupImpl.addLayer(getJSObject(), layer.getJSObject());
 		return this;
 	}
 
