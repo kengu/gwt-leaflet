@@ -7,13 +7,13 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
  *
  * @author Lionel Leiva-Marcon
  */
-public class IconImpl {
+public class DivIconImpl {
 
 	/**
 	 * IconImpl overlay type constructor. 
 	 */
 	public static native JSObject create(JSObject options)/*-{
-		return new $wnd.L.Icon(options);
+		return new $wnd.L.DivIcon(options);
 	}-*/;
 
 }

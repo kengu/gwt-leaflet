@@ -3,6 +3,8 @@ package org.discotools.gwt.leaflet.client.map;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.types.Point;
 
+import com.google.gwt.dom.client.Element;
+
 /**
  * Map implementation
  * @author Lionel Leiva-Marcon
@@ -115,6 +117,18 @@ class MapImpl {
     public static native void invalidateSize(JSObject self, boolean animate) /*-{
         self.invalidateSize( animate);
     }-*/;
+
+
+    public static native Element getContainer(JSObject self) /*-{
+        return self.getContainer();
+    }-*/;
+
+
+    public static native void panInsideBounds(JSObject self, JSObject bound) /*-{
+        self.panInsideBounds(bound);
+    }-*/;
+
+
 
 
 
