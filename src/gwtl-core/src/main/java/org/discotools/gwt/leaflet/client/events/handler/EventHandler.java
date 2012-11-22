@@ -15,7 +15,7 @@ public interface EventHandler<T extends Event> {
      *
      */
     public enum Events{
-        click, dblclick, mousedown, mouseup, mouseenter, mouseleave, mousemove, contextmenu, focus, blur, preclick, load, popupopen, popupclose, mouseover, mouseout
+        click, dblclick, mousedown, mouseup, mouseenter, mouseleave, mousemove, contextmenu, focus, blur, preclick, load, popupopen, popupclose, mouseover, mouseout, dragstart, drag, dragend
     }
     public void handle(T event);
 }

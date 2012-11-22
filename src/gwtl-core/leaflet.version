@@ -4,7 +4,7 @@
 #
 # * Added crs=L.CRS to L.TileLayer.WMS options
 #
-Version=v0.4.5
+Version=b5c0a5f5f99ce36ef9b1e4db60c27f4c220f5ed1
 
 	
 	
