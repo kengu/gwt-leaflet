@@ -209,6 +209,10 @@ public class Example implements EntryPoint {
 		Circle circle = new Circle(latlng,200,circleOptions);
 		circle.addTo(map);
 
+        //Edit circle
+        LeafletCircleEditor circleEditor = new LeafletCircleEditor(circle);
+        circleEditor.enable(map);
+		
 		// Rectangle
 		GWT.log("Rectangle");
 		LatLng rec1 = new LatLng(59.900, 10.705);

@@ -114,7 +114,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
      * @return
      */
     public Point latLngToLayerPoint(LatLng latLng){
-        return MapImpl.latLngToLayerPoint(getJSObject(),latLng.getJSObject());
+        return new Point(MapImpl.latLngToLayerPoint(getJSObject(),latLng.getJSObject()));
     }
 
     /**
@@ -123,7 +123,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
      * @return
      */
     public LatLng layerPointToLatLng(Point point){
-        return new LatLng(MapImpl.layerPointToLatLng(getJSObject(),point));
+        return new LatLng(MapImpl.layerPointToLatLng(getJSObject(),point.getJSObject()));
     }
 
     /**
