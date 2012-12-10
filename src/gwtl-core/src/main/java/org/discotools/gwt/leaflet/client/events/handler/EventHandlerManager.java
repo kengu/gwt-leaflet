@@ -4,6 +4,8 @@ import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.map.Map;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 
 /**
  * Helper class to add event handler to event on objects
@@ -21,11 +23,11 @@ public class EventHandlerManager  {
      * @return registered function in event map listeners
      */
     public static EventRegisteredFunction addEventHandler(EventProvider eventProvider, Events eventName, EventHandler<?> handler){
-        return addEventHandler(eventProvider.getJSObject(), eventName.name(), handler);
+        return addEventHandler(eventProvider.getJSObject(), eventName.name(), handler).cast();
     }
     
 
-    private static native EventRegisteredFunction addEventHandler(JSObject eventProvider, String eventName, EventHandler<?> handler)/*-{
+    private static native JavaScriptObject addEventHandler(JSObject eventProvider, String eventName, EventHandler<?> handler)/*-{
         var _handler = $entry(function(event) {
           handler.@org.discotools.gwt.leaflet.client.events.handler.EventHandler::handle(Lorg/discotools/gwt/leaflet/client/events/Event;)(event);
         });

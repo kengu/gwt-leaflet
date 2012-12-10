@@ -88,12 +88,12 @@ class MapImpl {
 	}-*/;
 
 
-    public static native Point latLngToLayerPoint(JSObject self, JSObject latLng) /*-{
+    public static native JSObject latLngToLayerPoint(JSObject self, JSObject latLng) /*-{
         return self.latLngToLayerPoint(latLng);
     }-*/;
 
 
-    public static native JSObject layerPointToLatLng(JSObject self, Point point) /*-{
+    public static native JSObject layerPointToLatLng(JSObject self, JSObject point) /*-{
         return self.layerPointToLatLng(point);
     }-*/;
 
