@@ -14,6 +14,7 @@
  *******************************************************************************/
 package org.discotools.gwt.leaflet.client.example;
 
+import org.discotools.gwt.leaflet.client.LeafletResourceInjector;
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
@@ -72,6 +73,8 @@ public class Example implements EntryPoint {
 	private LegendControl legendControl;
 
 	public void onModuleLoad() {
+		
+		LeafletResourceInjector.ensureInjected();
 	
 		// Required version: origin/master
 //		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
