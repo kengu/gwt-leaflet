@@ -27,6 +27,12 @@ public class GwtlTestCase extends GWTTestCase {
 		cleanup();
 	}
 	
+	@Override
+	protected void gwtSetUp() throws Exception {
+		super.gwtSetUp();
+		LeafletResourceInjector.ensureInjected();
+	}
+	
 	/**
 	 * This method defensively cleanup the {@link DOM} after each test run
 	 */
