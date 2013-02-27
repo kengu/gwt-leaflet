@@ -37,7 +37,7 @@ public class Popup extends ILayer {
 	}
 	
 	public Popup openOn(Map map) {
-		PopupImpl.addTo(getJSObject(), map.getJSObject());
+		PopupImpl.openOn(getJSObject(), map.getJSObject());
 		return this;
 	}
 	
