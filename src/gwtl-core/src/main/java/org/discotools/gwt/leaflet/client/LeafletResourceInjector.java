@@ -1,6 +1,7 @@
 package org.discotools.gwt.leaflet.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.StyleInjector;
 
 public class LeafletResourceInjector {
 
@@ -20,6 +21,11 @@ public class LeafletResourceInjector {
 	 */
 	protected void injectResources() {
 		bundle.css().ensureInjected();
+        // Ensure correct image url is included by an ugly patch
+        // Saves editing the css from leaflet project
+        final String cssPatch =
+          ".leaflet-control-layers-toggle {background-image: url(" + bundle.layers().getSafeUri().asString() + ");}";
+        StyleInjector.injectStylesheet( cssPatch );
 		injectScript(bundle.baseScript().getText());
 		setDefaultMarkerIconPath(getDefaultMarkerDirectory());
 	}
