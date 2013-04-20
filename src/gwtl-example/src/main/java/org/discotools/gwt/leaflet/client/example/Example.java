@@ -14,12 +14,14 @@
  *******************************************************************************/
 package org.discotools.gwt.leaflet.client.example;
 
+import org.discotools.gwt.leaflet.client.LeafletResourceInjector;
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
 import org.discotools.gwt.leaflet.client.controls.scale.Scale;
 import org.discotools.gwt.leaflet.client.controls.scale.ScaleOptions;
+import org.discotools.gwt.leaflet.client.controls.search.LeafletSearchControlResourceInjector;
 import org.discotools.gwt.leaflet.client.controls.search.Search;
 import org.discotools.gwt.leaflet.client.controls.search.SearchOptions;
 import org.discotools.gwt.leaflet.client.controls.zoom.Zoom;
@@ -45,6 +47,7 @@ import org.discotools.gwt.leaflet.client.layers.vector.PolylineOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Rectangle;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.map.MapOptions;
+import org.discotools.gwt.leaflet.client.marker.LeafletLabelResourceInjector;
 import org.discotools.gwt.leaflet.client.marker.Marker;
 import org.discotools.gwt.leaflet.client.marker.MarkerOptions;
 import org.discotools.gwt.leaflet.client.marker.MarkerWithLabel;
@@ -72,7 +75,11 @@ public class Example implements EntryPoint {
 	private LegendControl legendControl;
 
 	public void onModuleLoad() {
-	
+		
+		LeafletResourceInjector.ensureInjected();
+		LeafletLabelResourceInjector.ensureInjected();
+        LeafletSearchControlResourceInjector.ensureInjected();
+
 		// Required version: origin/master
 //		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
 //		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
