@@ -21,6 +21,7 @@ import org.discotools.gwt.leaflet.client.controls.Position;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
 import org.discotools.gwt.leaflet.client.controls.scale.Scale;
 import org.discotools.gwt.leaflet.client.controls.scale.ScaleOptions;
+import org.discotools.gwt.leaflet.client.controls.search.LeafletSearchControlResourceInjector;
 import org.discotools.gwt.leaflet.client.controls.search.Search;
 import org.discotools.gwt.leaflet.client.controls.search.SearchOptions;
 import org.discotools.gwt.leaflet.client.controls.zoom.Zoom;
@@ -77,6 +78,7 @@ public class Example implements EntryPoint {
 		
 		LeafletResourceInjector.ensureInjected();
 		LeafletLabelResourceInjector.ensureInjected();
+        LeafletSearchControlResourceInjector.ensureInjected();
 
 		// Required version: origin/master
 //		EPSG3395 vCRS_EPSG3395 = new EPSG3395();

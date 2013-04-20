@@ -12,10 +12,6 @@
 	<!-- GWT Leaflet dependencies -->
 	<inherits name="org.discotools.gwt.leaflet.Core"/>
 	
-	<!-- Ensure Leaflet search script and styles are pre-loaded -->
-	<script     src="libs/leaflet-search/origin/master/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d/leaflet-search.js" />
-	<stylesheet src="libs/leaflet-search/origin/master/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d/leaflet-search.css" />
-	
 	<!-- GWT Leaflet source paths -->
 	<source path="client"></source>
 	
