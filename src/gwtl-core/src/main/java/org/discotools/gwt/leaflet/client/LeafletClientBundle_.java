@@ -7,7 +7,7 @@ import com.google.gwt.resources.client.TextResource;
 
 public interface LeafletClientBundle
   extends ClientBundle {
-	
+
 //    @Source("leaflet-src.js")
     @Source("leaflet.js")
     TextResource baseScript();
