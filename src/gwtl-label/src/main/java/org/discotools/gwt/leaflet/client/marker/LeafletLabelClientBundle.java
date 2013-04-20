@@ -4,7 +4,7 @@ import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.TextResource;
 
-public interface LeafletMarkerClientBundle
+public interface LeafletLabelClientBundle
   extends ClientBundle {
   //    @Source("leaflet.label-src.js")
   @Source( "leaflet.label.js" )

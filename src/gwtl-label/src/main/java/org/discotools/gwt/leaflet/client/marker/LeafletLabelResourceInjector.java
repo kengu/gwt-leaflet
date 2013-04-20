@@ -2,16 +2,16 @@ package org.discotools.gwt.leaflet.client.marker;
 
 import com.google.gwt.core.client.GWT;
 
-public class LeafletMarkerResourceInjector
+public class LeafletLabelResourceInjector
 {
 
-	protected static LeafletMarkerClientBundle bundle;
+	protected static LeafletLabelClientBundle bundle;
 
 	public static void ensureInjected() {
 		if (bundle == null) {
-			bundle = GWT.create(LeafletMarkerClientBundle.class);
-			LeafletMarkerResourceInjector injector = GWT
-					.create(LeafletMarkerResourceInjector.class);
+			bundle = GWT.create(LeafletLabelClientBundle.class);
+			LeafletLabelResourceInjector injector = GWT
+					.create(LeafletLabelResourceInjector.class);
 			injector.injectResources();
 		}
 	}
@@ -21,7 +21,7 @@ public class LeafletMarkerResourceInjector
 	 */
 	protected void injectResources() {
 		bundle.css().ensureInjected();
-		injectScript(bundle.baseScript().getText());
+		injectScript( bundle.baseScript().getText() );
 	}
 
 	private static native void injectScript(String script)
