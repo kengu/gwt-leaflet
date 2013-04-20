@@ -3,3 +3,6 @@ target
 .project
 .settings
 .gwt
+/*.iws
+/*.ipr
+*.iml
