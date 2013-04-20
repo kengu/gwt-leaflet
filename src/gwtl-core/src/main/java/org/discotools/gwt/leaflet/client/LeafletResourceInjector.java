@@ -4,11 +4,11 @@ import com.google.gwt.core.client.GWT;
 
 public class LeafletResourceInjector {
 
-	protected static LeafletClienBundle bundle;
+	protected static LeafletClientBundle bundle;
 
 	public static void ensureInjected() {
 		if (bundle == null) {
-			bundle = GWT.create(LeafletClienBundle.class);
+			bundle = GWT.create(LeafletClientBundle.class);
 			LeafletResourceInjector injector = GWT
 					.create(LeafletResourceInjector.class);
 			injector.injectResources();

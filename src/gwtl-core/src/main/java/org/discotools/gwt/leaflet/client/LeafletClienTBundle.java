@@ -5,7 +5,8 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.TextResource;
 
-public interface LeafletClienBundle extends ClientBundle {
+public interface LeafletClientBundle
+  extends ClientBundle {
 	
 //    @Source("leaflet-src.js")
     @Source("leaflet.js")
