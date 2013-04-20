@@ -8,9 +8,6 @@
 	<!-- GWT Leaflet dependencies -->	
 	<inherits name="org.discotools.gwt.leaflet.Core"/>
 	
-	<script src="libs/proj4js/1.1.0/proj4js.js" />
-	<script src="libs/proj4leaflet/origin/master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022/proj4leaflet.js" />
-
 	<source path="client"></source>
 	
 	<!-- Leaflet Proj4 API implementation (dependency injection) -->
