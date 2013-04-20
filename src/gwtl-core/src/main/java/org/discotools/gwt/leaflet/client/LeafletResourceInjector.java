@@ -24,7 +24,7 @@ public class LeafletResourceInjector {
         // Ensure correct image url is included by an ugly patch
         // Saves editing the css from leaflet project
         final String cssPatch =
-          ".leaflet-control-layers-toggle {background-image: url(" + bundle.layers().getSafeUri().asString() + ");}";
+          ".leaflet-control-layers-toggle {background-image: url('" + bundle.layers().getSafeUri().asString() + "');}";
         StyleInjector.injectStylesheet( cssPatch );
 		injectScript(bundle.baseScript().getText());
 		setDefaultMarkerIconPath(getDefaultMarkerDirectory());
