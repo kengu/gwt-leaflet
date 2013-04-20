@@ -46,6 +46,7 @@ import org.discotools.gwt.leaflet.client.layers.vector.PolylineOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Rectangle;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.map.MapOptions;
+import org.discotools.gwt.leaflet.client.marker.LeafletMarkerResourceInjector;
 import org.discotools.gwt.leaflet.client.marker.Marker;
 import org.discotools.gwt.leaflet.client.marker.MarkerOptions;
 import org.discotools.gwt.leaflet.client.marker.MarkerWithLabel;
@@ -75,7 +76,8 @@ public class Example implements EntryPoint {
 	public void onModuleLoad() {
 		
 		LeafletResourceInjector.ensureInjected();
-	
+		LeafletMarkerResourceInjector.ensureInjected();
+
 		// Required version: origin/master
 //		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
 //		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
