@@ -59,7 +59,12 @@ public class Map extends JSObjectWrapper implements EventProvider {
 
     public Map zoomIn(){
     	MapImpl.zoomIn(getJSObject());
-    	return this;    	
+    	return this;
+    }
+
+    public Map remove(){
+    	MapImpl.remove(getJSObject());
+    	return this;
     }
     
     public Map zoomOut() {

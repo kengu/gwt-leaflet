@@ -39,7 +39,11 @@ class MapImpl {
 		$wnd.gwtl.maps[_name] = map;
 		
 		// Finished
-		return map; 
+		return map;
+	}-*/;
+
+	public static native JSObject remove(JSObject self) /*-{
+		self.remove(); return self;
 	}-*/;
 	
 
