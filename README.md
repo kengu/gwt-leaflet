@@ -27,7 +27,7 @@ Features
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-core">Core Module</a>###
 
-**Dependency**: Leaflet 0.4.5
+**Dependency**: Leaflet 0.7.3
 
 Following parts of Leaflet API are implemented:
 
