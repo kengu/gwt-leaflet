@@ -23,6 +23,7 @@ Features
 + v0.1 (Medio Sep 2012) - Core parts of Leaflet API exposed
 + v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
 + v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
++ v0.4 (?? Mar 2015) - GWT upgraded to 2.7.0
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-core">Core Module</a>###
 
