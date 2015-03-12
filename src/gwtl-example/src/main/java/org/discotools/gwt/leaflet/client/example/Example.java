@@ -95,7 +95,7 @@ public class Example implements EntryPoint {
 	 	map = new Map("map", loptions);
 	 	
 		// Create TileLayer url template
-		String url = "http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png";
+		String url = "http://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png";
 
 		// Create mutable TileLayer options
 		Options tileOptions = new Options();	
@@ -534,7 +534,7 @@ public class Example implements EntryPoint {
 		});
 		@org.discotools.gwt.leaflet.client.example.InfoControl::doUpdate(Ljava/lang/String;Ljava/lang/String;)(layer.feature.properties.name, ''+layer.feature.properties.density);
 
-		if (!L.Browser.ie && !L.Browser.opera) {
+		if (!$wnd.L.Browser.ie && !$wnd.L.Browser.opera) {
 			layer.bringToFront();
 		}
 
