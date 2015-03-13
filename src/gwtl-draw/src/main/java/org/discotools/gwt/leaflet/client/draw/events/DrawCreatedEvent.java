@@ -11,7 +11,7 @@ import org.discotools.gwt.leaflet.client.marker.Marker;
 
 /**
  * Triggered when a new vector or marker has been created.
- * 
+ *
  * @author Haley Boyd
  *
  */
@@ -22,7 +22,7 @@ public class DrawCreatedEvent extends
 	protected DrawCreatedEvent() {
 		super();
 	}
-	
+
     /**
      * The original DOM mouse event fired by the browser.
      * @return javascript object DOMMouseEvent
@@ -30,43 +30,48 @@ public class DrawCreatedEvent extends
     public final native com.google.gwt.user.client.Event getOriginalEvent() /*-{
         return this.originalEvent;
     }-*/;
-    
+
     /**
      * Layer that was just created.
-     * 
+     *
      * @return
      */
     public final ILayer getLayer() {
     	String type = getLayerType();
-    	switch(type) {
-    		case "polyline":
-    			return new Polyline(layer());
-    		case "polygon":
-    			return new Polygon(layer());
-    		case "rectangle":
-    			return new Rectangle(layer());
-    		case "circle":
-    			return new Circle(layer());
-    		case "marker":
-    			return new Marker(layer());
-    	}
-    	return new ILayer(layer());
+		if (type == "polyline") {
+			return new Polyline(layer());
+		}
+		else if (type == "polygon") {
+			return new Polygon(layer());
+		}
+		else if (type == "rectangle") {
+			return new Rectangle(layer());
+		}
+		else if (type == "circle") {
+			return new Circle(layer());
+		}
+		else if (type == "marker") {
+			return new Marker(layer());
+		}
+		else {
+			return new ILayer(layer());
+		}
     }
-    
+
     private final native JSObject layer() /*-{
     	return this.layer;
     }-*/;
-    
+
 	/**
 	 * The type of layer this is. One of: polyline, polygon, rectangle, circle,
 	 * marker
-	 * 
+	 *
 	 * @return
 	 */
     public final String getLayerType() {
     	return layerType();
     }
-    
+
     private final native String layerType() /*-{
     	return this.layerType;
     }-*/;
