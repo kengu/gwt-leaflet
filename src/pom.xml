@@ -38,6 +38,7 @@
 		<module>gwtl-widget</module>
 		<module>gwtl-search</module>
 		<module>gwtl-label</module>
+		<module>gwtl-draw</module>
 		<module>gwtl-example</module>
 	</modules>
 

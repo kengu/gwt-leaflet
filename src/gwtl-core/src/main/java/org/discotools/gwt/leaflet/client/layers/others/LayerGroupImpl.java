@@ -27,6 +27,9 @@ public class LayerGroupImpl extends ILayerImpl {
 		self.clearLayers();
 	}-*/;
 	
+	public static native JSObject[] getLayers(JSObject self) /*-{
+		return self.getLayers();
+	}-*/;
 
 	public static native  void addTo(JSObject self, JSObject map) /*-{
 		self.addTo(map);

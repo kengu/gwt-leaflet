@@ -22,6 +22,10 @@ public class FeatureGroup extends LayerGroup {
 	protected FeatureGroup(JSObject element) {
 		super(element);
 	}
+	
+	public FeatureGroup() {
+		this(FeatureGroupImpl.create());
+	}
 
 	public FeatureGroup(ILayer[] layers) {
 		this (FeatureGroupImpl.create(new JSObjectArray(layers).getJSObject()));

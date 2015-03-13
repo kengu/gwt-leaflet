@@ -17,6 +17,8 @@ package org.discotools.gwt.leaflet.client.example;
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
+import org.discotools.gwt.leaflet.client.controls.draw.Draw;
+import org.discotools.gwt.leaflet.client.controls.draw.DrawControlOptions;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
 import org.discotools.gwt.leaflet.client.controls.scale.Scale;
 import org.discotools.gwt.leaflet.client.controls.scale.ScaleOptions;
@@ -25,12 +27,18 @@ import org.discotools.gwt.leaflet.client.controls.search.SearchOptions;
 import org.discotools.gwt.leaflet.client.controls.zoom.Zoom;
 import org.discotools.gwt.leaflet.client.controls.zoom.ZoomOptions;
 import org.discotools.gwt.leaflet.client.crs.epsg.EPSG3857;
+import org.discotools.gwt.leaflet.client.draw.edit.EditOptions;
+import org.discotools.gwt.leaflet.client.draw.events.DrawCreatedEvent;
+import org.discotools.gwt.leaflet.client.draw.events.DrawEditedEvent;
+import org.discotools.gwt.leaflet.client.draw.events.handler.DrawEvents;
 import org.discotools.gwt.leaflet.client.events.MouseEvent;
 import org.discotools.gwt.leaflet.client.events.handler.EventHandler;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
 import org.discotools.gwt.leaflet.client.events.handler.EventHandlerManager;
 import org.discotools.gwt.leaflet.client.events.handler.EventRegisteredFunction;
-import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
+import org.discotools.gwt.leaflet.client.layers.ILayer;
+import org.discotools.gwt.leaflet.client.layers.others.FeatureGroup;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSON;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONFeatures;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONOptions;
@@ -273,6 +281,49 @@ public class Example implements EntryPoint {
 		searchOptions.setPosition(Position.TOP_RIGHT);
 		Search search = new Search(searchOptions);
 		search.addTo(map);
+		
+		// Add Draw Control
+		GWT.log("Draw Control");
+		final FeatureGroup drawnItems = new FeatureGroup();
+		map.addLayer(drawnItems);
+		DrawControlOptions drawControlOptions = new DrawControlOptions();
+		drawControlOptions.setPosition(Position.TOP_LEFT);
+		EditOptions editOptions = new EditOptions();
+		editOptions.setFeatureGroup(drawnItems);
+		drawControlOptions.setEditOptions(editOptions);
+		Draw draw = new Draw(drawControlOptions);
+		map.addControl(draw);
+		EventHandlerManager.addEventHandler(
+				map,
+				DrawEvents.draw_created,
+				new EventHandler<DrawCreatedEvent>() {
+
+					@Override
+					public void handle(
+							DrawCreatedEvent event ) {
+						GWT.log("Added " + event.getLayerType() + " to map.");
+						String type = event.getLayerType();
+						ILayer layer = event.getLayer();
+						if (type=="marker") {
+							((Marker)layer).bindPopup("A popup!");
+						}
+						
+						drawnItems.addLayer(layer);
+					}
+				});
+		EventHandlerManager.addEventHandler(
+				map,
+				DrawEvents.draw_edited,
+				new EventHandler<DrawEditedEvent>() {
+
+					@Override
+					public void handle(
+							DrawEditedEvent event ) {
+						LayerGroup layers = event.getLayers();
+						int countOfEditedLayers = layers.getLayers().length;
+						GWT.log("Edited " + countOfEditedLayers + " layers.");
+					}
+				});
 		
 		// Add Choropleth
 		GWT.log("Choropleth");

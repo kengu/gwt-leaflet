@@ -1,6 +1,6 @@
 package org.discotools.gwt.leaflet.client.events.handler;
 
-import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
+import org.discotools.gwt.leaflet.client.events.handler.EventHandler.EventName;
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.map.Map;
 
@@ -22,12 +22,12 @@ public class EventHandlerManager  {
      * @param handler handle event
      * @return registered function in event map listeners
      */
-    public static EventRegisteredFunction addEventHandler(EventProvider eventProvider, Events eventName, EventHandler<?> handler){
-        return addEventHandler(eventProvider.getJSObject(), eventName.name(), handler).cast();
+    public static EventRegisteredFunction addEventHandler(EventProvider eventProvider, EventName eventName, EventHandler<?> handler){
+        return addEventHandler(eventProvider.getJSObject(), eventName.getName(), handler).cast();
     }
     
 
-    private static native JavaScriptObject addEventHandler(JSObject eventProvider, String eventName, EventHandler<?> handler)/*-{
+    protected static native JavaScriptObject addEventHandler(JSObject eventProvider, String eventName, EventHandler<?> handler)/*-{
         var _handler = $entry(function(event) {
           handler.@org.discotools.gwt.leaflet.client.events.handler.EventHandler::handle(Lorg/discotools/gwt/leaflet/client/events/Event;)(event);
         });
@@ -42,8 +42,8 @@ public class EventHandlerManager  {
      * @param eventName Event name when called method {@link #addEventHandler(EventProvider, String, EventHandler)}
      * @param function object returned from method {@link #addEventHandler(EventProvider, String, EventHandler)}
      */
-    public static void removeEventHandler(EventProvider eventProvider, Events eventName, EventRegisteredFunction function) {
-        removeEventHandler(eventProvider.getJSObject(), eventName.name(), function);
+    public static void removeEventHandler(EventProvider eventProvider, EventName eventName, EventRegisteredFunction function) {
+        removeEventHandler(eventProvider.getJSObject(), eventName.getName(), function);
     }
     
     private static native void removeEventHandler(JSObject eventProvider,String eventName,EventRegisteredFunction eventRegisteredFunction)/*-{
@@ -56,8 +56,8 @@ public class EventHandlerManager  {
      * @param eventProvider
      * @param eventName 
      */
-    public static void clearEventHandler(EventProvider eventProvider, Events eventName) {
-        clearEventHandler(eventProvider.getJSObject(), eventName.name());
+    public static void clearEventHandler(EventProvider eventProvider, EventName eventName) {
+        clearEventHandler(eventProvider.getJSObject(), eventName.getName());
     }
 
     private static native void clearEventHandler(JSObject eventProvider,String eventName)/*-{

@@ -21,7 +21,7 @@ import org.discotools.gwt.leaflet.client.types.LatLng;
  */
 public class Marker extends ILayer implements EventProvider {
 
-	protected Marker(JSObject element) {
+	public Marker(JSObject element) {
 		super(element);
 	}
 
