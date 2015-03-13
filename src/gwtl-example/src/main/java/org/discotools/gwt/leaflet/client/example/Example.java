@@ -20,6 +20,7 @@ import org.discotools.gwt.leaflet.client.controls.Position;
 import org.discotools.gwt.leaflet.client.controls.draw.Draw;
 import org.discotools.gwt.leaflet.client.controls.draw.DrawControlOptions;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
+import org.discotools.gwt.leaflet.client.controls.measure.Measure;
 import org.discotools.gwt.leaflet.client.controls.scale.Scale;
 import org.discotools.gwt.leaflet.client.controls.scale.ScaleOptions;
 import org.discotools.gwt.leaflet.client.controls.search.Search;
@@ -73,13 +74,13 @@ import com.google.gwt.user.client.ui.RootPanel;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class Example implements EntryPoint {
-		
+
 	Map map;
 	GeoJSONOptions choroplethOptions;
 	GeoJSON choroplethJson;
 	private InfoControl infoControl;
 	private LegendControl legendControl;
-	
+
 	public class MyLayerHandler implements LayerHandler {
 		public int countOfEditedLayers = 0;
 		@Override
@@ -90,12 +91,12 @@ public class Example implements EntryPoint {
 	}
 
 	public void onModuleLoad() {
-	
+
 		// Required version: origin/master
 //		EPSG3395 vCRS_EPSG3395 = new EPSG3395();
 //		EPSG4326 vCRS_EPSG4326 = new EPSG4326();
 		EPSG3857 vCRS_EPSG3857 = new EPSG3857();
-		
+
 		// Fit MapWidget to device screen
 		RootPanel rootPanel = RootPanel.get();
 		rootPanel.setStyleName("gwt-Body");
@@ -111,41 +112,41 @@ public class Example implements EntryPoint {
 		loptions.setProperty("crs", vCRS_EPSG3857);
 
 	 	map = new Map("map", loptions);
-	 	
+
 		// Create TileLayer url template
 		String url = "http://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png";
 
 		// Create mutable TileLayer options
-		Options tileOptions = new Options();	
+		Options tileOptions = new Options();
 		tileOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
-		
+
 		// Create TileLayer instance
 		TileLayer tile = new TileLayer(url, tileOptions);
- 
+
 		// Create WmsLayer url
 		url = "http://wms.latlon.org";
-		
+
 		// Create mutable WmsLayer options
-		Options wmsOptions = new Options();	
+		Options wmsOptions = new Options();
 		wmsOptions.setProperty(WmsLayer.LAYERS, "osm");
 		wmsOptions.setProperty("attribution", "Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade");
 
-		//Simple   vCRS_Simple   = new Simple(); 
+		//Simple   vCRS_Simple   = new Simple();
 		wmsOptions.setProperty("crs", vCRS_EPSG3857);
-	
+
 		// Create Leaflet WMSLayer instance
 		WmsLayer wms = new WmsLayer(url, wmsOptions);
 
-		
+
 		// Create layer switcher control
-		Options bases = new Options();	
+		Options bases = new Options();
 		bases.setProperty("WMS",wms);
 		bases.setProperty("Tile",tile);
 
 		Options overlays =new Options();
 		//overlays.setProperty("Test",tile);
-		
-		ControlOptions controlOptions = new ControlOptions(); 
+
+		ControlOptions controlOptions = new ControlOptions();
 		controlOptions.setPosition(Position.BOTTOM_RIGHT);
 
 		// LayerGroup
@@ -153,7 +154,7 @@ public class Example implements EntryPoint {
 		LatLng glatlng2 = new LatLng(59.922, 10.750);
 		LatLng glatlng3 = new LatLng(59.924, 10.752);
 		LatLng glatlng4 = new LatLng(59.926, 10.756);
-		
+
 		MarkerOptions opt1 = new MarkerOptions();
 		opt1.setTitle("marker1");
 		MarkerOptions opt2 = new MarkerOptions();
@@ -174,15 +175,15 @@ public class Example implements EntryPoint {
 		LayerGroup groupMarkers2 = new LayerGroup(markers2);
 		overlays.setProperty("Group marker 1", groupMarkers1);
 		overlays.setProperty("Group marker 2", groupMarkers2);
-		
-		// Add layers control to map 
+
+		// Add layers control to map
 		Layers control = new Layers(bases,overlays, controlOptions);
 		control.addTo(map);
-		
-		// Create map center position		
+
+		// Create map center position
 		IconOptions iconOptions = new IconOptions();
-		
-		
+
+
 		iconOptions.setIconUrl(GWT.getHostPageBaseURL()+"images/icon-info.png");
 		iconOptions.setIconSize(new Point(32, 37));
 		iconOptions.setIconAnchor(new Point(16, 37));
@@ -202,12 +203,12 @@ public class Example implements EntryPoint {
         final LabelOptions labelOptions = new LabelOptions();
         labelOptions.setNoHide(true);
         //.setWithoutDefaultStyle(true);
-        
+
         markerWithLabel.bindLabel("<b>Here is a simple Label<b>", labelOptions).addTo(map).showLabel();
         // Add layers to map and center at given position
         map.setView(latlng, 2, false);
         map.addLayer(tile);
-        
+
 		LatLng latlng1 = new LatLng(59.915, 10.759);
 		LatLng latlng2 = new LatLng(59.900, 10.800);
 		LatLng latlng3 = new LatLng(59.990, 10.800);
@@ -219,8 +220,8 @@ public class Example implements EntryPoint {
 		GWT.log("Polyline");
 		Polyline poly = new Polyline(latlngs, new PolylineOptions());
 		poly.addTo(map);
-		
-		//Circle 
+
+		//Circle
 		GWT.log("Circle");
 		Options circleOptions = new Options();
 		circleOptions.setProperty("color", "red");
@@ -230,7 +231,7 @@ public class Example implements EntryPoint {
         //Edit circle
         LeafletCircleEditor circleEditor = new LeafletCircleEditor(circle);
         circleEditor.enable(map);
-		
+
 		// Rectangle
 		GWT.log("Rectangle");
 		LatLng rec1 = new LatLng(59.900, 10.705);
@@ -267,31 +268,31 @@ public class Example implements EntryPoint {
                 EventHandlerManager.clearEventHandler(map, Events.click);
             }
         });
-		
-		// Add Scale Control 
+
+		// Add Scale Control
 		GWT.log("Scale Control");
 		ScaleOptions scaleOptions = new ScaleOptions();
 		Scale scale = new Scale(scaleOptions);
 		scale.addTo(map);
 
-		// Add Zoom Control 
+		// Add Zoom Control
 		GWT.log("Zoom Control");
 		ZoomOptions zoomOptions = new ZoomOptions();
 		zoomOptions.setPosition(Position.TOP_RIGHT);
 		Zoom zoom = new Zoom(zoomOptions);
 		zoom.addTo(map);
-		
+
 		// Add Search Control
 		GWT.log("Search Control");
 		SearchOptions searchOptions = new SearchOptions();
-		searchOptions.setSearchLayer(groupMarkers1); 
-		searchOptions.setZoom(15); 
-		searchOptions.setText("Search Area"); 
-		searchOptions.setTextErr("Not found"); 
+		searchOptions.setSearchLayer(groupMarkers1);
+		searchOptions.setZoom(15);
+		searchOptions.setText("Search Area");
+		searchOptions.setTextErr("Not found");
 		searchOptions.setPosition(Position.TOP_RIGHT);
 		Search search = new Search(searchOptions);
 		search.addTo(map);
-		
+
 		// Add Draw Control
 		GWT.log("Draw Control");
 		final FeatureGroup drawnItems = new FeatureGroup();
@@ -317,7 +318,7 @@ public class Example implements EntryPoint {
 						if (type=="marker") {
 							((Marker)layer).bindPopup("A popup!");
 						}
-						
+
 						drawnItems.addLayer(layer);
 					}
 				});
@@ -336,66 +337,72 @@ public class Example implements EntryPoint {
 						GWT.log("Edited " + myLayerHandler.countOfEditedLayers + " layers.");
 					}
 				});
-		
+
+		// Add Measure Control
+		GWT.log("Measure Control");
+		ControlOptions measureOptions = new ControlOptions(Position.TOP_RIGHT);
+		Measure measure = new Measure(measureOptions);
+		map.addControl(measure);
+
 		// Add Choropleth
 		GWT.log("Choropleth");
 		createChoropleth();
-		
+
 		// Add GEOJson
 		GWT.log("GeoJson");
 		createJsonSamples();
-		
-	} 
-	
+
+	}
+
 	public void createJsonSamples() {
 		String freeBus       = GeoJsonSampleFactory.getInstance().createFreeBus();
 		String lightRailStop = GeoJsonSampleFactory.getInstance().createLightRailStop();
 		String bicycleRental = GeoJsonSampleFactory.getInstance().createBicycleRental();
 		String campus        = GeoJsonSampleFactory.getInstance().createCampus();
 		String coorsField    = GeoJsonSampleFactory.getInstance().createCoorsField();
-				
+
 		GeoJSONFeatures features1 = new GeoJSONFeatures() {
-			
+
 			@Override
 			public JSObject style(JSObject self) {
 				// TODO Auto-generated method stub
 				return null;
 			}
-			
+
 			@Override
 			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
 				return new Marker(new LatLng(latlng), new Options()).getJSObject();
 			}
-			
+
 			@Override
 			public JSObject onEachFeature(JSObject feature, JSObject layer) {
 				return myOnEachFeature(feature, layer);
 			}
-			
+
 			@Override
 			public boolean filter(JSObject self, JSObject layer) {
 				return myFilter(self, layer);
 			}
 		};
-		
+
 		GeoJSONFeatures features2 = new GeoJSONFeatures() {
-			
+
 			@Override
 			public JSObject style(JSObject self) {
 				return null;
-				
+
 			}
-			
+
 			@Override
 			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
 				return new Marker(new LatLng(latlng), new Options()).getJSObject();
 			}
-			
+
 			@Override
 			public JSObject onEachFeature(JSObject feature, JSObject layer) {
 				return myOnEachFeature2(feature, layer);
 			}
-			
+
 			@Override
 			public boolean filter(JSObject self, JSObject layer) {
 				return myFilter(self, layer);
@@ -403,29 +410,29 @@ public class Example implements EntryPoint {
 		};
 
 		GeoJSONFeatures features3 = new GeoJSONFeatures() {
-			
+
 			@Override
 			public JSObject style(JSObject feature) {
 				return myStyle(feature);
-				
+
 			}
-			
+
 			@Override
 			public JSObject pointToLayer(JSObject feature, JSObject latlng) {
 				return myPointToLayer(feature, latlng);
 			}
-			
+
 			@Override
 			public JSObject onEachFeature(JSObject feature, JSObject layer) {
 				return myOnEachFeature2(feature, layer);
 			}
-			
+
 			@Override
 			public boolean filter(JSObject self, JSObject layer) {
 				return myFilter(self, layer);
 			}
 		};
-		
+
 		GeoJSONOptions coorsOptions         = new GeoJSONOptions(features1);
 		GeoJSONOptions freeBusOptions       = new GeoJSONOptions(features2);
 		GeoJSONOptions bicycleRentalOptions = new GeoJSONOptions(features3);
@@ -435,14 +442,14 @@ public class Example implements EntryPoint {
 		GeoJSON geojson_campus        = new GeoJSON(campus        , bicycleRentalOptions);
 		GeoJSON geojson_coorsField    = new GeoJSON(coorsField    , coorsOptions);
 		GeoJSON geojson_freeBus       = new GeoJSON(freeBus       , freeBusOptions);
-		
+
 		geojson_freeBus      .addTo(map);
 		geojson_lightRailStop.addTo(map);
 		geojson_bicycleRental.addTo(map);
 		geojson_campus       .addTo(map);
 		geojson_coorsField   .addTo(map);
 	}
-	
+
 	public static native JSObject myOnEachFeature(JSObject feature, JSObject layer) /*-{
    	var popupContent = "<p> <b>myOnEachFeature</b> " +
 				feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
@@ -492,17 +499,17 @@ public class Example implements EntryPoint {
     }-*/;
 
     /***********************************************************************
-     * Choropleth 
+     * Choropleth
      * From : http://leaflet.cloudmade.com/examples/choropleth-example.html
      ***********************************************************************/
     public void createChoropleth() {
-        //Custom Legend 
+        //Custom Legend
         final Options legendOptions = new Options();
         legendOptions.setProperty("position", Position.BOTTOM_RIGHT);
         legendControl = new LegendControl(legendOptions);
         legendControl.addTo(map);
 
-        //Info Legend 
+        //Info Legend
         final Options infoOptions = new Options();
         infoOptions.setProperty("position", Position.TOP_RIGHT);
         infoControl = new InfoControl(infoOptions);
@@ -583,7 +590,7 @@ public class Example implements EntryPoint {
     }-*/;
 
     /**
-     * Highlight method 
+     * Highlight method
      * @param e
      */
     public native static void highlightFeature(JavaScriptObject e) /*-{

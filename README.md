@@ -78,6 +78,12 @@ Following parts of Leaflet API are implemented:
                                     
 + Leaflet draw - Enables drawing features like polylines, polygons, rectangles, circles and markers through a very nice user-friendly interface with icons and hints. ([Leaflet.draw](https://github.com/Leaflet/Leaflet.draw))
 
+###<a href="gwt-leaflet/tree/master/src/gwtl-measure">Measure Module (GWT)</a>###
+
+**Dependency**: Leaflet.MeasureControl [version 97016995b7e15ccea62c6b3c84cddfd9d1a35f8f](https://github.com/makinacorpus/Leaflet.MeasureControl/commit/97016995b7e15ccea62c6b3c84cddfd9d1a35f8f) (git)
+                                    
++ Leaflet MeasureControl - A simple tool to measure distances on maps (*relies on Leaflet.Draw*). ([Leaflet.MeasureControl](https://github.com/makinacorpus/Leaflet.MeasureControl))
+
 Example
 =======
 
