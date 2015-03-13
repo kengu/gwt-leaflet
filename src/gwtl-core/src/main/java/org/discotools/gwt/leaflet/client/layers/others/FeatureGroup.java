@@ -38,7 +38,7 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup addLayer(ILayer layer) {
-		FeatureGroupImpl.addTo(getJSObject(), layer.getJSObject());		
+		FeatureGroupImpl.addLayer(getJSObject(), layer.getJSObject());		
 		return this;
 	}
 
