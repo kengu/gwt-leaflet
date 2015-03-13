@@ -23,7 +23,7 @@ Features
 + v0.1 (Medio Sep 2012) - Core parts of Leaflet API exposed
 + v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
 + v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
-+ v0.4 (?? Mar 2015) - GWT upgraded to 2.7.0
++ v0.4 (?? Mar 2015) - GWT upgraded to 2.7.0. Added leaflet.draw plugin.
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-core">Core Module</a>###
 
@@ -68,10 +68,15 @@ Following parts of Leaflet API are implemented:
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-label">Label Module (GWT)</a>###
 
-**Dependency**: Leaflet.label [master/3c13acff459c36a222e9fdefd718af95396a0a9f](https://github.com/igieon/Leaflet.label/commit/3c13acff459c36a222e9fdefd718af95396a0a9f) (git)
+**Dependency**: Leaflet.label [version 0.2.1](https://github.com/Leaflet/Leaflet.label/releases/tag/0.2.1) (git)
                                     
 + Leaflet label - Simple label plugin for Leaflet ([Leaflet.label](https://github.com/igieon/Leaflet.label))
 
+###<a href="gwt-leaflet/tree/master/src/gwtl-draw">Draw Module (GWT)</a>###
+
+**Dependency**: Leaflet.draw [version 0.2.3](https://github.com/Leaflet/Leaflet.draw/releases/tag/0.2.3) (git)
+                                    
++ Leaflet draw - Enables drawing features like polylines, polygons, rectangles, circles and markers through a very nice user-friendly interface with icons and hints. ([Leaflet.draw](https://github.com/Leaflet/Leaflet.draw))
 
 Example
 =======
