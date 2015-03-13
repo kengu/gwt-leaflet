@@ -43,6 +43,7 @@ import org.discotools.gwt.leaflet.client.layers.others.GeoJSON;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONFeatures;
 import org.discotools.gwt.leaflet.client.layers.others.GeoJSONOptions;
 import org.discotools.gwt.leaflet.client.layers.others.LayerGroup;
+import org.discotools.gwt.leaflet.client.layers.others.LayerGroup.LayerHandler;
 import org.discotools.gwt.leaflet.client.layers.raster.TileLayer;
 import org.discotools.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.discotools.gwt.leaflet.client.layers.vector.Circle;
@@ -78,6 +79,15 @@ public class Example implements EntryPoint {
 	GeoJSON choroplethJson;
 	private InfoControl infoControl;
 	private LegendControl legendControl;
+	
+	public class MyLayerHandler implements LayerHandler {
+		public int countOfEditedLayers = 0;
+		@Override
+		public void handle(
+				ILayer layer ) {
+			countOfEditedLayers++;
+		}
+	}
 
 	public void onModuleLoad() {
 	
@@ -320,8 +330,10 @@ public class Example implements EntryPoint {
 					public void handle(
 							DrawEditedEvent event ) {
 						LayerGroup layers = event.getLayers();
-						int countOfEditedLayers = layers.getLayers().length;
-						GWT.log("Edited " + countOfEditedLayers + " layers.");
+						MyLayerHandler myLayerHandler = new MyLayerHandler();
+						layers.forEachLayer(myLayerHandler);
+//						int countOfEditedLayers = layers.getLayers().length;
+						GWT.log("Edited " + myLayerHandler.countOfEditedLayers + " layers.");
 					}
 				});
 		

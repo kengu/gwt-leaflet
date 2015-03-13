@@ -18,6 +18,10 @@ import org.discotools.gwt.leaflet.client.map.Map;
  *
  */
 public class LayerGroup extends ILayer {
+	
+	public interface LayerHandler {
+		void handle(ILayer layer);
+	}
 
 	public LayerGroup(JSObject element) {
 		super(element);
@@ -91,5 +95,23 @@ public class LayerGroup extends ILayer {
 	public LayerGroup setOptions(Options options) {
 		return (LayerGroup)super.setOptions(options);
 	}
+	
+	/**
+	 * Iterates over the layers of the group.
+	 * 
+	 * @param layerHandler
+	 * @return
+	 */
+	public LayerGroup forEachLayer(LayerHandler layerHandler) {
+		eachLayer(getJSObject(), layerHandler);
+		return this;
+	}
+	
+	private static native void eachLayer(JSObject self, LayerHandler handler) /*-{
+		var _handler = $entry(function(layer) {
+        	handler.@org.discotools.gwt.leaflet.client.layers.others.LayerGroup.LayerHandler::handle(Lorg/discotools/gwt/leaflet/client/layers/ILayer;)(layer);
+        });
+        self.eachLayer(_handler);
+	}-*/;
 
 }
