@@ -81,8 +81,9 @@ Following parts of Leaflet API are implemented:
 ###<a href="src/gwtl-measure">Measure Module (GWT)</a>###
 
 **Dependency**: Leaflet.MeasureControl [version 97016995b7e15ccea62c6b3c84cddfd9d1a35f8f](https://github.com/makinacorpus/Leaflet.MeasureControl/commit/97016995b7e15ccea62c6b3c84cddfd9d1a35f8f) (git)
+**Dependency**: Leaflet.draw [version 0.2.3](https://github.com/Leaflet/Leaflet.draw/releases/tag/0.2.3) (git)
                                     
-+ Leaflet MeasureControl - A simple tool to measure distances on maps (*relies on Leaflet.Draw*). ([Leaflet.MeasureControl](https://github.com/makinacorpus/Leaflet.MeasureControl))
++ Leaflet MeasureControl - A simple tool to measure distances on maps. ([Leaflet.MeasureControl](https://github.com/makinacorpus/Leaflet.MeasureControl))
 
 Example
 =======
