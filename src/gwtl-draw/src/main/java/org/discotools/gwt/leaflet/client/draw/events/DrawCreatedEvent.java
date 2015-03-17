@@ -38,19 +38,19 @@ public class DrawCreatedEvent extends
      */
     public final ILayer getLayer() {
     	String type = getLayerType();
-		if (type == "polyline") {
+		if ("polyline".equals(type)) {
 			return new Polyline(layer());
 		}
-		else if (type == "polygon") {
+		else if ("polygon".equals(type)) {
 			return new Polygon(layer());
 		}
-		else if (type == "rectangle") {
+		else if ("rectangle".equals(type)) {
 			return new Rectangle(layer());
 		}
-		else if (type == "circle") {
+		else if ("circle".equals(type)) {
 			return new Circle(layer());
 		}
-		else if (type == "marker") {
+		else if ("marker".equals(type)) {
 			return new Marker(layer());
 		}
 		else {
