@@ -85,6 +85,12 @@ Following parts of Leaflet API are implemented:
                                     
 + Leaflet MeasureControl - A simple tool to measure distances on maps. ([Leaflet.MeasureControl](https://github.com/makinacorpus/Leaflet.MeasureControl))
 
+###<a href="src/gwtl-coordinates">Coordinates Module (GWT)</a>###
+
+**Dependency**: Leaflet.Coordinates [version 0.1.4](https://github.com/MrMufflon/Leaflet.Coordinates/releases/tag/0.1.4) (git)
+                                    
++ Leaflet Coordinates - A Leaflet plugin to view mouse coordinates. Also the user can change the coordinates and get a marker on that position viewing the coordinates. ([Leaflet.Coordinates](https://github.com/MrMufflon/Leaflet.Coordinates))
+
 Example
 =======
 

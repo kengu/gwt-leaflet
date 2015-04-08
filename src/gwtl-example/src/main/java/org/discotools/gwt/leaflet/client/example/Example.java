@@ -17,6 +17,9 @@ package org.discotools.gwt.leaflet.client.example;
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
+import org.discotools.gwt.leaflet.client.controls.coordinates.Coordinates;
+import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButton;
+import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButtonOptions;
 import org.discotools.gwt.leaflet.client.controls.draw.Draw;
 import org.discotools.gwt.leaflet.client.controls.draw.DrawControlOptions;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
@@ -343,6 +346,17 @@ public class Example implements EntryPoint {
 		ControlOptions measureOptions = new ControlOptions(Position.TOP_RIGHT);
 		Measure measure = new Measure(measureOptions);
 		map.addControl(measure);
+
+		// Add Coordinates Control
+		GWT.log("Coordinates Control");
+		ControlOptions coordinatesOptions = new ControlOptions(Position.BOTTOM_LEFT);
+		CoordinatesButtonOptions coordinatesButtonOptions = new CoordinatesButtonOptions();
+		coordinatesButtonOptions.setPosition(Position.TOP_RIGHT);
+		coordinatesButtonOptions.setText("Cursor");
+		coordinatesButtonOptions.setCoordinatesOptions(coordinatesOptions);
+
+		CoordinatesButton coordinates = new CoordinatesButton(coordinatesButtonOptions);
+		map.addControl(coordinates);
 
 		// Add Choropleth
 		GWT.log("Choropleth");
