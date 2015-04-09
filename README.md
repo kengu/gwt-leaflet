@@ -78,6 +78,12 @@ Following parts of Leaflet API are implemented:
                                     
 + Leaflet draw - Enables drawing features like polylines, polygons, rectangles, circles and markers through a very nice user-friendly interface with icons and hints. ([Leaflet.draw](https://github.com/Leaflet/Leaflet.draw))
 
+###<a href="src/gwtl-ellipse">Ellipse Module (GWT)</a>###
+
+**Dependency**: Leaflet.ellipse [version 66b8c2f23e833eed08389157f410cd735f8a3275](https://github.com/jdfergason/Leaflet.Ellipse/commit/66b8c2f23e833eed08389157f410cd735f8a3275) (git)
+                                    
++ Leaflet ellipse - A basic ellipse type for Leaflet, a JS library for interactive maps. Allows specification of semi-major and semi-minor axis as well as a tilt degrees from west. ([Leaflet.ellipse](https://github.com/jdfergason/Leaflet.Ellipse))
+
 ###<a href="src/gwtl-measure">Measure Module (GWT)</a>###
 
 **Dependency**: Leaflet.MeasureControl [version 97016995b7e15ccea62c6b3c84cddfd9d1a35f8f](https://github.com/makinacorpus/Leaflet.MeasureControl/commit/97016995b7e15ccea62c6b3c84cddfd9d1a35f8f) (git)

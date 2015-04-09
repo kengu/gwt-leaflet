@@ -51,6 +51,7 @@ import org.discotools.gwt.leaflet.client.layers.others.LayerGroup.LayerHandler;
 import org.discotools.gwt.leaflet.client.layers.raster.TileLayer;
 import org.discotools.gwt.leaflet.client.layers.raster.WmsLayer;
 import org.discotools.gwt.leaflet.client.layers.vector.Circle;
+import org.discotools.gwt.leaflet.client.layers.vector.Ellipse;
 import org.discotools.gwt.leaflet.client.layers.vector.PathOptions;
 import org.discotools.gwt.leaflet.client.layers.vector.Polygon;
 import org.discotools.gwt.leaflet.client.layers.vector.Polyline;
@@ -223,6 +224,13 @@ public class Example implements EntryPoint {
 		GWT.log("Polyline");
 		Polyline poly = new Polyline(latlngs, new PolylineOptions());
 		poly.addTo(map);
+
+		//Ellipse
+		GWT.log("Ellipse");
+		Options ellipseOptions = new Options();
+		ellipseOptions.setProperty("color", "blue");
+		Ellipse ellipse = new Ellipse(latlng, 500, 100, 90, ellipseOptions);
+		ellipse.addTo(map);
 
 		//Circle
 		GWT.log("Circle");
