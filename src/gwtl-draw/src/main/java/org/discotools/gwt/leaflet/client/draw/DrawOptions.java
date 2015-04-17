@@ -1,11 +1,12 @@
 package org.discotools.gwt.leaflet.client.draw;
 
 import org.discotools.gwt.leaflet.client.Options;
+import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * The following options will allow you to configure the individual draw
  * handlers.
- * 
+ *
  * @author Haley Boyd
  *
  */
@@ -16,9 +17,13 @@ public class DrawOptions extends
 		super();
 	}
 
+	public DrawOptions(JSObject object) {
+		super(object);
+	}
+
 	/**
 	 * Polyline draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param polylineOptions
 	 * @return
 	 */
@@ -28,10 +33,10 @@ public class DrawOptions extends
 				"polyline",
 				polylineOptions);
 	}
-	
+
 	/**
 	 * Polyline draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param polylineOptions
 	 * @return
 	 */
@@ -44,7 +49,7 @@ public class DrawOptions extends
 
 	/**
 	 * Polygon draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param polygonOptions
 	 * @return
 	 */
@@ -54,10 +59,10 @@ public class DrawOptions extends
 				"polygon",
 				polygonOptions);
 	}
-	
+
 	/**
 	 * Polygon draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param polygonOptions
 	 * @return
 	 */
@@ -70,7 +75,7 @@ public class DrawOptions extends
 
 	/**
 	 * Rectangle draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param rectangleOptions
 	 * @return
 	 */
@@ -80,10 +85,10 @@ public class DrawOptions extends
 				"rectangle",
 				rectangleOptions);
 	}
-	
+
 	/**
 	 * Rectangle draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param rectangleOptions
 	 * @return
 	 */
@@ -96,7 +101,7 @@ public class DrawOptions extends
 
 	/**
 	 * Circle draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param circleOptions
 	 * @return
 	 */
@@ -106,10 +111,10 @@ public class DrawOptions extends
 				"circle",
 				circleOptions);
 	}
-	
+
 	/**
 	 * Circle draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param circleOptions
 	 * @return
 	 */
@@ -122,7 +127,7 @@ public class DrawOptions extends
 
 	/**
 	 * Marker draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param markerOptions
 	 * @return
 	 */
@@ -132,10 +137,10 @@ public class DrawOptions extends
 				"marker",
 				markerOptions);
 	}
-	
+
 	/**
 	 * Marker draw handler options. Set to false to disable handler.
-	 * 
+	 *
 	 * @param markerOptions
 	 * @return
 	 */

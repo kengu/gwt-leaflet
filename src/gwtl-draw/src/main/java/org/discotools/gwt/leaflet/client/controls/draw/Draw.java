@@ -2,14 +2,15 @@ package org.discotools.gwt.leaflet.client.controls.draw;
 
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.Control;
+import org.discotools.gwt.leaflet.client.draw.DrawOptions;
 import org.discotools.gwt.leaflet.client.map.Map;
 
 /**
  * <b>Draw control interface</b>
  * <p>
- * A leaflet control that adds support for drawing and editing 
+ * A leaflet control that adds support for drawing and editing
  * vectors and markers
- * 
+ *
  * @author Haley Boyd
  *
  */
@@ -31,5 +32,18 @@ public class Draw extends
 	public Draw addTo(
 			Map map ) {
 		return (Draw) super.addTo(map);
+	}
+
+	public DrawOptions getDrawOptions() {
+		return new DrawOptions(
+				DrawImpl.getDrawOptions(getJSObject()));
+	}
+
+	public Control setDrawOptions(
+			Options drawOptions ) {
+		DrawImpl.setDrawOptions(
+				getJSObject(),
+				drawOptions.getJSObject());
+		return this;
 	}
 }
