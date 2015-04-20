@@ -28,22 +28,22 @@ public class Ellipse extends
 	/**
 	 *
 	 * @param latlng The position of the center of the ellipse.
-	 * @param semiMajorAxis The semi-major axis in meters
-	 * @param semiMinorAxis The semi-minor axis in meters
+	 * @param radiusX The axis in meters
+	 * @param radiusY The axis in meters
 	 * @param tilt The rotation of the ellipse in degrees from west
 	 * @param pathOptions Options dictionary to pass to L.Path
 	 */
 	public Ellipse(
 			LatLng latlng,
-			double semiMajorAxis,
-			double semiMinorAxis,
+			double radiusX,
+			double radiusY,
 			double tilt,
 			Options pathOptions ) {
 		super(
 				EllipseImpl.create(
 						latlng.getJSObject(),
-						semiMajorAxis,
-						semiMinorAxis,
+						radiusX,
+						radiusY,
 						tilt,
 						pathOptions.getJSObject()));
 	}
@@ -67,12 +67,12 @@ public class Ellipse extends
 	}
 
 	public Ellipse setRadius(
-			double semiMajorAxis,
-			double semiMinorAxis ) {
+			double radiusX,
+			double radiusY ) {
 		EllipseImpl.setRadius(
 				getJSObject(),
-				semiMajorAxis,
-				semiMinorAxis);
+				radiusX,
+				radiusY);
 		return this;
 	}
 

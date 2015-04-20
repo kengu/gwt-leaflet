@@ -17,7 +17,6 @@ package org.discotools.gwt.leaflet.client.example;
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
-import org.discotools.gwt.leaflet.client.controls.coordinates.Coordinates;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButton;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButtonOptions;
 import org.discotools.gwt.leaflet.client.controls.draw.Draw;
@@ -225,12 +224,18 @@ public class Example implements EntryPoint {
 		Polyline poly = new Polyline(latlngs, new PolylineOptions());
 		poly.addTo(map);
 
-		//Ellipse
+		//Ellipse1
 		GWT.log("Ellipse");
 		Options ellipseOptions = new Options();
 		ellipseOptions.setProperty("color", "blue");
-		Ellipse ellipse = new Ellipse(latlng, 500, 100, 90, ellipseOptions);
+		Ellipse ellipse = new Ellipse(latlng, 500, 100, 0, ellipseOptions);
 		ellipse.addTo(map);
+
+		//Ellipse2
+		GWT.log("Ellipse");
+		ellipseOptions.setProperty("color", "green");
+		ellipse = new Ellipse(latlng, 100, 500, 0, ellipseOptions);
+		map.addLayer(ellipse);
 
 		//Circle
 		GWT.log("Circle");

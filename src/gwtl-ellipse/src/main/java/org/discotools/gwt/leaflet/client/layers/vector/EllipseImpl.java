@@ -14,8 +14,8 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 public class EllipseImpl extends
 		PathImpl
 {
-	public static native JSObject create(JSObject latlng, double semiMajorAxis, double semiMinorAxis, double tilt, JSObject options) /*-{
-    	return new $wnd.L.ellipse(latlng, [semiMajorAxis, semiMinorAxis], tilt, options);
+	public static native JSObject create(JSObject latlng, double radiusX, double radiusY, double tilt, JSObject options) /*-{
+    	return new $wnd.L.ellipse(latlng, [radiusX, radiusY], tilt, options);
 	}-*/;
 
 	public static native JSObject getLatLng(JSObject self) /*-{
@@ -30,8 +30,8 @@ public class EllipseImpl extends
 		return self.getRadius();
 	}-*/;
 
-	public static native void setRadius(JSObject self, double semiMajorAxis, double semiMinorAxis) /*-{
-		self.setRadius([semiMajorAxis, semiMinorAxis]);
+	public static native void setRadius(JSObject self, double radiusX, double radiusY) /*-{
+		self.setRadius([radiusX, radiusY]);
 	}-*/;
 
 	public static native void setTilt(JSObject self, double tilt) /*-{
