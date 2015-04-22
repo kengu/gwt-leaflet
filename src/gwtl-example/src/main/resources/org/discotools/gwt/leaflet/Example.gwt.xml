@@ -14,6 +14,7 @@
 	<inherits name="org.discotools.gwt.leaflet.Measure"/>
 	<inherits name="org.discotools.gwt.leaflet.Coordinates"/>
 	<inherits name="org.discotools.gwt.leaflet.Ellipse"/>
+	<inherits name="org.discotools.gwt.leaflet.DrawEllipse"/>
 	<inherits name="org.discotools.gwt.leaflet.Widget"/>
 	
 	<entry-point class="org.discotools.gwt.leaflet.client.example.Example"/>

@@ -231,11 +231,23 @@ public class Example implements EntryPoint {
 		Ellipse ellipse = new Ellipse(latlng, 500, 100, 0, ellipseOptions);
 		ellipse.addTo(map);
 
+		addClickToEdit(ellipse.getJSObject());
+
 		//Ellipse2
 		GWT.log("Ellipse");
 		ellipseOptions.setProperty("color", "green");
-		ellipse = new Ellipse(latlng, 100, 500, 0, ellipseOptions);
+		ellipse = new Ellipse(latlng, 100, 500, 45, ellipseOptions);
 		map.addLayer(ellipse);
+
+		addClickToEdit(ellipse.getJSObject());
+
+		//Ellipse3
+		GWT.log("Ellipse");
+		ellipseOptions.setProperty("color", "orange");
+		ellipse = new Ellipse(latlng, 100, 500, -45, ellipseOptions);
+		map.addLayer(ellipse);
+
+		addClickToEdit(ellipse.getJSObject());
 
 		//Circle
 		GWT.log("Circle");
@@ -245,8 +257,18 @@ public class Example implements EntryPoint {
 		circle.addTo(map);
 
         //Edit circle
-        LeafletCircleEditor circleEditor = new LeafletCircleEditor(circle);
-        circleEditor.enable(map);
+		final LeafletCircleEditor circleEditor = new LeafletCircleEditor(circle);
+		EventHandlerManager.addEventHandler(
+				circle,
+				Events.click,
+				new EventHandler<MouseEvent>() {
+
+					@Override
+					public void handle(
+							MouseEvent event ) {
+						circleEditor.enable(map);
+					}
+				});
 
 		// Rectangle
 		GWT.log("Rectangle");
@@ -269,7 +291,7 @@ public class Example implements EntryPoint {
         final Polygon pol = new Polygon(recs2, pathOptions);
         pol.addTo(map);
 
-        //whne click on map change editing
+        //when click on map change editing
         final EventRegisteredFunction clickeRegistered = EventHandlerManager.addEventHandler(map, Events.click, new EventHandler<MouseEvent>() {
 
             @Override
@@ -476,6 +498,15 @@ public class Example implements EntryPoint {
 		geojson_campus       .addTo(map);
 		geojson_coorsField   .addTo(map);
 	}
+
+	public static native void addClickToEdit(JSObject layer) /*-{
+		layer
+			.on({
+					click : function(e) {
+						layer.editing.enable();
+					}
+				});
+	}-*/;
 
 	public static native JSObject myOnEachFeature(JSObject feature, JSObject layer) /*-{
    	var popupContent = "<p> <b>myOnEachFeature</b> " +
