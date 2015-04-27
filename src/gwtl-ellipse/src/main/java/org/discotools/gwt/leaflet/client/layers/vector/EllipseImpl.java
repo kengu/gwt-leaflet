@@ -34,6 +34,10 @@ public class EllipseImpl extends
 		self.setRadius([radiusX, radiusY]);
 	}-*/;
 
+	public static native double getTilt(JSObject self) /*-{
+		return self._tiltDeg;
+	}-*/;
+
 	public static native void setTilt(JSObject self, double tilt) /*-{
 		self.setTilt(tilt);
 	}-*/;

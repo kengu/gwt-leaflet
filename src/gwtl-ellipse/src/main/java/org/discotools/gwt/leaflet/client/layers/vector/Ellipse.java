@@ -76,6 +76,10 @@ public class Ellipse extends
 		return this;
 	}
 
+	public double getTilt() {
+		return EllipseImpl.getTilt(getJSObject());
+	};
+
 	public Ellipse setTilt(
 			double tilt ) {
 		EllipseImpl.setTilt(
