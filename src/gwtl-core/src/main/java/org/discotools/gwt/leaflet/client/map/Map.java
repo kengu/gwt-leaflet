@@ -14,13 +14,13 @@ import com.google.gwt.dom.client.Element;
 
 /**
  * The central class of the API — it is used to create a map on a page and manipulate it.
- * 
+ *
  * @author kennethg
  * @author Lionel Leiva-Marcon
- * 
+ *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#map-class">L.Map (Leaflet API)</a>
- * 
- * @version 0.1 : Add of JSObjectWrapper Inheritance (inspired from GWT-OpenLayer) 
+ *
+ * @version 0.1 : Add of JSObjectWrapper Inheritance (inspired from GWT-OpenLayer)
  */
 public class Map extends JSObjectWrapper implements EventProvider {
 
@@ -30,20 +30,20 @@ public class Map extends JSObjectWrapper implements EventProvider {
 
     public Map(String name) {
         this(name, new MapOptions());
-    } 
-    
+    }
+
     public Map(String name, MapOptions options) {
         this(MapImpl.create(name, options.getJSObject()));
-    } 
-    
+    }
+
     /**
      * Sets the view of the map (geographical center and zoom).
-     * <p> 
-     * If 'reset' is set to <code>true</code>, the map is reloaded 
+     * <p>
+     * If 'reset' is set to <code>true</code>, the map is reloaded
      * even if it's eligible for pan or zoom animation (false by default).
-     * 
+     *
      * @param center - {@link LatLng} instance
-     * @param zoom - Map zoom 
+     * @param zoom - Map zoom
      * @param reset - Force reset of map
      * @return {@link Map}
      */
@@ -51,7 +51,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	MapImpl.setView(getJSObject(), center.getJSObject(), zoom, reset);
     	return this;
     }
-    
+
     public Map setZoom(double zoom) {
     	MapImpl.setZoom(getJSObject(), zoom);
     	return this;
@@ -66,22 +66,22 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	MapImpl.remove(getJSObject());
     	return this;
     }
-    
+
     public Map zoomOut() {
     	MapImpl.zoomOut(getJSObject());
     	return this;
     }
-    
+
     public Map addLayer(ILayer layer, boolean bottom) {
     	MapImpl.addLayer(getJSObject(), layer.getJSObject(), bottom);
     	return this;
     }
-    
+
     public Map addLayer(ILayer layer) {
     	MapImpl.addLayer(getJSObject(), layer.getJSObject());
     	return this;
     }
-    
+
     /**
      * Adds the given control to the map.
      * @param control - {@link IControl} instance
@@ -91,7 +91,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	MapImpl.addControl(getJSObject(), control.getJSObject());
     	return this;
     }
-    
+
     /**
      * Removes the given control from the map.
      * @param control
@@ -101,18 +101,28 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	MapImpl.removeControl(getJSObject(), control.getJSObject());
     	return this;
     }
-    
-    
+
+
     public Map fitBounds(LatLngBounds bounds) {
-    	MapImpl.fitBounds(getJSObject(), bounds.getJSObject());		
+    	MapImpl.fitBounds(getJSObject(), bounds.getJSObject());
     	return this;
 	}
+
+    /**
+     * Sets a map view that mostly contains the whole world with the maximum zoom level possible.
+     *
+     * @return
+     */
+    public Map fitWorld() {
+    	MapImpl.fitWorld(getJSObject());
+    	return this;
+    }
 
     public Map removeLayer(ILayer layer) {
         MapImpl.removeLayer(getJSObject(), layer.getJSObject());
         return this;
-    } 
-    
+    }
+
     /**
      * Returns the map layer point that corresponds to the given geographical coordinates (useful for placing overlays on the map).
      * @param latLng
@@ -132,7 +142,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
     }
 
     /**
-     * 
+     *
      * @return Returns the LatLngBounds of the current map view.
      */
     public LatLngBounds getBounds() {
@@ -157,7 +167,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
         MapImpl.openPopup(getJSObject(),popup.getJSObject());
         return this;
     }
-    
+
     /**
      * Closes the popup opened with {@link #openPopup(Popup)}
      * @return this
@@ -168,7 +178,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
     }
 
     /**
-     * 
+     *
      * @return Returns the current zoom of the map view.
      */
     public int getZoom() {
@@ -186,7 +196,7 @@ public class Map extends JSObjectWrapper implements EventProvider {
     }
 
     /**
-     * 
+     *
      * @return Returns the container element of the map.
      */
     public Element getContainer() {
