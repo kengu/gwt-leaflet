@@ -94,7 +94,7 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 
 		if (marker === this._moveMarker) {
 			this._move(latlng);
-		} else if (marker == this._rotateMarker) {
+		} else if (marker === this._rotateMarker) {
 			this._rotate(latlng);
 		} else {
 			this._resize(latlng);
@@ -121,13 +121,23 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		var xLatLng = this._map.unproject([point.x, movePoint.y]);
 		var radius = moveLatLng.distanceTo(latlng);
 		var xDelta = moveLatLng.distanceTo(xLatLng);
-		var tilt = Math.acos(xDelta / radius) * L.LatLng.RAD_TO_DEG;
 		
-		if(point.y > movePoint.y) {
-			tilt = -1 * tilt;
+		if(movePoint.y.toFixed(1) === point.y.toFixed(1)) {
+			var tilt = 0;
+			// Rotate the ellipse
+			this._shape.setTilt(tilt);
+		} else if(movePoint.x.toFixed(1) === point.x.toFixed(1)) {
+			var tilt = 90;
+			// Rotate the ellipse
+			this._shape.setTilt(tilt);
+		} else if(xDelta < radius) {
+			var tilt = Math.acos(xDelta / radius) * L.LatLng.RAD_TO_DEG;
+			if(point.y > movePoint.y) {
+				tilt = -1 * tilt;
+			}
+			// Rotate the ellipse
+			this._shape.setTilt(tilt);
 		}
-		// Rotate the ellipse
-		this._shape.setTilt(tilt);
 		
 		// Move the resize marker
 		this._repositionResizeMarkers();
