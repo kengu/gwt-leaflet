@@ -39,14 +39,20 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 
 	_createResizeMarker: function () {
 		var center = this._shape.getLatLng(),
-			resizemarkerPointX = this._getResizeMarkerPointX(center),
-			resizemarkerPointY = this._getResizeMarkerPointY(center);
+			resizemarkerPointX1 = this._getResizeMarkerPointX1(center),
+			resizemarkerPointX2 = this._getResizeMarkerPointX2(center),
+			resizemarkerPointY1 = this._getResizeMarkerPointY1(center),
+			resizemarkerPointY2 = this._getResizeMarkerPointY2(center);
 
 		this._resizeMarkers = [];
-		this._resizeMarkers.push(this._createMarker(resizemarkerPointX, this.options.resizeIcon));
-		this._resizeMarkers.push(this._createMarker(resizemarkerPointY, this.options.resizeIcon));
+		this._resizeMarkers.push(this._createMarker(resizemarkerPointX1, this.options.resizeIcon));
+		this._resizeMarkers.push(this._createMarker(resizemarkerPointX2, this.options.resizeIcon));
+		this._resizeMarkers.push(this._createMarker(resizemarkerPointY1, this.options.resizeIcon));
+		this._resizeMarkers.push(this._createMarker(resizemarkerPointY2, this.options.resizeIcon));
 		this._resizeMarkers[0]._isX = true;
-		this._resizeMarkers[1]._isX = false;
+		this._resizeMarkers[1]._isX = true;
+		this._resizeMarkers[2]._isX = false;
+		this._resizeMarkers[3]._isX = false;
 	},
 	
 	_createRotateMarker: function() {
@@ -56,7 +62,16 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		this._rotateMarker = this._createMarker(rotatemarkerPoint, this.options.rotateIcon);
 	},
 
-	_getResizeMarkerPointX: function (latlng) {
+	_getResizeMarkerPointX1: function (latlng) {
+		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var radius = this._shape._radiusX;
+		var xDelta = radius * Math.cos(tilt);
+		var yDelta = radius * Math.sin(tilt);
+		var point = this._map.project(latlng);
+		return this._map.unproject([point.x + xDelta, point.y + yDelta]);
+	},
+	
+	_getResizeMarkerPointX2: function (latlng) {
 		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
 		var radius = this._shape._radiusX;
 		var xDelta = radius * Math.cos(tilt);
@@ -65,7 +80,16 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 		return this._map.unproject([point.x - xDelta, point.y - yDelta]);
 	},
 	
-	_getResizeMarkerPointY: function (latlng) {
+	_getResizeMarkerPointY1: function (latlng) {
+		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
+		var radius = this._shape._radiusY;
+		var xDelta = radius * Math.sin(tilt);
+		var yDelta = radius * Math.cos(tilt);
+		var point = this._map.project(latlng);
+		return this._map.unproject([point.x - xDelta, point.y + yDelta]);
+	},
+	
+	_getResizeMarkerPointY2: function (latlng) {
 		var tilt = this._shape._tiltDeg * L.LatLng.DEG_TO_RAD;
 		var radius = this._shape._radiusY;
 		var xDelta = radius * Math.sin(tilt);
@@ -163,11 +187,15 @@ L.Edit.Ellipse = L.Edit.SimpleShape.extend({
 	
 	_repositionResizeMarkers: function () {
 		var latlng = this._moveMarker.getLatLng();
-		var resizemarkerPointX = this._getResizeMarkerPointX(latlng);
-		var resizemarkerPointY = this._getResizeMarkerPointY(latlng);
+		var resizemarkerPointX1 = this._getResizeMarkerPointX1(latlng);
+		var resizemarkerPointX2 = this._getResizeMarkerPointX2(latlng);
+		var resizemarkerPointY1 = this._getResizeMarkerPointY1(latlng);
+		var resizemarkerPointY2 = this._getResizeMarkerPointY2(latlng);
 
-		this._resizeMarkers[0].setLatLng(resizemarkerPointX);
-		this._resizeMarkers[1].setLatLng(resizemarkerPointY);
+		this._resizeMarkers[0].setLatLng(resizemarkerPointX1);
+		this._resizeMarkers[1].setLatLng(resizemarkerPointX2);
+		this._resizeMarkers[2].setLatLng(resizemarkerPointY1);
+		this._resizeMarkers[3].setLatLng(resizemarkerPointY2);
 	},
 	
 	_repositionRotateMarker: function () {
