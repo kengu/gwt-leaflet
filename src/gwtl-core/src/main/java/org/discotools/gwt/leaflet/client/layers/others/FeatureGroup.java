@@ -8,21 +8,21 @@ import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
 
 /**
- * Extended LayerGroup that also has mouse events (propagated 
- * from members of the group) and a shared bindPopup method. 
+ * Extended LayerGroup that also has mouse events (propagated
+ * from members of the group) and a shared bindPopup method.
  * Implements ILayer interface.
- * 
+ *
  * @author Lionel Leiva-Marcon
- * 
+ *
  * @see <a href="http://leaflet.cloudmade.com/reference.html#featuregroup">L.FeatureGroup (Leaflet API)</a>
  *
  */
 public class FeatureGroup extends LayerGroup {
 
-	protected FeatureGroup(JSObject element) {
+	public FeatureGroup(JSObject element) {
 		super(element);
 	}
-	
+
 	public FeatureGroup() {
 		this(FeatureGroupImpl.create());
 	}
@@ -30,11 +30,11 @@ public class FeatureGroup extends LayerGroup {
 	public FeatureGroup(ILayer[] layers) {
 		this (FeatureGroupImpl.create(new JSObjectArray(layers).getJSObject()));
 	}
-	
+
 	public FeatureGroup(String alias, ILayer[] layers) {
 		this (FeatureGroupImpl.create(new JSObjectArray(layers).getJSObject()));
 		setAlias(alias);
-	}	
+	}
 
 	/**
 	 * Adds a given layer to the group.
@@ -42,7 +42,7 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup addLayer(ILayer layer) {
-		FeatureGroupImpl.addLayer(getJSObject(), layer.getJSObject());		
+		FeatureGroupImpl.addLayer(getJSObject(), layer.getJSObject());
 		return this;
 	}
 
@@ -52,7 +52,7 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup addTo(Map map) {
-		FeatureGroupImpl.addTo(getJSObject(), map.getJSObject());		
+		FeatureGroupImpl.addTo(getJSObject(), map.getJSObject());
 		return this;
 	}
 
@@ -64,37 +64,37 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup bindPopup(String htmlContent, Options options) {
-		FeatureGroupImpl.addPopup(getJSObject(), htmlContent, options.getJSObject());	
+		FeatureGroupImpl.addPopup(getJSObject(), htmlContent, options.getJSObject());
 		return this;
 	}
-	
+
 	/**
-	 * Returns the LatLngBounds of the Feature Group (created from bounds 
+	 * Returns the LatLngBounds of the Feature Group (created from bounds
 	 * and coordinates of its children).
 	 * @return {@link LatLngBounds}
 	 */
 	public LatLngBounds getBounds() {
-		return FeatureGroupImpl.getBounds(getJSObject());	
+		return FeatureGroupImpl.getBounds(getJSObject());
 	}
-	
+
 	/**
-	 * Sets the given path options to each layer of 
+	 * Sets the given path options to each layer of
 	 * the group that has a setStyle method.
 	 * @param options
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup setStyle(Options options) {
-		FeatureGroupImpl.setStyle(getJSObject(),options.getJSObject());		
+		FeatureGroupImpl.setStyle(getJSObject(),options.getJSObject());
 		return this;
 	}
 
-	
+
 	/**
 	 * Brings the layer group to the top of all other layers.
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup bringToFront() {
-		FeatureGroupImpl.bringToFront(getJSObject());		
+		FeatureGroupImpl.bringToFront(getJSObject());
 		return this;
 	}
 
@@ -103,7 +103,7 @@ public class FeatureGroup extends LayerGroup {
 	 * @return {@link FeatureGroup}
 	 */
 	public FeatureGroup bringToBack() {
-		FeatureGroupImpl.bringToBack(getJSObject());		
+		FeatureGroupImpl.bringToBack(getJSObject());
 		return this;
 	}
 
@@ -116,5 +116,5 @@ public class FeatureGroup extends LayerGroup {
 	public FeatureGroup setAlias(String alias) {
 		return (FeatureGroup)super.setAlias(alias);
 	}
-	
+
 }
