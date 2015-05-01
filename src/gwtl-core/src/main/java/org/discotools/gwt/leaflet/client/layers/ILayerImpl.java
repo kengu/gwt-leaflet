@@ -5,7 +5,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 
 /**
  * Implementation of {@link ILayer}
- * 
+ *
  * @author Lionel Leiva-Marcon
  *
  * @see ILayer
@@ -19,11 +19,10 @@ public class ILayerImpl {
 		}
 		$wnd.gwtl.alias[name] = self;
 	}-*/;
-	
-	public static native JSObject setOptions(JSObject self, JSObject options) /*-{	
-		self.options = L.Util.extend({}, self.options, options);
-		console(self);
+
+	public static native JSObject setOptions(JSObject self, JSObject options) /*-{
+		self.options = $wnd.L.Util.extend({}, self.options, options);
 		return self;
 	}-*/;
-	
+
 }
