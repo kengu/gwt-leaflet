@@ -1,7 +1,6 @@
 package org.discotools.gwt.leaflet.client.map;
 
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
-import org.discotools.gwt.leaflet.client.types.Point;
 
 import com.google.gwt.dom.client.Element;
 
@@ -107,6 +106,10 @@ class MapImpl {
 
     public static native JSObject getBounds(JSObject self) /*-{
         return self.getBounds();
+    }-*/;
+    
+    public static native JSObject getCenter(JSObject self) /*-{
+    	return self.getCenter();
     }-*/;
 
 

@@ -195,7 +195,9 @@ public class Example implements EntryPoint {
 
 		//TODO Solve iconurl problem
 		//loptions.setProperty("icon", icon);
-
+		
+//		final LatLng center = map.getCenter();
+		
         final LatLng latlng = new LatLng(59.915, 10.754);
         final Marker marker = new Marker(latlng, loptions);
         marker.addTo(map);
