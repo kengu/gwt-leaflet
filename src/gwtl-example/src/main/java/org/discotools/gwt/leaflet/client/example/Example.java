@@ -34,6 +34,7 @@ import org.discotools.gwt.leaflet.client.draw.edit.EditOptions;
 import org.discotools.gwt.leaflet.client.draw.events.DrawCreatedEvent;
 import org.discotools.gwt.leaflet.client.draw.events.DrawEditedEvent;
 import org.discotools.gwt.leaflet.client.draw.events.handler.DrawEvents;
+import org.discotools.gwt.leaflet.client.events.Event;
 import org.discotools.gwt.leaflet.client.events.MouseEvent;
 import org.discotools.gwt.leaflet.client.events.handler.EventHandler;
 import org.discotools.gwt.leaflet.client.events.handler.EventHandler.Events;
@@ -62,6 +63,7 @@ import org.discotools.gwt.leaflet.client.marker.Marker;
 import org.discotools.gwt.leaflet.client.marker.MarkerOptions;
 import org.discotools.gwt.leaflet.client.marker.MarkerWithLabel;
 import org.discotools.gwt.leaflet.client.marker.label.LabelOptions;
+import org.discotools.gwt.leaflet.client.types.Icon;
 import org.discotools.gwt.leaflet.client.types.IconOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
 import org.discotools.gwt.leaflet.client.types.LatLngBounds;
@@ -196,7 +198,33 @@ public class Example implements EntryPoint {
 		//TODO Solve iconurl problem
 		//loptions.setProperty("icon", icon);
 		
-//		final LatLng center = map.getCenter();
+		final LatLng center = map.getCenter();
+		
+		IconOptions opts = new IconOptions();
+		opts.setIconUrl(GWT.getHostPageBaseURL() + "images/1024px-Crosshairs_Red.svg.png");
+		opts.setIconSize(new Point(20, 20));
+		opts.setIconAnchor(new Point(10, 10));
+		Icon crosshair = new Icon(opts);
+		
+		MarkerOptions mkrOpts = new MarkerOptions();
+		mkrOpts.setIcon(crosshair);
+		mkrOpts.setZIndexOffset(1000);
+		final Marker mapCrosshair = new Marker(center, mkrOpts);
+		
+		mapCrosshair.addTo(map);
+		
+		//when map is moved
+        EventHandlerManager.addEventHandler(map, Events.drag, new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event event) {
+                GWT.log("Map moved");
+                mapMoved(mapCrosshair.getJSObject());
+                
+                EventHandlerManager.clearEventHandler(map, Events.drag);
+            }
+        });
+		
 		
         final LatLng latlng = new LatLng(59.915, 10.754);
         final Marker marker = new Marker(latlng, loptions);
@@ -404,6 +432,16 @@ public class Example implements EntryPoint {
 		createJsonSamples();
 
 	}
+	
+	public static native void mapMoved(JSObject marker) /*-{
+		var map = $wnd.gwtl.maps['map'];
+		map
+			.on(
+				'move', function (e) {
+					marker.setLatLng(map.getCenter());
+				}
+			   );
+	}-*/;
 
 	public void createJsonSamples() {
 		String freeBus       = GeoJsonSampleFactory.getInstance().createFreeBus();
