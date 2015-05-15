@@ -194,35 +194,7 @@ public class Example implements EntryPoint {
 //		Icon icon = new Icon(iconOptions);
 
 		//TODO Solve iconurl problem
-		//loptions.setProperty("icon", icon);
-		
-//		final LatLng center = map.getCenter();
-//		
-//		IconOptions opts = new IconOptions();
-//		opts.setIconUrl(GWT.getHostPageBaseURL() + "images/1024px-Crosshairs_Red.svg.png");
-//		opts.setIconSize(new Point(20, 20));
-//		opts.setIconAnchor(new Point(10, 10));
-//		Icon crosshair = new Icon(opts);
-//		
-//		MarkerOptions mkrOpts = new MarkerOptions();
-//		mkrOpts.setIcon(crosshair);
-//		mkrOpts.setZIndexOffset(1000);
-//		final Marker mapCrosshair = new Marker(center, mkrOpts);
-//		
-//		mapCrosshair.addTo(map);
-		
-		//when map is moved
-//        EventHandlerManager.addEventHandler(map, Events.drag, new EventHandler<Event>() {
-//
-//            @Override
-//            public void handle(Event event) {
-//                GWT.log("Map moved");
-//                mapMoved(mapCrosshair.getJSObject());
-//                
-//                EventHandlerManager.clearEventHandler(map, Events.drag);
-//            }
-//        });
-		
+		//loptions.setProperty("icon", icon);		
 		
         final LatLng latlng = new LatLng(59.915, 10.754);
         final Marker marker = new Marker(latlng, loptions);
@@ -422,14 +394,9 @@ public class Example implements EntryPoint {
 		map.addControl(coordinates);
 		
 		// Add crosshair control
-		GWT.log("Crosshair Control");
-		ControlOptions crosshairOptions = new ControlOptions(Position.BOTTOM_LEFT);
-		CrosshairCheckboxOptions crosshairCheckboxOptions = new CrosshairCheckboxOptions();
-		crosshairCheckboxOptions.setPosition(Position.TOP_RIGHT);
-		crosshairCheckboxOptions.setCrosshairOptions(crosshairCheckboxOptions);
-		
-		CrosshairCheckbox crosshairchbx = new CrosshairCheckbox(crosshairCheckboxOptions);
-		map.addControl(crosshairchbx);
+		ControlOptions crosshairOptions = new ControlOptions(Position.TOP_RIGHT);
+		Crosshair crosshair = new Crosshair(crosshairOptions);
+		map.addControl(crosshair);
 
 		// Add Choropleth
 		GWT.log("Choropleth");

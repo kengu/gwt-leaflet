@@ -3,36 +3,74 @@
  */
 
 L.Control.Crosshair = L.Control.extend({
-	options: {
-		position: 'topright',
-		label: 'Show Crosshair'
+	statics: {
+		TITLE: 'Show Crosshair'
 	},
 	
-	initialize: function(options) {
-		L.Util.setOptions(this, options);
+	options: {
+		position: 'topright',
+		enabled: false
+	},
+	
+	toggle: function() {
+		this.enabled = !this.enabled;
+		
+		if(this.enabled) {
+			L.DomUtil.addClass(this._container, 'enabled');
+			if(this._map) {
+				this._marker.setLatLng(this._map.getCenter());
+				this._marker.addTo(this._map);
+				this._map.on('move', this._update);
+			}
+		}
+		else {
+			L.DomUtil.removeClass(this._container, 'enabled');
+			this._map.removeLayer(this._marker);
+		}
 	},
 	
 	onAdd: function(map) {
 		this._map = map;
 		
+		var className = 'leaflet-control-crosshair';
+		
+		this._container = L.DomUtil.create('div', className);
+		
+		this._marker = this.makeMarker();
+		
+		var link = L.DomUtil.create('a', className+'-link', this._container);
+		link.href = '#';
+		link.title = L.Control.Crosshair.TITLE;
+		link.innerHTML = L.Control.Crosshair.TITLE;
+		
+		L.DomEvent
+			.addListener(link, 'click', L.DomEvent.stopPropagation)
+			.addListener(link, 'click', L.DomEvent.preventDefault)
+			.addListener(link, 'click', this.toggle, this);
+		
+		return this._container;
+	},
+	
+	onRemove: function(map) {
+		L.DomEvent
+			.removeListener(link, 'click', this.toggle, this);
+	},
+	
+	makeMarker: function() {
 		var crosshairIcon = L.icon({
-			iconUrl: 'images/crosshair.png',
+			iconUrl: '1024px-Crosshairs_Red.svg.png',
 			iconSize: [20, 20],
 			iconAnchor: [10, 10]
 		});
 		
-		crosshair = new L.marker(this._map.getCenter(), {icon: crosshairIcon, clickable:false});
-		crosshair.addTo(this._map);
-		
-		this._map.on('move', function(e) {
-			crosshair.setLatLng(this._map.getCenter());
-		});
+		var crosshair = new L.marker(this._map.getCenter(), {icon: crosshairIcon, clickable:false});
 		
 		return crosshair;
 	},
 	
-	onRemove: function(map) {
-		
+	_update: function() {
+		console.log("map moved called update");
+		this._marker.setLatLng(this._map.getCenter());
 	}
 });
 
@@ -46,7 +84,6 @@ L.Map.mergeOptions({
 
 L.Map.addInitHook(function() {
 	if(this.options.crosshairControl) {
-		this.crosshairControl = new L.Control.Crosshair();
-		this.addControl(this.crosshairControl);
+		this.crosshairControl = L.Control.crosshair().addTo(this);
 	}
 });
