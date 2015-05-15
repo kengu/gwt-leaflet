@@ -20,7 +20,7 @@ L.Control.Crosshair = L.Control.extend({
 			if(this._map) {
 				this._marker.setLatLng(this._map.getCenter());
 				this._marker.addTo(this._map);
-				this._map.on('move', this._update);
+				//this._map.on('move', this._update);
 			}
 		}
 		else {
@@ -36,7 +36,12 @@ L.Control.Crosshair = L.Control.extend({
 		
 		this._container = L.DomUtil.create('div', className);
 		
-		this._marker = this.makeMarker();
+		var crosshair = this.makeMarker();
+		this._marker = crosshair;
+		// Move the crosshair to the center of the map when the user pans
+		map.on('move', function(e) {
+		    crosshair.setLatLng(map.getCenter());
+		});
 		
 		var link = L.DomUtil.create('a', className+'-link', this._container);
 		link.href = '#';
@@ -57,21 +62,16 @@ L.Control.Crosshair = L.Control.extend({
 	},
 	
 	makeMarker: function() {
-		var crosshairIcon = L.icon({
-			iconUrl: '1024px-Crosshairs_Red.svg.png',
-			iconSize: [20, 20],
+		var crosshairIcon = L.divIcon({
+			className: 'leaflet-crosshair-icon',
+			iconSize: [30, 30],
 			iconAnchor: [10, 10]
 		});
 		
-		var crosshair = new L.marker(this._map.getCenter(), {icon: crosshairIcon, clickable:false});
-		
+		var crosshair = new L.marker(this._map.getCenter(), {icon: crosshairIcon, clickable:false, zIndexOffset:1000});
+				
 		return crosshair;
 	},
-	
-	_update: function() {
-		console.log("map moved called update");
-		this._marker.setLatLng(this._map.getCenter());
-	}
 });
 
 L.control.crosshair = function(options) {
