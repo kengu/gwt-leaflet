@@ -20,12 +20,15 @@ L.Control.Crosshair = L.Control.extend({
 			if(this._map) {
 				this._marker.setLatLng(this._map.getCenter());
 				this._marker.addTo(this._map);
-				//this._map.on('move', this._update);
+				L.DomUtil.removeClass(this._coordcontainer, 'uiHidden');
+				L.DomUtil.removeClass(this._coords, 'uiHidden');
 			}
 		}
 		else {
 			L.DomUtil.removeClass(this._container, 'enabled');
 			this._map.removeLayer(this._marker);
+			L.DomUtil.addClass(this._coordcontainer, 'uiHidden');
+			L.DomUtil.addClass(this._coords, 'uiHidden');
 		}
 	},
 	
@@ -38,10 +41,7 @@ L.Control.Crosshair = L.Control.extend({
 		
 		var crosshair = this.makeMarker();
 		this._marker = crosshair;
-		// Move the crosshair to the center of the map when the user pans
-		map.on('move', function(e) {
-		    crosshair.setLatLng(map.getCenter());
-		});
+		
 		
 		var link = L.DomUtil.create('a', className+'-link', this._container);
 		link.href = '#';
@@ -52,6 +52,22 @@ L.Control.Crosshair = L.Control.extend({
 			.addListener(link, 'click', L.DomEvent.stopPropagation)
 			.addListener(link, 'click', L.DomEvent.preventDefault)
 			.addListener(link, 'click', this.toggle, this);
+		
+		this._coordcontainer = L.DomUtil.create('div', 'coordcontainer uiHidden', this._container);
+		var coords = L.DomUtil.create('span', 'coordlabel uiHidden', this._coordcontainer);
+		var _lat = L.NumberFormatter.round(map.getCenter().lat);
+	    var _lng = L.NumberFormatter.round(map.getCenter().lng);
+		coords.innerHTML = "Lat: " + _lat + " Lon: " + _lng;
+		
+		this._coords = coords;
+		
+		// Move the crosshair to the center of the map when the user pans
+		map.on('move', function(e) {
+		    crosshair.setLatLng(map.getCenter());
+		    _lat = L.NumberFormatter.round(map.getCenter().lat);
+		    _lng = L.NumberFormatter.round(map.getCenter().lng);
+		    coords.innerHTML = "Lat: " + _lat + " Lon: " + _lng;
+		});
 		
 		return this._container;
 	},
@@ -71,7 +87,7 @@ L.Control.Crosshair = L.Control.extend({
 		var crosshair = new L.marker(this._map.getCenter(), {icon: crosshairIcon, clickable:false, zIndexOffset:1000});
 				
 		return crosshair;
-	},
+	}
 });
 
 L.control.crosshair = function(options) {
@@ -87,3 +103,18 @@ L.Map.addInitHook(function() {
 		this.crosshairControl = L.Control.crosshair().addTo(this);
 	}
 });
+
+L.NumberFormatter = {
+		round: function(num) {
+			var res = L.Util.formatNum(num, 4) + "",
+				numbers = res.split(".");
+			if(numbers[1]) {
+				var d = 4 - numbers[1].length;
+				for(; d > 0; d--) {
+					numbers[1] += "0";
+				}
+				res = numbers.join("." || ".");
+			}
+			return res;
+		}
+};

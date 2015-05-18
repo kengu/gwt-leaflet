@@ -2,3 +2,7 @@
 	background-image: url('images/crosshair.png');
 	background-repeat: no-repeat;
 }
+
+.uiHidden {
+	display: none;
+}
