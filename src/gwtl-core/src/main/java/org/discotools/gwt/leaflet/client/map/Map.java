@@ -212,4 +212,24 @@ public class Map extends JSObjectWrapper implements EventProvider {
         MapImpl.panInsideBounds(getJSObject(),bounds.getJSObject());
         return this;
     }
+
+    /**
+     * Pans the map by a given number of pixels (animated).
+     *
+     * @param point
+     * @return
+     */
+    public Map panBy(Point point) {
+    	MapImpl.panBy(getJSObject(), point.getJSObject());
+    	return this;
+    }
+
+    /**
+     * Returns the current size of the map container.
+     *
+     * @return
+     */
+    public Point getSize() {
+    	return new Point(MapImpl.getSize(getJSObject()));
+    }
 }

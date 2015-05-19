@@ -1,7 +1,6 @@
 package org.discotools.gwt.leaflet.client.map;
 
 import org.discotools.gwt.leaflet.client.jsobject.JSObject;
-import org.discotools.gwt.leaflet.client.types.Point;
 
 import com.google.gwt.dom.client.Element;
 
@@ -119,8 +118,6 @@ class MapImpl {
         self.openPopup(popup);
     }-*/;
 
-
-
     public static native void closePopup(JSObject self) /*-{
         self.closePopup();
     }-*/;
@@ -145,11 +142,12 @@ class MapImpl {
         self.panInsideBounds(bound);
     }-*/;
 
+    public static native void panBy(JSObject self, JSObject point) /*-{
+    	self.panBy(point);
+    }-*/;
 
-
-
-
-
-
+    public static native JSObject getSize(JSObject self) /*-{
+    	return self.getSize();
+    }-*/;
 
 }
