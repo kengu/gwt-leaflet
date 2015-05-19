@@ -21,14 +21,12 @@ L.Control.Crosshair = L.Control.extend({
 				this._marker.setLatLng(this._map.getCenter());
 				this._marker.addTo(this._map);
 				L.DomUtil.removeClass(this._coordcontainer, 'uiHidden');
-				L.DomUtil.removeClass(this._coords, 'uiHidden');
 			}
 		}
 		else {
 			L.DomUtil.removeClass(this._container, 'enabled');
 			this._map.removeLayer(this._marker);
 			L.DomUtil.addClass(this._coordcontainer, 'uiHidden');
-			L.DomUtil.addClass(this._coords, 'uiHidden');
 		}
 	},
 	
@@ -54,7 +52,8 @@ L.Control.Crosshair = L.Control.extend({
 			.addListener(link, 'click', this.toggle, this);
 		
 		this._coordcontainer = L.DomUtil.create('div', 'coordcontainer uiHidden', this._container);
-		var coords = L.DomUtil.create('span', 'coordlabel uiHidden', this._coordcontainer);
+		this._coordlabelcontainer = L.DomUtil.create('div', 'coordlabelcontainer', this._coordcontainer);
+		var coords = L.DomUtil.create('span', 'coordlabel', this._coordlabelcontainer);
 		var _lat = L.NumberFormatter.round(map.getCenter().lat);
 	    var _lng = L.NumberFormatter.round(map.getCenter().lng);
 		coords.innerHTML = "Lat: " + _lat + " Lon: " + _lng;
