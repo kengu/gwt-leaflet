@@ -19,6 +19,7 @@ import org.discotools.gwt.leaflet.client.controls.ControlOptions;
 import org.discotools.gwt.leaflet.client.controls.Position;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButton;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButtonOptions;
+import org.discotools.gwt.leaflet.client.controls.crosshair.Crosshair;
 import org.discotools.gwt.leaflet.client.controls.draw.Draw;
 import org.discotools.gwt.leaflet.client.controls.draw.DrawControlOptions;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;

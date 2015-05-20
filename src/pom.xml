@@ -41,6 +41,7 @@
 		<module>gwtl-draw</module>
 		<module>gwtl-measure</module>
 		<module>gwtl-coordinates</module>
+		<module>gwtl-crosshair</module>
 		<module>gwtl-ellipse</module>
 		<module>gwtl-draw-ellipse</module>
 		<module>gwtl-example</module>

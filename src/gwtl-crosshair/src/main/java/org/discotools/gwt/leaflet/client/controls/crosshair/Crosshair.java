@@ -1,4 +1,4 @@
-package org.discotools.gwt.leaflet.client.example;
+package org.discotools.gwt.leaflet.client.controls.crosshair;
 
 import org.discotools.gwt.leaflet.client.Options;
 import org.discotools.gwt.leaflet.client.controls.Control;
