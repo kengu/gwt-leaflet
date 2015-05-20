@@ -13,6 +13,7 @@
 	<inherits name="org.discotools.gwt.leaflet.Draw"/>
 	<inherits name="org.discotools.gwt.leaflet.Measure"/>
 	<inherits name="org.discotools.gwt.leaflet.Coordinates"/>
+	<inherits name="org.discotools.gwt.leaflet.Crosshair"/>
 	<inherits name="org.discotools.gwt.leaflet.Ellipse"/>
 	<inherits name="org.discotools.gwt.leaflet.DrawEllipse"/>
 	<inherits name="org.discotools.gwt.leaflet.Widget"/>

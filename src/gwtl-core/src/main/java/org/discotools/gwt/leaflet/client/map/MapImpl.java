@@ -107,6 +107,10 @@ class MapImpl {
     public static native JSObject getBounds(JSObject self) /*-{
         return self.getBounds();
     }-*/;
+    
+    public static native JSObject getCenter(JSObject self) /*-{
+    	return self.getCenter();
+    }-*/;
 
 
     public static native void panTo(JSObject self, JSObject latLng)/*-{

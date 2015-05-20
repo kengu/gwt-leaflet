@@ -74,6 +74,11 @@
 		    <version>0.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>org.discotools.gwt.leaflet</groupId>
+			<artifactId>gwtl-crosshair</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
 		    <groupId>org.discotools.gwt.leaflet</groupId>
 		    <artifactId>gwtl-ellipse</artifactId>
 		    <version>0.4-SNAPSHOT</version>
