@@ -20,6 +20,8 @@ import org.discotools.gwt.leaflet.client.controls.Position;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButton;
 import org.discotools.gwt.leaflet.client.controls.coordinates.CoordinatesButtonOptions;
 import org.discotools.gwt.leaflet.client.controls.crosshair.Crosshair;
+import org.discotools.gwt.leaflet.client.controls.crosshair.CrosshairButton;
+import org.discotools.gwt.leaflet.client.controls.crosshair.CrosshairButtonOptions;
 import org.discotools.gwt.leaflet.client.controls.draw.Draw;
 import org.discotools.gwt.leaflet.client.controls.draw.DrawControlOptions;
 import org.discotools.gwt.leaflet.client.controls.layers.Layers;
@@ -195,8 +197,8 @@ public class Example implements EntryPoint {
 //		Icon icon = new Icon(iconOptions);
 
 		//TODO Solve iconurl problem
-		//loptions.setProperty("icon", icon);		
-		
+		//loptions.setProperty("icon", icon);
+
         final LatLng latlng = new LatLng(59.915, 10.754);
         final Marker marker = new Marker(latlng, loptions);
         marker.addTo(map);
@@ -390,13 +392,19 @@ public class Example implements EntryPoint {
 		coordinatesButtonOptions.setPosition(Position.TOP_RIGHT);
 		coordinatesButtonOptions.setText("Cursor");
 		coordinatesButtonOptions.setCoordinatesOptions(coordinatesOptions);
-		
+
 		CoordinatesButton coordinates = new CoordinatesButton(coordinatesButtonOptions);
 		map.addControl(coordinates);
-		
-		// Add crosshair control
-		ControlOptions crosshairOptions = new ControlOptions(Position.TOP_RIGHT);
-		Crosshair crosshair = new Crosshair(crosshairOptions);
+
+		// Add Crosshair Control
+		GWT.log("Crosshair Control");
+		ControlOptions crosshairOptions = new ControlOptions(Position.BOTTOM_LEFT);
+		CrosshairButtonOptions crosshairButtonOptions = new CrosshairButtonOptions();
+		crosshairButtonOptions.setPosition(Position.TOP_RIGHT);
+		crosshairButtonOptions.setText("Crosshair");
+		crosshairButtonOptions.setCrosshairOptions(crosshairOptions);
+
+		CrosshairButton crosshair = new CrosshairButton(crosshairButtonOptions);
 		map.addControl(crosshair);
 
 		// Add Choropleth
@@ -408,7 +416,7 @@ public class Example implements EntryPoint {
 		createJsonSamples();
 
 	}
-	
+
 	public static native void mapMoved(JSObject marker) /*-{
 		var map = $wnd.gwtl.maps['map'];
 		map

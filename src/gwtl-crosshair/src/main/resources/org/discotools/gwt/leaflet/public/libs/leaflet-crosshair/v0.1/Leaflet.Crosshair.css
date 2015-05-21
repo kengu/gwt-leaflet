@@ -3,21 +3,28 @@
 	background-repeat: no-repeat;
 }
 
-.uiHidden {
-	display: none;
-}
-
-.coordcontainer {
+.leaflet-control-crosshair {
 	background-color: #D8D8D8;
-	position: fixed;
-	right: 0px;
-	width: 100%;
-	height: 30px;
-	bottom: 0px;
+	background-color: rgba(255, 255, 255, .8);
+	cursor: pointer
 }
 
-.coordlabelcontainer {
-	width: 100%;
-	text-align: center;
+.leaflet-control-crosshair, .leaflet-control-crosshair .uiElement input
+	{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px
+}
+
+.leaflet-control-crosshair .uiElement {
+	margin: 4px
+}
+
+.leaflet-control-crosshair .uiElement .labelFirst {
+	margin-right: 4px
+}
+
+.leaflet-control-crosshair .uiHidden {
+	display: none
 }
 

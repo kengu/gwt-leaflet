@@ -2,78 +2,101 @@
  * L.Control.Crosshair is a control to allow users to show/hide a crosshair on the map
  */
 
-L.Control.Crosshair = L.Control.extend({
-	statics: {
-		TITLE: 'Show Crosshair'
-	},
-	
+L.Control.Crosshair = L.Control.Coordinates.extend({
 	options: {
-		position: 'topright',
-		enabled: false
-	},
-	
-	toggle: function() {
-		this.enabled = !this.enabled;
-		
-		if(this.enabled) {
-			L.DomUtil.addClass(this._container, 'enabled');
-			if(this._map) {
-				this._marker.setLatLng(this._map.getCenter());
-				this._marker.addTo(this._map);
-				L.DomUtil.removeClass(this._coordcontainer, 'uiHidden');
-			}
-		}
-		else {
-			L.DomUtil.removeClass(this._container, 'enabled');
-			this._map.removeLayer(this._marker);
-			L.DomUtil.addClass(this._coordcontainer, 'uiHidden');
-		}
+		position: 'bottomright',
+		//decimals used if not using DMS or labelFormatter functions
+		decimals: 4,
+		//decimalseperator used if not using DMS or labelFormatter functions
+		decimalSeperator: ".",
+		//label templates for usage if no labelFormatter function is defined
+		labelTemplateLat: "Lat: {y}",
+		labelTemplateLng: "Lng: {x}",
+		//label formatter functions 
+		labelFormatterLat: undefined,
+		labelFormatterLng: undefined,
+		//switch on/off input fields on click
+		enableUserInput: true,
+		//use Degree-Minute-Second
+		useDMS: false,
+		//if true lat-lng instead of lng-lat label ordering is used
+		useLatLngOrder: false,
+		//if true user given coordinates are centered directly
+		centerUserCoordinates:true
 	},
 	
 	onAdd: function(map) {
 		this._map = map;
+
+		var className = 'leaflet-control-crosshair',
+			container = this._container = L.DomUtil.create('div', className),
+			options = this.options;
+
+		//label containers
+		this._labelcontainer = L.DomUtil.create("div", "uiElement label", container);
+		this._label = L.DomUtil.create("span", "labelFirst", this._labelcontainer);
 		
-		var className = 'leaflet-control-crosshair';
+
+		//input containers
+		this._inputcontainer = L.DomUtil.create("div", "uiElement input uiHidden", container);
+		var xSpan, ySpan;
+		if (options.useLatLngOrder) {
+			ySpan = L.DomUtil.create("span", "", this._inputcontainer);
+			this._inputY = this._createInput("inputY", this._inputcontainer);
+			xSpan = L.DomUtil.create("span", "", this._inputcontainer);
+			this._inputX = this._createInput("inputX", this._inputcontainer);
+		} else {
+			xSpan = L.DomUtil.create("span", "", this._inputcontainer);
+			this._inputX = this._createInput("inputX", this._inputcontainer);
+			ySpan = L.DomUtil.create("span", "", this._inputcontainer);
+			this._inputY = this._createInput("inputY", this._inputcontainer);
+		}
+		xSpan.innerHTML = options.labelTemplateLng.replace("{x}", "");
+		ySpan.innerHTML = options.labelTemplateLat.replace("{y}", "");
+
+		L.DomEvent.on(this._inputX, 'keyup', this._handleKeypress, this);
+		L.DomEvent.on(this._inputY, 'keyup', this._handleKeypress, this);
 		
-		this._container = L.DomUtil.create('div', className);
-		
-		var crosshair = this.makeMarker();
-		this._marker = crosshair;
-		
-		
-		var link = L.DomUtil.create('a', className+'-link', this._container);
-		link.href = '#';
-		link.title = L.Control.Crosshair.TITLE;
-		link.innerHTML = L.Control.Crosshair.TITLE;
-		
-		L.DomEvent
-			.addListener(link, 'click', L.DomEvent.stopPropagation)
-			.addListener(link, 'click', L.DomEvent.preventDefault)
-			.addListener(link, 'click', this.toggle, this);
-		
-		this._coordcontainer = L.DomUtil.create('div', 'coordcontainer uiHidden', this._container);
-		this._coordlabelcontainer = L.DomUtil.create('div', 'coordlabelcontainer', this._coordcontainer);
-		var coords = L.DomUtil.create('span', 'coordlabel', this._coordlabelcontainer);
-		var _lat = L.NumberFormatter.round(map.getCenter().lat);
-	    var _lng = L.NumberFormatter.round(map.getCenter().lng);
-		coords.innerHTML = "Lat: " + _lat + " Lon: " + _lng;
-		
-		this._coords = coords;
-		
-		// Move the crosshair to the center of the map when the user pans
-		map.on('move', function(e) {
-		    crosshair.setLatLng(map.getCenter());
-		    _lat = L.NumberFormatter.round(map.getCenter().lat);
-		    _lng = L.NumberFormatter.round(map.getCenter().lng);
-		    coords.innerHTML = "Lat: " + _lat + " Lon: " + _lng;
-		});
-		
-		return this._container;
+		// add crosshair marker to map
+		this._crosshair = this.makeMarker();
+		this._crosshair.addTo(map);	
+
+		//connect to mouseevents
+		map.on("move", this._update, this);
+		map.on('dragstart', this.collapse, this);
+
+		map.whenReady(this._update, this);
+
+		this._showsCoordinates = true;
+		//wether or not to show inputs on click
+		if (options.enableUserInput) {
+			L.DomEvent.addListener(this._container, "click", this._switchUI, this);
+		}	
+
+		return container;
 	},
 	
 	onRemove: function(map) {
-		L.DomEvent
-			.removeListener(link, 'click', this.toggle, this);
+		map.off("move", this._update, this);
+		map.removeLayer(this._crosshair);
+	},
+	
+	/**
+	 *	Move callback function updating labels and input elements
+	 */
+	_update: function(evt) {
+		var pos = this._map.getCenter(),
+			opts = this.options;
+		if (pos) {
+			// Move the crosshair to the center of the map when the user pans
+			this._crosshair.setLatLng(pos);
+			
+			pos = pos.wrap();
+			this._currentPos = pos;
+			this._inputY.value = L.NumberFormatter.round(pos.lat, opts.decimals, opts.decimalSeperator);
+			this._inputX.value = L.NumberFormatter.round(pos.lng, opts.decimals, opts.decimalSeperator);
+			this._label.innerHTML = this._createCoordinateLabel(pos);
+		}
 	},
 	
 	makeMarker: function() {
@@ -89,31 +112,19 @@ L.Control.Crosshair = L.Control.extend({
 	}
 });
 
+// constructor registration
 L.control.crosshair = function(options) {
 	return new L.Control.Crosshair(options);
 };
 
+// map init hook
 L.Map.mergeOptions({
 	crosshairControl: false
 });
 
 L.Map.addInitHook(function() {
 	if(this.options.crosshairControl) {
-		this.crosshairControl = L.Control.crosshair().addTo(this);
+		this.crosshairControl = new L.Control.Crosshair();
+		this.addControl(this.crosshairControl);
 	}
 });
-
-L.NumberFormatter = {
-		round: function(num) {
-			var res = L.Util.formatNum(num, 4) + "",
-				numbers = res.split(".");
-			if(numbers[1]) {
-				var d = 4 - numbers[1].length;
-				for(; d > 0; d--) {
-					numbers[1] += "0";
-				}
-				res = numbers.join("." || ".");
-			}
-			return res;
-		}
-};
