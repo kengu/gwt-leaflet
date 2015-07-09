@@ -25,4 +25,7 @@ public class ILayerImpl {
 		return self;
 	}-*/;
 
+	public static native JSObject getOptions(JSObject self) /*-{
+		return self.options;
+	}-*/;
 }
