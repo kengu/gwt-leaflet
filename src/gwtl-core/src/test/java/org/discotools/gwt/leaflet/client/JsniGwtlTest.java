@@ -11,6 +11,16 @@ public class JsniGwtlTest extends GwtlTestCase {
 		o = new JsniPremiseObject();
 	}
 
+	public void testIsWndAvailable() {
+		logTest("testIsWndAvailable");
+		try {
+			o.isWndAvailable();
+		} catch (JavaScriptException e) {
+			e.printStackTrace();
+			fail("JSNI premise 'GWT window is available' failed");
+		}
+	}
+
 	public void testJsniDefined() {
 		logTest("testJsniDefined");
 		try {

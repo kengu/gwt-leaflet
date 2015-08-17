@@ -9,8 +9,12 @@
 
 	<!-- GWT Leaflet dependencies -->	
 	<inherits name="org.discotools.gwt.leaflet.Core"/>
-	
-	<source path="client"></source>
+
+	<!-- GWT Leaflet source paths (src/java) -->
+	<source path="client" />
+
+	<!-- GWT Leaflet public paths (src/resources) -->
+	<public path="client" />
 	
 	<!-- Leaflet Proj4 API implementation (dependency injection) -->
 	<replace-with class="org.discotools.gwt.leaflet.proj4.client.impl.Proj4Impl">

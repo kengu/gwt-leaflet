@@ -6,9 +6,12 @@
 	<!-- GWT dependencies -->
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.json.JSON" />
-     
+    <inherits name="com.google.gwt.resources.Resources" />
 
-	<!-- GWT Leaflet source paths --> 
-	<source path="client"></source>
+    <!-- GWT Leaflet source paths (src/java) -->
+	<source path="client" />
+
+    <!-- GWT Leaflet public paths (src/resources) -->
+    <public path="client" />
 
 </module>

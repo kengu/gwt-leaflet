@@ -11,8 +11,11 @@
 	<inherits name="org.discotools.gwt.leaflet.Core"/>
 	<inherits name="org.discotools.gwt.leaflet.Draw"/>
 	<inherits name="org.discotools.gwt.leaflet.Ellipse"/>
-	
-	<!-- GWT Leaflet source paths -->
-	<source path="client"></source>
-	
+
+	<!-- GWT Leaflet source paths (src/java) -->
+	<source path="client" />
+
+	<!-- GWT Leaflet public paths (src/resources) -->
+	<public path="client" />
+
 </module>

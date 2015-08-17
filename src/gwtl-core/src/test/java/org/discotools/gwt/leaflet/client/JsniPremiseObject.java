@@ -38,6 +38,11 @@ public class JsniPremiseObject extends JSObjectWrapper {
 	private static native JSObject create()/*-{	
 		defined = function() {};
 		callback = function(value) { return value; };
-	}-*/;	
+	}-*/;
+
+
+	public native boolean isWndAvailable()/*-{
+		return $wnd !== undefined;
+	}-*/;
 
 }

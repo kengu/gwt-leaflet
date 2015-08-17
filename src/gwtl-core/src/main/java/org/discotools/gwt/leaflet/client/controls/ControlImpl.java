@@ -11,7 +11,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 public class ControlImpl extends IControlImpl {
 
 	public static native JSObject create(JSObject options)/*-{
-		return new $wnd.L.control(options);
+		return $wnd.L.control(options);
 	}-*/;	
 	 
 	public static native String getPosition(JSObject self) /*-{

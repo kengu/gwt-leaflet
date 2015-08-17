@@ -13,12 +13,12 @@ public class AttributionImpl  {
 	public static native JSObject create(String text, JSObject options) /*-{
 		// Create Attribution
 		var a = $wnd.L.control.attribution(options);
-		
+
 		// Set prefix and text
 		a.addAttribution(text);
 		
 		// Finished
-		return a;	
+		return a;
 	}-*/;
 	
 	public static native String getPrefix(JSObject self) /*-{	

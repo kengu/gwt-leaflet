@@ -3,6 +3,8 @@ package org.discotools.gwt.leaflet.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Element;
@@ -14,11 +16,23 @@ public class GwtlTestCase extends GWTTestCase {
 
 	public static final String NAME = PACKAGE + ".Core";
 
+	private static boolean inlined = false;
+
 	@Override
 	public String getModuleName() {
 		return NAME;
 	}
-	
+
+	@Override
+	protected void gwtSetUp() throws Exception {
+		if(!GwtlTestCase.inlined) {
+			LeafletBundle bundle = GWT.create(LeafletBundle.class);
+			ScriptInjector.fromString(bundle.getScript().getText()).setWindow(ScriptInjector.TOP_WINDOW).inject();
+			GwtlTestCase.inlined = true;
+			GWT.log("Leaflet core inlined");
+		}
+	}
+
 	/**
 	 * This method defensively cleanup the {@link DOM} after each test run
 	 */
@@ -42,9 +56,9 @@ public class GwtlTestCase extends GWTTestCase {
 	      }
 	    }
 
-	    for (int i = 0, n = toRemove.size(); i < n; ++i) {
-	      DOM.removeChild(bodyElem, toRemove.get(i));
-	    }		
+		for (Element aToRemove : toRemove) {
+			DOM.removeChild(bodyElem, aToRemove);
+		}
 	}
 	
 	protected static native String getNodeName(Element elem) /*-{

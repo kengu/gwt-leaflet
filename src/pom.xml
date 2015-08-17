@@ -116,6 +116,11 @@
 				<artifactId>gwt-dev</artifactId>
 				<version>${gwt.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-codeserver</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
 
 			<!-- Google App Engine (GAE) -->
 			<dependency>
@@ -171,8 +176,19 @@
 			<dependency>
 				<groupId>net.sf.extcos</groupId>
 				<artifactId>extcos</artifactId>
-				<version>0.3b</version>
+				<version>0.4b</version>
 				<scope>test</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm-all</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.googlecode.gwt-test-utils</groupId>
+				<artifactId>gwt-test-utils</artifactId>
+				<version>2.7.0</version>
 			</dependency>
 
 			<!-- Logging -->
@@ -226,9 +242,17 @@
 								<goal>resources</goal>
 							</goals>
 						</execution>
+						<!-- Enable GWT tests -->
+						<execution>
+							<id>gwt-test</id>
+							<phase>test</phase>
+							<goals>
+								<goal>test</goal>
+							</goals>
+						</execution>
 						<!-- Enable integration tests -->
 						<execution>
-							<id>integration-test</id>
+							<id>gwt-integration-test</id>
 							<phase>integration-test</phase>
 							<goals>
 								<goal>test</goal>
@@ -275,8 +299,8 @@
 					<version>2.12.4</version>
 					<!-- Maven unit testing plugin -->
 					<configuration>
-						<skip>true</skip>
 						<excludes>
+							<exclude>**/*GwtTest.java</exclude>
 							<exclude>**/*GwtlTest*.java</exclude>
 						</excludes>
 					</configuration>
@@ -360,6 +384,20 @@
 						<serverId>sonatype-nexus-staging</serverId>
 						<nexusUrl>https://oss.sonatype.org/service/local/staging/deploy/maven2</nexusUrl>
 					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 
 				<!-- This plugin's configuration is used to store m2e settings only. -->
