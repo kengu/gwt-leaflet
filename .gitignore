@@ -1,6 +1,8 @@
 target
+.idea
 .classpath
 .project
 .settings
 .gwt
 .DS_Store
+*.iml
