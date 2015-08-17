@@ -1,6 +1,7 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
 import org.discotools.gwt.leaflet.client.Options;
+import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
@@ -13,6 +14,14 @@ import org.discotools.gwt.leaflet.client.types.LatLng;
  * 
  */
 public class Circle extends Path {
+	
+	/**
+	 * Constructor used for inheritance
+	 * @param object
+	 */
+	public Circle(JSObject object) {
+		super(object);
+	}
 
 	public Circle(LatLng latlng, double radius, Options options) {
 		super(CircleImpl.create(latlng.getJSObject(), radius,

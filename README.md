@@ -23,10 +23,11 @@ Features
 + v0.1 (Medio Sep 2012) - Core parts of Leaflet API exposed
 + v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
 + v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
++ v0.4 (?? Mar 2015) - GWT upgraded to 2.7.0. Added leaflet.draw plugin.
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-core">Core Module</a>###
 
-**Dependency**: Leaflet 0.4.5
+**Dependency**: Leaflet 0.7.3
 
 Following parts of Leaflet API are implemented:
 
@@ -49,28 +50,52 @@ Following parts of Leaflet API are implemented:
 + [L.CRS.EPSG4326](http://leaflet.cloudmade.com/reference.html#icrs) - [EPSG:4326](http://spatialreference.org/ref/epsg/4326/)
 + [L.CRS.Simple](http://leaflet.cloudmade.com/reference.html#icrs) - Simple CRS (lat and lng into x and y directly)
 
-###<a href="gwt-leaflet/tree/master/src/gwtl-widget">Widget Module (GWT)</a>###
+###<a href="src/gwtl-widget">Widget Module (GWT)</a>###
 
 + MapWidget - GWT Widget displaying a Map instance (available from WindowBuilder Editor palette)
             
-###<a href="gwt-leaflet/tree/master/src/gwtl-proj4">Proj4 Module (GWT)</a>###
+###<a href="src/gwtl-proj4">Proj4 Module (GWT)</a>###
 
 **Dependency**: Proj4Leaflet [master/74a5a8b170ff58e635cba139cfaa25cd4cd5d022](https://github.com/kengu/Proj4Leaflet/commit/74a5a8b170ff58e635cba139cfaa25cd4cd5d022) (git)
                                     
 + Proj4 - Custom (local) CRS factory plugin to Leaflet ([Proj4Leaflet](https://github.com/kartena/Proj4Leaflet))
 
-###<a href="gwt-leaflet/tree/master/src/gwtl-search">Search Module (GWT)</a>###
+###<a href="src/gwtl-search">Search Module (GWT)</a>###
 
 **Dependency**: leaflet-search [master/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d](https://github.com/stefanocudini/leaflet-search/commit/3b717c6ff2bbd5ad19ba4f851c152f67ca62b97d) (git)
                                     
 + Leaflet Search - Simple search plugin for Leaflet ([leaflet-search](https://github.com/stefanocudini/leaflet-search))
 
-###<a href="gwt-leaflet/tree/master/src/gwtl-label">Label Module (GWT)</a>###
+###<a href="src/gwtl-label">Label Module (GWT)</a>###
 
-**Dependency**: Leaflet.label [master/3c13acff459c36a222e9fdefd718af95396a0a9f](https://github.com/igieon/Leaflet.label/commit/3c13acff459c36a222e9fdefd718af95396a0a9f) (git)
+**Dependency**: Leaflet.label [version 0.2.1](https://github.com/Leaflet/Leaflet.label/releases/tag/0.2.1) (git)
                                     
 + Leaflet label - Simple label plugin for Leaflet ([Leaflet.label](https://github.com/igieon/Leaflet.label))
 
+###<a href="src/gwtl-draw">Draw Module (GWT)</a>###
+
+**Dependency**: Leaflet.draw [version 0.2.3](https://github.com/Leaflet/Leaflet.draw/releases/tag/0.2.3) (git)
+                                    
++ Leaflet draw - Enables drawing features like polylines, polygons, rectangles, circles and markers through a very nice user-friendly interface with icons and hints. ([Leaflet.draw](https://github.com/Leaflet/Leaflet.draw))
+
+###<a href="src/gwtl-ellipse">Ellipse Module (GWT)</a>###
+
+**Dependency**: Leaflet.ellipse [version 66b8c2f23e833eed08389157f410cd735f8a3275](https://github.com/jdfergason/Leaflet.Ellipse/commit/66b8c2f23e833eed08389157f410cd735f8a3275) (git)
+                                    
++ Leaflet ellipse - A basic ellipse type for Leaflet, a JS library for interactive maps. Allows specification of semi-major and semi-minor axis as well as a tilt degrees from west. ([Leaflet.ellipse](https://github.com/jdfergason/Leaflet.Ellipse))
+
+###<a href="src/gwtl-measure">Measure Module (GWT)</a>###
+
+**Dependency**: Leaflet.MeasureControl [version 97016995b7e15ccea62c6b3c84cddfd9d1a35f8f](https://github.com/makinacorpus/Leaflet.MeasureControl/commit/97016995b7e15ccea62c6b3c84cddfd9d1a35f8f) (git)
+**Dependency**: Leaflet.draw [version 0.2.3](https://github.com/Leaflet/Leaflet.draw/releases/tag/0.2.3) (git)
+                                    
++ Leaflet MeasureControl - A simple tool to measure distances on maps. ([Leaflet.MeasureControl](https://github.com/makinacorpus/Leaflet.MeasureControl))
+
+###<a href="src/gwtl-coordinates">Coordinates Module (GWT)</a>###
+
+**Dependency**: Leaflet.Coordinates [version 0.1.4](https://github.com/MrMufflon/Leaflet.Coordinates/releases/tag/0.1.4) (git)
+                                    
++ Leaflet Coordinates - A Leaflet plugin to view mouse coordinates. Also the user can change the coordinates and get a marker on that position viewing the coordinates. ([Leaflet.Coordinates](https://github.com/MrMufflon/Leaflet.Coordinates))
 
 Example
 =======

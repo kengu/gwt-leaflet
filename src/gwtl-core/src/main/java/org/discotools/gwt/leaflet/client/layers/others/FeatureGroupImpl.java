@@ -9,6 +9,10 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  *
  */
 public class FeatureGroupImpl extends LayerGroupImpl {
+	
+	public static native JSObject create()/*-{
+		return new $wnd.L.featureGroup();
+	}-*/;
 
 	public static native JSObject create(JSObject layers)/*-{				
 		return new $wnd.L.featureGroup(layers);

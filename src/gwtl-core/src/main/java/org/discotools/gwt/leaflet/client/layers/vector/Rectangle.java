@@ -1,5 +1,6 @@
 package org.discotools.gwt.leaflet.client.layers.vector;
 
+import org.discotools.gwt.leaflet.client.jsobject.JSObject;
 import org.discotools.gwt.leaflet.client.map.Map;
 import org.discotools.gwt.leaflet.client.popup.PopupOptions;
 import org.discotools.gwt.leaflet.client.types.LatLng;
@@ -15,6 +16,14 @@ import org.discotools.gwt.leaflet.client.types.LatLngBounds;
  *
  */
 public class Rectangle extends Polygon {
+	
+	/**
+	 * Constructor used for inheritance
+	 * @param object
+	 */
+	public Rectangle(JSObject object) {
+		super(object);
+	}
   
 	/**
 	 * Default constructor

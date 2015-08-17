@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+  "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to="gwtl_core">
 
 	<!-- GWT dependencies -->
 	<inherits name="com.google.gwt.user.User" />
 	<inherits name="com.google.gwt.json.JSON" />
-	
-	<!-- Ensure Leaflet script and styles are pre-loaded -->
-	<script     src="libs/leaflet/b5c0a5f5f99ce36ef9b1e4db60c27f4c220f5ed1/leaflet-src.js" />
-	<stylesheet src="libs/leaflet/b5c0a5f5f99ce36ef9b1e4db60c27f4c220f5ed1/leaflet.css" />
-    <!-- Add to host page
-     <!- -[if lte IE 8]>
-        <link rel="stylesheet" href="lib/leaflet/v0.4.5/leaflet.ie.css" />
-     <![endif] - ->
-     --> 
      
 
 	<!-- GWT Leaflet source paths --> 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.4.0//EN" "http://google-web-toolkit.googlecode.com/svn/tags/2.4.0/distro-source/core/src/gwt-module.dtd">
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN"
+  "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
 <module rename-to="gwtl_example">
 	<inherits name="com.google.gwt.user.User"/>
 	<inherits name="com.google.gwt.user.theme.standard.Standard"/>
@@ -9,6 +10,12 @@
 	<inherits name="org.discotools.gwt.leaflet.Proj4"/>
     <inherits name="org.discotools.gwt.leaflet.Label"/>
 	<inherits name="org.discotools.gwt.leaflet.Search"/>
+	<inherits name="org.discotools.gwt.leaflet.Draw"/>
+	<inherits name="org.discotools.gwt.leaflet.Measure"/>
+	<inherits name="org.discotools.gwt.leaflet.Coordinates"/>
+	<inherits name="org.discotools.gwt.leaflet.Crosshair"/>
+	<inherits name="org.discotools.gwt.leaflet.Ellipse"/>
+	<inherits name="org.discotools.gwt.leaflet.DrawEllipse"/>
 	<inherits name="org.discotools.gwt.leaflet.Widget"/>
 	
 	<entry-point class="org.discotools.gwt.leaflet.client.example.Example"/>

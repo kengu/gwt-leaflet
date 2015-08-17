@@ -18,8 +18,12 @@ import org.discotools.gwt.leaflet.client.map.Map;
  *
  */
 public class LayerGroup extends ILayer {
+	
+	public interface LayerHandler {
+		void handle(ILayer layer);
+	}
 
-	protected LayerGroup(JSObject element) {
+	public LayerGroup(JSObject element) {
 		super(element);
 	}
 
@@ -63,6 +67,15 @@ public class LayerGroup extends ILayer {
 		LayerGroupImpl.clearLayers(getJSObject());
 		return this;
 	}
+	
+	public ILayer[] getLayers() {
+		JSObject[] objects = LayerGroupImpl.getLayers(getJSObject());
+		ILayer[] layers = new ILayer[objects.length];
+		for (int i = 0; i < objects.length; i++) {
+			layers[i] = new ILayer(objects[i]);
+		}
+		return layers;
+	}
 
 	/**
 	 * Adds the group of layers to the map.
@@ -82,5 +95,23 @@ public class LayerGroup extends ILayer {
 	public LayerGroup setOptions(Options options) {
 		return (LayerGroup)super.setOptions(options);
 	}
+	
+	/**
+	 * Iterates over the layers of the group.
+	 * 
+	 * @param layerHandler
+	 * @return
+	 */
+	public LayerGroup forEachLayer(LayerHandler layerHandler) {
+		eachLayer(getJSObject(), layerHandler);
+		return this;
+	}
+	
+	private static native void eachLayer(JSObject self, LayerHandler handler) /*-{
+		var _handler = $entry(function(layer) {
+        	handler.@org.discotools.gwt.leaflet.client.layers.others.LayerGroup.LayerHandler::handle(Lorg/discotools/gwt/leaflet/client/layers/ILayer;)(layer);
+        });
+        self.eachLayer(_handler);
+	}-*/;
 
 }

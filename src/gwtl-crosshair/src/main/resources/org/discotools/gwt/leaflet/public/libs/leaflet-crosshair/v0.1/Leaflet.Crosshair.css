@@ -1,0 +1,30 @@
+.leaflet-crosshair-icon {
+	background-image: url('images/crosshair.png');
+	background-repeat: no-repeat;
+}
+
+.leaflet-control-crosshair {
+	background-color: #D8D8D8;
+	background-color: rgba(255, 255, 255, .8);
+	cursor: pointer
+}
+
+.leaflet-control-crosshair, .leaflet-control-crosshair .uiElement input
+	{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px
+}
+
+.leaflet-control-crosshair .uiElement {
+	margin: 4px
+}
+
+.leaflet-control-crosshair .uiElement .labelFirst {
+	margin-right: 4px
+}
+
+.leaflet-control-crosshair .uiHidden {
+	display: none
+}
+

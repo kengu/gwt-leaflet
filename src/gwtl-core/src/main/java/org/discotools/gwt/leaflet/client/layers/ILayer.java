@@ -7,7 +7,7 @@ import org.discotools.gwt.leaflet.client.jsobject.JSObjectWrapper;
 
 /**
  * Prototype interface for all layers
- * 
+ *
  * @author kennethg
  * @author Lionel Leiva-Marcon
  *
@@ -18,27 +18,27 @@ public class ILayer extends JSObjectWrapper{
 	public ILayer(JSObject element) {
 		super(element);
 	}
-	
+
 	/**
-	 * This method allows to save in session the javascript object linked to 
-	 * the java object. Thus, it comes possible to call it directly from the 
+	 * This method allows to save in session the javascript object linked to
+	 * the java object. Thus, it comes possible to call it directly from the
 	 * JNSI functions by means of the following piece of code
 	 * <pre>
 	 * $wnd.gwtl.alias[aliasname]
 	 * </pre>
-	 * 
+	 *
 	 * @param alias - Name of the underlined java object
-	 * 
+	 *
 	 * @return {@link ILayer}
 	 */
 	public ILayer setAlias(String alias) {
 		ILayerImpl.setAlias(alias, getJSObject());
 		return this;
 	};
-	
+
 	/**
 	 * Modify options in one operation.
-	 * 
+	 *
 	 * @param options {@link Options} instance.
 	 * @return {@link ILayer}
 	 */
@@ -46,7 +46,9 @@ public class ILayer extends JSObjectWrapper{
 		ILayerImpl.setOptions(getJSObject(), options.getJSObject());
 		return this;
 	}
-		
-	
+
+	public Options getOptions() {
+		return new Options(ILayerImpl.getOptions(getJSObject()));
+	}
 
 }

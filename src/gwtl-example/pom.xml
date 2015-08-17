@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.discotools.gwt.leaflet</groupId>
 		<artifactId>gwtl</artifactId>
-		<version>0.3-SNAPSHOT</version>
+		<version>0.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>gwtl-example</artifactId>
@@ -41,23 +41,52 @@
 		<dependency>
 			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-proj4</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-search</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.discotools.gwt.leaflet</groupId>
 			<artifactId>gwtl-widget</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>0.4-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 		    <groupId>org.discotools.gwt.leaflet</groupId>
 		    <artifactId>gwtl-label</artifactId>
-		    <version>0.3-SNAPSHOT</version>
+		    <version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.discotools.gwt.leaflet</groupId>
+		    <artifactId>gwtl-draw</artifactId>
+		    <version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.discotools.gwt.leaflet</groupId>
+		    <artifactId>gwtl-measure</artifactId>
+		    <version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.discotools.gwt.leaflet</groupId>
+		    <artifactId>gwtl-coordinates</artifactId>
+		    <version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.discotools.gwt.leaflet</groupId>
+			<artifactId>gwtl-crosshair</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.discotools.gwt.leaflet</groupId>
+		    <artifactId>gwtl-ellipse</artifactId>
+		    <version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.discotools.gwt.leaflet</groupId>
+		    <artifactId>gwtl-draw-ellipse</artifactId>
+		    <version>0.4-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	
