@@ -8,6 +8,10 @@ before_script:
   - cd src
   - python ../build/settings.py
 
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
 script: 
 
   - if [ -e "settings.xml" ]; then mvn deploy -Prelease --settings settings.xml --global-settings ~/.m2/settings.xml; else mvn package -Prelease; fi
