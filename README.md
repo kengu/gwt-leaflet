@@ -23,7 +23,7 @@ Features
 + v0.1 (Medio Sep 2012) - Core parts of Leaflet API exposed
 + v0.2 (Primo Nov 2012) - All relevant parts of Leaflet API exposed, start publishing snapshots (maven + jars)
 + v0.3 (Ultimo Dec 2012) - Widgets: geolocation (field), first official release (maven + jars).
-+ v0.4 (?? Mar 2015) - GWT upgraded to 2.7.0. Added leaflet.draw plugin.
++ v0.4 (Ultimo Sep 2015) - GWT upgraded to 2.7.0. Added leaflet.draw plugin.
 
 ###<a href="gwt-leaflet/tree/master/src/gwtl-core">Core Module</a>###
 
@@ -111,7 +111,7 @@ This Git project structured as a Maven
 (see [working with maven](http://code.google.com/p/google-web-toolkit/wiki/WorkingWithMaven))
 and is developed using 
 
-+ [Maven (3.0.4)](http://maven.apache.org/download.html)
++ [Maven (3+)](http://maven.apache.org/download.html)
 + [Maven GWT Plugin](http://mojo.codehaus.org/gwt-maven-plugin) - automatically downloaded by maven
 + [Eclipse IDE for Java Developers (3.7.2)](http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/indigosr2) 
 + [Google Eclipse Plugin](https://developers.google.com/eclipse/docs/getting_started) 
