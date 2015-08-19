@@ -51,7 +51,7 @@
 		<!-- GWT properties -->
 		<gwt.version>2.7.0</gwt.version>
 		<!-- GAE properties -->
-		<gae.version>1.6.6</gae.version>
+		<gae.version>1.9.25</gae.version>
 		<gae.home>${user.home}/.m2/repository/com/google/appengine/appengine-java-sdk/${gae.version}/appengine-java-sdk-${gae.version}</gae.home>
 		<!-- GWT needs at least java 1.6 -->
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -398,6 +398,14 @@
 							</goals>
 						</execution>
 					</executions>
+				</plugin>
+
+
+				<!-- Google App Engine management plugin. -->
+				<plugin>
+					<groupId>com.google.appengine</groupId>
+					<artifactId>appengine-maven-plugin</artifactId>
+					<version>1.9.21</version>
 				</plugin>
 
 				<!-- This plugin's configuration is used to store m2e settings only. -->

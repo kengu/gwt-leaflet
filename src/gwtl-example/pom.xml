@@ -124,6 +124,12 @@
 				<artifactId>maven-resources-plugin</artifactId>
 			</plugin>
 
+			<!-- AppEngine management plugin on cli-->
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
 	
@@ -180,9 +186,9 @@
 							</additionalProjectnatures>
 						</configuration>
 					</plugin>
-					
+
 				</plugins>
-			</build>					
+			</build>
 		</profile>				
 	</profiles>
 	
