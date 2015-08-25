@@ -66,6 +66,10 @@ class MapImpl {
 		return addLayer(self, layer, false);
 	}
 
+	public static native boolean hasLayer(JSObject self, JSObject layer) /*-{
+		return self.hasLayer(layer);
+	}-*/;
+
 	public static native JSObject addLayer(JSObject self, JSObject layer, boolean bottom) /*-{
 		self.addLayer(layer,bottom);
 		return self;
