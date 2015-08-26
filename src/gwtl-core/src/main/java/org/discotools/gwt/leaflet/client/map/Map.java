@@ -72,6 +72,10 @@ public class Map extends JSObjectWrapper implements EventProvider {
     	return this;
     }
 
+    public boolean hasLayer(ILayer layer) {
+    	return MapImpl.hasLayer(getJSObject(), layer.getJSObject());
+    }
+
     public Map addLayer(ILayer layer, boolean bottom) {
     	MapImpl.addLayer(getJSObject(), layer.getJSObject(), bottom);
     	return this;
