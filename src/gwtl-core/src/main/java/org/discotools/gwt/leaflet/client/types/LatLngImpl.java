@@ -31,6 +31,10 @@ class LatLngImpl {
         return self.distanceTo(otherLatlng);
     }-*/;
 
+	public static native JSObject wrap(JSObject self)/*-{
+		return self.wrap();
+	}-*/;
+
     public static native boolean equals(JSObject self, JSObject other)/*-{
         return self.equals(other);
     }-*/;
