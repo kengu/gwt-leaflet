@@ -65,6 +65,15 @@ public class LatLng extends JSObjectWrapper {
         return LatLngImpl.distanceTo(getJSObject(),otherLatlng.getJSObject());
     }
     
+    /**
+     * Returns a new LatLng object with the longitude wrapped around -180 to 180.
+     *
+     * @return
+     */
+    public LatLng wrap() {
+		return new LatLng(LatLngImpl.wrap(getJSObject()));
+    }
+
 	public String toString() {
 		return "["+LatLngImpl.lat(getJSObject())+","+LatLngImpl.lng(getJSObject())+"]";
 	}
